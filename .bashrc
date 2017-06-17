@@ -47,6 +47,11 @@ alias lr='ls -latr'
 
 #### BASH CONFIGURATION - END ####
 
+# Source global bashrc if it exists
+if [ -f /etc/bashrc ]; then
+  source /etc/bashrc
+fi
+
 
 #### LINUX OS Check ####
 
