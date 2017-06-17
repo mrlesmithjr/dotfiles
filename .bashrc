@@ -52,6 +52,14 @@ if [ -f /etc/bashrc ]; then
   source /etc/bashrc
 fi
 
+# Check if GO is installed
+command -v go >/dev/null 2>&1
+GO_CHECK=$?
+
+if [ $GO_CHECK -eq 0 ]; then
+  export GOPATH=$HOME/go
+fi
+
 
 #### LINUX OS Check ####
 
