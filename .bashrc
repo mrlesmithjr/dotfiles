@@ -58,6 +58,7 @@ GO_CHECK=$?
 
 if [ $GO_CHECK -eq 0 ]; then
   export GOPATH=$HOME/go
+  export PATH=$PATH:$HOME/go/bin
 fi
 
 
