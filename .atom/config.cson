@@ -1,0 +1,44 @@
+"*":
+  "atom-beautify":
+    bash:
+      beautify_on_save: true
+    json:
+      beautify_on_save: true
+    markdown:
+      beautify_on_save: true
+      commonmark: true
+      default_beautifier: "Remark"
+    python:
+      beautify_on_save: true
+    yaml:
+      beautify_on_save: false
+  core:
+    disabledPackages: [
+      "language-gfm"
+    ]
+    telemetryConsent: "no"
+  editor:
+    autoIndentOnPaste: false
+    fontSize: 16
+  "exception-reporting":
+    userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
+  "linter-ui-default":
+    showPanel: true
+  minimap:
+    plugins:
+      bookmarks: true
+      bookmarksDecorationsZIndex: 0
+      codeglance: true
+      codeglanceDecorationsZIndex: 0
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+      selection: true
+      selectionDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false
