@@ -3,29 +3,29 @@
 	whitespace = fix
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = atom --wait
+	# editor = atom --wait
 	# editor = vi
-	# editor = vim
+	editor = vim
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [user]
-	email =
-	name =
+	email = mrlesmithjr@gmail.com
+	name = Larry Smith Jr.
 [credential]
 	# Fedora
 	# helper = /usr/libexec/git-core/git-credential-gnome-keyring
 	# MacOS
 	helper = osxkeychain
 [diff]
-# 	tool = meld
+	tool = meld
 [difftool]
-# 	prompt = false
+	prompt = false
 [merge]
-# 	tool = meld
+	tool = meld
 [mergetool]
-# 	prompt = false
+	prompt = false
 [color]
 	status = auto
 	branch = auto
