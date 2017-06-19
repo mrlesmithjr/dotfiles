@@ -1,6 +1,21 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+"
+Bundle 'chase/vim-ansible-yaml'
+"
+Bundle "lepture/vim-jinja"
+"
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " Enable Pathogen
 execute pathogen#infect()
 syntax on
