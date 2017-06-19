@@ -83,6 +83,19 @@ Make sure to edit this file to match your preferences. Especially the below:
 
 Some personal settings to make `vim` more pleasing on the eyes.
 
+* Install [VundleVim](https://github.com/VundleVim/Vundle.vim)
+
+```bash
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+* Install bundles/plugins
+
+```bash
+vim ~/.vimrc
+:BundleInstall
+```
+##### Some Example Plugins/bundles and etc.
 -   [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
 `runtimepath` with ease.
 -   [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
