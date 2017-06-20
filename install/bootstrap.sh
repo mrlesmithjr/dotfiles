@@ -11,12 +11,13 @@ if [[ $(uname) == "Linux" ]]; then
 
   # RHEL
   if [ -f /etc/redhat-release ]; then
-    if [ -f /etc/os-release ]; then
-      codename="$(gawk -F= '/^NAME/{print $2}' /etc/os-release)"
-      if [[ $codename == "Fedora" ]]; then
-        sudo dnf -y install python-devel python-dnf && \
-        sudo dnf -y group install "C Development Tools and Libraries"
-      fi
+    codename="$(cat /etc/redhat-release | awk '{print $1}')"
+    if [[ $codename == "Fedora" ]]; then
+      sudo dnf -y install python-devel python-dnf && \
+      sudo dnf -y group install "C Development Tools and Libraries"
+      elif [[ $codename == "CentOS" ]]; then
+      sudo yum -y install python-devel && \
+      sudo yum -y group install "Development Tools"
     fi
   fi
 fi
