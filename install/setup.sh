@@ -15,6 +15,4 @@ if [ $ANSIBLE_CHECK -eq 0 ]; then
   pip install ansible ansible-lint
 fi
 
-if [[ $(uname) == "Darwin" ]]; then
-  ansible-playbook $DOTFILES_DIR/install/ansible-macos-homebrew-packages.yml
-fi
+ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml
