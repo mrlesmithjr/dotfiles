@@ -1,0 +1,7 @@
+---
+debian_packages:
+  - 'jq'
+  - 'nmap'
+  - 'tmux'
+  - 'tree'
+  - 'vim'

@@ -27,6 +27,7 @@
 
   tasks:
     - block:
+
         - name: Updating Homebrew
           homebrew:
             update_homebrew: true
@@ -46,7 +47,51 @@
             state: "present"
           with_items: '{{ brew_cask_packages }}'
           when: homebrew_check.stat.exists
+
       when: ansible_os_family == "Darwin"
+
+    - block:
+
+        - name: Updating Apt Cache
+          apt:
+            update_cache: true
+            cache_valid_time: 3600
+          become: true
+
+        - name: Installing OS Packages
+          apt:
+            name: "{{ item }}"
+            state: "present"
+          become: true
+          with_items: '{{ debian_packages }}'
+
+      when: ansible_os_family == "Debian"
+
+    - block:
+
+      - name: Installing OS Packages
+        yum:
+          name: "{{ item }}"
+          state: "present"
+        become: true
+        with_items: '{{ redhat_packages }}'
+
+      when: >
+            ansible_os_family == "RedHat" and
+            ansible_distribution != "Fedora"
+
+    - block:
+
+      - name: Installing OS Packages
+        dnf:
+          name: "{{ item }}"
+          state: "present"
+        become: true
+        with_items: '{{ redhat_packages }}'
+
+      when: >
+            ansible_os_family == "RedHat" and
+            ansible_distribution == "Fedora"
 
     # - name: Installing Python Modules
     #   pip:
