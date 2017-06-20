@@ -16,7 +16,7 @@ if [[ $(uname) == "Linux" ]]; then
       sudo dnf -y install python-devel python-dnf && \
       sudo dnf -y group install "C Development Tools and Libraries"
       elif [[ $codename == "CentOS" ]]; then
-      sudo yum -y install python-devel && \
+      sudo yum -y install python-devel python-setuptools python2-pip && \
       sudo yum -y group install "Development Tools"
     fi
   fi
