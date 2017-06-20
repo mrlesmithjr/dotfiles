@@ -6,7 +6,7 @@
 
 ## LINUX ##
 #
-# cd ~
+# cd $HOME
 # git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
 #
 ## LINUX - END ##
@@ -65,8 +65,8 @@ fi
 #### LINUX OS Check ####
 
 if [[ $(uname) == "Linux" ]]; then
-  if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
-    GIT_PROMPT_BIN_PATH=~/.bash-git-prompt
+  if [ -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
+    GIT_PROMPT_BIN_PATH=$HOME/.bash-git-prompt
   fi
   PATH=$PATH:$HOME/.local/bin:$HOME/bin
   export PATH
@@ -109,7 +109,7 @@ if [[ $GIT_PROMPT_BIN_PATH ]]; then
   # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
-  # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
+  # GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
   GIT_PROMPT_ONLY_IN_REPO=1
   GIT_PROMPT_THEME=Single_line_Ubuntu
 
