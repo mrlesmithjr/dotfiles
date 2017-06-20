@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Define where dotfiles repo exists
-dir=$HOME/.dotfiles
+DOTFILES_DIR=$HOME/.dotfiles
 
 # Define folder where to backup any existing dotfiles
-dir_backup=$HOME/.dotfiles_old
+DOTFILES_DIR_BACKUP=$HOME/.dotfiles_old
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
@@ -12,25 +12,25 @@ dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
-if [ ! -d $dir_backup ]; then
-  echo "Creating $dir_backup to store any existing dotfiles..."
-  mkdir -p $dir_backup
+if [ ! -d $DOTFILES_DIR_BACKUP ]; then
+  echo "Creating $DOTFILES_DIR_BACKUP to store any existing dotfiles..."
+  mkdir -p $DOTFILES_DIR_BACKUP
   echo "Done"
 fi
 
-echo "Changing to $dir directory..."
-cd $dir || exit
+echo "Changing to $DOTFILES_DIR directory..."
+cd $DOTFILES_DIR || exit
 
 for dotfile in "${dotfiles[@]}"
 do
   if [ -f $HOME/$dotfile ]; then
-    echo "Backing up $dotfile to $dir_backup/$dotfile.$timestamp..."
-    mv -f $HOME/$dotfile $dir_backup/$dotfile.$timestamp
+    echo "Backing up $dotfile to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
+    mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
     echo "Done"
   fi
   if [ -d $HOME/$dotfile ]; then
-    echo "Backing up $dotfile directory to $dir_backup/$dotfile.$timestamp..."
-    mv -f $HOME/$dotfile $dir_backup/$dotfile.$timestamp
+    echo "Backing up $dotfile directory to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
+    mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
     echo "Done"
   fi
 done
@@ -38,7 +38,7 @@ done
 cd $HOME || exit
 for dotfile in "${dotfiles[@]}"
 do
-  echo "Creating symlink for $dir/$dotfile..."
-  ln -s $dir/$dotfile .
+  echo "Creating symlink for $DOTFILES_DIR/$dotfile..."
+  ln -s $DOTFILES_DIR/$dotfile .
   echo "Done"
 done
