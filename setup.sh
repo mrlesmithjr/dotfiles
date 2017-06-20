@@ -43,8 +43,16 @@ do
   echo "Done"
 done
 
+# Check if bash-git-prompt is already installed and install if not
 if [[ $(uname) == "Linux" ]]; then
   if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
     git clone https://github.com/magicmonty/bash-git-prompt.git $HOME/.bash-git-prompt --depth=1
   fi
+fi
+
+# Check for existing Vundle Plugin Manager and install if missing
+# https://github.com/VundleVim/Vundle.vim
+if [ ! -f $DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +BundleInstall +qall 2&> /dev/null
 fi
