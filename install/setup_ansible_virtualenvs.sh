@@ -7,15 +7,6 @@ ANSIBLE_VERSIONS=("1.9.4" "1.9.5" "1.9.6" "2.0.0.0" "2.0.0.1" "2.0.0.2" \
 ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1")
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 
-# Check if Python Virtualenv already installed and install if not
-which virtualenv >/dev/null 2>&1
-VIRTUALENV_CHECK=$?
-if [ $VIRTUALENV_CHECK -eq 0 ]; then
-  echo "Python Virtualenv already installed"
-  elif [ $VIRTUALENV_CHECK -ne 0 ]; then
-  pip install virtualenv
-fi
-
 # Setup Ansible Virtual Environments
 for ANSVER in "${ANSIBLE_VERSIONS[@]}"
 do

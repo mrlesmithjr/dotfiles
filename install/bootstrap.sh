@@ -6,17 +6,18 @@ if [[ $(uname) == "Linux" ]]; then
     codename="$(lsb_release -c | awk '{print $2}')"
     sudo apt-get update
     sudo apt-get -y install build-essential libffi-dev libssl-dev python-dev \
-    python-minimal python-pip python-setuptools
+    python-minimal python-pip python-setuptools python-virtualenv
   fi
 
   # RHEL
   if [ -f /etc/redhat-release ]; then
     codename="$(cat /etc/redhat-release | awk '{print $1}')"
     if [[ $codename == "Fedora" ]]; then
-      sudo dnf -y install python-devel python-dnf && \
+      sudo dnf -y install python-devel python-dnf python-virtualenv && \
       sudo dnf -y group install "C Development Tools and Libraries"
       elif [[ $codename == "CentOS" ]]; then
-      sudo yum -y install python-devel python-setuptools python2-pip && \
+      sudo yum -y install libffi-devel openssl-devel python-devel \
+      python2-pip python-setuptools python-virtualenv && \
       sudo yum -y group install "Development Tools"
     fi
   fi
