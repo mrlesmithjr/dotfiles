@@ -13,12 +13,14 @@ if [[ $(uname) == "Linux" ]]; then
   if [ -f /etc/redhat-release ]; then
     codename="$(cat /etc/redhat-release | awk '{print $1}')"
     if [[ $codename == "Fedora" ]]; then
-      sudo dnf -y install libffi-devel openssl-devel python-devel python-dnf \
-      python-pip python-virtualenv && \
+      sudo dnf -y install gmp-devel libffi-devel openssl-devel python-crypto \
+      python-devel python-dnf python-pip python-setuptools python-virtualenv \
+      redhat-rpm-config && \
       sudo dnf -y group install "C Development Tools and Libraries"
       elif [[ $codename == "CentOS" ]]; then
-      sudo yum -y install libffi-devel openssl-devel python-devel \
-      python2-pip python-setuptools python-virtualenv && \
+      sudo yum -y install gmp-devel libffi-devel openssl-devel python-crypto \
+      python-devel python-pip python-setuptools python-virtualenv \
+      redhat-rpm-config && \
       sudo yum -y group install "Development Tools"
     fi
   fi
