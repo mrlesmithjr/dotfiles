@@ -12,7 +12,7 @@ ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
   echo "Ansible already installed"
   elif [ $ANSIBLE_CHECK -ne 0 ]; then
-  pip install ansible ansible-lint
+  sudo pip install ansible ansible-lint
 fi
 
 ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml
