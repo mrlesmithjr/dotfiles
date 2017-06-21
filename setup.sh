@@ -52,7 +52,9 @@ fi
 
 # Check for existing Vundle Plugin Manager and install if missing
 # https://github.com/VundleVim/Vundle.vim
-if [ ! -f $DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload ]; then
+if [ "$(ls -A $DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload)" ]; then
+  echo "Vundle already installed"
+else
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +BundleInstall +qall 2&> /dev/null
 fi
