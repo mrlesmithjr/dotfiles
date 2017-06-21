@@ -35,7 +35,7 @@ if [[ $(uname) == "Darwin" ]]; then
   BREW_CHECK=$?
   if [ $BREW_CHECK -eq 0 ]; then
     echo "Brew already installed"
-    elif [ $BREW_CHECK -ne 0 ]; then
+  else
     /usr/bin/ruby -e \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
@@ -43,7 +43,7 @@ if [[ $(uname) == "Darwin" ]]; then
   PYTHON_CHECK=$?
   if [ $PYTHON_CHECK -eq 0 ]; then
     echo "Python already installed"
-    elif [ $PYTHON_CHECK -ne 0 ]; then
+  else
     brew install python
   fi
 fi

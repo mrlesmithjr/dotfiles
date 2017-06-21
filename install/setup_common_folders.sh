@@ -10,7 +10,7 @@ do
     echo "Creating folder $folder ..."
     mkdir -p $folder
     echo "Done"
-    elif [ -d $folder ]; then
+  else [ -d $folder ]
     echo "Folder $folder already exists ..."
   fi
 done

@@ -11,7 +11,7 @@ which ansible >/dev/null 2>&1
 ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
   echo "Ansible already installed"
-  elif [ $ANSIBLE_CHECK -ne 0 ]; then
+else
   sudo pip install ansible ansible-lint
 fi
 
