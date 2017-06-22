@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [REPO INFO](#repo-info)
+      - [Usage](#usage)
+      - [`.bashrc` and `.bash_profile`](#bashrc-and-bash_profile)
+      - [`.gitconfig`](#gitconfig)
+      - [`.vimrc` and `.vim`](#vimrc-and-vim)
+        - [Some Example Plugins/bundles and etc.](#some-example-pluginsbundles-and-etc)
+      - [Install Some Stuff](#install-some-stuff)
+  - [License](#license)
+  - [Author Information](#author-information)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # REPO INFO
 
 This repo is for a collection of my `dotfiles` which I use.
