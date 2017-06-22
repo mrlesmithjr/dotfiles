@@ -69,6 +69,11 @@
 
     - block:
 
+      - name: Installing EPEL-Release
+        yum:
+          name: "epel-release"
+        become: true
+
       - name: Installing OS Packages
         yum:
           name: "{{ item }}"
@@ -92,6 +97,14 @@
       when: >
             ansible_os_family == "RedHat" and
             ansible_distribution == "Fedora"
+
+    - name: Installing NPM Packages
+      npm:
+        name: "{{ item['name'] }}"
+        state: "{{ item['state'] }}"
+        global: "{{ item['global'] }}"
+      with_items: '{{ npm_packages }}'
+      when: npm_packages is defined
 
     # - name: Installing Python Modules
     #   pip:

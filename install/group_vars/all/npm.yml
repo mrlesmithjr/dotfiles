@@ -1,0 +1,5 @@
+---
+npm_packages:
+  - name: 'doctoc'
+    global: true
+    state: "present"

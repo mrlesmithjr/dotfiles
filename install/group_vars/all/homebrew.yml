@@ -50,6 +50,7 @@ brew_packages:
   - 'go'
   - 'jq'
   - 'nmap'
+  - 'npm'
   - 'nomad'
   - 'openssl'
   - 'packer'

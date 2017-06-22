@@ -2,6 +2,7 @@
 redhat_packages:
   - 'jq'
   - 'nmap'
+  - 'npm'
   - 'tmux'
   - 'tree'
   - 'vim'
