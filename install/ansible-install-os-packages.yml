@@ -103,11 +103,26 @@
         name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
         global: "{{ item['global'] }}"
+      become: true
       with_items: '{{ npm_packages }}'
-      when: npm_packages is defined
+      when: >
+            npm_packages is defined and
+            item['global']
 
-    # - name: Installing Python Modules
-    #   pip:
-    #     name: "{{ item }}"
-    #     state: "present"
-    #   with_items: '{{ python_modules }}'
+    - name: Installing NPM Packages
+      npm:
+        name: "{{ item['name'] }}"
+        state: "{{ item['state'] }}"
+        global: "{{ item['global'] }}"
+      become: false
+      with_items: '{{ npm_packages }}'
+      when: >
+            npm_packages is defined and
+            not item['global']
+
+    - name: Installing Python Modules
+      pip:
+        name: "{{ item }}"
+        state: "present"
+      with_items: '{{ python_modules }}'
+      when: python_modules is defined

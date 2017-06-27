@@ -15,4 +15,4 @@ else
   sudo pip install ansible ansible-lint
 fi
 
-ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml
+ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml -K
