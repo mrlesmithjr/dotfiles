@@ -10,6 +10,8 @@
       default_beautifier: "Remark"
     python:
       beautify_on_save: true
+    ruby:
+      beautify_on_save: true
     yaml:
       beautify_on_save: false
   core:
@@ -23,6 +25,7 @@
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
   "linter-ui-default":
+    panelHeight: 69
     showPanel: true
   minimap:
     plugins:
