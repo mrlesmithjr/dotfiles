@@ -1,4 +1,7 @@
 ---
 python_modules:
   - 'molecule'
+  - 'passlib'
+  - 'pylama'
+  - 'pylint'
   - 'tox'
