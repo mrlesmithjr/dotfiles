@@ -78,6 +78,7 @@ packages: [
   "linter-proselint"
   "linter-pycodestyle"
   "linter-pydocstyle"
+  "linter-pylama"
   "linter-pylint"
   "linter-python"
   "linter-python-pep8"
