@@ -111,7 +111,7 @@ if [[ $GIT_PROMPT_BIN_PATH ]]; then
   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
   # GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
   GIT_PROMPT_ONLY_IN_REPO=1
-  GIT_PROMPT_THEME=Single_line_Ubuntu
+  GIT_PROMPT_THEME="Minimal"
 
   __GIT_PROMPT_DIR=$GIT_PROMPT_BIN_PATH
   source $GIT_PROMPT_BIN_PATH/gitprompt.sh
@@ -132,4 +132,4 @@ white="$(tput setaf 7)"
 reset="$(tput sgr0)"
 
 # Custom prompt
-export PS1="\u${white}@\h:${cyan}[\w]:${reset}\\$ "
+export PS1="\u${white}@\h:${cyan}[\W]:${reset}\\$ "
