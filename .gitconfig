@@ -31,3 +31,9 @@
 	branch = auto
 	interactive = auto
 	diff = auto
+[difftool "meld"]
+	trustExitCode = true
+	cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+[mergetool "meld"]
+        trustExitCode = true
+        cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
