@@ -87,6 +87,10 @@
 
     - block:
 
+      - name: Updating vim-minimal (If Installed)
+        command: "dnf update -y vim-minimal"
+        become: true
+
       - name: Installing OS Packages
         dnf:
           name: "{{ item }}"
@@ -125,4 +129,16 @@
         name: "{{ item }}"
         state: "present"
       with_items: '{{ python_modules }}'
-      when: python_modules is defined
+      when: >
+            python_modules is defined and
+            ansible_distribution != "Fedora"
+
+    - name: Installing Python Modules
+      pip:
+        name: "{{ item }}"
+        state: "present"
+      become: true
+      with_items: '{{ python_modules }}'
+      when: >
+            python_modules is defined and
+            ansible_distribution == "Fedora"
