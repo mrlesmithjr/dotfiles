@@ -26,6 +26,7 @@ brew_cask_packages:
   - 'unetbootin'
   - 'vagrant'
   - 'vagrant-manager'
+  - 'vim'
   - 'virtualbox'
   - 'virtualbox-extension-pack'
     # - 'visual-studio-code'
