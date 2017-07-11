@@ -16,6 +16,7 @@ Bundle "lepture/vim-jinja"
 "
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'w0rp/ale'
 " Enable Pathogen
 execute pathogen#infect()
 syntax on
