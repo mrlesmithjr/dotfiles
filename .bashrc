@@ -84,17 +84,25 @@ if [[ $(uname) == "Darwin" ]]; then
     GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
   fi
 
-  # Flush Directory Service cache
-  alias flush_dns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+  # Lock the screen (when going AFK)
+  # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L157-L158
+  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
   # Recursively delete `.DS_Store` files
   alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
-  # Lock the screen (when going AFK)
-  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+  # Flush Directory Service cache
+  # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L71-L72
+  alias flush_dns="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
   # Add color to folders/files
   alias ls='ls -G'
+
+  # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
+  # modules, npm, and their installed packages.
+  # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
+  alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; pip freeze | xargs pip install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
+
 fi
 
 #### MacOS OS Check - END ####
