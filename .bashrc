@@ -84,6 +84,22 @@ if [[ $(uname) == "Darwin" ]]; then
     GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
   fi
 
+  # Check if pip is installed
+  command -v pip >/dev/null 2>&1
+  PIP_CHECK=$?
+
+  # Check if pip2 is installed
+  command -v pip2 >/dev/null 2>&1
+  PIP2_CHECK=$?
+
+  if [ $PIP_CHECK -eq 0 ]; then
+    PIP_CMD=pip
+  elif [ $PIP_CHECK -ne 0 ]; then
+    if [ $PIP2_CHECK -eq 0 ]; then
+      PIP_CMD=pip2
+    fi
+  fi
+
   # Lock the screen (when going AFK)
   # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L157-L158
   alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -101,7 +117,7 @@ if [[ $(uname) == "Darwin" ]]; then
   # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
   # modules, npm, and their installed packages.
   # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-  alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; pip freeze | xargs pip install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
+  alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; $PIP_CMD freeze | xargs $PIP_CMD install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
 
 fi
 
