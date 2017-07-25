@@ -3,6 +3,7 @@ redhat_packages:
   - 'jq'
   - 'nmap'
   - 'npm'
+  - 'terminator'
   - 'tmux'
   - 'tree'
   - 'vim'
