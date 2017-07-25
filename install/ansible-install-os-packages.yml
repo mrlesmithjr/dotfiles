@@ -75,6 +75,16 @@
 
       when: ansible_os_family == "Debian"
 
+    - name: Adding Google Chrome Repo
+      yum_repository:
+        name: "google-chrome"
+        description: "Google Chrome"
+        baseurl: "baseurl=http://dl.google.com/linux/chrome/rpm/stable/\\$basearch"
+        enabled: true
+        gpgcheck: true
+        gpgkey: "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub"
+      when: ansible_os_family == "RedHat"
+
     - block:
 
         - name: Installing EPEL-Release
@@ -92,6 +102,12 @@
         - name: Installing ATOM Editor
           yum:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
+
+        - name: Installing Google Chrome
+          yum:
+            name: "google-chrome-stable"
             state: "present"
           become: true
 
@@ -115,6 +131,12 @@
         - name: Installing ATOM Editor
           dnf:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
+
+        - name: Installing Google Chrome
+          dnf:
+            name: "google-chrome-stable"
             state: "present"
           become: true
 
