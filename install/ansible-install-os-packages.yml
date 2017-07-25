@@ -79,10 +79,10 @@
       yum_repository:
         name: "google-chrome"
         description: "Google Chrome"
-        baseurl: "baseurl=http://dl.google.com/linux/chrome/rpm/stable/\\$basearch"
+        baseurl: "http://dl.google.com/linux/chrome/rpm/stable/$basearch"
         enabled: true
         gpgcheck: true
-        gpgkey: "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub"
+        gpgkey: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
       become: true
       when: ansible_os_family == "RedHat"
 
