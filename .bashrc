@@ -36,9 +36,16 @@ shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
+# If set, Bash attempts to save all lines of a multiple-line command in the same
+# history entry. This allows easy re-editing of multi-line commands.
+shopt -s cmdhist;
+
+# no duplicate entries
+export HISTCONTROL="erasedups:ignoreboth"
+
 # Set large history sizes
-HISTSIZE=1000000
-HISTFILESIZE=9000000
+export HISTSIZE=1000000
+export HISTFILESIZE=9000000
 
 # Set aliases
 alias grep='grep --color=auto'
