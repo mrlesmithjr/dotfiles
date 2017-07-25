@@ -75,15 +75,28 @@
 
       when: ansible_os_family == "Debian"
 
-    - name: Adding Google Chrome Repo
-      yum_repository:
-        name: "google-chrome"
-        description: "Google Chrome"
-        baseurl: "http://dl.google.com/linux/chrome/rpm/stable/$basearch"
-        enabled: true
-        gpgcheck: true
-        gpgkey: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
-      become: true
+    - block:
+
+        - name: Adding Dropbox Repo
+          yum_repository:
+            name: "dropbox"
+            description: "Dropbox Repository"
+            baseurl: "http://linux.dropbox.com/{{ ansible_distribution|lower }}/{{ ansible_distribution_version }}/"
+            enabled: true
+            gpgcheck: true
+            gpgkey: "http://linux.dropbox.com/{{ ansible_distribution|lower }}/rpm-public-key.asc"
+          become: true
+
+        - name: Adding Google Chrome Repo
+          yum_repository:
+            name: "google-chrome"
+            description: "Google Chrome"
+            baseurl: "http://dl.google.com/linux/chrome/rpm/stable/$basearch"
+            enabled: true
+            gpgcheck: true
+            gpgkey: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+          become: true
+
       when: ansible_os_family == "RedHat"
 
     - block:
@@ -103,6 +116,12 @@
         - name: Installing ATOM Editor
           yum:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
+
+        - name: Installing Dropbox
+          yum:
+            name: "nautilus-dropbox"
             state: "present"
           become: true
 
@@ -132,6 +151,12 @@
         - name: Installing ATOM Editor
           dnf:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
+
+        - name: Installing Dropbox
+          dnf:
+            name: "nautilus-dropbox"
             state: "present"
           become: true
 
