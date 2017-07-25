@@ -1,6 +1,7 @@
 # Atom sync
 /.atom/blob-store/
 /.atom/compile-cache/
+/.atom/nohup.out
 /.atom/packages/
 /.atom/split-diff/
 /.atom/storage/
