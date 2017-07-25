@@ -83,6 +83,7 @@
         enabled: true
         gpgcheck: true
         gpgkey: "gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub"
+      become: true
       when: ansible_os_family == "RedHat"
 
     - block:
