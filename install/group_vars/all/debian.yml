@@ -1,6 +1,7 @@
 ---
 debian_packages:
   - 'jq'
+  - 'keepassx'
   - 'nmap'
   - 'npm'
   - 'terminator'

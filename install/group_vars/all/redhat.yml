@@ -1,6 +1,7 @@
 ---
 redhat_packages:
   - 'jq'
+  - 'keepassx'
   - 'nmap'
   - 'npm'
   - 'terminator'
