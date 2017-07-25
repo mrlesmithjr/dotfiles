@@ -4,6 +4,7 @@
   vars:
   pre_tasks:
     - block:
+
         - name: Ensuring Homebrew Is Installed
           stat:
             path: "/usr/local/bin/brew"
@@ -23,6 +24,7 @@
           when: >
                 not homebrew_check.stat.exists and
                 install_homebrew_if_missing
+
       when: ansible_os_family == "Darwin"
 
   tasks:
@@ -65,21 +67,33 @@
           become: true
           with_items: '{{ debian_packages }}'
 
+        - name: Installing ATOM Editor
+          apt:
+            name: "{{ atom_editor_dl }}/atom-amd64.deb"
+            state: "present"
+          become: true
+
       when: ansible_os_family == "Debian"
 
     - block:
 
-      - name: Installing EPEL-Release
-        yum:
-          name: "epel-release"
-        become: true
+        - name: Installing EPEL-Release
+          yum:
+            name: "epel-release"
+          become: true
 
-      - name: Installing OS Packages
-        yum:
-          name: "{{ item }}"
-          state: "present"
-        become: true
-        with_items: '{{ redhat_packages }}'
+        - name: Installing OS Packages
+          yum:
+            name: "{{ item }}"
+            state: "present"
+          become: true
+          with_items: '{{ redhat_packages }}'
+
+        - name: Installing ATOM Editor
+          yum:
+            name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
 
       when: >
             ansible_os_family == "RedHat" and
@@ -87,16 +101,22 @@
 
     - block:
 
-      - name: Updating vim-minimal (If Installed)
-        command: "dnf update -y vim-minimal"
-        become: true
+        - name: Updating vim-minimal (If Installed)
+          command: "dnf update -y vim-minimal"
+          become: true
 
-      - name: Installing OS Packages
-        dnf:
-          name: "{{ item }}"
-          state: "present"
-        become: true
-        with_items: '{{ redhat_packages }}'
+        - name: Installing OS Packages
+          dnf:
+            name: "{{ item }}"
+            state: "present"
+          become: true
+          with_items: '{{ redhat_packages }}'
+
+        - name: Installing ATOM Editor
+          dnf:
+            name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: "present"
+          become: true
 
       when: >
             ansible_os_family == "RedHat" and
@@ -142,3 +162,13 @@
       when: >
             python_modules is defined and
             ansible_distribution == "Fedora"
+
+    - name: Capturing ATOM Packages
+      shell: "apm list | awk '{ print $2 }'"
+      register: "_apm_list"
+      changed_when: false
+
+    - name: Installing ATOM Packages
+      command: "apm install {{ item }}"
+      with_items: '{{ atom_editor_packages }}'
+      when: item not in _apm_list['stdout']
