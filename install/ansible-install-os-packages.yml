@@ -69,7 +69,7 @@
 
         - name: Installing ATOM Editor
           apt:
-            name: "{{ atom_editor_dl }}/atom-amd64.deb"
+            deb: "{{ atom_editor_dl }}/atom-amd64.deb"
             state: "present"
           become: true
 
