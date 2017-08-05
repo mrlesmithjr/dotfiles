@@ -77,16 +77,19 @@
           apt_key:
             url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
             state: "present"
+          become: true
 
         - name: Adding Google Chrome Repo
           apt_repository:
             repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
             state: "present"
+          become: true
 
         - name: Installing Google Chrome
           apt:
             name: "google-chrome-stable"
             state: "present"
+          become: true
 
       when: ansible_os_family == "Debian"
 
