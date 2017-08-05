@@ -1,9 +1,11 @@
 ---
 debian_packages:
+  - 'golang'
   - 'jq'
   - 'keepassx'
   - 'nmap'
   - 'npm'
+  - 'shellcheck'
   - 'terminator'
   - 'tmux'
   - 'tree'

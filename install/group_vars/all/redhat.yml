@@ -1,5 +1,7 @@
 ---
 redhat_packages:
+  - 'ShellCheck'
+  - 'golang'
   - 'jq'
   - 'keepassx'
   - 'nmap'
