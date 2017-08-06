@@ -60,6 +60,7 @@
       "pull-request"
       "context-git"
       "terminal-plus"
+      "linter-flint"
     ]
     telemetryConsent: "no"
   editor:
