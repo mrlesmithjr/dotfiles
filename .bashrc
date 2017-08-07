@@ -80,6 +80,7 @@ if [[ $(uname) == "Linux" ]]; then
   if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  alias ls="ls --color=auto"
 fi
 
 #### LINUX OS Check - END ####
