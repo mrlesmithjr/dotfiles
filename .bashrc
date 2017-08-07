@@ -77,6 +77,9 @@ if [[ $(uname) == "Linux" ]]; then
   fi
   PATH=$PATH:$HOME/.local/bin:$HOME/bin
   export PATH
+  if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 
 #### LINUX OS Check - END ####
