@@ -1,6 +1,6 @@
 ---
 python_modules:
-  - 'molecule'
+  # - 'molecule'
   - 'passlib'
   - 'pylama'
   - 'pylint'

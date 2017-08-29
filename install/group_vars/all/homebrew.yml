@@ -12,7 +12,7 @@ brew_cask_packages:
   - 'keepassx'
   - 'kodi'
   - 'lastpass'
-  - 'libreoffice'
+  # - 'libreoffice'
   # - 'macvim'
   - 'meld'
   - 'pandora'
