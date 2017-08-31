@@ -1,0 +1,4 @@
+---
+gem_packages:
+  - name: 'rubocop'
+    state: 'present'
