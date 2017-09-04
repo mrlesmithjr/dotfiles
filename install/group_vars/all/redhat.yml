@@ -6,6 +6,7 @@ redhat_packages:
   - 'keepassx'
   - 'nmap'
   - 'npm'
+  - 'rubygems'
   - 'terminator'
   - 'tmux'
   - 'tree'
