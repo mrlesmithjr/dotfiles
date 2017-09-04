@@ -4,4 +4,7 @@ python_modules:
   - 'passlib'
   - 'pylama'
   - 'pylint'
+  - 'pywinrm'
+  - 'requests'
   - 'tox'
+
