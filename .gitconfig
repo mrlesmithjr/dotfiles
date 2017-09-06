@@ -34,4 +34,6 @@
 [difftool "meld"]
 	trustExitCode = true
 [mergetool "meld"]
-        trustExitCode = true
+	trustExitCode = true
+[includeIf "gitdir:~/Git_Projects/Work/"]
+	path = ~/.gitconfig-work
