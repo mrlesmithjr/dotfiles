@@ -18,6 +18,8 @@ if [ $PIP_CHECK -eq 0 ]; then
   PIP_CMD="pip2"
 fi
 
+sudo $PIP_CMD install virtualenv
+
 # Setup Ansible Virtual Environments
 for ANSVER in "${ANSIBLE_VERSIONS[@]}"
 do
