@@ -1,13 +1,13 @@
 ---
 redhat_packages:
-  - 'ShellCheck'
-  - 'golang'
-  - 'jq'
-  - 'keepassx'
-  - 'nmap'
-  - 'npm'
-  - 'rubygems'
-  - 'terminator'
-  - 'tmux'
-  - 'tree'
-  - 'vim'
+  - ShellCheck
+  - golang
+  - jq
+  - keepassx
+  - nmap
+  - npm
+  - rubygems
+  - terminator
+  - tmux
+  - tree
+  - vim

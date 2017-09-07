@@ -1,5 +1,5 @@
 ---
 npm_packages:
-  - name: 'doctoc'
+  - name: doctoc
     global: true
-    state: "present"
+    state: present

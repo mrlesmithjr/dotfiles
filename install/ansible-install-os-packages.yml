@@ -7,12 +7,12 @@
 
         - name: Ensuring Homebrew Is Installed
           stat:
-            path: "/usr/local/bin/brew"
-          register: "homebrew_check"
+            path: /usr/local/bin/brew
+          register: homebrew_check
 
         - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
           fail:
-            msg: "Homebrew is missing...Install from http://brew.sh/"
+            msg: Homebrew is missing...Install from http://brew.sh/
           when: >
                 not homebrew_check.stat.exists and
                 not install_homebrew_if_missing
@@ -20,7 +20,7 @@
         - name: Installing Homebrew
           command: >
                    /usr/bin/ruby -e \
-                   "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                   $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
           when: >
                 not homebrew_check.stat.exists and
                 install_homebrew_if_missing
@@ -38,7 +38,7 @@
         - name: Installing Homebrew Packages
           homebrew:
             name: "{{ item }}"
-            state: "present"
+            state: present
             upgrade_all: "{{ upgrade_homebrew_packages }}"
           with_items: '{{ brew_packages }}'
           when: homebrew_check.stat.exists
@@ -46,7 +46,7 @@
         - name: Installing Homebrew Cask Packages
           homebrew_cask:
             name: "{{ item }}"
-            state: "present"
+            state: present
           with_items: '{{ brew_cask_packages }}'
           when: homebrew_check.stat.exists
 
@@ -63,33 +63,33 @@
         - name: Installing OS Packages
           apt:
             name: "{{ item }}"
-            state: "present"
+            state: present
           become: true
           with_items: '{{ debian_packages }}'
 
         - name: Installing ATOM Editor
           apt:
             deb: "{{ atom_editor_dl }}/atom-amd64.deb"
-            state: "present"
+            state: present
           become: true
 
         - name: Adding Google Chrome Repo Key
           apt_key:
-            url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
-            state: "present"
+            url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+            state: present
           become: true
 
         - name: Adding Google Chrome Repo
           apt_repository:
-            repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
-            filename: "google-chrome"
-            state: "present"
+            repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+            filename: google-chrome
+            state: present
           become: true
 
         - name: Installing Google Chrome
           apt:
-            name: "google-chrome-stable"
-            state: "present"
+            name: google-chrome-stable
+            state: present
           become: true
 
       when: ansible_os_family == "Debian"
@@ -98,8 +98,8 @@
 
         - name: Adding Dropbox Repo
           yum_repository:
-            name: "dropbox"
-            description: "Dropbox Repository"
+            name: dropbox
+            description: Dropbox Repository
             baseurl: "http://linux.dropbox.com/{{ ansible_distribution|lower }}/{{ ansible_distribution_version }}/"
             enabled: true
             gpgcheck: true
@@ -108,12 +108,12 @@
 
         - name: Adding Google Chrome Repo
           yum_repository:
-            name: "google-chrome"
-            description: "Google Chrome"
-            baseurl: "http://dl.google.com/linux/chrome/rpm/stable/$basearch"
+            name: google-chrome
+            description: Google Chrome
+            baseurl: http://dl.google.com/linux/chrome/rpm/stable/$basearch
             enabled: true
             gpgcheck: true
-            gpgkey: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+            gpgkey: https://dl-ssl.google.com/linux/linux_signing_key.pub
           become: true
 
       when: ansible_os_family == "RedHat"
@@ -122,32 +122,32 @@
 
         - name: Installing EPEL-Release
           yum:
-            name: "epel-release"
+            name: epel-release
           become: true
 
         - name: Installing OS Packages
           yum:
             name: "{{ item }}"
-            state: "present"
+            state: present
           become: true
           with_items: '{{ redhat_packages }}'
 
         - name: Installing ATOM Editor
           yum:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
-            state: "present"
+            state: present
           become: true
 
         - name: Installing Dropbox
           yum:
-            name: "nautilus-dropbox"
-            state: "present"
+            name: nautilus-dropbox
+            state: present
           become: true
 
         - name: Installing Google Chrome
           yum:
-            name: "google-chrome-stable"
-            state: "present"
+            name: google-chrome-stable
+            state: present
           become: true
 
       when: >
@@ -157,32 +157,32 @@
     - block:
 
         - name: Updating vim-minimal (If Installed)
-          command: "dnf update -y vim-minimal"
+          command: dnf update -y vim-minimal
           become: true
 
         - name: Installing OS Packages
           dnf:
             name: "{{ item }}"
-            state: "present"
+            state: present
           become: true
           with_items: '{{ redhat_packages }}'
 
         - name: Installing ATOM Editor
           dnf:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
-            state: "present"
+            state: present
           become: true
 
         - name: Installing Dropbox
           dnf:
-            name: "nautilus-dropbox"
-            state: "present"
+            name: nautilus-dropbox
+            state: present
           become: true
 
         - name: Installing Google Chrome
           dnf:
-            name: "google-chrome-stable"
-            state: "present"
+            name: google-chrome-stable
+            state: present
           become: true
 
       when: >
@@ -223,7 +223,7 @@
     - name: Installing Python Modules
       pip:
         name: "{{ item }}"
-        state: "present"
+        state: present
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
@@ -232,7 +232,7 @@
     - name: Installing Python Modules
       pip:
         name: "{{ item }}"
-        state: "present"
+        state: present
       become: true
       with_items: '{{ python_modules }}'
       when: >
@@ -240,8 +240,8 @@
             ansible_distribution == "Fedora"
 
     - name: Capturing ATOM Packages
-      shell: "apm list | awk '{ print $2 }'"
-      register: "_apm_list"
+      shell: apm list | awk '{ print $2 }'
+      register: _apm_list
       changed_when: false
 
     - name: Installing ATOM Packages

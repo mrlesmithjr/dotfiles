@@ -1,10 +1,11 @@
 ---
 python_modules:
-  # - 'molecule'
-  - 'passlib'
-  - 'pylama'
-  - 'pylint'
-  - 'pywinrm'
-  - 'requests'
-  - 'tox'
+  # - molecule
+  - passlib
+  - pylama
+  - pylint
+  - pyvmomi
+  - pywinrm
+  - requests
+  - tox
 
