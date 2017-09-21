@@ -31,7 +31,7 @@ brew_cask_packages:
   - vagrant-manager
   - virtualbox
   - virtualbox-extension-pack
-    # - visual-studio-code
+  - visual-studio-code
   # - vmware-fusion
   - vnc-viewer
 brew_packages:
