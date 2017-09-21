@@ -14,7 +14,15 @@
       beautify_on_save: true
     yaml:
       beautify_on_save: false
+  "autocomplete-ansible":
+    pythonPaths: "/usr/local/opt/python/bin/python2.7"
+  "autocomplete-paths":
+    maxFileCount: 5000
   core:
+    customFileTypes:
+      "text.ignore": [
+        ".dockerignore"
+      ]
     disabledPackages: [
       "language-gfm"
       "atom-vagrant-manager"
@@ -68,6 +76,9 @@
     fontSize: 16
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
+  "linter-pylama": {}
+  "linter-python":
+    executablePath: "/usr/local/bin/pylama"
   "linter-ui-default":
     panelHeight: 69
     showPanel: true
