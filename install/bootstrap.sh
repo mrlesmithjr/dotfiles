@@ -17,7 +17,7 @@ if [[ $(uname) == "Linux" ]]; then
       python-devel python-dnf python-pip python-setuptools python-virtualenv \
       redhat-rpm-config && \
       sudo dnf -y group install "C Development Tools and Libraries"
-      elif [[ $codename == "CentOS" ]]; then
+    elif [[ $codename == "CentOS" ]]; then
       sudo yum -y install gmp-devel libffi-devel openssl-devel python-crypto \
       python-devel python-pip python-setuptools python-virtualenv \
       redhat-rpm-config && \
