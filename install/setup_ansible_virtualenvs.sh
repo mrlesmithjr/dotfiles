@@ -3,7 +3,7 @@
 ANSIBLE_VERSIONS=("1.9.4" "1.9.5" "1.9.6" "2.0.0.0" "2.0.0.1" "2.0.0.2" \
   "2.0.1.0" "2.0.2.0" "2.1.0.0" "2.1.1.0" "2.1.2.0" "2.1.3.0" \
   "2.1.4.0" "2.1.5.0" "2.1.6.0" "2.2.0.0" "2.2.1.0" "2.2.2.0" \
-"2.2.3.0" "2.3.0.0" "2.3.1.0")
+"2.2.3.0" "2.3.0.0" "2.3.1.0" "2.3.2.0" "2.4.0.0")
 ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1")
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 
@@ -14,7 +14,7 @@ command -v pip2 >/dev/null 2>&1
 PIP2_CHECK=$?
 if [ $PIP_CHECK -eq 0 ]; then
   PIP_CMD="pip"
-  elif [ $PIP2_CHECK -eq 0 ]; then
+elif [ $PIP2_CHECK -eq 0 ]; then
   PIP_CMD="pip2"
 fi
 
