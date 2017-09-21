@@ -55,6 +55,7 @@ packages: [
   "language-ignore"
   "language-ini"
   "language-markdown"
+  "language-powershell"
   "language-sphinx"
   "language-terraform"
   "linter"
