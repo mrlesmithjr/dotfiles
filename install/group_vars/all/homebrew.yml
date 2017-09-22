@@ -76,7 +76,8 @@ brew_packages:
   - vault
   - vim
   - wget
-    # - zsh
-    # - zsh-syntax-highlighting
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
 install_homebrew_if_missing: true
 upgrade_homebrew_packages: false

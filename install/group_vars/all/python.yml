@@ -2,10 +2,10 @@
 python_modules:
   # - molecule
   - passlib
+  - pyOpenSSL
   - pylama
   - pylint
   - pyvmomi
   - pywinrm
   - requests
   - tox
-

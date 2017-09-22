@@ -248,3 +248,21 @@
       command: "apm install {{ item }}"
       with_items: '{{ atom_editor_packages }}'
       when: item not in _apm_list['stdout']
+
+    - name: Installing Oh My ZSH
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh
+        dest: $HOME/.oh-my-zsh
+      when: install_oh_my_zsh
+
+    - name: Changing Shell To ZSH
+      command: chsh -s /bin/zsh
+      when: install_oh_my_zsh
+
+    - name: Installing Meslo Powerline Font
+      get_url:
+        url: https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf?raw=true
+        dest: $HOME/Library/Fonts/Meslo LG M Regular for Powerline.ttf
+      when: >
+            ansible_os_family == "Darwin" and
+            install_oh_my_zsh
