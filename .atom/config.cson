@@ -69,6 +69,7 @@
       "context-git"
       "terminal-plus"
       "linter-flint"
+      "autocomplete-paths"
     ]
     telemetryConsent: "no"
   editor:
