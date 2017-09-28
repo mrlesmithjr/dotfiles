@@ -59,53 +59,57 @@ else
   vim +BundleInstall +qall 2&> /dev/null
 fi
 
-# Below is only applicable to macOS currently
 if [[ $(uname) == "Darwin" ]]; then
   # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
   VSCODE_USER_HOME=($HOME/Library/Application\ Support/Code/User)
+fi
 
-  if [[ ! -d $VSCODE_USER_HOME ]]; then
-    echo "Creating $VSCODE_USER_HOME ..."
-    mkdir -p $VSCODE_USER_HOME
-    echo "Done"
-  else
-    echo "$VSCODE_USER_HOME already exists..."
-  fi
+if [[ $(uname) == "Linux" ]]; then
+  # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
+  VSCODE_USER_HOME=($HOME/.config/Code/User/)
+fi
 
-  # Defines path to this repos .dotfiles for VSCode
-  VSCODE_DOTFILES_DIR=$DOTFILES_DIR/Code
+if [[ ! -d $VSCODE_USER_HOME ]]; then
+  echo "Creating $VSCODE_USER_HOME ..."
+  mkdir -p $VSCODE_USER_HOME
+  echo "Done"
+else
+  echo "$VSCODE_USER_HOME already exists..."
+fi
 
-  VSCODE_DOTFILES=("settings.json" "keybindings.json")
+# Defines path to this repos .dotfiles for VSCode
+VSCODE_DOTFILES_DIR=$DOTFILES_DIR/Code
 
-  # Creates symlinks if they do not exist or creates a copy of an existing one if it exists and is not to the correct location
-  for VSCODE_DOTFILE in "${VSCODE_DOTFILES[@]}"
-  do
-    if [[ -L "$VSCODE_USER_HOME/$VSCODE_DOTFILE" ]]; then
-      if [[ "$VSCODE_USER_HOME/$VSCODE_DOTFILE" -ef "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" ]]; then
-        echo "$VSCODE_USER_HOME/$VSCODE_DOTFILE symlink already correct..."
-      else
-        echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
-        mv $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp
-        echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
-        ln -s $VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE
-      fi
+VSCODE_DOTFILES=("settings.json" "keybindings.json")
+
+# Creates symlinks if they do not exist or creates a copy of an existing one if it exists and is not to the correct location
+for VSCODE_DOTFILE in "${VSCODE_DOTFILES[@]}"
+do
+  if [[ -L "$VSCODE_USER_HOME/$VSCODE_DOTFILE" ]]; then
+    if [[ "$VSCODE_USER_HOME/$VSCODE_DOTFILE" -ef "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" ]]; then
+      echo "$VSCODE_USER_HOME/$VSCODE_DOTFILE symlink already correct..."
     else
+      echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
+      mv $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp
       echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
       ln -s $VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE
     fi
-  done
-
-  if [[ -L $VSCODE_USER_HOME/snippets ]]; then
-    if [[ "$VSCODE_USER_HOME/snippets" -ef "$VSCODE_DOTFILES_DIR/snippets" ]]; then
-      echo "$VSCODE_USER_HOME/snippets symlink already correct..."
-    else
-      echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
-      mv $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp
-      echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
-      ln -s $VSCODE_DOTFILES_DIR/snippets/ $VSCODE_USER_HOME/snippets
-    fi
   else
+    echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+    ln -s $VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE
+  fi
+done
+
+if [[ -L $VSCODE_USER_HOME/snippets ]]; then
+  if [[ "$VSCODE_USER_HOME/snippets" -ef "$VSCODE_DOTFILES_DIR/snippets" ]]; then
+    echo "$VSCODE_USER_HOME/snippets symlink already correct..."
+  else
+    echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
+    mv $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp
     echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
     ln -s $VSCODE_DOTFILES_DIR/snippets/ $VSCODE_USER_HOME/snippets
   fi
+else
+  echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+  ln -s $VSCODE_DOTFILES_DIR/snippets/ $VSCODE_USER_HOME/snippets
 fi
