@@ -1,5 +1,6 @@
 ---
 python_modules:
+  - autopep8
   # - molecule
   - passlib
   - pyOpenSSL
