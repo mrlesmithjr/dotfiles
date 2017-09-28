@@ -44,7 +44,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
   # Flush Directory Service cache
   # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L71-L72
-  alias flush_dns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+  alias flush_dns="sudo killall -HUP mDNSResponder"
 
   # Add color to folders/files
   alias ls='ls -G'
