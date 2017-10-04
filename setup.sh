@@ -79,6 +79,7 @@ fi
 
 # Defines path to this repos .dotfiles for VSCode
 VSCODE_DOTFILES_DIR=$DOTFILES_DIR/Code
+echo $VSCODE_DOTFILES_DIR
 
 VSCODE_DOTFILES=("settings.json" "keybindings.json")
 
@@ -90,26 +91,40 @@ do
       echo "$VSCODE_USER_HOME/$VSCODE_DOTFILE symlink already correct..."
     else
       echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
-      mv $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp
+      mv "$VSCODE_USER_HOME/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp"
       echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
-      ln -s $VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE
+      ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"
     fi
   else
-    echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
-    ln -s $VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE
+    if [[ ! -f "$VSCODE_USER_HOME/$VSCODE_DOTFILE" ]]; then
+      echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+      ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"
+    else
+      echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
+      mv "$VSCODE_USER_HOME/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp"
+      echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+      ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"    
+    fi
   fi
 done
 
-if [[ -L $VSCODE_USER_HOME/snippets ]]; then
+if [[ -L "$VSCODE_USER_HOME/snippets" ]]; then
   if [[ "$VSCODE_USER_HOME/snippets" -ef "$VSCODE_DOTFILES_DIR/snippets" ]]; then
     echo "$VSCODE_USER_HOME/snippets symlink already correct..."
   else
     echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
-    mv $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp
+    mv "$VSCODE_USER_HOME/snippets" "$VSCODE_USER_HOME/snippets.$timestamp"
     echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
-    ln -s $VSCODE_DOTFILES_DIR/snippets/ $VSCODE_USER_HOME/snippets
+    ln -s "$VSCODE_DOTFILES_DIR/snippets/" "$VSCODE_USER_HOME/snippets"
   fi
 else
-  echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
-  ln -s $VSCODE_DOTFILES_DIR/snippets/ $VSCODE_USER_HOME/snippets
+  if [[ -d "$VSCODE_USER_HOME/snippets" ]]; then
+    echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
+    mv "$VSCODE_USER_HOME/snippets" "$VSCODE_USER_HOME/snippets.$timestamp"
+    echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+    ln -s "$VSCODE_DOTFILES_DIR/snippets" "$VSCODE_USER_HOME/snippets"
+  else
+    echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+    ln -s "$VSCODE_DOTFILES_DIR/snippets" "$VSCODE_USER_HOME/snippets"
+  fi
 fi
