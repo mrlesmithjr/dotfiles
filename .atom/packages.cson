@@ -5,6 +5,7 @@ packages: [
   "ansible-vault"
   "Atom-Bash-Snippets"
   "atom-beautify"
+  "atom-ide-ui"
   "atom-jinja2"
   "atom-reveal-md"
   "atom-terminal"
