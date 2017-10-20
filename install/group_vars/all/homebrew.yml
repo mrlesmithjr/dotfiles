@@ -59,6 +59,7 @@ brew_packages:
   - openssl
   - packer
   - packer-completion
+  - pandoc
   - pip-completion
     # - pyenv
   - python

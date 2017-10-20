@@ -1,6 +1,7 @@
 ---
 python_modules:
   - autopep8
+  - beautysh
   # - molecule
   - passlib
   - pyOpenSSL

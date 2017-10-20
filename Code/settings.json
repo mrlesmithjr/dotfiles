@@ -5,6 +5,6 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnPaste": true,
     "vim.disableAnnoyingNeovimMessage": true,
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Monokai Dimmed",
     "python.linting.pylintPath": "/usr/local/bin/pylint"
 }
