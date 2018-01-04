@@ -1,7 +1,8 @@
 ---
 brew_cask_packages:
   - atom
-  - docker
+  # - docker
+  - docker-edge
   - dropbox
   - firefox
   - gimp
@@ -30,8 +31,8 @@ brew_cask_packages:
   - unetbootin
   - vagrant
   - vagrant-manager
-  - virtualbox
-  - virtualbox-extension-pack
+  # - virtualbox
+  # - virtualbox-extension-pack
   - visual-studio-code
   # - vmware-fusion
   - vnc-viewer
@@ -60,6 +61,7 @@ brew_packages:
   - packer
   - packer-completion
   - pandoc
+  - pass
   - pip-completion
     # - pyenv
   - python

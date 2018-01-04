@@ -2,11 +2,13 @@
 python_modules:
   - autopep8
   - beautysh
+  - jmespath
   # - molecule
+  - netaddr
   - passlib
-  - pyOpenSSL
   - pylama
   - pylint
+  - pyOpenSSL
   - pyvmomi
   - pywinrm
   - requests

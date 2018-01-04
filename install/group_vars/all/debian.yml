@@ -5,6 +5,7 @@ debian_packages:
   - keepassx
   - nmap
   - npm
+  - ruby
   - shellcheck
   - terminator
   - tmux
