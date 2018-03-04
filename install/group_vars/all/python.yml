@@ -12,4 +12,5 @@ python_modules:
   - pyvmomi
   - pywinrm
   - requests
+  - testinfra
   - tox
