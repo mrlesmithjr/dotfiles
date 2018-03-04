@@ -63,7 +63,6 @@
       "Atom-Bash-Snippets"
       "ansible-snippets"
       "ansible-vault"
-      "atom-jinja2"
       "atom-reveal-md"
       "atom-terminal"
       "atom-unsaved-changes"
@@ -92,7 +91,6 @@
       "linter-vagrant-validate"
       "linter-write-good"
       "linter-xmllint"
-      "markdown-scroll-sync"
       "open-recent"
       "sorter"
       "todo-manager"
@@ -116,14 +114,20 @@
       "open-on-github"
       "git-control"
       "git-plus"
+      "markdown-scroll-sync"
     ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
   editor:
     autoIndentOnPaste: false
     fontSize: 16
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
   "linter-pylama": {}
+  "linter-pylint": {}
   "linter-python":
     executablePath: "/usr/local/bin/pylama"
   "linter-ui-default":
