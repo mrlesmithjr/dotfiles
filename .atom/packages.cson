@@ -120,4 +120,5 @@ packages: [
   "tool-bar"
   "tool-bar-markdown-writer"
   "tree-view-git-status"
+  "wordcount"
 ]
