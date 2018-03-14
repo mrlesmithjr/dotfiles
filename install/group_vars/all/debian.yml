@@ -11,3 +11,4 @@ debian_packages:
   - tmux
   - tree
   - vim
+  - zsh
