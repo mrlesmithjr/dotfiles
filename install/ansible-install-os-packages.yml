@@ -227,7 +227,8 @@
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
-            ansible_distribution != "Fedora"
+            (ansible_distribution != "Fedora" and
+            ansible_distribution != "Ubuntu")
 
     - name: Installing Python Modules
       pip:
@@ -237,7 +238,8 @@
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
-            ansible_distribution == "Fedora"
+            (ansible_distribution == "Fedora" or
+            ansible_distribution == "Ubuntu")
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
@@ -256,7 +258,7 @@
       when: install_oh_my_zsh
 
     - name: Changing Shell To ZSH
-      command: chsh -s /bin/zsh
+      shell: chsh -s /bin/zsh
       when: install_oh_my_zsh
 
     - name: Installing Meslo Powerline Font
