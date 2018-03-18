@@ -92,6 +92,24 @@
             state: present
           become: true
 
+        - name: Adding VS Code Repo Key
+          apt_key:
+            url: https://packages.microsoft.com/keys/microsoft.asc
+            state: present
+          become: true
+
+        - name: Adding VS Code Repo
+          apt_repository:
+            repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+            state: present
+          become: true
+
+        - name: Installing VS Code
+          apt:
+            name: code
+            state: present
+          become: true
+
       when: ansible_os_family == "Debian"
 
     - block:
