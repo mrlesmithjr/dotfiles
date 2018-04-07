@@ -18,6 +18,8 @@
 	# helper = /usr/libexec/git-core/git-credential-gnome-keyring
 	# MacOS
 	helper = osxkeychain
+	# Ubuntu
+	# helper = cache
 [diff]
 	tool = meld
 [difftool]
