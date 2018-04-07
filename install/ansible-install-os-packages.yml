@@ -92,6 +92,24 @@
             state: present
           become: true
 
+        - name: Adding VS Code Repo Key
+          apt_key:
+            url: https://packages.microsoft.com/keys/microsoft.asc
+            state: present
+          become: true
+
+        - name: Adding VS Code Repo
+          apt_repository:
+            repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+            state: present
+          become: true
+
+        - name: Installing VS Code
+          apt:
+            name: code
+            state: present
+          become: true
+
       when: ansible_os_family == "Debian"
 
     - block:
@@ -227,7 +245,8 @@
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
-            ansible_distribution != "Fedora"
+            (ansible_distribution != "Fedora" and
+            ansible_distribution != "Ubuntu")
 
     - name: Installing Python Modules
       pip:
@@ -237,7 +256,8 @@
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
-            ansible_distribution == "Fedora"
+            (ansible_distribution == "Fedora" or
+            ansible_distribution == "Ubuntu")
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
@@ -255,8 +275,20 @@
         dest: $HOME/.oh-my-zsh
       when: install_oh_my_zsh
 
+    # - name: Changing Shell To ZSH
+    #   shell: chsh -s /bin/zsh
+    #   when: install_oh_my_zsh
+
+    - name: Capturing Current User
+      set_fact:
+        _current_user: "{{ lookup('env','USER') }}"
+      become: false
+
     - name: Changing Shell To ZSH
-      command: chsh -s /bin/zsh
+      user:
+        name: "{{ _current_user }}"
+        shell: /bin/zsh
+      become: true
       when: install_oh_my_zsh
 
     - name: Installing Meslo Powerline Font

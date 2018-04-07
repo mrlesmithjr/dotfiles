@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 ZSH_THEME="af-magic"
-plugins=(git osx vagrant)
+plugins=(git osx pass pip vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,6 +61,12 @@ if [[ $(uname) == "Darwin" ]]; then
   if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   fi
+
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+  # Test for https://www.passwordstore.org/
+  # test -e "/usr/local/share/zsh/site-functions/_pass" && source "/usr/local/share/zsh/site-functions/_pass"
+
 fi
 
 #### MacOS OS Check - END ####
@@ -69,5 +75,3 @@ fi
 alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
