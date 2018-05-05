@@ -1,21 +1,23 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [REPO INFO](#repo-info)
-  - [Usage](#usage)
-    - [Clone down to your `$HOME` folder](#clone-down-to-your-home-folder)
-      - [Manually create `symlinks` to the files you would like to use into your `$HOME` folder](#manually-create-symlinks-to-the-files-you-would-like-to-use-into-your-home-folder)
-      - [Automatically create `symlinks` using script](#automatically-create-symlinks-using-script)
-      - [Setup **EVERYTHING** (dotfiles, Python, Brew, Brew packages, Brew cask packages,](#setup-everything-dotfiles-python-brew-brew-packages-brew-cask-packages)
-  - [Various Setting Info](#various-setting-info)
-    - [`.bashrc` and `.bash_profile`](#bashrc-and-bash_profile)
-    - [`.gitconfig`](#gitconfig)
-    - [`.vimrc` and `.vim`](#vimrc-and-vim)
-  - [Some Example Plugins/bundles and etc.](#some-example-pluginsbundles-and-etc)
-  - [Install Some Stuff](#install-some-stuff)
-  - [License](#license)
-  - [Author Information](#author-information)
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+-   [REPO INFO](#repo-info)
+    -   [Usage](#usage)
+        -   [Clone down to your `$HOME` folder](#clone-down-to-your-home-folder)
+            -   [Manually create `symlinks` to the files you would like to use into your `$HOME` folder](#manually-create-symlinks-to-the-files-you-would-like-to-use-into-your-home-folder)
+            -   [Automatically create `symlinks` using script](#automatically-create-symlinks-using-script)
+            -   [Setup **EVERYTHING** (dotfiles, Python, Brew, Brew packages, Brew cask packages,](#setup-everything-dotfiles-python-brew-brew-packages-brew-cask-packages)
+    -   [Various Setting Info](#various-setting-info)
+        -   [`.bashrc` and `.bash_profile`](#bashrc-and-bash_profile)
+        -   [`.gitconfig`](#gitconfig)
+        -   [`.vimrc` and `.vim`](#vimrc-and-vim)
+    -   [Some Example Plugins/bundles and etc.](#some-example-pluginsbundles-and-etc)
+    -   [Install Some Stuff](#install-some-stuff)
+    -   [License](#license)
+    -   [Author Information](#author-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -33,6 +35,8 @@ and `MacOS`.
 ```bash
 cd ~
 git clone https://github.com/mrlesmithjr/dotfiles .dotfiles
+cd .dotfiles
+git submodule update --init --recursive
 ```
 
 #### Manually create `symlinks` to the files you would like to use into your `$HOME` folder
