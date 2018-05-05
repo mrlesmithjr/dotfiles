@@ -39,3 +39,5 @@
 	trustExitCode = true
 [includeIf "gitdir:~/Git_Projects/Work/"]
 	path = ~/.gitconfig-work
+[status]
+	submoduleSummary = true
