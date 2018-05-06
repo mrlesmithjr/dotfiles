@@ -110,6 +110,19 @@
             state: present
           become: true
 
+        - name: Removing Redundant VS Code Repo
+          file:
+            path: /etc/apt/sources.list.d/vscode.list
+            state: absent
+          become: true
+          register: _vscode_repo_removed
+
+        - name: Updating Apt Cache
+          apt:
+            update_cache: true
+          become: true
+          when: _vscode_repo_removed['changed']
+
       when: ansible_os_family == "Debian"
 
     - block:
