@@ -67,6 +67,7 @@ if [[ $(uname) == "Darwin" ]]; then
   # Test for https://www.passwordstore.org/
   # test -e "/usr/local/share/zsh/site-functions/_pass" && source "/usr/local/share/zsh/site-functions/_pass"
 
+  export PATH="/usr/local/sbin:$PATH"
 fi
 
 #### MacOS OS Check - END ####
