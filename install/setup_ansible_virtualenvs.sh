@@ -34,12 +34,12 @@ do
 done
 
 # Setup Ansible Container Virtual Environments
-for ANSCONTVER in "${ANSIBLE_CONTAINER_VERSIONS[@]}"
-do
-  if [ ! -d "$VIRTUALENV_PATH/ansible-container-$ANSCONTVER" ]; then
-    virtualenv $VIRTUALENV_PATH/ansible-container-$ANSCONTVER
-    source $VIRTUALENV_PATH/ansible-container-$ANSCONTVER/bin/activate
-    $PIP_CMD install ansible-container[docker]==$ANSCONTVER ansible-lint
-    deactivate
-  fi
-done
+# for ANSCONTVER in "${ANSIBLE_CONTAINER_VERSIONS[@]}"
+# do
+#   if [ ! -d "$VIRTUALENV_PATH/ansible-container-$ANSCONTVER" ]; then
+#     virtualenv $VIRTUALENV_PATH/ansible-container-$ANSCONTVER
+#     source $VIRTUALENV_PATH/ansible-container-$ANSCONTVER/bin/activate
+#     $PIP_CMD install ansible-container[docker]==$ANSCONTVER ansible-lint
+#     deactivate
+#   fi
+# done
