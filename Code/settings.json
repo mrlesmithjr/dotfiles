@@ -4,7 +4,8 @@
     "atomKeymap.promptV3Features": true,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnPaste": true,
-    "vim.disableAnnoyingNeovimMessage": true,
-    "workbench.colorTheme": "Monokai Dimmed",
-    "python.linting.pylintPath": "/usr/local/bin/pylint"
+    "workbench.colorTheme": "Solarized Dark",
+    "python.linting.pylintPath": "/usr/local/bin/pylint",
+    "editor.minimap.enabled": false,
+    "editor.rulers": [80]
 }
