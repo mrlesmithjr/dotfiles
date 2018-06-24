@@ -1,25 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
--   [REPO INFO](#repo-info)
-    -   [Usage](#usage)
-        -   [Clone down to your `$HOME` folder](#clone-down-to-your-home-folder)
-            -   [Manually create `symlinks` to the files you would like to use into your `$HOME` folder](#manually-create-symlinks-to-the-files-you-would-like-to-use-into-your-home-folder)
-            -   [Automatically create `symlinks` using script](#automatically-create-symlinks-using-script)
-            -   [Setup **EVERYTHING** (dotfiles, Python, Brew, Brew packages, Brew cask packages,](#setup-everything-dotfiles-python-brew-brew-packages-brew-cask-packages)
-    -   [Various Setting Info](#various-setting-info)
-        -   [`.bashrc` and `.bash_profile`](#bashrc-and-bash_profile)
-        -   [`.gitconfig`](#gitconfig)
-        -   [`.vimrc` and `.vim`](#vimrc-and-vim)
-    -   [Some Example Plugins/bundles and etc.](#some-example-pluginsbundles-and-etc)
-    -   [Install Some Stuff](#install-some-stuff)
-    -   [License](#license)
-    -   [Author Information](#author-information)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # REPO INFO
 
@@ -34,9 +12,7 @@ and `MacOS`.
 
 ```bash
 cd ~
-git clone https://github.com/mrlesmithjr/dotfiles .dotfiles
-cd .dotfiles
-git submodule update --init --recursive
+git clone https://github.com/mrlesmithjr/dotfiles .dotfiles --recursive
 ```
 
 #### Manually create `symlinks` to the files you would like to use into your `$HOME` folder
@@ -62,9 +38,18 @@ cd ~/.dotfiles
 ./setup.sh
 ```
 
-#### Setup **EVERYTHING** (dotfiles, Python, Brew, Brew packages, Brew cask packages,
+#### Setup **EVERYTHING**
 
-Ansible, Ansible Virtual Environments, Ansible Container Virtual Environments)
+The following will be setup using this method:
+
+- dotfiles
+- Python
+- Brew
+- Brew packages
+- Brew cask packages
+- Ansible
+- Ansible Virtual Environments
+- Ansible Container Virtual Environments
 
 ```bash
 cd ~/.dotfiles/install
@@ -98,34 +83,34 @@ Make sure to edit this file to match your preferences. Especially the below:
 
 ```bash
 [user]
-	email = mrlesmithjr@gmail.com
-	name = Larry Smith Jr.
+    email = mrlesmithjr@gmail.com
+    name = Larry Smith Jr.
 [credential]
-	# Fedora
-	# helper = /usr/libexec/git-core/git-credential-gnome-keyring
-	# MacOS
-	helper = osxkeychain
+    # Fedora
+    # helper = /usr/libexec/git-core/git-credential-gnome-keyring
+    # MacOS
+    helper = osxkeychain
 [diff]
-	tool = meld
+    tool = meld
 [difftool]
-	prompt = false
+    prompt = false
 [merge]
-	tool = meld
+    tool = meld
 [mergetool]
-	prompt = false
+    prompt = false
 ```
 
 ### `.vimrc` and `.vim`
 
 Some personal settings to make `vim` more pleasing on the eyes.
 
--   Install [VundleVim](https://github.com/VundleVim/Vundle.vim)
+- Install [VundleVim](https://github.com/VundleVim/Vundle.vim)
 
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
--   Install bundles/plugins
+- Install bundles/plugins
 
 ```bash
 vim ~/.vimrc
@@ -134,23 +119,23 @@ vim ~/.vimrc
 
 ## Some Example Plugins/bundles and etc.
 
--   [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
+- [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
     `runtimepath` with ease.
--   [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
+- [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
     additional syntax highlighting and fixes indentation for Ansible's dialect
     of YAML.
--   [`vim-jinja`](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
--   [`vim-markdown`](https://github.com/plasticboy/vim-markdown) - Markdown Vim
+- [`vim-jinja`](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
+- [`vim-markdown`](https://github.com/plasticboy/vim-markdown) - Markdown Vim
     Mode
 
 ## Install Some Stuff
 
--   [`install/bootstrap.sh`](install/bootstrap.sh)
-    -   Bootstrap systems with pre-reqs and package installation
--   [`install/ansible-macos-homebrew-packages.yml`](install/ansible-macos-homebrew-packages.yml)
-    -   Install `MacOS` `brew` packages using `Ansible`.
--   [`install/setup_ansible_virtualenvs.sh`](install/setup_ansible_virtualenvs.sh)
-    -   Setup `Ansible` `Python` virtual environments.
+- [`install/bootstrap.sh`](install/bootstrap.sh)
+  - Bootstrap systems with pre-reqs and package installation
+- [`install/ansible-macos-homebrew-packages.yml`](install/ansible-macos-homebrew-packages.yml)
+  - Install `MacOS` `brew` packages using `Ansible`.
+- [`install/setup_ansible_virtualenvs.sh`](install/setup_ansible_virtualenvs.sh)
+  - Setup `Ansible` `Python` virtual environments.
 
 ## License
 
@@ -160,6 +145,6 @@ MIT
 
 Larry Smith Jr.
 
--   [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
--   [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
--   mrlesmithjr [at] gmail.com
+- [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
+- [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
