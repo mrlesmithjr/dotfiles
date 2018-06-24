@@ -117,7 +117,7 @@ vim ~/.vimrc
 :BundleInstall
 ```
 
-## Some Example Plugins/bundles and etc.
+## Some Example Plugins/bundles and etc
 
 - [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
     `runtimepath` with ease.
@@ -132,10 +132,22 @@ vim ~/.vimrc
 
 - [`install/bootstrap.sh`](install/bootstrap.sh)
   - Bootstrap systems with pre-reqs and package installation
-- [`install/ansible-macos-homebrew-packages.yml`](install/ansible-macos-homebrew-packages.yml)
+- [`install/ansible-install-os-packages.yml`](install/ansible-install-os-packages.yml)
   - Install `MacOS` `brew` packages using `Ansible`.
 - [`install/setup_ansible_virtualenvs.sh`](install/setup_ansible_virtualenvs.sh)
   - Setup `Ansible` `Python` virtual environments.
+
+## Visual Studio Code Extensions
+
+You can find some VS Code extensions exported [here](Code/extensions.list) which
+you can easily import if you would like by executing the following:
+
+```bash
+cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
+```
+
+> NOTE: These extensions are installed automatically via Ansible provisioning when
+> following [this method](#setup-everything).
 
 ## License
 
