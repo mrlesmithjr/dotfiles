@@ -1,11 +1,9 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "window.zoomLevel": 1,
-    "atomKeymap.promptV3Features": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": true,
-    "workbench.colorTheme": "Solarized Dark",
-    "python.linting.pylintPath": "/usr/local/bin/pylint",
     "editor.minimap.enabled": false,
-    "editor.rulers": [80]
+    "editor.rulers": [80],
+    "python.linting.pylintPath": "/usr/local/bin/pylint",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "newUntitledFile",
+    "window.zoomLevel": 1
 }

@@ -81,7 +81,7 @@ fi
 VSCODE_DOTFILES_DIR=$DOTFILES_DIR/Code
 echo $VSCODE_DOTFILES_DIR
 
-VSCODE_DOTFILES=("settings.json" "keybindings.json")
+VSCODE_DOTFILES=("settings.json" "keybindings.json" "vsicons.settings.json")
 
 # Creates symlinks if they do not exist or creates a copy of an existing one if it exists and is not to the correct location
 for VSCODE_DOTFILE in "${VSCODE_DOTFILES[@]}"
