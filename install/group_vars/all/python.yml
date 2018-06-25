@@ -1,10 +1,14 @@
 ---
 python_modules:
+  - ara
   - autopep8
   - beautysh
+  - GitPython
+  = ipaddr
   - jmespath
-  # - molecule
+  - molecule
   - netaddr
+  - nmap
   - passlib
   - pylama
   - pylint
