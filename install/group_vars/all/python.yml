@@ -4,7 +4,7 @@ python_modules:
   - autopep8
   - beautysh
   - GitPython
-  = ipaddr
+  - ipaddr
   - jmespath
   - molecule
   - netaddr
