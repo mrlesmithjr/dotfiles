@@ -24,23 +24,31 @@ cd $DOTFILES_DIR || exit
 for dotfile in "${dotfiles[@]}"
 do
   if [ -f $HOME/$dotfile ]; then
-    echo "Backing up $dotfile to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-    mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
-    echo "Done"
+    if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
+      echo "Backing up $dotfile to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
+      mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
+      echo "Done"
+    fi
   fi
   if [ -d $HOME/$dotfile ]; then
-    echo "Backing up $dotfile directory to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-    mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
-    echo "Done"
+    if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
+      echo "Backing up $dotfile directory to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
+      mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
+      echo "Done"
+    fi
   fi
 done
 
 cd $HOME || exit
 for dotfile in "${dotfiles[@]}"
 do
-  echo "Creating symlink for $DOTFILES_DIR/$dotfile..."
-  ln -s $DOTFILES_DIR/$dotfile .
-  echo "Done"
+  if [ ! -e $dotfile ]; then
+    echo "Creating symlink for $DOTFILES_DIR/$dotfile..."
+    ln -s $DOTFILES_DIR/$dotfile .
+    echo "Done"
+  else
+    echo "$HOME/$dotfile symlink already exists..."
+  fi
 done
 
 # Check if bash-git-prompt is already installed and install if not
