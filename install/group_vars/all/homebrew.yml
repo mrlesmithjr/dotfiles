@@ -1,8 +1,7 @@
 ---
 brew_cask_packages:
   - atom
-  # - docker
-  - docker-edge
+  - docker
   - dropbox
   - firefox
   - gimp
