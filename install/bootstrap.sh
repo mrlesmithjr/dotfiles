@@ -44,6 +44,6 @@ if [[ $(uname) == "Darwin" ]]; then
   if [ $PYTHON_CHECK -eq 0 ]; then
     echo "Python already installed"
   else
-    brew install python
+    brew install python@3 python@2
   fi
 fi
