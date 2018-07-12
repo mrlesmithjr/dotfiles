@@ -12,8 +12,12 @@
       beautify_on_save: true
     ruby:
       beautify_on_save: true
+    terraform:
+      beautify_on_save: true
     yaml:
       beautify_on_save: false
+  "atom-package-deps":
+    ignored: []
   "autocomplete-ansible":
     pythonPaths: "/usr/local/opt/python/bin/python2.7"
   "autocomplete-paths":
@@ -23,15 +27,18 @@
       "text.ignore": [
         ".dockerignore"
       ]
-    disabledPackages: []
+    disabledPackages: [
+      "language-gfm"
+      "linter"
+    ]
     telemetryConsent: "no"
     themes: [
-      "atom-material-ui"
-      "atom-material-syntax-dark"
+      "native-ui"
+      "one-light-syntax"
     ]
   editor:
-    autoIndentOnPaste: true
-    fontSize: 16
+    autoIndentOnPaste: false
+    fontSize: 15
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
   "linter-pylama": {}
@@ -39,7 +46,7 @@
   "linter-python":
     executablePath: "/usr/local/bin/pylama"
   "linter-ui-default":
-    panelHeight: 69
+    panelHeight: 321
     showPanel: true
   minimap:
     plugins:
