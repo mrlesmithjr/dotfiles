@@ -17,6 +17,7 @@ brew_cask_packages:
   # - libreoffice
   # - macvim
   - meld
+  - onedrive
   - pandora
   - powershell
   # - royal-tsx
