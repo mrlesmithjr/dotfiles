@@ -3,6 +3,7 @@ python_modules:
   - ara
   - autopep8
   - beautysh
+  - consul
   - GitPython
   - ipaddr
   - jmespath
@@ -16,5 +17,6 @@ python_modules:
   - pyvmomi
   - pywinrm
   - requests
+  - TerraformToAnsibleInventory
   - testinfra
   - tox
