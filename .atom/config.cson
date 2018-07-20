@@ -19,7 +19,7 @@
   "atom-package-deps":
     ignored: []
   "autocomplete-ansible":
-    pythonPaths: "/usr/local/opt/python/bin/python2.7"
+    pythonPaths: "/usr/local/opt/python/bin/python2.7;/usr/local/opt/python@2/bin/python2.7"
   "autocomplete-paths":
     maxFileCount: 5000
   core:
@@ -33,12 +33,13 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "native-ui"
-      "one-light-syntax"
+      "atom-light-ui"
+      "atom-light-syntax"
     ]
   editor:
     autoIndentOnPaste: false
-    fontSize: 15
+    fontSize: 18
+    showIndentGuide: true
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
   "linter-pylama": {}

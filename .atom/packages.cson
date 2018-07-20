@@ -11,6 +11,7 @@ packages: [
   "Delete-Whitelines"
   "file-icons"
   "highlight-selected"
+  "ide-python"
   "intentions"
   "language-ansible"
   "language-docker"
