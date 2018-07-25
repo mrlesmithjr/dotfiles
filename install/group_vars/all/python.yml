@@ -11,6 +11,7 @@ python_modules:
   - netaddr
   - nmap
   - passlib
+  - pygithub3
   - pylama
   - pylint
   - pyOpenSSL
