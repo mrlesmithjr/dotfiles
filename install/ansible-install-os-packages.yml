@@ -270,7 +270,8 @@
       when: >
             python_modules is defined and
             (ansible_distribution == "Fedora" or
-            ansible_distribution == "Ubuntu")
+            ansible_distribution == "Ubuntu" or
+            ansible_distribution == "Linux Mint")
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
