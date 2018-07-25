@@ -5,6 +5,8 @@
   roles:
     - role: ansible-hashicorp-toolbox
       when: ansible_os_family != "Darwin"
+    - role: ansible-virtualbox
+      when: ansible_os_family == "Debian"
   pre_tasks:
     - block:
 
