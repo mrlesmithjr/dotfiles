@@ -3,10 +3,10 @@ python_modules:
   - ara
   - autopep8
   - beautysh
-  - consul
   - GitPython
   - ipaddr
   - jmespath
+  - keyring
   - molecule
   - netaddr
   - nmap
@@ -14,6 +14,7 @@ python_modules:
   - pylama
   - pylint
   - pyOpenSSL
+  - python-consul
   - pyvmomi
   - pywinrm
   - requests
