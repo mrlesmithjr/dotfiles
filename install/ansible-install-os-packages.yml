@@ -78,6 +78,13 @@
             state: present
           become: true
 
+        # https://www.dropbox.com/install-linux
+        # This should never have to change
+        - name: Installing Dropbox Helper Application
+          apt:
+            deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+          become: true
+
         - name: Adding Google Chrome Repo Key
           apt_key:
             url: https://dl-ssl.google.com/linux/linux_signing_key.pub
