@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/python-mode"]
 	path = .vim/bundle/python-mode
 	url = https://github.com/python-mode/python-mode
+[submodule "install/roles/ansible-hashicorp-toolbox"]
+	path = install/roles/ansible-hashicorp-toolbox
+	url = https://github.com/mrlesmithjr/ansible-hashicorp-toolbox.git
