@@ -25,3 +25,6 @@
 [submodule "install/roles/ansible-hashicorp-toolbox"]
 	path = install/roles/ansible-hashicorp-toolbox
 	url = https://github.com/mrlesmithjr/ansible-hashicorp-toolbox.git
+[submodule "install/roles/ansible-virtualbox"]
+	path = install/roles/ansible-virtualbox
+	url = https://github.com/mrlesmithjr/ansible-virtualbox.git

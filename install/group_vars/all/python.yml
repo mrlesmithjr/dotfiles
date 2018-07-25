@@ -7,7 +7,7 @@ python_modules:
   - ipaddr
   - jmespath
   - keyring
-  - molecule
+  # - molecule
   - netaddr
   - nmap
   - passlib
