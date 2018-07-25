@@ -2,6 +2,9 @@
 - name: Install OS Packages
   hosts: localhost
   vars:
+  roles:
+    - role: ansible-hashicorp-toolbox
+      when: ansible_os_family != "Darwin"
   pre_tasks:
     - block:
 
@@ -259,7 +262,8 @@
       when: >
             python_modules is defined and
             (ansible_distribution != "Fedora" and
-            ansible_distribution != "Ubuntu")
+            ansible_distribution != "Ubuntu" and
+            ansible_distribution != "Linux Mint")
 
     - name: Installing Python Modules
       pip:
