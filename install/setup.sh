@@ -17,9 +17,9 @@ else
   command -v pip2 >/dev/null 2>&1
   PIP2_CHECK=$?
   if [ $PIP_CHECK -eq 0 ]; then
-    pip install ansible ansible-lint
+    sudo pip install ansible ansible-lint
   elif [ $PIP2_CHECK -eq 0 ]; then
-    pip2 install ansible ansible-lint
+    sudo pip2 install ansible ansible-lint
   fi
 fi
 
