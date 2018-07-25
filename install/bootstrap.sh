@@ -6,7 +6,7 @@ if [[ $(uname) == "Linux" ]]; then
     codename="$(lsb_release -c | awk '{print $2}')"
     sudo apt-get update
     sudo apt-get -y install build-essential libffi-dev libssl-dev python-dev \
-    python-minimal python-pip python-setuptools python-virtualenv
+      python-minimal python-pip python-setuptools python-virtualenv virtualenv
   fi
 
   # RHEL
@@ -14,14 +14,14 @@ if [[ $(uname) == "Linux" ]]; then
     codename="$(cat /etc/redhat-release | awk '{print $1}')"
     if [[ $codename == "Fedora" ]]; then
       sudo dnf -y install gmp-devel libffi-devel openssl-devel python-crypto \
-      python-devel python-dnf python-pip python-setuptools python-virtualenv \
-      redhat-rpm-config && \
-      sudo dnf -y group install "C Development Tools and Libraries"
+        python-devel python-dnf python-pip python-setuptools python-virtualenv \
+        redhat-rpm-config && \
+        sudo dnf -y group install "C Development Tools and Libraries"
     elif [[ $codename == "CentOS" ]]; then
       sudo yum -y install gmp-devel libffi-devel openssl-devel python-crypto \
-      python-devel python-pip python-setuptools python-virtualenv \
-      redhat-rpm-config && \
-      sudo yum -y group install "Development Tools"
+        python-devel python-pip python-setuptools python-virtualenv \
+        redhat-rpm-config && \
+        sudo yum -y group install "Development Tools"
     fi
   fi
 fi
@@ -37,7 +37,7 @@ if [[ $(uname) == "Darwin" ]]; then
     echo "Brew already installed"
   else
     /usr/bin/ruby -e \
-    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
   brew list | grep python >/dev/null 2>&1
   PYTHON_CHECK=$?
