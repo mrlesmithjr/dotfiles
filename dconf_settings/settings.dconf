@@ -1,14 +1,33 @@
+[org/cinnamon/desktop/interface]
+clock-show-date=true
+clock-show-seconds=true
+clock-use-24h=true
+toolkit-accessibility=false
+
+[org/cinnamon/settings-daemon/peripherals/touchpad]
+motion-threshold=1
+tap-to-click=false
+
 [org/gnome/terminal/legacy/profiles:/:d5fa27e5-7665-4042-a67b-1ea0dae93415]
-use-system-font=false
+foreground-color='rgb(255,255,255)'
 visible-name='Mine'
+palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,205,0)', 'rgb(205,205,0)', 'rgb(0,0,238)', 'rgb(205,0,205)', 'rgb(0,205,205)', 'rgb(229,229,229)', 'rgb(127,127,127)', 'rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(255,255,0)', 'rgb(92,92,255)', 'rgb(255,0,255)', 'rgb(0,255,255)', 'rgb(255,255,255)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
 font='Monospace 18'
+background-color='rgb(0,0,0)'
 
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 use-system-font=true
-visible-name="Default"
+visible-name='Default'
 
 [org/gnome/terminal/legacy/profiles:]
 list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'd5fa27e5-7665-4042-a67b-1ea0dae93415']
+default='d5fa27e5-7665-4042-a67b-1ea0dae93415'
 
 [org/gnome/terminal/legacy]
 schema-version=uint32 3
+
+[org/gtk/settings/color-chooser]
+selected-color=(true, 1.0, 1.0, 1.0, 1.0)
