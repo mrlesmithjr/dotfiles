@@ -1,4 +1,3 @@
-
 # REPO INFO
 
 This repo is for a collection of my `dotfiles` which I use.
@@ -42,14 +41,14 @@ cd ~/.dotfiles
 
 The following will be setup using this method:
 
-- dotfiles
-- Python
-- Brew
-- Brew packages
-- Brew cask packages
-- Ansible
-- Ansible Virtual Environments
-- Ansible Container Virtual Environments
+-   dotfiles
+-   Python
+-   Brew
+-   Brew packages
+-   Brew cask packages
+-   Ansible
+-   Ansible Virtual Environments
+-   Ansible Container Virtual Environments
 
 ```bash
 cd ~/.dotfiles/install
@@ -104,13 +103,13 @@ Make sure to edit this file to match your preferences. Especially the below:
 
 Some personal settings to make `vim` more pleasing on the eyes.
 
-- Install [VundleVim](https://github.com/VundleVim/Vundle.vim)
+-   Install [VundleVim](https://github.com/VundleVim/Vundle.vim)
 
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-- Install bundles/plugins
+-   Install bundles/plugins
 
 ```bash
 vim ~/.vimrc
@@ -119,23 +118,23 @@ vim ~/.vimrc
 
 ## Some Example Plugins/bundles and etc
 
-- [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
-    `runtimepath` with ease.
-- [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
-    additional syntax highlighting and fixes indentation for Ansible's dialect
-    of YAML.
-- [`vim-jinja`](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
-- [`vim-markdown`](https://github.com/plasticboy/vim-markdown) - Markdown Vim
-    Mode
+-   [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
+      `runtimepath` with ease.
+-   [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
+      additional syntax highlighting and fixes indentation for Ansible's dialect
+      of YAML.
+-   [`vim-jinja`](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
+-   [`vim-markdown`](https://github.com/plasticboy/vim-markdown) - Markdown Vim
+      Mode
 
 ## Install Some Stuff
 
-- [`install/bootstrap.sh`](install/bootstrap.sh)
-  - Bootstrap systems with pre-reqs and package installation
-- [`install/ansible-install-os-packages.yml`](install/ansible-install-os-packages.yml)
-  - Install `MacOS` `brew` packages using `Ansible`.
-- [`install/setup_ansible_virtualenvs.sh`](install/setup_ansible_virtualenvs.sh)
-  - Setup `Ansible` `Python` virtual environments.
+-   [`install/bootstrap.sh`](install/bootstrap.sh)
+    -   Bootstrap systems with pre-reqs and package installation
+-   [`install/ansible-install-os-packages.yml`](install/ansible-install-os-packages.yml)
+    -   Install `MacOS` `brew` packages using `Ansible`.
+-   [`install/setup_ansible_virtualenvs.sh`](install/setup_ansible_virtualenvs.sh)
+    -   Setup `Ansible` `Python` virtual environments.
 
 ## Visual Studio Code Extensions
 
@@ -149,6 +148,14 @@ cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
 > NOTE: These extensions are installed automatically via Ansible provisioning when
 > following [this method](#setup-everything).
 
+## Manipulating packages to install
+
+Most all apps and etc. are provisioned via Ansible once Ansible is installed. You
+can modify packages to your liking by editing the applicable YAML files in
+`install/group_vars/all/`. Most packages will have a `state` associated with them
+so you can easily set to `present` or `absent` and Ansible will take care of the
+packages for you.
+
 ## License
 
 MIT
@@ -157,6 +164,6 @@ MIT
 
 Larry Smith Jr.
 
-- [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
-- [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
-- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
+-   [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
+-   [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+-   <mailto:mrlesmithjr@gmail.com>
