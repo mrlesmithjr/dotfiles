@@ -42,16 +42,16 @@
 
         - name: Installing Homebrew Packages
           homebrew:
-            name: "{{ item }}"
-            state: present
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
             upgrade_all: "{{ upgrade_homebrew_packages }}"
           with_items: '{{ brew_packages }}'
           when: homebrew_check.stat.exists
 
         - name: Installing Homebrew Cask Packages
           homebrew_cask:
-            name: "{{ item }}"
-            state: present
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
           with_items: '{{ brew_cask_packages }}'
           when: homebrew_check.stat.exists
 
@@ -67,8 +67,8 @@
 
         - name: Installing OS Packages
           apt:
-            name: "{{ item }}"
-            state: present
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
           become: true
           with_items: '{{ debian_packages }}'
 
@@ -170,8 +170,8 @@
 
         - name: Installing OS Packages
           yum:
-            name: "{{ item }}"
-            state: present
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
           become: true
           with_items: '{{ redhat_packages }}'
 
@@ -205,8 +205,8 @@
 
         - name: Installing OS Packages
           dnf:
-            name: "{{ item }}"
-            state: present
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
           become: true
           with_items: '{{ redhat_packages }}'
 
@@ -265,8 +265,8 @@
 
     - name: Installing Python Modules
       pip:
-        name: "{{ item }}"
-        state: present
+        name: "{{ item['name'] }}"
+        state: "{{ item['state']}}"
       with_items: '{{ python_modules }}'
       when: >
             python_modules is defined and
@@ -276,8 +276,8 @@
 
     - name: Installing Python Modules
       pip:
-        name: "{{ item }}"
-        state: present
+        name: "{{ item['name'] }}"
+        state: "{{ item['state'] }}"
       become: true
       with_items: '{{ python_modules }}'
       when: >

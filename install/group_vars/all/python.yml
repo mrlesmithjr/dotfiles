@@ -1,24 +1,46 @@
 ---
 python_modules:
-  - ara
-  - autopep8
-  - beautysh
-  - GitPython
-  - ipaddr
-  - jmespath
-  - keyring
-  # - molecule
-  - netaddr
-  - nmap
-  - passlib
-  - pygithub3
-  - pylama
-  - pylint
-  - pyOpenSSL
-  - python-consul
-  - pyvmomi
-  - pywinrm
-  - requests
-  - TerraformToAnsibleInventory
-  - testinfra
-  - tox
+  - name: ara
+    state: present
+  - name: autopep8
+    state: present
+  - name: beautysh
+    state: present
+  - name: GitPython
+    state: present
+  - name: ipaddr
+    state: present
+  - name: jmespath
+    state: present
+  - name: keyring
+    state: present
+  - name: molecule
+    state: absent
+  - name: netaddr
+    state: present
+  - name: nmap
+    state: present
+  - name: passlib
+    state: present
+  - name: pygithub3
+    state: present
+  - name: pylama
+    state: present
+  - name: pylint
+    state: present
+  - name: pyOpenSSL
+    state: present
+  - name: python-consul
+    state: present
+  - name: pyvmomi
+    state: present
+  - name: pywinrm
+    state: present
+  - name: requests
+    state: present
+  - name: TerraformToAnsibleInventory
+    state: present
+  - name: testinfra
+    state: present
+  - name: tox
+    state: present

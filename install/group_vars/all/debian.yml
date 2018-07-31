@@ -1,14 +1,26 @@
 ---
 debian_packages:
-  - golang
-  - jq
-  - keepassx
-  - nmap
-  - npm
-  - ruby
-  - shellcheck
-  - terminator
-  - tmux
-  - tree
-  - vim
-  - zsh
+  - name: golang
+    state: present
+  - name: jq
+    state: present
+  - name: keepassx
+    state: present
+  - name: nmap
+    state: present
+  - name: npm
+    state: present
+  - name: ruby
+    state: present
+  - name: shellcheck
+    state: present
+  - name: terminator
+    state: present
+  - name: tmux
+    state: present
+  - name: tree
+    state: present
+  - name: vim
+    state: present
+  - name: zsh
+    state: present

@@ -1,87 +1,168 @@
 ---
 brew_cask_packages:
-  - atom
-  - docker
-  - dropbox
-  - firefox
-  - gimp
-  - google-backup-and-sync
-  - google-chrome
-  #  - google-drive
-  - google-hangouts
-  # - google-photos-backup-and-sync
-  - iterm2
-  - keepassx
-  - kodi
-  - lastpass
-  # - libreoffice
-  # - macvim
-  - meld
-  - onedrive
-  - pandora
-  - powershell
-  # - royal-tsx
-  - sequel-pro
-  - skype
-  - slack
-  # - sling
-  - spotify
-    # - sublime-text
-  - tigervnc-viewer
-  - unetbootin
-  - vagrant
-  - vagrant-manager
-  # - virtualbox
-  # - virtualbox-extension-pack
-  - visual-studio-code
-  # - vmware-fusion
-  - vnc-viewer
+  - name: atom
+    state: present
+  - name: docker
+    state: present
+  - name: dropbox
+    state: present
+  - name: firefox
+    state: present
+  - name: gimp
+    state: present
+  - name: google-backup-and-sync
+    state: present
+  - name: google-chrome
+    state: present
+  - name: google-hangouts
+    state: present
+  - name: google-photos-backup-and-sync
+    state: absent
+  - name: iterm2
+    state: present
+  - name: keepassx
+    state: present
+  - name: kodi
+    state: present
+  - name: lastpass
+    state: present
+  - name: libreoffice
+    state: absent
+  - name: macvim
+    state: absent
+  - name: meld
+    state: absent
+  - name: onedrive
+    state: present
+  - name: pandora
+    state: present
+  - name: powershell
+    state: present
+  - name: royal-tsx
+    state: absent
+  - name: sequel-pro
+    state: present
+  - name: skype
+    state: absent
+  - name: slack
+    state: present
+  - name: sling
+    state: absent
+  - name: spotify
+    state: present
+  - name: sublime-text
+    state: absent
+  - name: tigervnc-viewer
+    state: present
+  - name: unetbootin
+    state: present
+  - name: vagrant
+    state: present
+  - name: vagrant-manager
+    state: present
+  # - name: virtualbox
+  #   state: present
+  # - name: virtualbox-extension-pack
+  #   state: present
+  - name: visual-studio-code
+    state: present
+  - name: vmware-fusion
+    state: present
+  - name: vnc-viewer
+    state: present
 brew_packages:
-  - apm-bash-completion
-  - autoconf
-  - bash-completion
-  - bash-git-prompt
-  # - boot2docker
-  - consul
-  - docker-completion
-    # - docker-compose
-  - docker-compose-completion
-    # - docker-machine
-  - doxygen
-  - flint-checker
-  - gdbm
-  - git
-  - git-lfs
-  - go
-  - jq
-  - nmap
-  - npm
-  - nomad
-  - openssl
-  - packer
-  - packer-completion
-  - pandoc
-  - pass
-  - pip-completion
-    # - pyenv
-  - python
-  - rancher-compose
-    # - rbenv
-  - readline
-    # - ruby-build
-  - shellcheck
-  - ssh-copy-id
-  - terraform
-  - terraform-inventory
-  - terraform-provisioner-ansible
-  - tmux
-  - tree
-  - vagrant-completion
-  - vault
-  - vim
-  - wget
-  - zsh
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
+  - name: apm-bash-completion
+    state: present
+  - name: autoconf
+    state: present
+  - name: bash-completion
+    state: present
+  - name: bash-git-prompt
+    state: present
+  - name: boot2docker
+    state: absent
+  - name: consul
+    state: present
+  - name: docker-completion
+    state: present
+  # - name: docker-compose
+  #   state: present
+  - name: docker-compose-completion
+    state: present
+  # - name: docker-machine
+  #   state: present
+  - name: doxygen
+    state: present
+  - name: flint-checker
+    state: present
+  - name: gdbm
+    state: present
+  - name: git
+    state: present
+  - name: git-lfs
+    state: present
+  - name: go
+    state: present
+  - name: jq
+    state: present
+  - name: nmap
+    state: present
+  - name: npm
+    state: present
+  - name: nomad
+    state: present
+  - name: openssl
+    state: present
+  - name: packer
+    state: present
+  - name: packer-completion
+    state: present
+  - name: pandoc
+    state: present
+  - name: pass
+    state: present
+  - name: pip-completion
+    state: present
+  # - name: pyenv
+  #   state: present
+  - name: python
+    state: present
+  - name: rancher-compose
+    state: present
+  # - name: rbenv
+  #   state: present
+  - name: readline
+    state: present
+  # - name: ruby-build
+  #   state: present
+  - name: shellcheck
+    state: present
+  - name: ssh-copy-id
+    state: present
+  - name: terraform
+    state: present
+  - name: terraform-inventory
+    state: present
+  - name: terraform-provisioner-ansible
+    state: present
+  - name: tmux
+    state: present
+  - name: tree
+    state: present
+  - name: vagrant-completion
+    state: present
+  - name: vault
+    state: present
+  - name: vim
+    state: present
+  - name: wget
+    state: present
+  - name: zsh
+    state: present
+  - name: zsh-autosuggestions
+    state: present
+  - name: zsh-syntax-highlighting
+    state: present
+
 install_homebrew_if_missing: true
 upgrade_homebrew_packages: false
