@@ -8,7 +8,7 @@
 .molecule/
 .tox/
 __pycache__/
-tests/roles
+#tests/roles
 *.pyc
 
 ### Linux ###
