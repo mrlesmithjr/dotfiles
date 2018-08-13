@@ -36,6 +36,8 @@ brew_cask_packages:
     state: present
   - name: pandora
     state: present
+  - name: postman
+    state: present
   - name: powershell
     state: present
   - name: royal-tsx
@@ -82,6 +84,8 @@ brew_packages:
   - name: boot2docker
     state: absent
   - name: consul
+    state: present
+  - name: ctags
     state: present
   - name: docker-completion
     state: present

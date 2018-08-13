@@ -6,6 +6,10 @@ python_modules:
     state: present
   - name: beautysh
     state: present
+  - name: django
+    state: present
+  - name: flask
+    state: present
   - name: GitPython
     state: present
   - name: ipaddr
@@ -31,6 +35,8 @@ python_modules:
   - name: pyOpenSSL
     state: present
   - name: python-consul
+    state: present
+  - name: python-language-server[all]
     state: present
   - name: pyvmomi
     state: present

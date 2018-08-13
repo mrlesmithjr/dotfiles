@@ -37,6 +37,7 @@ packages: [
   "markdown-toc"
   "markdown-writer"
   "merge-conflicts"
+  "native-ui"
   "package-sync"
   "python-indent"
   "sort-lines"
