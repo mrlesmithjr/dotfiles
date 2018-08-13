@@ -2,6 +2,8 @@
   "atom-beautify":
     bash:
       beautify_on_save: true
+    js:
+      beautify_on_save: true
     json:
       beautify_on_save: true
     markdown:
@@ -33,7 +35,7 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "atom-light-ui"
+      "one-light-ui"
       "atom-light-syntax"
     ]
   editor:
@@ -42,6 +44,10 @@
     showIndentGuide: true
   "exception-reporting":
     userId: "b1ccb0bb-dad1-44a9-8492-06ac52cb312c"
+  "ide-python":
+    pylsPlugins:
+      yapf: {}
+    python: "/usr/local/bin/python"
   "linter-pylama": {}
   "linter-pylint": {}
   "linter-python":
@@ -65,8 +71,12 @@
       linterDecorationsZIndex: 0
       selection: true
       selectionDecorationsZIndex: 0
+  "native-ui":
+    ui: {}
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

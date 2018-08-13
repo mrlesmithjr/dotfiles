@@ -1,9 +1,19 @@
 {
     "editor.minimap.enabled": false,
-    "editor.rulers": [80],
+    "editor.rulers": [
+        80
+    ],
     "python.linting.pylintPath": "/usr/local/bin/pylint",
-    "workbench.colorTheme": "Solarized Dark",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "eq-material-theme-icons-light",
     "workbench.startupEditor": "newUntitledFile",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 0,
+    "editor.fontSize": 18,
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+    "editor.renderIndentGuides": true,
+    "workbench.colorTheme": "Visual Studio Light",
+    "materialTheme.fixIconsRunning": false,
 }
