@@ -32,6 +32,8 @@ brew_cask_packages:
     state: absent
   - name: meld
     state: absent
+  - name: microsoft-office
+    state: present
   - name: onedrive
     state: present
   - name: pandora
@@ -62,10 +64,10 @@ brew_cask_packages:
     state: present
   - name: vagrant-manager
     state: present
-  # - name: virtualbox
-  #   state: present
-  # - name: virtualbox-extension-pack
-  #   state: present
+  - name: virtualbox
+    state: present
+  - name: virtualbox-extension-pack
+    state: present
   - name: visual-studio-code
     state: present
   - name: vmware-fusion
