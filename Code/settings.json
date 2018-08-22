@@ -4,7 +4,6 @@
         80
     ],
     "python.linting.pylintPath": "/usr/local/bin/pylint",
-    "workbench.iconTheme": "eq-material-theme-icons-light",
     "workbench.startupEditor": "newUntitledFile",
     "window.zoomLevel": 0,
     "editor.fontSize": 18,
@@ -16,4 +15,6 @@
     "editor.renderIndentGuides": true,
     "workbench.colorTheme": "Visual Studio Light",
     "materialTheme.fixIconsRunning": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "files.trimTrailingWhitespace": true,
 }
