@@ -1,0 +1,82 @@
+---
+macos_defaults:
+  - domain: NSGlobalDomain
+    state: present
+    type: bool
+    key: AppleShowAllExtensions
+    value: true
+  - domain: NSGlobalDomain
+    state: present
+    type: bool
+    key: _HIHideMenuBar
+    value: true
+  - domain: NSGlobalDomain
+    state: present
+    type: string
+    key: AppleInterfaceStyle
+    value: Dark
+  - domain: com.apple.AppleMultitouchTrackpad
+    state: present
+    type: bool
+    key: Clicking
+    value: true
+  - domain: com.apple.AppleMultitouchTrackpad
+    state: present
+    type: bool
+    key: TrackpadRightClick
+    value: true
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    state: present
+    type: bool
+    key: Clicking
+    value: true
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    state: present
+    type: bool
+    key: TrackpadRightClick
+    value: true
+  - domain: com.apple.coreservices.useractivityd.dynamicuseractivites
+    state: present
+    type: bool
+    key: autohide
+    value: true
+  - domain: com.apple.coreservices.useractivityd.dynamicuseractivites
+    state: present
+    type: bool
+    key: magnification
+    value: true
+  - domain: com.apple.dock
+    state: present
+    type: bool
+    key: autohide
+    value: true
+  - domain: com.apple.dock
+    state: present
+    type: bool
+    key: magnification
+    value: true
+  - domain: com.apple.systemuiserver
+    state: present
+    type: bool
+    key: NSStatusItem Visible com.apple.menuextra.TimeMachine
+    value: true
+  - domain: com.apple.menuextra.battery
+    state: present
+    type: string
+    key: ShowPercent
+    value: YES
+  - domain: com.apple.finder
+    state: present
+    type: bool
+    key: ShowPathbar
+    value: true
+  - domain: com.apple.menuextra.clock
+    state: present
+    type: string
+    key: DateFormat
+    value: "EEE MMM d  H:mm:ss"
+  - domain: com.apple.menuextra.clock
+    state: present
+    type: bool
+    key: FlashDateSeparators
+    value: true
