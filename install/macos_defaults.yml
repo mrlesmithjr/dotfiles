@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: false
+  tasks:
+    - name: Setting OSX Defaults
+      osx_defaults:
+        domain: "{{ item['domain'] }}"
+        key: "{{ item['key'] }}"
+        type: "{{ item['type'] }}"
+        value: "{{ item['value'] }}"
+        state: "{{ item['state'] }}"
+      with_items: "{{ macos_defaults }}"
+      when: ansible_os_family == "Darwin"

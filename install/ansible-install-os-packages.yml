@@ -302,10 +302,6 @@
         dest: $HOME/.oh-my-zsh
       when: install_oh_my_zsh
 
-    # - name: Changing Shell To ZSH
-    #   shell: chsh -s /bin/zsh
-    #   when: install_oh_my_zsh
-
     - name: Capturing Current User
       set_fact:
         _current_user: "{{ lookup('env','USER') }}"

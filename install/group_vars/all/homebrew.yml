@@ -1,5 +1,7 @@
 ---
 brew_cask_packages:
+  - name: alfred
+    state: present
   - name: atom
     state: present
   - name: docker
@@ -43,7 +45,7 @@ brew_cask_packages:
   - name: powershell
     state: present
   - name: royal-tsx
-    state: absent
+    state: present
   - name: sequel-pro
     state: present
   - name: skype
