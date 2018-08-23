@@ -9,7 +9,7 @@ macos_defaults:
     state: present
     type: bool
     key: _HIHideMenuBar
-    value: true
+    value: false
   - domain: NSGlobalDomain
     state: present
     type: string
