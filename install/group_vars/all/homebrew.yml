@@ -11,21 +11,21 @@ brew_cask_packages:
   - name: firefox
     state: present
   - name: gimp
-    state: absent
+    state: present
   - name: google-backup-and-sync
-    state: absent
+    state: present
   - name: google-chrome
     state: present
   - name: google-hangouts
-    state: absent
+    state: present
   - name: google-photos-backup-and-sync
     state: absent
   - name: iterm2
     state: present
   - name: keepassx
-    state: absent
+    state: present
   - name: kodi
-    state: absent
+    state: present
   - name: lastpass
     state: present
   - name: libreoffice
@@ -39,7 +39,7 @@ brew_cask_packages:
   - name: onedrive
     state: present
   - name: pandora
-    state: absent
+    state: present
   - name: postman
     state: present
   - name: powershell
