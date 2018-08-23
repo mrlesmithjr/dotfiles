@@ -17,9 +17,9 @@ macos_defaults:
     value: Dark
   - domain: com.apple.AppleMultitouchTrackpad
     state: present
-    type: bool
+    type: int
     key: Clicking
-    value: true
+    value: 1
   - domain: com.apple.AppleMultitouchTrackpad
     state: present
     type: bool
@@ -27,9 +27,9 @@ macos_defaults:
     value: true
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     state: present
-    type: bool
+    type: int
     key: Clicking
-    value: true
+    value: 1
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     state: present
     type: bool
