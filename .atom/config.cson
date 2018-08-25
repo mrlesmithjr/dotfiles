@@ -40,6 +40,7 @@
     ]
   editor:
     autoIndentOnPaste: false
+    fontFamily: "Fira Code"
     fontSize: 18
     showIndentGuide: true
   "exception-reporting":
