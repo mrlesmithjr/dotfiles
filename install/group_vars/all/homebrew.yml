@@ -10,6 +10,8 @@ brew_cask_packages:
     state: present
   - name: firefox
     state: present
+  - name: font-fira-code
+    state: present
   - name: gimp
     state: present
   - name: google-backup-and-sync
@@ -76,6 +78,7 @@ brew_cask_packages:
     state: present
   - name: vnc-viewer
     state: present
+
 brew_packages:
   - name: apm-bash-completion
     state: present
@@ -172,5 +175,10 @@ brew_packages:
   - name: zsh-syntax-highlighting
     state: present
 
+brew_taps:
+  - name: homebrew/cask-fonts
+    state: present
+
 install_homebrew_if_missing: true
 upgrade_homebrew_packages: false
+update_homebrew: true

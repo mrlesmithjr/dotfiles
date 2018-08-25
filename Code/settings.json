@@ -17,4 +17,6 @@
     "materialTheme.fixIconsRunning": false,
     "workbench.iconTheme": "material-icon-theme",
     "files.trimTrailingWhitespace": true,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Fira Code'",
 }
