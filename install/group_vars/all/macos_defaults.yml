@@ -3,11 +3,6 @@ macos_defaults:
   - domain: NSGlobalDomain
     state: present
     type: bool
-    key: AppleShowAllExtensions
-    value: true
-  - domain: NSGlobalDomain
-    state: present
-    type: bool
     key: _HIHideMenuBar
     value: false
   - domain: NSGlobalDomain
@@ -15,21 +10,31 @@ macos_defaults:
     type: string
     key: AppleInterfaceStyle
     value: Dark
+    # Enable tap-clicking
   - domain: com.apple.AppleMultitouchTrackpad
     state: present
     type: int
     key: Clicking
     value: 1
-  - domain: com.apple.AppleMultitouchTrackpad
-    state: present
-    type: bool
-    key: TrackpadRightClick
-    value: true
+    # Enable tap-clicking
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     state: present
     type: int
     key: Clicking
     value: 1
+    # Enable tap-clicking
+  - domain: NSGlobalDomain
+    state: present
+    type: int
+    key: com.apple.mouse.tapBehavior
+    value: 1
+    # Enable trackpad secondary click (right-click)
+  - domain: com.apple.AppleMultitouchTrackpad
+    state: present
+    type: bool
+    key: TrackpadRightClick
+    value: true
+    # Enable trackpad secondary click (right-click)
   - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     state: present
     type: bool
@@ -45,6 +50,7 @@ macos_defaults:
     type: bool
     key: magnification
     value: true
+    # Automatically hide and show the Dock
   - domain: com.apple.dock
     state: present
     type: bool
@@ -65,10 +71,29 @@ macos_defaults:
     type: string
     key: ShowPercent
     value: YES
+    # Finder: show path bar
   - domain: com.apple.finder
     state: present
     type: bool
     key: ShowPathbar
+    value: true
+    # Finder: show hidden files by default
+  - domain: com.apple.finder
+    state: present
+    type: bool
+    key: AppleShowAllFiles
+    value: true
+    # Finder: show all filename extensions
+  - domain: NSGlobalDomain
+    state: present
+    type: bool
+    key: AppleShowAllExtensions
+    value: true
+    # Empty Trash securely by default
+  - domain: com.apple.finder
+    state: present
+    type: bool
+    key: EmptyTrashSecurely
     value: true
   - domain: com.apple.menuextra.clock
     state: present
@@ -80,3 +105,9 @@ macos_defaults:
     type: bool
     key: FlashDateSeparators
     value: true
+    # Check for software updates daily, not just once per week
+  - domain: com.apple.SoftwareUpdate
+    state: present
+    type: int
+    key: ScheduleFrequency
+    value: 1
