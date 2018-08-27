@@ -204,6 +204,22 @@
             state: present
           become: true
 
+        - name: Adding VS Code Repo
+          yum_repository:
+            name: vscode
+            description: Visual Studio Code
+            baseurl: https://packages.microsoft.com/yumrepos/vscode
+            enabled: true
+            gpgcheck: true
+            gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+          become: true
+
+        - name: Installing VS Code
+          yum:
+            name: code
+            state: present
+          become: true
+
       when: >
             ansible_os_family == "RedHat" and
             ansible_distribution != "Fedora"
@@ -236,6 +252,22 @@
         - name: Installing Google Chrome
           dnf:
             name: google-chrome-stable
+            state: present
+          become: true
+
+        - name: Adding VS Code Repo
+          yum_repository:
+            name: vscode
+            description: Visual Studio Code
+            baseurl: https://packages.microsoft.com/yumrepos/vscode
+            enabled: true
+            gpgcheck: true
+            gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+          become: true
+
+        - name: Installing VS Code
+          dnf:
+            name: code
             state: present
           become: true
 
