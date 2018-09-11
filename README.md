@@ -14,20 +14,6 @@ cd ~
 git clone https://github.com/mrlesmithjr/dotfiles .dotfiles --recursive
 ```
 
-#### Manually create `symlinks` to the files you would like to use into your `$HOME` folder
-
-`Examples`:
-
-```bash
-cd ~
-ln -s .dotfiles/.bash_profile .
-ln -s .dotfiles/.bashrc .
-ln -s .dotfiles/.gitconfig .
-ln -s .dotfiles/.gitignore_global .
-ln -s .dotfiles/.vim .
-ln -s .dotfiles/.vimrc .
-```
-
 #### Setup **EVERYTHING**
 
 The following will be setup using this method:
@@ -147,4 +133,4 @@ Larry Smith Jr.
 
 - [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
 - [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
-- <mailto:mrlesmithjr@gmail.com>
+- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
