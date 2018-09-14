@@ -1,5 +1,4 @@
----
-atom_editor_dl: 'https://github.com/atom/atom/releases/download/v{{ atom_editor_version }}'
+atom_editor_dl: "https://github.com/atom/atom/releases/download/v{{ atom_editor_version }}"
 atom_editor_packages:
   - package-sync
 atom_editor_version: 1.18.0

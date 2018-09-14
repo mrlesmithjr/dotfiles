@@ -1,4 +1,3 @@
----
 debian_packages:
   - name: golang
     state: present

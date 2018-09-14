@@ -1,7 +1,5 @@
----
 - name: Install OS Packages
   hosts: localhost
-  vars:
   roles:
     - role: ansible-hashicorp-toolbox
       when: ansible_os_family != "Darwin"
@@ -9,7 +7,6 @@
       when: ansible_os_family == "Debian"
   pre_tasks:
     - block:
-
         - name: Ensuring Homebrew Is Installed
           stat:
             path: /usr/local/bin/brew
@@ -19,22 +16,21 @@
           fail:
             msg: Homebrew is missing...Install from http://brew.sh/
           when: >
-                not homebrew_check.stat.exists and
-                not install_homebrew_if_missing
+            not homebrew_check.stat.exists and
+            not install_homebrew_if_missing
 
         - name: Installing Homebrew
           command: >
-                   /usr/bin/ruby -e \
-                   $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+            /usr/bin/ruby -e \
+            $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
           when: >
-                not homebrew_check.stat.exists and
-                install_homebrew_if_missing
+            not homebrew_check.stat.exists and
+            install_homebrew_if_missing
 
       when: ansible_os_family == "Darwin"
 
   tasks:
     - block:
-
         - name: Updating Homebrew
           homebrew:
             update_homebrew: "{{ update_homebrew }}"
@@ -56,20 +52,19 @@
           homebrew:
             name: "{{ item['name'] }}"
             state: "{{ item['state'] }}"
-          with_items: '{{ brew_packages }}'
+          with_items: "{{ brew_packages }}"
           when: homebrew_check.stat.exists
 
         - name: Installing Homebrew Cask Packages
           homebrew_cask:
             name: "{{ item['name'] }}"
             state: "{{ item['state'] }}"
-          with_items: '{{ brew_cask_packages }}'
+          with_items: "{{ brew_cask_packages }}"
           when: homebrew_check.stat.exists
 
       when: ansible_os_family == "Darwin"
 
     - block:
-
         - name: Updating Apt Cache
           apt:
             update_cache: true
@@ -81,7 +76,7 @@
             name: "{{ item['name'] }}"
             state: "{{ item['state'] }}"
           become: true
-          with_items: '{{ debian_packages }}'
+          with_items: "{{ debian_packages }}"
 
         - name: Installing ATOM Editor
           apt:
@@ -149,7 +144,6 @@
       when: ansible_os_family == "Debian"
 
     - block:
-
         - name: Adding Dropbox Repo
           yum_repository:
             name: dropbox
@@ -173,7 +167,6 @@
       when: ansible_os_family == "RedHat"
 
     - block:
-
         - name: Installing EPEL-Release
           yum:
             name: epel-release
@@ -184,7 +177,7 @@
             name: "{{ item['name'] }}"
             state: "{{ item['state'] }}"
           become: true
-          with_items: '{{ redhat_packages }}'
+          with_items: "{{ redhat_packages }}"
 
         - name: Installing ATOM Editor
           yum:
@@ -221,11 +214,10 @@
           become: true
 
       when: >
-            ansible_os_family == "RedHat" and
-            ansible_distribution != "Fedora"
+        ansible_os_family == "RedHat" and
+        ansible_distribution != "Fedora"
 
     - block:
-
         - name: Updating vim-minimal (If Installed)
           command: dnf update -y vim-minimal
           become: true
@@ -235,7 +227,7 @@
             name: "{{ item['name'] }}"
             state: "{{ item['state'] }}"
           become: true
-          with_items: '{{ redhat_packages }}'
+          with_items: "{{ redhat_packages }}"
 
         - name: Installing ATOM Editor
           dnf:
@@ -272,17 +264,17 @@
           become: true
 
       when: >
-            ansible_os_family == "RedHat" and
-            ansible_distribution == "Fedora"
+        ansible_os_family == "RedHat" and
+        ansible_distribution == "Fedora"
 
     - name: Installing Ruby Gems
       gem:
         name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
       become: true
-      with_items: '{{ gem_packages }}'
+      with_items: "{{ gem_packages }}"
       when: >
-            gem_packages is defined
+        gem_packages is defined
 
     - name: Installing NPM Packages
       npm:
@@ -290,10 +282,10 @@
         state: "{{ item['state'] }}"
         global: "{{ item['global'] }}"
       become: true
-      with_items: '{{ npm_packages }}'
+      with_items: "{{ npm_packages }}"
       when: >
-            npm_packages is defined and
-            item['global']
+        npm_packages is defined and
+        item['global']
 
     - name: Installing NPM Packages
       npm:
@@ -301,33 +293,33 @@
         state: "{{ item['state'] }}"
         global: "{{ item['global'] }}"
       become: false
-      with_items: '{{ npm_packages }}'
+      with_items: "{{ npm_packages }}"
       when: >
-            npm_packages is defined and
-            not item['global']
+        npm_packages is defined and
+        not item['global']
 
     - name: Installing Python Modules
       pip:
         name: "{{ item['name'] }}"
         state: "{{ item['state']}}"
-      with_items: '{{ python_modules }}'
+      with_items: "{{ python_modules }}"
       when: >
-            python_modules is defined and
-            (ansible_distribution != "Fedora" and
-            ansible_distribution != "Ubuntu" and
-            ansible_distribution != "Linux Mint")
+        python_modules is defined and
+        (ansible_distribution != "Fedora" and
+        ansible_distribution != "Ubuntu" and
+        ansible_distribution != "Linux Mint")
 
     - name: Installing Python Modules
       pip:
         name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
       become: true
-      with_items: '{{ python_modules }}'
+      with_items: "{{ python_modules }}"
       when: >
-            python_modules is defined and
-            (ansible_distribution == "Fedora" or
-            ansible_distribution == "Ubuntu" or
-            ansible_distribution == "Linux Mint")
+        python_modules is defined and
+        (ansible_distribution == "Fedora" or
+        ansible_distribution == "Ubuntu" or
+        ansible_distribution == "Linux Mint")
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
@@ -336,7 +328,7 @@
 
     - name: Installing ATOM Packages
       command: "apm install {{ item }}"
-      with_items: '{{ atom_editor_packages }}'
+      with_items: "{{ atom_editor_packages }}"
       when: item not in _apm_list['stdout']
 
     - name: Installing Oh My ZSH
@@ -362,8 +354,8 @@
         url: https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf?raw=true
         dest: $HOME/Library/Fonts/Meslo LG M Regular for Powerline.ttf
       when: >
-            ansible_os_family == "Darwin" and
-            install_oh_my_zsh
+        ansible_os_family == "Darwin" and
+        install_oh_my_zsh
 
     - name: Installing VS Code Extensions
       shell: cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension

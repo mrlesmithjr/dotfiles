@@ -1,4 +1,3 @@
----
 brew_cask_packages:
   - name: alfred
     state: present
