@@ -12,7 +12,6 @@
     "editor.formatOnSave": true,
     "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
     "editor.renderIndentGuides": true,
-    "workbench.colorTheme": "Visual Studio Light",
     "materialTheme.fixIconsRunning": false,
     "workbench.iconTheme": "material-icon-theme",
     "files.trimTrailingWhitespace": true,
@@ -20,4 +19,5 @@
     "editor.fontFamily": "'Fira Code'",
     "git.confirmSync": false,
     "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Dracula",
 }
