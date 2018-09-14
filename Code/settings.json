@@ -1,5 +1,4 @@
 {
-    "editor.minimap.enabled": false,
     "editor.rulers": [
         80
     ],
@@ -19,4 +18,6 @@
     "files.trimTrailingWhitespace": true,
     "editor.fontLigatures": true,
     "editor.fontFamily": "'Fira Code'",
+    "git.confirmSync": false,
+    "vsicons.dontShowNewVersionMessage": true,
 }
