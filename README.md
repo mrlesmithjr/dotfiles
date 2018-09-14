@@ -95,13 +95,13 @@ vim ~/.vimrc
 ## Some Example Plugins/bundles and etc
 
 - [`pathogen`](https://github.com/tpope/vim-pathogen) - Manage your
-      `runtimepath` with ease.
+  `runtimepath` with ease.
 - [`vim-ansible-yaml`](https://github.com/chase/vim-ansible-yaml) - Adds
-      additional syntax highlighting and fixes indentation for Ansible's dialect
-      of YAML.
+  additional syntax highlighting and fixes indentation for Ansible's dialect
+  of YAML.
 - [`vim-jinja`](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
 - [`vim-markdown`](https://github.com/plasticboy/vim-markdown) - Markdown Vim
-      Mode
+  Mode
 
 ## Visual Studio Code Extensions
 
