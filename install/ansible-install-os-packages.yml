@@ -4,7 +4,9 @@
     - role: ansible-hashicorp-toolbox
       when: ansible_os_family != "Darwin"
     - role: ansible-virtualbox
-      when: ansible_os_family == "Debian"
+      when: >
+        ansible_os_family == "Debian" or
+        ansible_distribution == "Fedora"
   pre_tasks:
     - block:
         - name: Ensuring Homebrew Is Installed
