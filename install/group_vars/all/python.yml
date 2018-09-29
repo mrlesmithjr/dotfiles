@@ -18,7 +18,7 @@ python_modules:
   - name: keyring
     state: present
   - name: molecule
-    state: absent
+    state: present
   - name: netaddr
     state: present
   - name: nmap
@@ -36,6 +36,8 @@ python_modules:
   - name: python-consul
     state: present
   - name: python-language-server[all]
+    state: present
+  - name: python-vagrant
     state: present
   - name: pyvmomi
     state: present
