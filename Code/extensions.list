@@ -1,3 +1,4 @@
+AlanWalk.markdown-toc
 DavidAnson.vscode-markdownlint
 DotJoshJohnson.xml
 dracula-theme.theme-dracula
@@ -7,6 +8,7 @@ esbenp.prettier-vscode
 mauve.terraform
 ms-python.python
 ms-vscode.atom-keybindings
+ms-vscode.PowerShell
 PeterJausovec.vscode-docker
 PKief.material-icon-theme
 robertohuertasm.vscode-icons
