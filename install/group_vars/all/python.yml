@@ -5,6 +5,8 @@ python_modules:
     state: present
   - name: beautysh
     state: present
+  - name: docker
+    state: present
   - name: django
     state: present
   - name: flask
