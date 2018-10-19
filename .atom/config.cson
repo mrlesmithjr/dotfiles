@@ -35,8 +35,8 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "one-light-ui"
-      "atom-light-syntax"
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
     ]
   editor:
     autoIndentOnPaste: false

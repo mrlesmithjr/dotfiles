@@ -5,13 +5,16 @@ dracula-theme.theme-dracula
 eamodio.gitlens
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
+lextudio.restructuredtext
 mauve.terraform
 ms-python.python
 ms-vscode.atom-keybindings
 ms-vscode.PowerShell
+ms-vscode.wordcount
 PeterJausovec.vscode-docker
 PKief.material-icon-theme
 robertohuertasm.vscode-icons
 sidneys1.gitconfig
+streetsidesoftware.code-spell-checker
 vscoss.vscode-ansible
 zhuangtongfa.Material-theme
