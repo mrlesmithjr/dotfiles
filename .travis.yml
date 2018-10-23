@@ -1,6 +1,11 @@
 ---
 sudo: required
 
+matrix:
+  include:
+  - language: ruby
+    os: osx
+
 os:
 - linux
 - osx
