@@ -2,7 +2,7 @@
 sudo: required
 
 install:
-  - git clone https://github.com/mrlesmithjr/dotfiles /~/.dotfiles --recursive
+  - git clone https://github.com/mrlesmithjr/dotfiles ~/.dotfiles --recursive
 matrix:
   include:
   - language: ruby
