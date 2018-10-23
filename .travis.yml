@@ -12,4 +12,5 @@ os:
 
 script:
   - cd install
+  - chmod +x setup.sh
   - ./setup.sh
