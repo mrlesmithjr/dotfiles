@@ -1,9 +1,8 @@
 ---
 sudo: required
 
-env:
-  global:
-  - TRAVIS_BUILD_DIR=".dotfiles"
+install:
+  - git clone https://github.com/mrlesmithjr/dotfiles .dotfiles --recursive
 matrix:
   include:
   - language: ruby
