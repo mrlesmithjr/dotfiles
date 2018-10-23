@@ -1,6 +1,9 @@
 ---
 sudo: required
 
+env:
+  global:
+  - TRAVIS_BUILD_DIR=".dotfiles"
 matrix:
   include:
   - language: ruby
