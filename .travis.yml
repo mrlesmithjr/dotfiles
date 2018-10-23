@@ -1,0 +1,10 @@
+---
+sudo: required
+
+os:
+- linux
+- osx
+
+script:
+  - cd install
+  - ./setup.sh
