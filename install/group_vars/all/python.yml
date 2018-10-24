@@ -27,11 +27,15 @@ python_modules:
     state: present
   - name: passlib
     state: present
+  - name: pep8
+    state: present
   - name: pygithub3
     state: present
   - name: pylama
     state: present
   - name: pylint
+    state: present
+  - name: pymongo
     state: present
   - name: pyOpenSSL
     state: present

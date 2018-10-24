@@ -35,8 +35,8 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
-      "base16-tomorrow-dark-theme"
+      "dracula-ui"
+      "dracula-syntax"
     ]
   editor:
     autoIndentOnPaste: false
@@ -77,6 +77,8 @@
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "tool-bar":
+    position: "Left"
   "tree-view":
     hideVcsIgnoredFiles: true
   welcome:
