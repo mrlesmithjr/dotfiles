@@ -39,7 +39,7 @@
 	trustExitCode = true
 [includeIf "gitdir:~/Git_Projects/Work/"]
 	path = ~/.gitconfig-work
-[includeIf "gitdir:~/project/devops_automation/"]
+[includeIf "gitdir:~/projects/devops_automation/"]
 	path = ~/.gitconfig-work
 [status]
 	submoduleSummary = true
