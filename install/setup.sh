@@ -8,7 +8,7 @@ DOTFILES_DIR_BACKUP=$HOME/.dotfiles_old
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
-".vim" ".vimrc" ".zshrc")
+".pylintrc" ".vim" ".vimrc" ".zshrc")
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 

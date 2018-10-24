@@ -23,7 +23,6 @@
   "prettier.disableLanguages": ["vue", "yaml"],
   "python.linting.pep8Enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula",
