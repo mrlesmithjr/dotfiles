@@ -141,7 +141,7 @@ fi
 
 if [[ $GIT_PROMPT_BIN_PATH ]]; then
   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
-  # GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
   # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
   # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
   # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
