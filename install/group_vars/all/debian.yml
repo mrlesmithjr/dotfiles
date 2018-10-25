@@ -1,4 +1,6 @@
 debian_packages:
+  - name: fonts-firacode
+    state: present
   - name: golang
     state: present
   - name: jq
