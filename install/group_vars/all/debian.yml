@@ -9,12 +9,14 @@ debian_packages:
     state: present
   - name: npm
     state: present
+  - name: python-psutil
+    state: absent
   - name: ruby
     state: present
   - name: shellcheck
     state: present
   - name: terminator
-    state: present
+    state: absent
   - name: tmux
     state: present
   - name: tree
