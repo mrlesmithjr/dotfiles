@@ -158,7 +158,10 @@ if [[ $(uname) == "Linux" ]]; then
   if [ -f /etc/arch-release ]; then
     codename="$(cat /etc/arch-release | awk '{print $1}' )"
     if [[ $codename == "Manjaro" ]]; then
-      yes | sudo pacman -S python-setuptools python2-setuptools \
+      yes | sudo pacman -S gc guile autoconf automake binutils bison \
+      fakeroot file findutils flex gawk gcc gettext grep groff gzip \
+      libtool m4 make pacman patch pkgconf sed sudo systemd texinfo \
+      util-linux which python-setuptools python2-setuptools \
       python-virtualenv python2-virtualenv python2-pip python2-pip \
       python-pyopenssl python2-pyopenssl
     fi
