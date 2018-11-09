@@ -154,6 +154,16 @@ do
 done
 
 if [[ $(uname) == "Linux" ]]; then
+  # Arch
+  if [ -f /etc/arch-release ]; then
+    codename="$(cat /etc/arch-release | awk '{print $1}' )"
+    if [[ $codename == "Manjaro" ]]; then
+      yes | sudo pacman -S python-setuptools python2-setuptools \
+      python-virtualenv python2-virtualenv python2-pip python2-pip \
+      python-pyopenssl python2-pyopenssl
+    fi
+  fi
+
   # Ubuntu
   if [ -f /etc/debian_version ]; then
     codename="$(lsb_release -c | awk '{print $2}')"
