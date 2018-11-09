@@ -4,9 +4,9 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	# editor = atom --wait
-	editor = code --wait
+	# editor = code --wait
 	# editor = vi
-	# editor = vim
+	editor = vim
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -18,9 +18,10 @@
 	# Fedora
 	# helper = /usr/libexec/git-core/git-credential-gnome-keyring
 	# MacOS
-	# helper = osxkeychain
+	helper = osxkeychain
 	# Ubuntu
 	# helper = cache
+	useHttpPath = true
 [color]
 	status = auto
 	branch = auto

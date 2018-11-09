@@ -3,6 +3,8 @@ brew_cask_packages:
     state: present
   - name: atom
     state: present
+  - name: db-browser-for-sqlite
+    state: present
   - name: docker
     state: present
   - name: dropbox

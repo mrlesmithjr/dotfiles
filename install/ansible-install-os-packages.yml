@@ -6,7 +6,8 @@
     - role: ansible-virtualbox
       when: >
         ansible_os_family == "Debian" or
-        ansible_distribution == "Fedora"
+        ansible_distribution == "Fedora" and
+        ansible_virtualization_role != "guest"
   pre_tasks:
     - block:
         - name: Ensuring Homebrew Is Installed
