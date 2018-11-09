@@ -161,9 +161,8 @@ if [[ $(uname) == "Linux" ]]; then
       yes | sudo pacman -S gc guile autoconf automake binutils bison \
       fakeroot file findutils flex gawk gcc gettext grep groff gzip \
       libtool m4 make pacman patch pkgconf sed sudo systemd texinfo \
-      util-linux which python-setuptools python2-setuptools \
-      python-virtualenv python2-virtualenv python2-pip python2-pip \
-      python-pyopenssl python2-pyopenssl
+      util-linux which python-setuptools python-virtualenv python-pip \
+      python-pyopenssl
     fi
   fi
 
