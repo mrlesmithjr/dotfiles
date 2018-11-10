@@ -1,0 +1,6 @@
+---
+arch_packages:
+  - name: npm
+    state: present
+  - name: rubygems
+    state: present

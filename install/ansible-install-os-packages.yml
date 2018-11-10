@@ -10,6 +10,22 @@
         ansible_virtualization_role != "guest"
   pre_tasks:
     - block:
+        - name: Upgrading OS Packages
+          pacman:
+            update_cache: true
+            upgrade: true
+          become: true
+
+        - name: Installing OS Packages
+          pacman:
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
+          become: true
+          with_items: "{{ arch_packages }}"
+
+      when: ansible_os_family == "Archlinux"
+
+    - block:
         - name: Ensuring Homebrew Is Installed
           stat:
             path: /usr/local/bin/brew
