@@ -2,7 +2,15 @@
 arch_packages:
   - name: atom
     state: present
+  - name: chromium
+    state: present
+  - name: net-tools
+    state: present
   - name: npm
     state: present
   - name: rubygems
+    state: present
+  - name: ttf-fira-code
+    state: present
+  - name: vagrant
     state: present
