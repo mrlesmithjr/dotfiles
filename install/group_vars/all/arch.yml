@@ -1,5 +1,7 @@
 ---
 arch_packages:
+  - name: atom
+    state: present
   - name: npm
     state: present
   - name: rubygems
