@@ -326,7 +326,8 @@
         python_modules is defined and
         (ansible_distribution != "Fedora" and
         ansible_distribution != "Ubuntu" and
-        ansible_distribution != "Linux Mint")
+        ansible_distribution != "Linux Mint" and
+        ansible_os_family != "Archlinux")
 
     - name: Installing Python Modules
       pip:
@@ -338,7 +339,8 @@
         python_modules is defined and
         (ansible_distribution == "Fedora" or
         ansible_distribution == "Ubuntu" or
-        ansible_distribution == "Linux Mint")
+        ansible_distribution == "Linux Mint" or
+        ansible_os_family == "Archlinux")
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
