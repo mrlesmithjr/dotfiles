@@ -6,7 +6,7 @@ arch_packages:
     state: present
   - name: jq
     state: present
-  - name: keepassx
+  - name: keepass
     state: present
   - name: net-tools
     state: present
@@ -19,6 +19,8 @@ arch_packages:
   - name: rubygems
     state: present
   - name: shellcheck
+    state: present
+  - name: sqlitebrowser
     state: present
   - name: terminator
     state: absent

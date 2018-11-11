@@ -162,7 +162,8 @@ if [[ $(uname) == "Linux" ]]; then
       binutils bison fakeroot file findutils flex gawk gcc gettext grep \
       groff gzip libtool m4 make pacman patch pkgconf sed sudo systemd \
       texinfo util-linux which python-setuptools python-virtualenv python-pip \
-      python-pyopenssl
+      python-pyopenssl python2-setuptools python2-virtualenv python2-pip \
+      python2-pyopenssl
     fi
   fi
 
