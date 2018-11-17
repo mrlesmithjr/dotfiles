@@ -1,4 +1,6 @@
 brew_cask_packages:
+  - name: adobe-acrobat-reader
+    state: present
   - name: alfred
     state: present
   - name: atom
@@ -118,6 +120,9 @@ brew_packages:
   - name: jq
     state: present
   - name: kubernetes-helm
+    state: present
+    # Provides drill. dig replacement
+  - name: ldns
     state: present
   - name: nmap
     state: present
