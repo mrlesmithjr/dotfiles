@@ -28,5 +28,6 @@
   "workbench.colorTheme": "Dracula",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
-  "diffEditor.renderSideBySide": true
+  "diffEditor.renderSideBySide": true,
+  "terminal.external.osxExec": "iTerm.app"
 }
