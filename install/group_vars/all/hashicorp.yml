@@ -1,20 +1,20 @@
 hashicorp_tools:
   - name: consul
-    version: 1.2.0
+    version: 1.4.0
     state: present
   - name: nomad
-    version: 0.8.4
+    version: 0.8.6
     state: present
   - name: packer
-    version: 1.2.4
+    version: 1.3.2
     state: present
   - name: terraform
-    version: 0.11.7
+    version: 0.11.10
     state: present
     #Debian package
   - name: vagrant
-    version: 2.1.2
+    version: 2.2.2
     state: present
   - name: vault
-    version: 0.10.3
+    version: 1.0.0
     state: present
