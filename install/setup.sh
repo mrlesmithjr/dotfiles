@@ -221,7 +221,7 @@ $DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
 DEFAULT_VENV="${HOME}/python-virtualenvs/default"
 if [ ! -d $DEFAULT_VENV ];then
     echo "Creating default Python virtual environment for usage."
-    python2.7 -m virtualenv $DEFAULT_VENV
+    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
 fi
 
 source $DEFAULT_VENV/bin/activate
