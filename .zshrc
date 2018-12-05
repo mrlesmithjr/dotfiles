@@ -78,3 +78,12 @@ fi
 alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
+
+# We setup a default Python virtual environment to use rather than installing everything in system
+DEFAULT_VENV="${HOME}/python-virtualenvs/default"
+if [ ! -d $DEFAULT_VENV ];then
+    echo "Creating default Python virtual environment for usage."
+    virtualenv $DEFAULT_VENV
+fi
+
+source $DEFAULT_VENV/bin/activate
