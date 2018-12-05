@@ -1,18 +1,18 @@
 ---
-sudo: required
+# sudo: required
 
-install:
-  - git clone https://github.com/mrlesmithjr/dotfiles ~/.dotfiles --recursive
-matrix:
-  include:
-  - language: ruby
-    os: osx
+# install:
+#   - git clone https://github.com/mrlesmithjr/dotfiles ~/.dotfiles --recursive
+# matrix:
+#   include:
+#   - language: ruby
+#     os: osx
 
-os:
-- linux
-- osx
+# os:
+# - linux
+# - osx
 
-script:
-  - cd install
-  - chmod +x setup.sh
-  - ./setup.sh
+# script:
+#   - cd install
+#   - chmod +x setup.sh
+#   - ./setup.sh
