@@ -212,6 +212,7 @@ if [[ $(uname) == "Darwin" ]]; then
   else
     brew install python@3 python@2
   fi
+  pip install virtualenv
 fi
 
 $DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
@@ -220,7 +221,7 @@ $DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
 DEFAULT_VENV="${HOME}/python-virtualenvs/default"
 if [ ! -d $DEFAULT_VENV ];then
     echo "Creating default Python virtual environment for usage."
-    virtualenv $DEFAULT_VENV
+    python2.7 -m virtualenv $DEFAULT_VENV
 fi
 
 source $DEFAULT_VENV/bin/activate
