@@ -79,19 +79,18 @@ alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
 
-command -v virtualenv >/dev/null 2>&1
-VIRTUALENV_CHECK=$?
-if [ $VIRTUALENV_CHECK -ne 0 ]; then
-    if [[ $(uname) == "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
+    command -v virtualenv >/dev/null 2>&1
+    VIRTUALENV_CHECK=$?
+    if [ $VIRTUALENV_CHECK -ne 0 ]; then
         pip install virtualenv
     fi
+    # We setup a default Python virtual environment to use rather than installing everything in system
+    DEFAULT_VENV="${HOME}/python-virtualenvs/default"
+    if [ ! -d $DEFAULT_VENV ];then
+        echo "Creating default Python virtual environment for usage."
+        python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
+    fi
+    
+    source $DEFAULT_VENV/bin/activate
 fi
-
-# We setup a default Python virtual environment to use rather than installing everything in system
-DEFAULT_VENV="${HOME}/python-virtualenvs/default"
-if [ ! -d $DEFAULT_VENV ];then
-    echo "Creating default Python virtual environment for usage."
-    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
-fi
-
-source $DEFAULT_VENV/bin/activate
