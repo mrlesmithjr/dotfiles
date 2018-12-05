@@ -216,6 +216,15 @@ fi
 
 $DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
 
+# We setup a default Python virtual environment to use rather than installing everything in system
+DEFAULT_VENV="${HOME}/python-virtualenvs/default"
+if [ ! -d $DEFAULT_VENV ];then
+    echo "Creating default Python virtual environment for usage."
+    virtualenv $DEFAULT_VENV
+fi
+
+source $DEFAULT_VENV/bin/activate
+
 command -v ansible >/dev/null 2>&1
 ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
@@ -226,9 +235,9 @@ else
   command -v pip2 >/dev/null 2>&1
   PIP2_CHECK=$?
   if [ $PIP_CHECK -eq 0 ]; then
-    sudo pip install ansible ansible-lint
+    pip install ansible ansible-lint
   elif [ $PIP2_CHECK -eq 0 ]; then
-    sudo pip2 install ansible ansible-lint
+    pip2 install ansible ansible-lint
   fi
 fi
 
