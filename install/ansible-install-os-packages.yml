@@ -321,27 +321,10 @@
     - name: Installing Python Modules
       pip:
         name: "{{ item['name'] }}"
-        state: "{{ item['state']}}"
-      with_items: "{{ python_modules }}"
-      when: >
-        python_modules is defined and
-        (ansible_distribution != "Fedora" and
-        ansible_distribution != "Ubuntu" and
-        ansible_distribution != "Linux Mint" and
-        ansible_os_family != "Archlinux")
-
-    - name: Installing Python Modules
-      pip:
-        name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
-      become: true
+        virtualenv: "{{ lookup('env','HOME') + '/python-virtualenvs/default' }}"
       with_items: "{{ python_modules }}"
-      when: >
-        python_modules is defined and
-        (ansible_distribution == "Fedora" or
-        ansible_distribution == "Ubuntu" or
-        ansible_distribution == "Linux Mint" or
-        ansible_os_family == "Archlinux")
+      when: python_modules is defined
 
     - name: Capturing ATOM Packages
       shell: apm list | awk '{ print $2 }'
