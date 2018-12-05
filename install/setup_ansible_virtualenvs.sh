@@ -42,6 +42,8 @@ do
                     deactivate
                 fi
             done
+            elif [ "$choice" = "n" ]; then
+            break
         fi
     else
         break
