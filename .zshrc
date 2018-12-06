@@ -97,3 +97,4 @@ if [ ! -d $DEFAULT_VENV ];then
 fi
 
 source $DEFAULT_VENV/bin/activate
+pip freeze > $HOME/.dotfiles/requirements.txt
