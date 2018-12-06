@@ -1,7 +1,23 @@
-# Atom sync
-/.atom/blob-store/
-/.atom/compile-cache/
-/.atom/nohup.out
-/.atom/packages/
-/.atom/split-diff/
-/.atom/storage/
+# Atom
+.atom/.apm
+.atom/.node-gyp
+.atom/.npm
+.atom/blob-store
+.atom/compile-cache
+.atom/dev
+.atom/nohup.out
+.atom/packages/
+.atom/split-diff/
+.atom/storage
+
+# Atom old
+.atom-old/.apm
+.atom-old/.node-gyp
+.atom-old/.npm
+.atom-old/blob-store
+.atom-old/compile-cache
+.atom-old/dev
+.atom-old/nohup.out
+.atom-old/packages/
+.atom-old/split-diff/
+.atom-old/storage
