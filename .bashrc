@@ -94,15 +94,15 @@ if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
         GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
     fi
-    
+
     # Check if pip is installed
     command -v pip >/dev/null 2>&1
     PIP_CHECK=$?
-    
+
     # Check if pip2 is installed
     command -v pip2 >/dev/null 2>&1
     PIP2_CHECK=$?
-    
+
     if [ $PIP_CHECK -eq 0 ]; then
         PIP_CMD=pip
         elif [ $PIP_CHECK -ne 0 ]; then
@@ -110,30 +110,30 @@ if [[ $(uname) == "Darwin" ]]; then
             PIP_CMD=pip2
         fi
     fi
-    
+
     # Lock the screen (when going AFK)
     # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L157-L158
     alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-    
+
     # Recursively delete `.DS_Store` files
     alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-    
+
     # Flush Directory Service cache
     # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L71-L72
     alias flush_dns="sudo killall -HUP mDNSResponder"
-    
+
     # Add color to folders/files
     alias ls='ls -G'
-    
+
     # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
     # modules, npm, and their installed packages.
     # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
     # alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; $PIP_CMD freeze | xargs $PIP_CMD install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
     alias update="deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
-    
+
     # Test for https://www.passwordstore.org/
     # test -e "/usr/local/etc/bash_completion.d/pass" && source "/usr/local/etc/bash_completion.d/pass"
-    
+
 fi
 
 #### MacOS OS Check - END ####
@@ -151,7 +151,7 @@ if [[ $GIT_PROMPT_BIN_PATH ]]; then
     # GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_THEME="Minimal"
-    
+
     __GIT_PROMPT_DIR=$GIT_PROMPT_BIN_PATH
     source $GIT_PROMPT_BIN_PATH/gitprompt.sh
 fi
@@ -168,9 +168,9 @@ if [[ $- == *i* ]]; then
     magenta="$(tput setaf 5)"
     cyan="$(tput setaf 6)"
     white="$(tput setaf 7)"
-    
+
     reset="$(tput sgr0)"
-    
+
     # Custom prompt
     export PS1="\u${white}@\h:${cyan}[\W]:${reset}\\$ "
 fi
@@ -196,7 +196,7 @@ fi
 # If a Python virtual environment exists called venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd(){
-    builtin cd $1
+    builtin cd $@
     if [ -d venv ];then
         if [ ${VIRTUAL_ENV} ];then
             deactivate
@@ -204,11 +204,15 @@ function cd(){
         source venv/bin/activate
     else
         if [ ${VIRTUAL_ENV} ];then
-            deactivate
+            parentdir="$(dirname "$VIRTUAL_ENV")"
+            if [[ "$PWD"/ != "$parentdir"/* ]];then
+                deactivate
+                source $DEFAULT_VENV/bin/activate
+            fi
         fi
-        source $DEFAULT_VENV/bin/activate
     fi
 }
 
 source $DEFAULT_VENV/bin/activate
 pip freeze > $HOME/.dotfiles/requirements.txt
+
