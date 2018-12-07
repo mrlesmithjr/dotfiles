@@ -21,34 +21,26 @@ fi
 sudo $PIP_CMD install -U pip cffi pyOpenSSL
 sudo $PIP_CMD install virtualenv
 
-while :
-do
-    read -t 30 -p "Install previous Ansible versions (y/n)?" choice
-    
-    if [ $? = 0 ]; then
-        case "$choice" in
-            y|Y ) echo "yes";;
-            n|N ) echo "no";;
-            * ) echo "invalid";;
-        esac
-        if [ "$choice" = "y" ]; then
-            # Setup Ansible Virtual Environments
-            for ANSVER in "${ANSIBLE_VERSIONS[@]}"
-            do
-                if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ]; then
-                    virtualenv $VIRTUALENV_PATH/ansible-$ANSVER
-                    source $VIRTUALENV_PATH/ansible-$ANSVER/bin/activate
-                    $PIP_CMD install ansible==$ANSVER ansible-lint
-                    deactivate
-                fi
-            done
-            elif [ "$choice" = "n" ]; then
-            break
-        fi
-    else
-        break
+read -t 30 -p "Install previous Ansible versions (y/n)?" choice
+if [ $? = 0 ]; then
+    case "$choice" in
+        y|Y ) echo "yes";;
+        n|N ) echo "no";;
+        * ) echo "invalid";;
+    esac
+    if [ "$choice" = "y" ]; then
+        # Setup Ansible Virtual Environments
+        for ANSVER in "${ANSIBLE_VERSIONS[@]}"
+        do
+            if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ]; then
+                python2.7 -m virtualenv $VIRTUALENV_PATH/ansible-$ANSVER
+                source $VIRTUALENV_PATH/ansible-$ANSVER/bin/activate
+                $PIP_CMD install ansible==$ANSVER ansible-lint
+                deactivate
+            fi
+        done
     fi
-done
+fi
 
 # Setup Ansible Container Virtual Environments
 # for ANSCONTVER in "${ANSIBLE_CONTAINER_VERSIONS[@]}"
