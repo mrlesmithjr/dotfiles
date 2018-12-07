@@ -128,7 +128,8 @@ if [[ $(uname) == "Darwin" ]]; then
     # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
     # modules, npm, and their installed packages.
     # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-    alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; $PIP_CMD freeze | xargs $PIP_CMD install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
+    # alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; $PIP_CMD freeze | xargs $PIP_CMD install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
+    alias update="deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
     
     # Test for https://www.passwordstore.org/
     # test -e "/usr/local/etc/bash_completion.d/pass" && source "/usr/local/etc/bash_completion.d/pass"
@@ -173,3 +174,41 @@ if [[ $- == *i* ]]; then
     # Custom prompt
     export PS1="\u${white}@\h:${cyan}[\W]:${reset}\\$ "
 fi
+
+command -v virtualenv >/dev/null 2>&1
+VIRTUALENV_CHECK=$?
+if [ $VIRTUALENV_CHECK -ne 0 ]; then
+    if [[ $(uname) == "Darwin" ]]; then
+        pip install virtualenv
+        elif [[ $(uname) == "Linux" ]]; then
+        sudo pip install virtualenv
+    fi
+fi
+
+# Setup a default Python virtual environment to use rather than installing
+# everything in system
+DEFAULT_VENV="${HOME}/python-virtualenvs/default"
+if [ ! -d $DEFAULT_VENV ];then
+    echo "Creating default Python virtual environment for usage."
+    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
+fi
+
+# If a Python virtual environment exists called venv, source it. Otherwise we
+# will source our default virtual environment.
+function cd(){
+    builtin cd $1
+    if [ -d venv ];then
+        if [ ${VIRTUAL_ENV} ];then
+            deactivate
+        fi
+        source venv/bin/activate
+    else
+        if [ ${VIRTUAL_ENV} ];then
+            deactivate
+        fi
+        source $DEFAULT_VENV/bin/activate
+    fi
+}
+
+source $DEFAULT_VENV/bin/activate
+pip freeze > $HOME/.dotfiles/requirements.txt
