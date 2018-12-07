@@ -115,6 +115,8 @@ function cd(){
                 deactivate
                 source $DEFAULT_VENV/bin/activate
             fi
+        else
+            source $DEFAULT_VENV/bin/activate
         fi
     fi
 }
