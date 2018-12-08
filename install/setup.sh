@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
+set -e
 # Define where dotfiles repo exists
-DOTFILES_DIR=$HOME/.dotfiles
+DOTFILES_DIR="$HOME/.dotfiles"
 
 # Define folder where to backup any existing dotfiles
-DOTFILES_DIR_BACKUP=$HOME/.dotfiles_old
+DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
@@ -26,14 +26,14 @@ do
     if [ -f "$HOME/$dotfile" ]; then
         if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
             echo "Backing up $dotfile to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP/$dotfile.$timestamp"
+            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP"/"$dotfile"."$timestamp"
             echo "Done"
         fi
     fi
     if [ -d "$HOME/$dotfile" ]; then
         if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
             echo "Backing up $dotfile directory to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP/$dotfile.$timestamp"
+            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP"/"$dotfile"."$timestamp"
             echo "Done"
         fi
     fi
@@ -77,12 +77,12 @@ if [[ $(uname) == "Linux" ]]; then
     VSCODE_USER_HOME=("$HOME/.config/Code/User/")
 fi
 
-if [[ ! -d ${VSCODE_USER_HOME[0]} ]]; then
-    echo "Creating ${VSCODE_USER_HOME[0]} ..."
-    mkdir -p "${VSCODE_USER_HOME[0]}"
+if [[ ! -d $VSCODE_USER_HOME ]]; then
+    echo "Creating $VSCODE_USER_HOME ..."
+    mkdir -p "$VSCODE_USER_HOME"
     echo "Done"
 else
-    echo "${VSCODE_USER_HOME[0]} already exists..."
+    echo "$VSCODE_USER_HOME already exists..."
 fi
 
 # Defines path to this repos .dotfiles for VSCode
@@ -94,46 +94,46 @@ VSCODE_DOTFILES=("settings.json" "keybindings.json" "vsicons.settings.json")
 # Creates symlinks if they do not exist or creates a copy of an existing one if it exists and is not to the correct location
 for VSCODE_DOTFILE in "${VSCODE_DOTFILES[@]}"
 do
-    if [[ -L "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE" ]]; then
-        if [[ "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE" -ef "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" ]]; then
-            echo "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE symlink already correct..."
+    if [[ -L "$VSCODE_USER_HOME/$VSCODE_DOTFILE" ]]; then
+        if [[ "$VSCODE_USER_HOME/$VSCODE_DOTFILE" -ef "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" ]]; then
+            echo "$VSCODE_USER_HOME/$VSCODE_DOTFILE symlink already correct..."
         else
-            echo "Copying ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE.$timestamp..."
-            mv "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE" "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE.$timestamp"
-            echo "Creating symlink for ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE..."
-            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE"
+            echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
+            mv "$VSCODE_USER_HOME/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp"
+            echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"
         fi
     else
-        if [[ ! -f "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE" ]]; then
-            echo "Creating symlink for ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE..."
-            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE"
+        if [[ ! -f "$VSCODE_USER_HOME/$VSCODE_DOTFILE" ]]; then
+            echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"
         else
-            echo "Copying ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE.$timestamp..."
-            mv "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE" "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE.$timestamp"
-            echo "Creating symlink for ${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE..."
-            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "${VSCODE_USER_HOME[0]}/$VSCODE_DOTFILE"
+            echo "Copying $VSCODE_USER_HOME/$VSCODE_DOTFILE $VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp..."
+            mv "$VSCODE_USER_HOME/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE.$timestamp"
+            echo "Creating symlink for $VSCODE_USER_HOME/$VSCODE_DOTFILE..."
+            ln -s "$VSCODE_DOTFILES_DIR/$VSCODE_DOTFILE" "$VSCODE_USER_HOME/$VSCODE_DOTFILE"
         fi
     fi
 done
 
-if [[ -L "${VSCODE_USER_HOME[0]}" ]]; then
-    if [[ "${VSCODE_USER_HOME[0]}" -ef "$VSCODE_DOTFILES_DIR/snippets" ]]; then
-        echo "${VSCODE_USER_HOME[0]} symlink already correct..."
+if [[ -L "$VSCODE_USER_HOME/snippets" ]]; then
+    if [[ "$VSCODE_USER_HOME/snippets" -ef "$VSCODE_DOTFILES_DIR/snippets" ]]; then
+        echo "$VSCODE_USER_HOME/snippets symlink already correct..."
     else
-        echo "Copying ${VSCODE_USER_HOME[0]} ${VSCODE_USER_HOME[0]}.$timestamp..."
-        mv "${VSCODE_USER_HOME[0]}" "${VSCODE_USER_HOME[0]}.$timestamp"
-        echo "Creating symlink for ${VSCODE_USER_HOME[0]}..."
-        ln -s "$VSCODE_DOTFILES_DIR/snippets/" "${VSCODE_USER_HOME[0]}"
+        echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
+        mv "$VSCODE_USER_HOME/snippets" "$VSCODE_USER_HOME/snippets.$timestamp"
+        echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+        ln -s "$VSCODE_DOTFILES_DIR/snippets/" "$VSCODE_USER_HOME/snippets"
     fi
 else
-    if [[ -d "${VSCODE_USER_HOME[0]}" ]]; then
-        echo "Copying ${VSCODE_USER_HOME[0]} ${VSCODE_USER_HOME[0]}.$timestamp..."
-        mv "${VSCODE_USER_HOME[0]}" "${VSCODE_USER_HOME[0]}.$timestamp"
-        echo "Creating symlink for ${VSCODE_USER_HOME[0]}..."
-        ln -s "$VSCODE_DOTFILES_DIR/snippets" "${VSCODE_USER_HOME[0]}"
+    if [[ -d "$VSCODE_USER_HOME/snippets" ]]; then
+        echo "Copying $VSCODE_USER_HOME/snippets $VSCODE_USER_HOME/snippets.$timestamp..."
+        mv "$VSCODE_USER_HOME/snippets" "$VSCODE_USER_HOME/snippets.$timestamp"
+        echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+        ln -s "$VSCODE_DOTFILES_DIR/snippets" "$VSCODE_USER_HOME/snippets"
     else
-        echo "Creating symlink for ${VSCODE_USER_HOME[0]}/snippets..."
-        ln -s "$VSCODE_DOTFILES_DIR/snippets" "${VSCODE_USER_HOME[0]}"
+        echo "Creating symlink for $VSCODE_USER_HOME/snippets..."
+        ln -s "$VSCODE_DOTFILES_DIR/snippets" "$VSCODE_USER_HOME/snippets"
     fi
 fi
 
@@ -180,11 +180,11 @@ if [[ $(uname) == "Linux" ]]; then
             mkdir -p "$HOME/.config/fontconfig/conf.d"
         fi
         if [ ! -f "$HOME/.fonts/PowerlineSymbols.otf" ];then
-            wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O "$HOME/.fonts/PowerlineSymbols.otf"
+            wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O "$HOME"/.fonts/PowerlineSymbols.otf
         fi
         if [ ! -f "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf" ];then
-            fc-cache -vf "$HOME/.fonts/"
-            wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf"
+            fc-cache -vf "$HOME"/.fonts/
+            wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O "$HOME"/.config/fontconfig/conf.d/10-powerline-symbols.conf
         fi
     fi
 
@@ -235,11 +235,11 @@ if [ ! -d "$DEFAULT_VENV" ];then
     python2.7 -m virtualenv --system-site-packages "$DEFAULT_VENV"
 fi
 
-source "$DEFAULT_VENV/bin/activate"
+source "$DEFAULT_VENV"/bin/activate
 
-"$DOTFILES_DIR/install/setup_ansible_virtualenvs.sh"
+"$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
 
-source "$DEFAULT_VENV/bin/activate"
+source "$DEFAULT_VENV"/bin/activate
 
 command -v ansible >/dev/null 2>&1
 ANSIBLE_CHECK=$?
