@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
+set -e
 # Define where dotfiles repo exists
-DOTFILES_DIR=$HOME/.dotfiles
+DOTFILES_DIR="$HOME/.dotfiles"
 
 # Define folder where to backup any existing dotfiles
-DOTFILES_DIR_BACKUP=$HOME/.dotfiles_old
+DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
@@ -12,39 +12,39 @@ dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
-if [ ! -d $DOTFILES_DIR_BACKUP ]; then
+if [ ! -d "$DOTFILES_DIR_BACKUP" ]; then
     echo "Creating $DOTFILES_DIR_BACKUP to store any existing dotfiles..."
-    mkdir -p $DOTFILES_DIR_BACKUP
+    mkdir -p "$DOTFILES_DIR_BACKUP"
     echo "Done"
 fi
 
 echo "Changing to $DOTFILES_DIR directory..."
-cd $DOTFILES_DIR || exit
+cd "$DOTFILES_DIR" || exit
 
 for dotfile in "${dotfiles[@]}"
 do
-    if [ -f $HOME/$dotfile ]; then
+    if [ -f "$HOME/$dotfile" ]; then
         if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
             echo "Backing up $dotfile to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-            mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
+            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP"/"$dotfile"."$timestamp"
             echo "Done"
         fi
     fi
-    if [ -d $HOME/$dotfile ]; then
+    if [ -d "$HOME/$dotfile" ]; then
         if [[ ! "$HOME/$dotfile" -ef "$DOTFILES_DIR/$dotfile" ]]; then
             echo "Backing up $dotfile directory to $DOTFILES_DIR_BACKUP/$dotfile.$timestamp..."
-            mv -f $HOME/$dotfile $DOTFILES_DIR_BACKUP/$dotfile.$timestamp
+            mv -f "$HOME/$dotfile" "$DOTFILES_DIR_BACKUP"/"$dotfile"."$timestamp"
             echo "Done"
         fi
     fi
 done
 
-cd $HOME || exit
+cd "$HOME" || exit
 for dotfile in "${dotfiles[@]}"
 do
-    if [ ! -e $dotfile ]; then
+    if [ ! -e "$dotfile" ]; then
         echo "Creating symlink for $DOTFILES_DIR/$dotfile..."
-        ln -s $DOTFILES_DIR/$dotfile .
+        ln -s "$DOTFILES_DIR/$dotfile" .
         echo "Done"
     else
         echo "$HOME/$dotfile symlink already exists..."
@@ -53,14 +53,14 @@ done
 
 # Check if bash-git-prompt is already installed and install if not
 if [[ $(uname) == "Linux" ]]; then
-    if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
-        git clone https://github.com/magicmonty/bash-git-prompt.git $HOME/.bash-git-prompt --depth=1
+    if [ ! -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+        git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1
     fi
 fi
 
 # Check for existing Vundle Plugin Manager and install if missing
 # https://github.com/VundleVim/Vundle.vim
-if [ "$(ls -A $DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload)" ]; then
+if [ "$(ls -A "$DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload")" ]; then
     echo "Vundle already installed"
 else
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -69,17 +69,17 @@ fi
 
 if [[ $(uname) == "Darwin" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME=($HOME/Library/Application\ Support/Code/User)
+    VSCODE_USER_HOME=("$HOME/Library/Application\ Support/Code/User")
 fi
 
 if [[ $(uname) == "Linux" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME=($HOME/.config/Code/User/)
+    VSCODE_USER_HOME=("$HOME/.config/Code/User/")
 fi
 
 if [[ ! -d $VSCODE_USER_HOME ]]; then
     echo "Creating $VSCODE_USER_HOME ..."
-    mkdir -p $VSCODE_USER_HOME
+    mkdir -p "$VSCODE_USER_HOME"
     echo "Done"
 else
     echo "$VSCODE_USER_HOME already exists..."
@@ -87,7 +87,7 @@ fi
 
 # Defines path to this repos .dotfiles for VSCode
 VSCODE_DOTFILES_DIR=$DOTFILES_DIR/Code
-echo $VSCODE_DOTFILES_DIR
+echo "$VSCODE_DOTFILES_DIR"
 
 VSCODE_DOTFILES=("settings.json" "keybindings.json" "vsicons.settings.json")
 
@@ -144,11 +144,11 @@ folders=("$HOME/Git_Projects" "$HOME/Git_Projects/Personal/GitHub" \
 
 for folder in "${folders[@]}"
 do
-    if [ ! -d $folder ]; then
+    if [ ! -d "$folder" ]; then
         echo "Creating folder $folder ..."
-        mkdir -p $folder
+        mkdir -p "$folder"
         echo "Done"
-    else [ -d $folder ]
+    else [ -d "$folder" ]
         echo "Folder $folder already exists ..."
     fi
 done
@@ -173,18 +173,18 @@ if [[ $(uname) == "Linux" ]]; then
         sudo apt-get update
         sudo apt-get -y install build-essential libffi-dev libssl-dev python-dev \
         python-minimal python-pip python-setuptools python-virtualenv virtualenv
-        if [ ! -d $HOME/.fonts ];then
-            mkdir $HOME/.fonts
+        if [ ! -d "$HOME/.fonts" ];then
+            mkdir "$HOME/.fonts"
         fi
-        if [ ! -d $HOME/.config/fontconfig ];then
-            mkdir -p $HOME/.config/fontconfig/conf.d
+        if [ ! -d "$HOME/.config/fontconfig" ];then
+            mkdir -p "$HOME/.config/fontconfig/conf.d"
         fi
-        if [ ! -f $HOME/.fonts/PowerlineSymbols.otf ];then
-            wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O $HOME/.fonts/PowerlineSymbols.otf
+        if [ ! -f "$HOME/.fonts/PowerlineSymbols.otf" ];then
+            wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O "$HOME"/.fonts/PowerlineSymbols.otf
         fi
-        if [ ! -f $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf ];then
-            fc-cache -vf $HOME/.fonts/
-            wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf
+        if [ ! -f "$HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf" ];then
+            fc-cache -vf "$HOME"/.fonts/
+            wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O "$HOME"/.config/fontconfig/conf.d/10-powerline-symbols.conf
         fi
     fi
 
@@ -230,17 +230,18 @@ fi
 
 # We setup a default Python virtual environment to use rather than installing everything in system
 DEFAULT_VENV="${HOME}/python-virtualenvs/default"
-if [ ! -d $DEFAULT_VENV ];then
+if [ ! -d "$DEFAULT_VENV" ];then
     echo "Creating default Python virtual environment for usage."
-    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
+    python2.7 -m virtualenv --system-site-packages "$DEFAULT_VENV"
 fi
 
-source $DEFAULT_VENV/bin/activate
+source "$DEFAULT_VENV"/bin/activate
 
-$DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
+"$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
 
-source $DEFAULT_VENV/bin/activate
+source "$DEFAULT_VENV"/bin/activate
 
+set +e
 command -v ansible >/dev/null 2>&1
 ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
@@ -257,6 +258,6 @@ else
     fi
 fi
 
-ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml -K
-ansible-playbook $DOTFILES_DIR/install/macos_defaults.yml
+ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K
+ansible-playbook "$DOTFILES_DIR"/install/macos_defaults.yml
 
