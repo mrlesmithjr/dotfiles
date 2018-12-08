@@ -102,11 +102,11 @@ fi
 # will source our default virtual environment.
 function cd(){
     builtin cd $@
-    if [ -d venv ];then
+    if [ -d ./venv ];then
         if [ $VIRTUAL_ENV ];then
             deactivate
         fi
-        source venv/bin/activate
+        source ./venv/bin/activate
         export VIRTUAL_ENV="$PWD/venv"
     else
         if [ $VIRTUAL_ENV ];then
