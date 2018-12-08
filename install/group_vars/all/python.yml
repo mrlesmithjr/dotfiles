@@ -8,6 +8,8 @@ python_modules:
   - name: docker
     state: present
   - name: django
+    state: absent
+  - name: doc8
     state: present
   - name: flask
     state: present
@@ -24,10 +26,12 @@ python_modules:
   - name: netaddr
     state: present
   - name: nmap
-    state: present
+    state: absent
   - name: passlib
-    state: present
+    state: absent
   - name: pep8
+    state: present
+  - name: pipreqs
     state: present
   - name: pygithub
     state: present
@@ -36,20 +40,22 @@ python_modules:
   - name: pylint
     state: present
   - name: pymongo
-    state: present
+    state: absent
   - name: pyOpenSSL
     state: present
   - name: python-consul
-    state: present
+    state: absent
   - name: python-language-server[all]
     state: present
   - name: python-vagrant
-    state: present
+    state: absent
   - name: pyvmomi
     state: present
   - name: pywinrm
     state: present
   - name: requests
+    state: present
+  - name: sphinx
     state: present
   - name: TerraformToAnsibleInventory
     state: absent
