@@ -219,6 +219,15 @@ function cd(){
     fi
 }
 
+# Activate default virtual environment on ls if not currently in a virtual
+# environment
+function ls(){
+    builtin command ls $@
+    if [ ! $VIRTUAL_ENV ];then
+        source $DEFAULT_VENV/bin/activate
+    fi
+}
+
 source $DEFAULT_VENV/bin/activate
 pip freeze > $HOME/.dotfiles/requirements.txt
 
