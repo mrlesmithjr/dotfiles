@@ -8,15 +8,15 @@ ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1" "0.9.2")
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 
 # Detect pip command
-# command -v pip >/dev/null 2>&1
-# PIP_CHECK=$?
-# command -v pip2 >/dev/null 2>&1
-# PIP2_CHECK=$?
-# if [ $PIP_CHECK -eq 0 ]; then
-#     PIP_CMD="pip"
-#     elif [ $PIP2_CHECK -eq 0 ]; then
-#     PIP_CMD="pip2"
-# fi
+command -v pip >/dev/null 2>&1
+PIP_CHECK=$?
+command -v pip2 >/dev/null 2>&1
+PIP2_CHECK=$?
+if [ $PIP_CHECK -eq 0 ]; then
+    PIP_CMD="pip"
+    elif [ $PIP2_CHECK -eq 0 ]; then
+    PIP_CMD="pip2"
+fi
 
 # Below breaks new default virtualenv method
 # $PIP_CMD install -U pip cffi pyOpenSSL
