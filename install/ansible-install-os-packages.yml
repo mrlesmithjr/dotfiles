@@ -208,11 +208,11 @@
             state: present
           become: true
 
-        - name: Installing Dropbox
-          yum:
-            name: nautilus-dropbox
-            state: present
-          become: true
+        # - name: Installing Dropbox
+        #   yum:
+        #     name: nautilus-dropbox
+        #     state: present
+        #   become: true
 
         - name: Installing Google Chrome
           yum:
