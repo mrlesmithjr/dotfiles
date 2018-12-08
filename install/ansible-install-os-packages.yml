@@ -1,3 +1,4 @@
+---
 - name: Install OS Packages
   hosts: localhost
   roles:
@@ -173,6 +174,8 @@
             gpgcheck: true
             gpgkey: "http://linux.dropbox.com/{{ ansible_distribution|lower }}/rpm-public-key.asc"
           become: true
+          when:
+            - ansible_distribution == "Fedora"
 
         - name: Adding Google Chrome Repo
           yum_repository:
