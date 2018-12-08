@@ -1,3 +1,4 @@
+---
 brew_cask_packages:
   - name: adobe-acrobat-reader
     state: present
@@ -70,6 +71,8 @@ brew_cask_packages:
   - name: vagrant
     state: present
   - name: vagrant-manager
+    state: present
+  - name: vagrant-vmware-utility
     state: present
   - name: virtualbox
     state: present

@@ -1,3 +1,4 @@
+---
 python_modules:
   - name: ara
     state: present

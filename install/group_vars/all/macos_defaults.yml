@@ -1,3 +1,4 @@
+---
 macos_defaults:
   - domain: NSGlobalDomain
     state: present

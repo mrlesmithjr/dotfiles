@@ -1,3 +1,4 @@
+---
 redhat_packages:
   - name: ShellCheck
     state: present

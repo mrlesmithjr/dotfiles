@@ -1,3 +1,4 @@
+---
 debian_packages:
   - name: fonts-firacode
     state: present
