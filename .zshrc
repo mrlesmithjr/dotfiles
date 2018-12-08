@@ -109,16 +109,18 @@ function cd(){
         fi
         source ./venv/bin/activate
         export VIRTUAL_ENV="$PWD/venv"
-    else
-        if [ $VIRTUAL_ENV ];then
+    elif [ $VIRTUAL_ENV ];then
+        if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
+            :
+        else
             parentdir="$(dirname "$VIRTUAL_ENV")"
             if [[ "$PWD"/ != "$parentdir"/* ]];then
                 deactivate
                 source $DEFAULT_VENV/bin/activate
             fi
-        else
-            source $DEFAULT_VENV/bin/activate
         fi
+    else
+        source $DEFAULT_VENV/bin/activate
     fi
 }
 
