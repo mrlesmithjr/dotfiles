@@ -241,6 +241,7 @@ source "$DEFAULT_VENV"/bin/activate
 
 source "$DEFAULT_VENV"/bin/activate
 
+set +e
 command -v ansible >/dev/null 2>&1
 ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
