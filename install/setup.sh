@@ -166,7 +166,7 @@ if [[ $(uname) == "Linux" ]]; then
             python2-pyopenssl
         fi
     fi
-    
+
     # Ubuntu
     if [ -f /etc/debian_version ]; then
         codename="$(lsb_release -c | awk '{print $2}')"
@@ -187,7 +187,7 @@ if [[ $(uname) == "Linux" ]]; then
             wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf
         fi
     fi
-    
+
     # RHEL
     if [ -f /etc/redhat-release ]; then
         codename="$(cat /etc/redhat-release | awk '{print $1}')"
@@ -228,14 +228,16 @@ if [[ $(uname) == "Darwin" ]]; then
     pip install virtualenv
 fi
 
-$DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
-
 # We setup a default Python virtual environment to use rather than installing everything in system
 DEFAULT_VENV="${HOME}/python-virtualenvs/default"
 if [ ! -d $DEFAULT_VENV ];then
     echo "Creating default Python virtual environment for usage."
     python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
 fi
+
+source $DEFAULT_VENV/bin/activate
+
+$DOTFILES_DIR/install/setup_ansible_virtualenvs.sh
 
 source $DEFAULT_VENV/bin/activate
 
@@ -249,11 +251,12 @@ else
     command -v pip2 >/dev/null 2>&1
     PIP2_CHECK=$?
     if [ $PIP_CHECK -eq 0 ]; then
-        pip install ansible ansible-lint
+        pip install ansible
         elif [ $PIP2_CHECK -eq 0 ]; then
-        pip2 install ansible ansible-lint
+        pip2 install ansible
     fi
 fi
 
 ansible-playbook $DOTFILES_DIR/install/ansible-install-os-packages.yml -K
 ansible-playbook $DOTFILES_DIR/install/macos_defaults.yml
+

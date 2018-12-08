@@ -8,31 +8,31 @@ ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1" "0.9.2")
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 
 # Detect pip command
-command -v pip >/dev/null 2>&1
-PIP_CHECK=$?
-command -v pip2 >/dev/null 2>&1
-PIP2_CHECK=$?
-if [ $PIP_CHECK -eq 0 ]; then
-    PIP_CMD="pip"
-    elif [ $PIP2_CHECK -eq 0 ]; then
-    PIP_CMD="pip2"
-fi
+# command -v pip >/dev/null 2>&1
+# PIP_CHECK=$?
+# command -v pip2 >/dev/null 2>&1
+# PIP2_CHECK=$?
+# if [ $PIP_CHECK -eq 0 ]; then
+#     PIP_CMD="pip"
+#     elif [ $PIP2_CHECK -eq 0 ]; then
+#     PIP_CMD="pip2"
+# fi
 
-sudo $PIP_CMD install -U pip cffi pyOpenSSL
-sudo $PIP_CMD install virtualenv
+# Below breaks new default virtualenv method
+# $PIP_CMD install -U pip cffi pyOpenSSL
+# $PIP_CMD install virtualenv
 
 read -t 30 -p "Install previous Ansible versions (y/n)?" choice
-if [ $? = 0 ]; then
+if [ $? = 0 ];then
     case "$choice" in
         y|Y ) echo "yes";;
         n|N ) echo "no";;
         * ) echo "invalid";;
     esac
-    if [ "$choice" = "y" ]; then
+    if [ "$choice" = "y" ];then
         # Setup Ansible Virtual Environments
-        for ANSVER in "${ANSIBLE_VERSIONS[@]}"
-        do
-            if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ]; then
+        for ANSVER in "${ANSIBLE_VERSIONS[@]}";do
+            if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ];then
                 python2.7 -m virtualenv $VIRTUALENV_PATH/ansible-$ANSVER
                 source $VIRTUALENV_PATH/ansible-$ANSVER/bin/activate
                 $PIP_CMD install ansible==$ANSVER ansible-lint
