@@ -294,7 +294,7 @@
       gem:
         name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
-      become: true
+      # become: true
       with_items: "{{ gem_packages }}"
       when: >
         gem_packages is defined
