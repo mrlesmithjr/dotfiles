@@ -16,6 +16,8 @@ debian_packages:
     state: absent
   - name: ruby
     state: present
+  - name: ruby-dev
+    state: present
   - name: shellcheck
     state: present
   - name: terminator
