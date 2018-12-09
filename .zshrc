@@ -9,6 +9,11 @@ plugins=(docker git pip python vagrant zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# Check if Ruby is installed and set path if it is
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # Check if GO is installed
 command -v go >/dev/null 2>&1
 GO_CHECK=$?
