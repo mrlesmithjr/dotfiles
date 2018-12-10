@@ -29,5 +29,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "diffEditor.renderSideBySide": true,
-  "terminal.external.osxExec": "iTerm.app"
+  "terminal.external.osxExec": "iTerm.app",
+  "yaml.customTags": ["!vault"]
 }
