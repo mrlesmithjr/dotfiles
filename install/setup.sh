@@ -172,7 +172,8 @@ if [[ $(uname) == "Linux" ]]; then
         codename="$(lsb_release -c | awk '{print $2}')"
         sudo apt-get update
         sudo apt-get -y install build-essential libffi-dev libssl-dev python-dev \
-        python-minimal python-pip python-setuptools python-virtualenv virtualenv
+        python-minimal python-pip python-setuptools python-virtualenv \
+        python3-pip virtualenv
         if [ ! -d "$HOME/.fonts" ];then
             mkdir "$HOME/.fonts"
         fi
