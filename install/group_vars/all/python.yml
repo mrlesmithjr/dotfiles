@@ -50,6 +50,10 @@ python_modules:
     state: present
   - name: python-vagrant
     state: absent
+  # pyvim breaks locating pyvmomi using Ansible
+  # https://github.com/ansible/ansible/issues/44245
+  - name: pyvim
+    state: absent
   - name: pyvmomi
     state: present
   - name: pywinrm
