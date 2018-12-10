@@ -212,6 +212,9 @@ function cd(){
                 source ./venv/bin/activate
                 export VIRTUAL_ENV="$PWD/venv"
             fi
+        else
+            source ./venv/bin/activate
+            export VIRTUAL_ENV="$PWD/venv"
         fi
     elif [ $VIRTUAL_ENV ];then
         if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
@@ -233,7 +236,12 @@ function cd(){
 function ls(){
     builtin command ls $@
     if [ ! $VIRTUAL_ENV ];then
-        source $DEFAULT_VENV/bin/activate
+        if [ -d ./venv ];then
+            source ./venv/bin/activate
+            export VIRTUAL_ENV="$PWD/venv"
+        else
+            source $DEFAULT_VENV/bin/activate
+        fi
     fi
 }
 
