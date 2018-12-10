@@ -205,10 +205,14 @@ function cd(){
     builtin cd $@
     if [ -d ./venv ];then
         if [ $VIRTUAL_ENV ];then
-            deactivate
+            if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
+                :
+            else
+                deactivate
+                source ./venv/bin/activate
+                export VIRTUAL_ENV="$PWD/venv"
+            fi
         fi
-        source ./venv/bin/activate
-        export VIRTUAL_ENV="$PWD/venv"
     elif [ $VIRTUAL_ENV ];then
         if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
             :
