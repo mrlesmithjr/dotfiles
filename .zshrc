@@ -7,7 +7,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="avit"
 plugins=(docker git pip python vagrant zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH"/oh-my-zsh.sh
 
 # Check if Ruby is installed and set path if it is
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -99,17 +99,17 @@ fi
 # everything in system
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
-if [ ! -d $DEFAULT_VENV ];then
+if [ ! -d "$DEFAULT_VENV" ];then
     echo "Creating default Python virtual environment for usage."
-    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
+    python2.7 -m virtualenv --system-site-packages "$DEFAULT_VENV"
 fi
 
 # If a Python virtual environment exists called venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd(){
-    builtin cd $@
+    builtin cd "$@"
     if [ -d ./venv ];then
-        if [ $VIRTUAL_ENV ];then
+        if [ "$VIRTUAL_ENV" ];then
             if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
                 :
             else
@@ -121,7 +121,7 @@ function cd(){
             source ./venv/bin/activate
             export VIRTUAL_ENV="$PWD/venv"
         fi
-    elif [ $VIRTUAL_ENV ];then
+    elif [ "$VIRTUAL_ENV" ];then
         unset DISABLE_ENV
         if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
             :
@@ -129,14 +129,14 @@ function cd(){
             parentdir="$(dirname "$VIRTUAL_ENV")"
             if [[ "$PWD"/ != "$parentdir"/* ]];then
                 deactivate
-                source $DEFAULT_VENV/bin/activate
+                source "$DEFAULT_VENV"/bin/activate
             fi
         fi
     else
-        if [ ! $DISABLE_ENV ]; then
+        if [ ! "$DISABLE_ENV" ]; then
             read REPLY\?"Enable default Python virtualenv (y/n)?"
             if [[ "$REPLY" == "y" ]]; then
-                source $DEFAULT_VENV/bin/activate
+                source "$DEFAULT_VENV"/bin/activate
             else
                 export DISABLE_ENV="True"
             fi
@@ -147,8 +147,8 @@ function cd(){
 # Activate default virtual environment on ls if not currently in a virtual
 # environment
 function ls(){
-    builtin command ls $@
-    if [ ! $VIRTUAL_ENV ];then
+    builtin command ls "$@"
+    if [ ! "$VIRTUAL_ENV" ];then
         if [ -d ./venv ];then
             source ./venv/bin/activate
             export VIRTUAL_ENV="$PWD/venv"
@@ -156,7 +156,7 @@ function ls(){
             if [ ! $DISABLE_ENV ]; then
                 read REPLY\?"Enable default Python virtualenv (y/n)?"
                 if [[ "$REPLY" == "y" ]]; then
-                    source $DEFAULT_VENV/bin/activate
+                    source "$DEFAULT_VENV"/bin/activate
                 else
                     export DISABLE_ENV="True"
                 fi
@@ -167,5 +167,5 @@ function ls(){
     fi
 }
 
-source $DEFAULT_VENV/bin/activate
-pip freeze > $HOME/.dotfiles/requirements.txt
+source "$DEFAULT_VENV"/bin/activate
+pip freeze > "$HOME"/.dotfiles/requirements.txt
