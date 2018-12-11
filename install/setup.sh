@@ -153,6 +153,33 @@ do
     fi
 done
 
+# yamllint
+YAMLLINT_CONFIG="$HOME/.config/yamllint/config"
+YAMLLINT_DIR="$(dirname "$YAMLLINT_CONFIG")"
+if [ ! -d "$YAMLLINT_DIR" ]; then
+    mkdir -p "$YAMLLINT_DIR"
+fi
+if [[ -L "$YAMLLINT_CONFIG" ]]; then
+    if [[ "$YAMLLINT_CONFIG" -ef "$DOTFILES_DIR/.yamllint.yml" ]]; then
+        echo "$YAMLLINT_CONFIG symlink already correct..."
+    else
+        echo "Copying $YAMLLINT_CONFIG $YAMLLINT_CONFIG.$timestamp..."
+        mv "$YAMLLINT_CONFIG" "$YAMLLINT_CONFIG.$timestamp"
+        echo "Creating symlink for $YAMLLINT_CONFIG..."
+        ln -s "$DOTFILES_DIR/.yamllint.yml" "$YAMLLINT_CONFIG"
+    fi
+else
+    if [[ ! -f "$YAMLLINT_CONFIG" ]]; then
+        echo "Creating symlink for $YAMLLINT_CONFIG..."
+        ln -s "$DOTFILES_DIR/.yamllint.yml" "$YAMLLINT_CONFIG"
+    else
+        echo "Copying $YAMLLINT_CONFIG $YAMLLINT_CONFIG.$timestamp..."
+        mv "$YAMLLINT_CONFIG" "$YAMLLINT_CONFIG.$timestamp"
+        echo "Creating symlink for $YAMLLINT_CONFIG..."
+        ln -s "$DOTFILES_DIR/.yamllint.yml" "$YAMLLINT_CONFIG"
+    fi
+fi
+
 if [[ $(uname) == "Linux" ]]; then
     # Arch
     if [ -f /etc/arch-release ]; then
