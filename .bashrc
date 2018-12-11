@@ -257,6 +257,8 @@ function ls(){
                 fi
             fi
         fi
+    else
+        unset DISABLE_ENV
     fi
 }
 
