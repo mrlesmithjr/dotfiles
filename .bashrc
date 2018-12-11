@@ -229,8 +229,8 @@ function cd(){
         fi
     else
         if [ ! "$DISABLE_ENV" ]; then
-            read -p "Enable default Python virtualenv (y/n)?"
-            if [[ "$REPLY" == "y" ]]; then
+            read -p "Enable default Python virtualenv (y/n)?" REPLY
+            if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
                 source "$DEFAULT_VENV"/bin/activate
             else
                 export DISABLE_ENV="True"
@@ -249,8 +249,8 @@ function ls(){
             export VIRTUAL_ENV="$PWD/venv"
         else
             if [ ! $DISABLE_ENV ]; then
-                read -p "Enable default Python virtualenv (y/n)?"
-                if [[ "$REPLY" == "y" ]]; then
+                read -p "Enable default Python virtualenv (y/n)?" REPLY
+                if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
                     source "$DEFAULT_VENV"/bin/activate
                 else
                     export DISABLE_ENV="True"
