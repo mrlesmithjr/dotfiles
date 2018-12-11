@@ -77,7 +77,7 @@ fi
 #### LINUX OS Check ####
 
 if [[ $(uname) == "Linux" ]]; then
-    if [ -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
+    if [ -f "$HOME"/.bash-git-prompt/gitprompt.sh ]; then
         GIT_PROMPT_BIN_PATH=$HOME/.bash-git-prompt
     fi
     PATH=$PATH:$HOME/.local/bin:$HOME/bin
@@ -158,7 +158,7 @@ if [[ $GIT_PROMPT_BIN_PATH ]]; then
     GIT_PROMPT_THEME="Minimal"
 
     __GIT_PROMPT_DIR=$GIT_PROMPT_BIN_PATH
-    source $GIT_PROMPT_BIN_PATH/gitprompt.sh
+    source "$GIT_PROMPT_BIN_PATH"/gitprompt.sh
 fi
 
 #### Git Prompt Settings - END ####
@@ -194,17 +194,17 @@ fi
 # everything in system
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
-if [ ! -d $DEFAULT_VENV ];then
+if [ ! -d "$DEFAULT_VENV" ];then
     echo "Creating default Python virtual environment for usage."
-    python2.7 -m virtualenv --system-site-packages $DEFAULT_VENV
+    python2.7 -m virtualenv --system-site-packages "$DEFAULT_VENV"
 fi
 
 # If a Python virtual environment exists called venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd(){
-    builtin cd $@
+    builtin cd "$@"
     if [ -d ./venv ];then
-        if [ $VIRTUAL_ENV ];then
+        if [ "$VIRTUAL_ENV" ];then
             if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
                 :
             else
@@ -216,7 +216,7 @@ function cd(){
             source ./venv/bin/activate
             export VIRTUAL_ENV="$PWD/venv"
         fi
-    elif [ $VIRTUAL_ENV ];then
+    elif [ "$VIRTUAL_ENV" ];then
         unset DISABLE_ENV
         if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
             :
@@ -224,14 +224,14 @@ function cd(){
             parentdir="$(dirname "$VIRTUAL_ENV")"
             if [[ "$PWD"/ != "$parentdir"/* ]];then
                 deactivate
-                source $DEFAULT_VENV/bin/activate
+                source "$DEFAULT_VENV"/bin/activate
             fi
         fi
     else
-        if [ ! $DISABLE_ENV ]; then
+        if [ ! "$DISABLE_ENV" ]; then
             read -p "Enable default Python virtualenv (y/n)?"
             if [[ "$REPLY" == "y" ]]; then
-                source $DEFAULT_VENV/bin/activate
+                source "$DEFAULT_VENV"/bin/activate
             else
                 export DISABLE_ENV="True"
             fi
@@ -242,8 +242,8 @@ function cd(){
 # Activate default virtual environment on ls if not currently in a virtual
 # environment
 function ls(){
-    builtin command ls $@
-    if [ ! $VIRTUAL_ENV ];then
+    builtin command ls "$@"
+    if [ ! "$VIRTUAL_ENV" ];then
         if [ -d ./venv ];then
             source ./venv/bin/activate
             export VIRTUAL_ENV="$PWD/venv"
@@ -251,7 +251,7 @@ function ls(){
             if [ ! $DISABLE_ENV ]; then
                 read -p "Enable default Python virtualenv (y/n)?"
                 if [[ "$REPLY" == "y" ]]; then
-                    source $DEFAULT_VENV/bin/activate
+                    source "$DEFAULT_VENV"/bin/activate
                 else
                     export DISABLE_ENV="True"
                 fi
@@ -262,9 +262,9 @@ function ls(){
     fi
 }
 
-source $DEFAULT_VENV/bin/activate
-pip freeze > $HOME/.dotfiles/requirements.txt
+source "$DEFAULT_VENV"/bin/activate
+pip freeze > "$HOME"/.dotfiles/requirements.txt
 
-source $DEFAULT_VENV/bin/activate
-pip freeze > $HOME/.dotfiles/requirements.txt
+source "$DEFAULT_VENV"/bin/activate
+pip freeze > "$HOME"/.dotfiles/requirements.txt
 
