@@ -217,6 +217,7 @@ function cd(){
             export VIRTUAL_ENV="$PWD/venv"
         fi
     elif [ $VIRTUAL_ENV ];then
+        unset DISABLE_ENV
         if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
             :
         else
@@ -227,7 +228,14 @@ function cd(){
             fi
         fi
     else
-        source $DEFAULT_VENV/bin/activate
+        if [ ! $DISABLE_ENV ]; then
+            read -p "Enable default Python virtualenv (y/n)?"
+            if [[ "$REPLY" == "y" ]]; then
+                source $DEFAULT_VENV/bin/activate
+            else
+                export DISABLE_ENV="True"
+            fi
+        fi
     fi
 }
 
@@ -240,7 +248,14 @@ function ls(){
             source ./venv/bin/activate
             export VIRTUAL_ENV="$PWD/venv"
         else
-            source $DEFAULT_VENV/bin/activate
+            if [ ! $DISABLE_ENV ]; then
+                read -p "Enable default Python virtualenv (y/n)?"
+                if [[ "$REPLY" == "y" ]]; then
+                    source $DEFAULT_VENV/bin/activate
+                else
+                    export DISABLE_ENV="True"
+                fi
+            fi
         fi
     fi
 }
