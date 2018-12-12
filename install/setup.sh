@@ -258,16 +258,19 @@ fi
 
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
+DEFAULT_PYV="2"
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
-DEFAULT_PYV="2"
+PY2_PATH="$VIRTUALENV_PATH/default-python-2"
+PY3_PATH="$VIRTUALENV_PATH/default-python-3"
+
 # Create Python2 default virtualenv
-if [ ! -d "$VIRTUALENV_PATH"/default-python-2 ]; then
-    python2 -m virtualenv --system-site-packages "$VIRTUALENV_PATH"/default-python-2
+if [ ! -d "$PY2_PATH" ]; then
+    python2 -m virtualenv --system-site-packages "$PY2_PATH"
 fi
 # Create Python3 default virtualenv
-if [ ! -d "$VIRTUALENV_PATH"/default-python-3 ]; then
-    python3 -m venv --system-site-packages "$VIRTUALENV_PATH"/default-python-3
+if [ ! -d "$PY3_PATH" ]; then
+    python3 -m venv --system-site-packages "$PY3_PATH"
 fi
 
 if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
@@ -275,37 +278,37 @@ if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
     PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
     if [[ "$PYV" = "2" ]]; then
         pip2 freeze > "$HOME"/.requirements-2.txt
-        source "$VIRTUALENV_PATH"/default-python-2/bin/activate
+        source "$PY2_PATH"/bin/activate
         pip2 install -r "$HOME"/.requirements-2.txt
         mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-        ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
+        ln -s "$PY2_PATH" "$DEFAULT_VENV"
     elif [[ "$PYV" = "3" ]]; then
         pip3 freeze > "$HOME"/.requirements-3.txt
-        source "$VIRTUALENV_PATH"/default-python-3/bin/activate
+        source "$PY3_PATH"/bin/activate
         pip3 install -r "$HOME"/.requirements-3.txt
         mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-        ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
+        ln -s "$PY3_PATH" "$DEFAULT_VENV"
     fi
 elif [ ! -d "$DEFAULT_VENV" ]; then
     if [[ "$DEFAULT_PYV" = "2" ]]; then
-        ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
+        ln -s "$PY2_PATH" "$DEFAULT_VENV"
     elif [[ "$DEFAULT_PYV" = "3" ]]; then
-        ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
+        ln -s "$PY3_PATH" "$DEFAULT_VENV"
     fi
 elif [ -L "$DEFAULT_VENV" ]; then
     if [[ "$DEFAULT_PYV" = "2" ]]; then
-        if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-2 ]]; then
+        if [[ "$DEFAULT_VENV" -ef "$PY2_PATH" ]]; then
             :
         else
             rm "$DEFAULT_VENV"
-            ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
+            ln -s "$PY2_PATH" "$DEFAULT_VENV"
         fi
     elif [[ "$DEFAULT_PYV" = "3" ]]; then
-        if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-3 ]]; then
+        if [[ "$DEFAULT_VENV" -ef "$PY3_PATH" ]]; then
             :
         else
             rm "$DEFAULT_VENV"
-            ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
+            ln -s "$PY3_PATH" "$DEFAULT_VENV"
         fi
     fi
 fi
