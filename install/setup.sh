@@ -260,26 +260,26 @@ fi
 # everything in system
 VIRTUALENV_PATH="$HOME/python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
-DEFAULT_PYV="2.7.15"
+DEFAULT_PYV="2"
 # Create Python2 default virtualenv
 if [ ! -d "$VIRTUALENV_PATH"/default-python-2 ]; then
-    python2.7 -m virtualenv --system-site-packages "$VIRTUALENV_PATH"/default-python-2
+    python2 -m virtualenv --system-site-packages "$VIRTUALENV_PATH"/default-python-2
 fi
 # Create Python3 default virtualenv
 if [ ! -d "$VIRTUALENV_PATH"/default-python-3 ]; then
-    python3.7 -m venv --system-site-packages "$VIRTUALENV_PATH"/default-python-3
+    python3 -m venv --system-site-packages "$VIRTUALENV_PATH"/default-python-3
 fi
 
 if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
     source "$DEFAULT_VENV"/bin/activate
-    PYV="$(python --version 2>&1 | awk '{ print $2 }')"
-    if [[ "$PYV" = "2.7.15" ]]; then
+    PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
+    if [[ "$PYV" = "2" ]]; then
         pip2 freeze > "$HOME"/.requirements-2.txt
         source "$VIRTUALENV_PATH"/default-python-2/bin/activate
         pip2 install -r "$HOME"/.requirements-2.txt
         mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
         ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
-    elif [[ "$PYV" = "3.7.1" ]]; then
+    elif [[ "$PYV" = "3" ]]; then
         pip3 freeze > "$HOME"/.requirements-3.txt
         source "$VIRTUALENV_PATH"/default-python-3/bin/activate
         pip3 install -r "$HOME"/.requirements-3.txt
@@ -287,13 +287,13 @@ if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
         ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
     fi
 elif [ ! -d "$DEFAULT_VENV" ]; then
-    if [[ "$DEFAULT_PYV" = "2.7.15" ]]; then
+    if [[ "$DEFAULT_PYV" = "2" ]]; then
         ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
-    elif [[ "$DEFAULT_PYV" = "3.7.1" ]]; then
+    elif [[ "$DEFAULT_PYV" = "3" ]]; then
         ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
     fi
 elif [ -L "$DEFAULT_VENV" ]; then
-    if [[ "$DEFAULT_PYV" = "2.7.15" ]]; then
+    if [[ "$DEFAULT_PYV" = "2" ]]; then
         if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-2 ]]; then
             :
         else
@@ -303,7 +303,7 @@ elif [ -L "$DEFAULT_VENV" ]; then
             rm "$DEFAULT_VENV"
             ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
         fi
-    elif [[ "$DEFAULT_PYV" = "3.7.1" ]]; then
+    elif [[ "$DEFAULT_PYV" = "3" ]]; then
         if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-3 ]]; then
             :
         else
