@@ -389,6 +389,6 @@
         install_oh_my_zsh
 
     - name: Installing VS Code Extensions
-      shell: cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
+      shell: cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension --force
       when: >
             ansible_os_family != "Archlinux"
