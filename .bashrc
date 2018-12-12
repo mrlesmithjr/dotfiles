@@ -231,9 +231,6 @@ elif [ -L "$DEFAULT_VENV" ]; then
         if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-2 ]]; then
             :
         else
-            if [ "$VIRTUAL_ENV" ]; then
-                deactivate
-            fi
             rm "$DEFAULT_VENV"
             ln -s "$VIRTUALENV_PATH"/default-python-2 "$DEFAULT_VENV"
         fi
@@ -241,9 +238,6 @@ elif [ -L "$DEFAULT_VENV" ]; then
         if [[ "$DEFAULT_VENV" -ef "$VIRTUALENV_PATH"/default-python-3 ]]; then
             :
         else
-            if [ "$VIRTUAL_ENV" ]; then
-                deactivate
-            fi
             rm "$DEFAULT_VENV"
             ln -s "$VIRTUALENV_PATH"/default-python-3 "$DEFAULT_VENV"
         fi
