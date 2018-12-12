@@ -285,33 +285,82 @@ function cd(){
             fi
         fi
     fi
+    set_default_virtualenvs
+}
+
+# We manage our default Python virtualenvs here to ensure we are in the correct
+# virtualenv.
+function set_default_virtualenvs(){
+    PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
+    PYP="$(dirname $(which python 2>&1))"
+    if [ "$VIRTUAL_ENV" ]; then
+        if [[ "$PYV" = "$DEFAULT_PYV" ]]; then
+            if [[ "$DEFAULT_PYV" = "2" ]]; then
+                if [[ ":$PATH:" != *":$PY3_PATH/bin:"* ]]; then
+                    deactivate
+                    PATH="$PY3_PATH/bin:$PATH"
+                    source "$PYP"/activate
+                fi
+            elif [[ "$DEFAULT_PYV" = "3" ]]; then
+                if [[ ":$PATH:" != *":$PY2_PATH/bin:"* ]]; then
+                    deactivate
+                    PATH="$PY2_PATH/bin:$PATH"
+                    source "$PYP"/activate
+                fi
+            fi
+        elif [[ "$PYV" != "$DEFAULT_PYV" ]]; then
+            if [[ "$DEFAULT_PYV" = "2" ]]; then
+                if [[ ":$PATH:" != *":$PY2_PATH/bin:"* ]]; then
+                    deactivate
+                    PATH="$PY2_PATH/bin:$PATH"
+                    source "$PYP"/activate
+                fi
+            elif [[ "$DEFAULT_PYV" = "3" ]]; then
+                if [[ ":$PATH:" != *":$PY3_PATH/bin:"* ]]; then
+                    deactivate
+                    PATH="$PY3_PATH/bin:$PATH"
+                    source "$PYP"/activate
+                fi
+            fi
+        fi
+    elif [ ! "$VIRTUAL_ENV" ]; then
+        if [[ ":$PATH:" == *":$PY2_PATH/bin:"* ]]; then
+            REMOVE_PY_PATH="$PY2_PATH/bin"
+            PATH=:$PATH:
+            PATH=${PATH//:$REMOVE_PY_PATH:/:}
+            PATH=${PATH#:}; PATH=${PATH%:}
+        fi
+        if [[ ":$PATH:" == *":$PY3_PATH/bin:"* ]]; then
+            REMOVE_PY_PATH="$PY3_PATH/bin"
+            PATH=:$PATH:
+            PATH=${PATH//:$REMOVE_PY_PATH:/:}
+            PATH=${PATH#:}; PATH=${PATH%:}
+        fi
+    fi
 }
 
 # Activate default virtual environment on ls if not currently in a virtual
 # environment
-function ls(){
-    builtin command ls "$@"
-    if [ ! "$VIRTUAL_ENV" ];then
-        if [ -d ./venv ];then
-            source ./venv/bin/activate
-            export VIRTUAL_ENV="$PWD/venv"
-        else
-            if [ ! $DISABLE_ENV ]; then
-                read -p "Enable default Python virtualenv (y/n)?" REPLY
-                if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
-                    source "$DEFAULT_VENV"/bin/activate
-                else
-                    export DISABLE_ENV="True"
-                fi
-            fi
-        fi
-    else
-        unset DISABLE_ENV
-    fi
-}
-
-source "$DEFAULT_VENV"/bin/activate
-pip freeze > "$HOME"/.dotfiles/requirements.txt
+# function ls(){
+#     builtin command ls "$@"
+#     if [ ! "$VIRTUAL_ENV" ];then
+#         if [ -d ./venv ];then
+#             source ./venv/bin/activate
+#             export VIRTUAL_ENV="$PWD/venv"
+#         else
+#             if [ ! $DISABLE_ENV ]; then
+#                 read -p "Enable default Python virtualenv (y/n)?" REPLY
+#                 if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
+#                     source "$DEFAULT_VENV"/bin/activate
+#                 else
+#                     export DISABLE_ENV="True"
+#                 fi
+#             fi
+#         fi
+#     else
+#         unset DISABLE_ENV
+#     fi
+# }
 
 source "$DEFAULT_VENV"/bin/activate
 pip freeze > "$HOME"/.dotfiles/requirements.txt
