@@ -6,7 +6,7 @@ ANSIBLE_VERSIONS=("2.5.0" "2.5.1" "2.5.2" "2.5.3" "2.5.4" "2.5.5" "2.5.6" \
     "2.6.1" "2.6.2" "2.6.3" "2.6.4" "2.6.5" "2.6.6" "2.6.7" "2.6.8" "2.6.9" \
 "2.6.10" "2.7.0" "2.7.1" "2.7.2" "2.7.3" "2.7.4")
 # ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1" "0.9.2")
-VIRTUALENV_PATH="$HOME/python-virtualenvs"
+VIRTUALENV_PATH="$HOME/.python-virtualenvs"
 
 # Detect pip command
 command -v pip >/dev/null 2>&1

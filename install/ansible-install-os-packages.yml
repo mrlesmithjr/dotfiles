@@ -348,7 +348,7 @@
       pip:
         name: "{{ item['name'] }}"
         state: "{{ item['state'] }}"
-        virtualenv: "{{ lookup('env','HOME') + '/python-virtualenvs/default' }}"
+        virtualenv: "{{ lookup('env','HOME') + '/.python-virtualenvs/default' }}"
       with_items: "{{ python_modules }}"
       when: python_modules is defined
 

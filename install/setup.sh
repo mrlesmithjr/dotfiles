@@ -259,7 +259,7 @@ fi
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
 DEFAULT_PYV="2"
-VIRTUALENV_PATH="$HOME/python-virtualenvs"
+VIRTUALENV_PATH="$HOME/.python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
 PY2_PATH="$VIRTUALENV_PATH/default-python-2"
 PY3_PATH="$VIRTUALENV_PATH/default-python-3"
