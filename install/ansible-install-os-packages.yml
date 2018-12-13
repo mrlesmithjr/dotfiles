@@ -99,6 +99,16 @@
           become: true
           with_items: "{{ debian_packages }}"
 
+        - name: Installing fonts-firacode
+          apt:
+            name: fonts-firacode
+            state: present
+          when: >
+              (ansible_distribution == "Ubuntu" and
+              ansible_distribution_release >= 18.04) or
+              (ansible_distribution == "Debian" and
+              ansible_distribution_release >= 9)
+
         - name: Installing ATOM Editor
           apt:
             deb: "{{ atom_editor_dl }}/atom-amd64.deb"
