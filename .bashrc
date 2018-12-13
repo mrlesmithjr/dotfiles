@@ -251,6 +251,18 @@ fi
 # will source our default virtual environment.
 function cd(){
     builtin cd "$@"
+    check_virtualenvironments
+}
+
+# Activate default virtual environment on ls if not currently in a virtual
+# environment
+function ls(){
+    builtin command ls "$@"
+    check_virtualenvironments
+}
+
+# Function to check and manipulate virtualenvs
+function check_virtualenvironments(){
     if [ -d ./venv ];then
         if [ "$VIRTUAL_ENV" ];then
             if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]];then
@@ -339,29 +351,8 @@ function set_default_virtualenvs(){
     fi
 }
 
-# Activate default virtual environment on ls if not currently in a virtual
-# environment
-# function ls(){
-#     builtin command ls "$@"
-#     if [ ! "$VIRTUAL_ENV" ];then
-#         if [ -d ./venv ];then
-#             source ./venv/bin/activate
-#             export VIRTUAL_ENV="$PWD/venv"
-#         else
-#             if [ ! $DISABLE_ENV ]; then
-#                 read -p "Enable default Python virtualenv (y/n)?" REPLY
-#                 if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
-#                     source "$DEFAULT_VENV"/bin/activate
-#                 else
-#                     export DISABLE_ENV="True"
-#                 fi
-#             fi
-#         fi
-#     else
-#         unset DISABLE_ENV
-#     fi
-# }
-
 source "$DEFAULT_VENV"/bin/activate
+set_default_virtualenvs
+
 pip freeze > "$HOME"/.dotfiles/requirements.txt
 
