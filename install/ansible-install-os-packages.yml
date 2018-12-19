@@ -103,6 +103,7 @@
           apt:
             name: fonts-firacode
             state: present
+          become: true
           when: >
               (ansible_distribution == "Ubuntu" and
               ansible_distribution_release >= 18.04) or
