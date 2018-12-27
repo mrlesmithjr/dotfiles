@@ -20,7 +20,7 @@
   },
   "files.trimTrailingWhitespace": true,
   "git.confirmSync": false,
-  "prettier.disableLanguages": ["vue", "yaml"],
+  "prettier.disableLanguages": ["vue"],
   "python.linting.pep8Enabled": true,
   "python.linting.pylintEnabled": true,
   "vsicons.dontShowNewVersionMessage": true,
