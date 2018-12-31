@@ -223,14 +223,18 @@
             src: https://dl.pstmn.io/download/latest/linux64
             dest: "{{ postman_install_dir }}"
             remote_src: true
-            creates: "{{ postman_install_dir }}/Postman/app/Postman"
+            creates: "{{ postman_install_dir + '/Postman/app/Postman' }}"
             mode: u=rwx,g=rx,o=rx
           become: true
 
         - name: Creating Postman Desktop Launcher
           template:
             src: templates/Postman.desktop.j2
-            dest: "{{ lookup('env', 'HOME') + '/.local/share/applications/Postman.desktop' }}"
+            dest: /usr/share/applications/Postman.desktop
+            owner: root
+            group: root
+            mode: u=rw,g=r,o=r
+          become: true
 
       when: ansible_os_family == "Debian"
 
