@@ -133,8 +133,7 @@ if [[ $(uname) == "Darwin" ]]; then
     # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
     # modules, npm, and their installed packages.
     # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-    # alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask outdated | xargs brew cask reinstall; npm install npm -g; npm update -g; $PIP_CMD freeze | xargs $PIP_CMD install -U; sudo gem update --system; sudo gem update; sudo gem cleanup; sudo purge"
-    alias update="deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
+    alias update="pip freeze | xargs pip install -U; deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
 
     # Test for https://www.passwordstore.org/
     # test -e "/usr/local/etc/bash_completion.d/pass" && source "/usr/local/etc/bash_completion.d/pass"
