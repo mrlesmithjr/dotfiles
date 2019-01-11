@@ -1,5 +1,6 @@
 AlanWalk.markdown-toc
 alexcvzz.vscode-sqlite
+bungcip.better-toml
 DavidAnson.vscode-markdownlint
 DotJoshJohnson.xml
 dracula-theme.theme-dracula
@@ -7,6 +8,7 @@ eamodio.gitlens
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
 GEEKiDoS.vdf
+Gruntfuggly.todo-tree
 lextudio.restructuredtext
 marcostazi.VS-code-vagrantfile
 mauve.terraform
