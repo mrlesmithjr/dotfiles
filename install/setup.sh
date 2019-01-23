@@ -238,6 +238,7 @@ if [[ $(uname) == "Darwin" ]]; then
     if ! xcode-select --print-path &> /dev/null; then
         xcode-select --install &> /dev/null
     fi
+    set +e
     command -v brew >/dev/null 2>&1
     BREW_CHECK=$?
     if [ $BREW_CHECK -eq 0 ]; then
