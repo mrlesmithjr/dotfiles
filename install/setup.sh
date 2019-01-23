@@ -69,7 +69,7 @@ fi
 
 if [[ $(uname) == "Darwin" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME=("$HOME/Library/Application\ Support/Code/User")
+    VSCODE_USER_HOME=("$HOME/Library/Application Support/Code/User")
 fi
 
 if [[ $(uname) == "Linux" ]]; then
