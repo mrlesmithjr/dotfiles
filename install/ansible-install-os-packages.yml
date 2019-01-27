@@ -100,6 +100,24 @@
       when: ansible_os_family == "Darwin"
 
     - block:
+        - name: Adding NodeJS Repo Key
+          apt_key:
+            url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+            state: present
+          become: true
+          when: >
+            ansible_distribution == "Debian" and
+            ansible_distribution_version >= "9"
+
+        - name: Adding NodeJS Repo
+          apt_repository:
+            repo: "{{ 'deb https://deb.nodesource.com/node_11.x ' + ansible_distribution_release|lower + ' main' }}"
+            state: present
+          become: true
+          when: >
+            ansible_distribution == "Debian" and
+            ansible_distribution_version >= "9"
+
         - name: Updating Apt Cache
           apt:
             update_cache: true
