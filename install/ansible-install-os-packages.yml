@@ -100,6 +100,14 @@
       when: ansible_os_family == "Darwin"
 
     - block:
+        - name: Ensuring Initial Pre-Reqs Are Installed
+          apt:
+            name: ["apt-transport-https"]
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
         - name: Adding NodeJS Repo Key
           apt_key:
             url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
