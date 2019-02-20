@@ -8,7 +8,7 @@ DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
-".pylintrc" ".vim" ".vimrc" ".zshrc")
+".pylintrc" ".tmux.conf" ".vim" ".vimrc" ".zshrc")
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
@@ -337,6 +337,6 @@ else
     fi
 fi
 
-ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml
+ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K
 ansible-playbook "$DOTFILES_DIR"/install/macos_defaults.yml
 
