@@ -198,9 +198,9 @@ if [[ $(uname) == "Linux" ]]; then
     if [ -f /etc/debian_version ]; then
         codename="$(lsb_release -c | awk '{print $2}')"
         sudo apt-get update
-        sudo apt-get -y install build-essential libffi-dev libssl-dev python-dev \
-        python-minimal python-pip python-setuptools python-virtualenv \
-        python3-pip python3-venv virtualenv
+        sudo apt-get -y install build-essential fontconfig libffi-dev \
+        libssl-dev python-dev python-minimal python-pip python-setuptools \
+        python-virtualenv python3-pip python3-venv virtualenv
         if [ ! -d "$HOME/.fonts" ];then
             mkdir "$HOME/.fonts"
         fi
