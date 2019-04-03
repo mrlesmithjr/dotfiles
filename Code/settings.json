@@ -26,9 +26,14 @@
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "diffEditor.renderSideBySide": true,
   "terminal.external.osxExec": "iTerm.app",
-  "yaml.customTags": ["!vault"]
+  "yaml.customTags": [
+    "!vault"
+  ],
+  "files.autoSaveDelay": 4000,
+"editor.detectIndentation": false,
+"editor.tabSize": 2
 }
