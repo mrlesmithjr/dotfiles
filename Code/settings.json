@@ -23,10 +23,8 @@
   "prettier.disableLanguages": ["vue"],
   "python.linting.pep8Enabled": true,
   "python.linting.pylintEnabled": true,
-  "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula",
-  "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "diffEditor.renderSideBySide": true,
   "terminal.external.osxExec": "iTerm.app",
@@ -35,5 +33,6 @@
   ],
   "files.autoSaveDelay": 4000,
 "editor.detectIndentation": false,
-"editor.tabSize": 2
+"editor.tabSize": 2,
+"yaml.format.enable": true
 }
