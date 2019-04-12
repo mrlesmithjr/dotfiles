@@ -3,6 +3,7 @@ brew_cask_packages:
   - name: adobe-acrobat-reader
     state: present
   - name: adoptopenjdk
+  - name: airtame
     state: present
   - name: alfred
     state: present
@@ -23,19 +24,19 @@ brew_cask_packages:
   - name: docker
     state: present
   - name: dropbox
-    state: present
+    state: absent
   - name: firefox
     state: present
   - name: font-fira-code
     state: present
   - name: gimp
-    state: present
+    state: absent
   - name: google-backup-and-sync
-    state: present
+    state: absent
   - name: google-chrome
     state: present
   - name: google-hangouts
-    state: present
+    state: absent
   - name: google-photos-backup-and-sync
     state: absent
   - name: hyper
@@ -63,7 +64,7 @@ brew_cask_packages:
   - name: onedrive
     state: present
   - name: pandora
-    state: present
+    state: absent
   - name: postman
     state: present
   - name: powershell
