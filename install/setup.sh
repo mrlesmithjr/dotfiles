@@ -259,7 +259,7 @@ fi
 
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
-DEFAULT_PYV="2"
+DEFAULT_PYV="3"
 VIRTUALENV_PATH="$HOME/.python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
 PY2_PATH="$VIRTUALENV_PATH/default-python-2"
@@ -267,11 +267,19 @@ PY3_PATH="$VIRTUALENV_PATH/default-python-3"
 
 # Create Python2 default virtualenv
 if [ ! -d "$PY2_PATH" ]; then
-    python2 -m virtualenv --system-site-packages "$PY2_PATH"
+    if [ -f /etc/debian_version ]; then
+        python2 -m virtualenv --system-site-packages "$PY2_PATH"
+    else
+        python2 -m virtualenv "$PY2_PATH"
+    fi
 fi
 # Create Python3 default virtualenv
 if [ ! -d "$PY3_PATH" ]; then
-    python3 -m venv --system-site-packages "$PY3_PATH"
+    if [ -f /etc/debian_version ]; then
+        python3 -m venv --system-site-packages "$PY3_PATH"
+    else
+        python3 -m venv "$PY3_PATH"
+    fi
 fi
 
 if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
@@ -316,9 +324,9 @@ fi
 
 source "$DEFAULT_VENV"/bin/activate
 
-"$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
+# "$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
 
-source "$DEFAULT_VENV"/bin/activate
+# source "$DEFAULT_VENV"/bin/activate
 
 set +e
 command -v ansible >/dev/null 2>&1
@@ -326,15 +334,16 @@ ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
     echo "Ansible already installed"
 else
-    command -v pip >/dev/null 2>&1
-    PIP_CHECK=$?
-    command -v pip2 >/dev/null 2>&1
-    PIP2_CHECK=$?
-    if [ $PIP_CHECK -eq 0 ]; then
-        pip install ansible
-        elif [ $PIP2_CHECK -eq 0 ]; then
-        pip2 install ansible
-    fi
+    pip$PYV install ansible
+    # command -v pip >/dev/null 2>&1
+    # PIP_CHECK=$?
+    # command -v pip2 >/dev/null 2>&1
+    # PIP2_CHECK=$?
+    # if [ $PIP_CHECK -eq 0 ]; then
+    #     pip install ansible
+    #     elif [ $PIP2_CHECK -eq 0 ]; then
+    #     pip2 install ansible
+    # fi
 fi
 
 ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K

@@ -199,12 +199,21 @@ PY3_PATH="$VIRTUALENV_PATH/default-python-3"
 
 # Create Python2 default virtualenv
 if [ ! -d "$PY2_PATH" ]; then
-    python2 -m virtualenv --system-site-packages "$PY2_PATH"
+    if [ -f /etc/debian_version ]; then
+        python2 -m virtualenv --system-site-packages "$PY2_PATH"
+    else
+        python2 -m virtualenv "$PY2_PATH"
+    fi
 fi
 # Create Python3 default virtualenv
 if [ ! -d "$PY3_PATH" ]; then
-    python3 -m venv --system-site-packages "$PY3_PATH"
+    if [ -f /etc/debian_version ]; then
+        python3 -m venv --system-site-packages "$PY3_PATH"
+    else
+        python3 -m venv "$PY3_PATH"
+    fi
 fi
+
 
 if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
     source "$DEFAULT_VENV"/bin/activate
