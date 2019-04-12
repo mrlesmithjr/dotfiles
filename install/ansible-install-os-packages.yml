@@ -249,7 +249,7 @@
           until: result is successful
           when: >
             ansible_distribution == "Ubuntu" and
-            ansible_distribution_release >= 18.04
+            ansible_distribution_version >= "18.04"
 
         - name: Installing Postman
           unarchive:
