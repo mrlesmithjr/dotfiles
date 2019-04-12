@@ -127,6 +127,8 @@ brew_packages:
     # Provides drill. dig replacement
   - name: ldns
     state: present
+  - name: libvirt
+    state: present
   - name: nmap
     state: present
   - name: npm
@@ -148,6 +150,8 @@ brew_packages:
   # - name: pyenv
   #   state: present
   - name: python
+    state: present
+  - name: qemu
     state: present
   - name: rancher-compose
     state: present
