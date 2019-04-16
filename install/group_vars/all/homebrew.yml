@@ -112,6 +112,8 @@ brew_packages:
     state: present
   - name: flint-checker
     state: present
+  - name: gcc
+    state: present
   - name: gdbm
     state: present
   - name: git
@@ -127,7 +129,11 @@ brew_packages:
     # Provides drill. dig replacement
   - name: ldns
     state: present
+  - name: libiconv
+    state: present
   - name: libvirt
+    state: present
+  - name: mysql
     state: present
   - name: nmap
     state: present
