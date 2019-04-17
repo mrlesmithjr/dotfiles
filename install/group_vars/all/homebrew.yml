@@ -133,6 +133,8 @@ brew_packages:
     state: present
   - name: libvirt
     state: present
+  - name: mongodb
+    state: present
   - name: mysql
     state: present
   - name: nmap
@@ -153,6 +155,8 @@ brew_packages:
     state: present
   - name: pip-completion
     state: present
+  - name: postgres
+    state: present
   # - name: pyenv
   #   state: present
   - name: python
@@ -164,6 +168,8 @@ brew_packages:
   # - name: rbenv
   #   state: present
   - name: readline
+    state: present
+  - name: redis
     state: present
   # - name: ruby-build
   #   state: present
