@@ -74,6 +74,9 @@ if [[ $(uname) == "Darwin" ]]; then
     # Test for https://www.passwordstore.org/
     # test -e "/usr/local/share/zsh/site-functions/_pass" && source "/usr/local/share/zsh/site-functions/_pass"
 
+    # https://github.com/ansible/ansible/issues/31869
+    export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
     export PATH="/usr/local/sbin:$PATH"
 fi
 

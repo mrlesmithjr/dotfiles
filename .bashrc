@@ -138,6 +138,8 @@ if [[ $(uname) == "Darwin" ]]; then
     # Test for https://www.passwordstore.org/
     # test -e "/usr/local/etc/bash_completion.d/pass" && source "/usr/local/etc/bash_completion.d/pass"
 
+  # https://github.com/ansible/ansible/issues/31869
+  export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 fi
 
 #### MacOS OS Check - END ####
