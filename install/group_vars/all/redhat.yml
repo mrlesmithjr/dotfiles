@@ -12,6 +12,8 @@ redhat_packages:
     state: present
   - name: npm
     state: present
+  - name: ruby-devel
+    state: present
   - name: rubygems
     state: present
   - name: terminator
