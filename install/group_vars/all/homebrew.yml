@@ -6,6 +6,8 @@ brew_cask_packages:
     state: present
   - name: atom
     state: present
+  - name: authy
+    state: present
   - name: db-browser-for-sqlite
     state: present
   - name: docker
