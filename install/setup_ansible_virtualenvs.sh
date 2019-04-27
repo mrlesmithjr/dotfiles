@@ -35,6 +35,7 @@ if [ $? = 0 ];then
         for ANSVER in "${ANSIBLE_VERSIONS[@]}";do
             if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ];then
                 python2.7 -m virtualenv "$VIRTUALENV_PATH/ansible-$ANSVER"
+                # shellcheck source=/dev/null
                 source "$VIRTUALENV_PATH/ansible-$ANSVER/bin/activate"
                 $PIP_CMD install ansible=="$ANSVER" ansible-lint
                 deactivate

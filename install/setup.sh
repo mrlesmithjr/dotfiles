@@ -69,12 +69,12 @@ fi
 
 if [[ $(uname) == "Darwin" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME=("$HOME/Library/Application Support/Code/User")
+    VSCODE_USER_HOME="$HOME/Library/Application Support/Code/User"
 fi
 
 if [[ $(uname) == "Linux" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME=("$HOME/.config/Code/User/")
+    VSCODE_USER_HOME="$HOME/.config/Code/User/"
 fi
 
 if [[ ! -d $VSCODE_USER_HOME ]]; then
@@ -183,7 +183,7 @@ fi
 if [[ $(uname) == "Linux" ]]; then
     # Arch
     if [ -f /etc/arch-release ]; then
-        codename="$(cat /etc/arch-release | awk '{print $1}' )"
+        codename="$(< /etc/arch-release awk '{print $1}' )"
         if [[ $codename == "Manjaro" ]]; then
             yes | sudo pacman -Syyu && yes | sudo pacman -S gc guile autoconf automake \
             binutils bison fakeroot file findutils flex gawk gcc gettext grep \
@@ -218,7 +218,7 @@ if [[ $(uname) == "Linux" ]]; then
 
     # RHEL
     if [ -f /etc/redhat-release ]; then
-        codename="$(cat /etc/redhat-release | awk '{print $1}')"
+        codename="$(< /etc/redhat-release awk '{print $1}')"
         if [[ $codename == "Fedora" ]]; then
             sudo dnf -y install gmp-devel libffi-devel openssl-devel python-crypto \
             python-devel python-dnf python-pip python-setuptools python-virtualenv \
@@ -284,16 +284,19 @@ if [ ! -d "$PY3_PATH" ]; then
 fi
 
 if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
+    # shellcheck source=/dev/null
     source "$DEFAULT_VENV"/bin/activate
     PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
     if [[ "$PYV" = "2" ]]; then
         pip2 freeze > "$HOME"/.requirements-2.txt
+        # shellcheck source=/dev/null
         source "$PY2_PATH"/bin/activate
         pip2 install -r "$HOME"/.requirements-2.txt
         mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
         ln -s "$PY2_PATH" "$DEFAULT_VENV"
     elif [[ "$PYV" = "3" ]]; then
         pip3 freeze > "$HOME"/.requirements-3.txt
+        # shellcheck source=/dev/null
         source "$PY3_PATH"/bin/activate
         pip3 install -r "$HOME"/.requirements-3.txt
         mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
@@ -323,6 +326,7 @@ elif [ -L "$DEFAULT_VENV" ]; then
     fi
 fi
 
+# shellcheck source=/dev/null
 source "$DEFAULT_VENV"/bin/activate
 
 # "$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
@@ -335,7 +339,7 @@ ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
     echo "Ansible already installed"
 else
-    pip$PYV install ansible
+    pip"$PYV" install ansible
     # command -v pip >/dev/null 2>&1
     # PIP_CHECK=$?
     # command -v pip2 >/dev/null 2>&1
