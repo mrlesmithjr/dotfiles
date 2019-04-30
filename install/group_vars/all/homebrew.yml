@@ -218,6 +218,8 @@ brew_packages:
     state: present
   - name: vim
     state: present
+  - name: watch
+    state: present
   - name: wget
     state: present
   - name: zsh
