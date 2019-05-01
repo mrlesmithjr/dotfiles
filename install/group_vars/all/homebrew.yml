@@ -4,9 +4,13 @@ brew_cask_packages:
     state: present
   - name: alfred
     state: present
+  - name: anaconda
+    state: present
   - name: atom
     state: present
   - name: authy
+    state: present
+  - name: cyberduck
     state: present
   - name: db-browser-for-sqlite
     state: present
@@ -32,8 +36,10 @@ brew_cask_packages:
     state: present
   - name: keepassx
     state: present
-  - name: kodi
+  - name: keybase
     state: present
+  - name: kodi
+    state: absent
   - name: lastpass
     state: present
   - name: libreoffice
