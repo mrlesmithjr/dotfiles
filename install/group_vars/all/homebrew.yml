@@ -10,6 +10,8 @@ brew_cask_packages:
     state: present
   - name: authy
     state: present
+  - name: azure-data-studio
+    state: present
   - name: cyberduck
     state: present
   - name: db-browser-for-sqlite
@@ -46,6 +48,8 @@ brew_cask_packages:
     state: absent
   - name: macvim
     state: absent
+  - name: malwarebytes
+    state: present
   - name: meld
     state: absent
   - name: microsoft-office

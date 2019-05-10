@@ -28,11 +28,18 @@
   "workbench.startupEditor": "newUntitledFile",
   "diffEditor.renderSideBySide": true,
   "terminal.external.osxExec": "iTerm.app",
-  "yaml.customTags": [
-    "!vault"
-  ],
+  "yaml.customTags": ["!vault"],
   "files.autoSaveDelay": 4000,
-"editor.detectIndentation": false,
-"editor.tabSize": 2,
-"yaml.format.enable": true
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "yaml.format.enable": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "[ruby]": {
+    "editor.formatOnSave": true
+  },
+  "ruby.format": "rubocop",
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "editor.formatOnSaveTimeout": 1500
 }
