@@ -4,6 +4,9 @@
 
 module.exports = {
   config: {
+    // hyper-opacity
+    opacity: 0.8,
+
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
@@ -152,7 +155,8 @@ module.exports = {
     // "hyper-material-theme",
     // "hyperterm-chesterish",
     "hypercwd",
-    "hyper-dark-scrollbar"
+    "hyper-dark-scrollbar",
+    "hyper-opacity"
   ],
 
   // in development, you can create a directory under
