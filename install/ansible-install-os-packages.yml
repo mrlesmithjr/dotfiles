@@ -171,6 +171,14 @@
           register: result
           until: result is successful
 
+        - name: Installing Hyper Terminal
+          apt:
+            deb: https://github.com/zeit/hyper/releases/download/3.0.2/hyper_3.0.2_amd64.deb
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
         # https://www.dropbox.com/install-linux
         # This should never have to change
         - name: Installing Dropbox Helper Application
@@ -316,6 +324,14 @@
         - name: Installing ATOM Editor
           yum:
             name: "{{ atom_editor_dl }}/atom.x86_64.rpm"
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
+        - name: Installing Hyper Terminal
+          yum:
+            name: https://github.com/zeit/hyper/releases/download/3.0.2/hyper-3.0.2.x86_64.rpm
             state: present
           become: true
           register: result

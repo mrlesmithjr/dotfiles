@@ -34,6 +34,8 @@ brew_cask_packages:
     state: present
   - name: google-photos-backup-and-sync
     state: absent
+  - name: hyper
+    state: present
   - name: iterm2
     state: present
   - name: keepassx
@@ -198,6 +200,8 @@ brew_packages:
   - name: tmux
     state: present
   - name: tree
+    state: present
+  - name: unixodbc
     state: present
   - name: vagrant-completion
     state: present

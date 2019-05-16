@@ -8,8 +8,8 @@ DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global" \
-".pylintrc" ".rubocop.yml" ".tmux.conf" ".vim" ".vimrc" ".yamllint.yml" \
-".zshrc")
+".hyper.js" ".pylintrc" ".rubocop.yml" ".tmux.conf" ".vim" ".vimrc" \
+".yamllint.yml" ".zshrc")
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
