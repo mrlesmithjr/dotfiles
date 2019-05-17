@@ -271,6 +271,10 @@ if [[ $(uname) == "Linux" ]]; then
         "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
         test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     fi
+    if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
+      sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
+      sudo chown -R $(whoami) /home/linuxbrew/.linuxbrew/var/homebrew/linked
+    fi
 fi
 
 # Setup a default Python virtual environment to use rather than installing
