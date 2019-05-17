@@ -82,6 +82,17 @@ fi
 
 #### MacOS OS Check - END ####
 
+#### Linux Hombrew
+if [[ $(uname) == "Linux" ]]; then
+  if [ -d /home/linuxbrew ]; then
+    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
+      sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
+      sudo chown -R $(whoami) /home/linuxbrew/.linuxbrew/var/homebrew/linked
+    fi
+  fi
+fi
+
 # Set aliases
 alias grep='grep --color=auto'
 alias ll='ls -la'
