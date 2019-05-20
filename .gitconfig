@@ -32,6 +32,7 @@
 	branch = auto
 	interactive = auto
 	diff = auto
+	ui = auto
 [diff]
     tool = default-difftool
 [difftool "default-difftool"]
@@ -42,3 +43,5 @@
 	path = ~/.gitconfig-work
 [status]
 	submoduleSummary = true
+[pager]
+	branch = false
