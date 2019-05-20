@@ -14,7 +14,7 @@ hashicorp_tools:
     state: present
     # Debian package
   - name: vagrant
-    version: 2.2.2
+    version: 2.2.4
     state: present
   - name: vault
     version: 1.0.0
