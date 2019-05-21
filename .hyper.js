@@ -5,6 +5,7 @@
 module.exports = {
   config: {
     // hyper-opacity
+    // opacity is only supported on macOS and Windows
     opacity: 0.8,
 
     // choose either `'stable'` for receiving highly polished,
@@ -46,7 +47,6 @@ module.exports = {
     foregroundColor: "#fff",
 
     // terminal background color
-    // opacity is only supported on macOS
     backgroundColor: "#000",
 
     // terminal selection color
@@ -151,12 +151,13 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyper-statusline",
-    // "hyper-material-theme",
-    // "hyperterm-chesterish",
-    "hypercwd",
     "hyper-dark-scrollbar",
-    "hyper-opacity"
+    // "hyper-material-theme",
+    "hyper-opacity",
+    "hyper-search",
+    "hyper-statusline",
+    "hypercwd"
+    // "hyperterm-chesterish",
   ],
 
   // in development, you can create a directory under
