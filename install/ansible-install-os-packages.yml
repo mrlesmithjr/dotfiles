@@ -42,7 +42,7 @@
             msg: Homebrew is missing...Install from http://brew.sh/
           when: >
             not homebrew_check.stat.exists and
-            not install_homebrew_if_missing
+            not install_homebrew_if_missing|bool
 
         - name: Installing Homebrew
           command: >
@@ -50,7 +50,7 @@
             $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
           when: >
             not homebrew_check.stat.exists and
-            install_homebrew_if_missing
+            install_homebrew_if_missing|bool
 
       when: ansible_os_family == "Darwin"
 
@@ -494,7 +494,7 @@
       git:
         repo: https://github.com/robbyrussell/oh-my-zsh
         dest: $HOME/.oh-my-zsh
-      when: install_oh_my_zsh
+      when: install_oh_my_zsh|bool
 
     - name: Capturing Current User
       set_fact:
@@ -506,7 +506,7 @@
         name: "{{ _current_user }}"
         shell: /bin/zsh
       become: true
-      when: install_oh_my_zsh
+      when: install_oh_my_zsh|bool
 
     - name: Installing Meslo Powerline Font
       get_url:
@@ -514,7 +514,7 @@
         dest: $HOME/Library/Fonts/Meslo LG M Regular for Powerline.ttf
       when: >
         ansible_os_family == "Darwin" and
-        install_oh_my_zsh
+        install_oh_my_zsh|bool
 
     - name: Installing VS Code Extensions
       shell: cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
