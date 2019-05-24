@@ -82,6 +82,13 @@ fi
 
 #### MacOS OS Check - END ####
 
+#### Linux Hombrew
+if [[ $(uname) == "Linux" ]]; then
+  if [ -d /home/linuxbrew ]; then
+    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  fi
+fi
+
 # Set aliases
 alias grep='grep --color=auto'
 alias ll='ls -la'

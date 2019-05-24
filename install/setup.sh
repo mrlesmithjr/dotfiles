@@ -187,7 +187,7 @@ if [[ $(uname) == "Linux" ]]; then
         codename="$(< /etc/arch-release awk '{print $1}' )"
         if [[ $codename == "Manjaro" ]]; then
             yes | sudo pacman -Syyu && yes | sudo pacman -S gc guile autoconf automake \
-            binutils bison fakeroot file findutils flex gawk gcc gettext grep \
+            binutils bison curl fakeroot file findutils flex gawk gcc gettext grep \
             groff gzip libtool m4 make pacman patch pkgconf sed sudo systemd \
             texinfo util-linux which python-setuptools python-virtualenv python-pip \
             python-pyopenssl python2-setuptools python2-virtualenv python2-pip \
@@ -199,7 +199,7 @@ if [[ $(uname) == "Linux" ]]; then
     if [ -f /etc/debian_version ]; then
         codename="$(lsb_release -c | awk '{print $2}')"
         sudo apt-get update
-        sudo apt-get -y install build-essential fontconfig libffi-dev \
+        sudo apt-get -y install build-essential curl fontconfig libffi-dev \
         libssl-dev python-dev python-minimal python-pip python-setuptools \
         python-virtualenv python3-pip python3-venv virtualenv
         if [ ! -d "$HOME/.fonts" ];then
@@ -221,13 +221,13 @@ if [[ $(uname) == "Linux" ]]; then
     if [ -f /etc/redhat-release ]; then
         codename="$(< /etc/redhat-release awk '{print $1}')"
         if [[ $codename == "Fedora" ]]; then
-            sudo dnf -y install gmp-devel libffi-devel openssl-devel python-crypto \
+            sudo dnf -y install curl gmp-devel libffi-devel openssl-devel python-crypto \
             python-devel python-dnf python-pip python-setuptools python-virtualenv \
             python3-devel python3-dnf python3-setuptools python3-virtualenv \
             redhat-rpm-config && \
             sudo dnf -y group install "C Development Tools and Libraries"
             elif [[ $codename == "CentOS" ]]; then
-            sudo yum -y install gmp-devel libffi-devel openssl-devel python-crypto \
+            sudo yum -y install curl gmp-devel libffi-devel openssl-devel python-crypto \
             python-devel python-pip python-setuptools python-virtualenv \
             redhat-rpm-config && \
             sudo yum -y group install "Development Tools"
@@ -257,6 +257,24 @@ if [[ $(uname) == "Darwin" ]]; then
         brew install python@3 python@2
     fi
     pip install virtualenv
+fi
+
+# Linux Homebrew
+if [[ $(uname) == "Linux" ]]; then
+    set +e
+    command -v brew >/dev/null 2>&1
+    BREW_CHECK=$?
+    if [ $BREW_CHECK -eq 0 ]; then
+          echo "Brew already installed"
+    else
+        bash -c \
+        "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    fi
+    if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
+      sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
+      sudo chown -R $(whoami) /home/linuxbrew/.linuxbrew/var/homebrew/linked
+    fi
 fi
 
 # Setup a default Python virtual environment to use rather than installing
