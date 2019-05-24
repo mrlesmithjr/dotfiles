@@ -2,11 +2,13 @@ AlanWalk.markdown-toc
 alexcvzz.vscode-sqlite
 bungcip.better-toml
 DavidAnson.vscode-markdownlint
+donjayamanne.githistory
 DotJoshJohnson.xml
 dracula-theme.theme-dracula
 eamodio.gitlens
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
+fatihacet.gitlab-workflow
 GEEKiDoS.vdf
 Gruntfuggly.todo-tree
 lextudio.restructuredtext
@@ -14,6 +16,8 @@ marcostazi.VS-code-vagrantfile
 mauve.terraform
 ms-python.python
 ms-vscode.atom-keybindings
+ms-vscode.Go
+ms-vscode.powershell
 ms-vscode.wordcount
 PeterJausovec.vscode-docker
 PKief.material-icon-theme
