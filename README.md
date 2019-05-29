@@ -1,6 +1,28 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [REPO INFO](#repo-info)
+  - [Usage](#usage)
+    - [Clone down to your `$HOME` folder](#clone-down-to-your-home-folder)
+      - [Setup **EVERYTHING**](#setup-everything)
+  - [Various Setting Info](#various-setting-info)
+    - [`.bashrc` and `.bash_profile`](#bashrc-and-bash_profile)
+    - [`.gitconfig`](#gitconfig)
+    - [`.vimrc` and `.vim`](#vimrc-and-vim)
+  - [Some Example Plugins/bundles and etc](#some-example-pluginsbundles-and-etc)
+  - [Visual Studio Code Extensions](#visual-studio-code-extensions)
+  - [Manipulating packages to install](#manipulating-packages-to-install)
+  - [License](#license)
+  - [Author Information](#author-information)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # REPO INFO
 
-This repo is for a collection of my `dotfiles` which I use.
+This repo is for a collection of my `dotfiles` which I use. And also installs
+numerous applications which I use for development, automation, etc.
 
 My goal will be to make as many of these as portable between `Linux` distros
 and `MacOS`.
@@ -43,7 +65,6 @@ So to make these portable the only thing added to `.bash_profile` is below:
 
 ```bash
 # .bash_profile
-
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
@@ -57,22 +78,57 @@ everything works as planned in all scenarios between `Linux` and `MacOS`.
 Make sure to edit this file to match your preferences. Especially the below:
 
 ```bash
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
+[core]
+  excludesfile = ~/.gitignore_global
+  # editor = atom --wait
+  # editor = code --wait
+  # editor = vi
+  editor = vim
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [user]
-    email = mrlesmithjr@gmail.com
-    name = Larry Smith Jr.
+  email = mrlesmithjr@gmail.com
+  name = Larry Smith Jr.
 [credential]
-    # Fedora
-    # helper = /usr/libexec/git-core/git-credential-gnome-keyring
-    # MacOS
-    helper = osxkeychain
+  # Fedora
+  # helper = /usr/libexec/git-core/git-credential-gnome-keyring
+  # MacOS
+  helper = osxkeychain
+  # Ubuntu
+  # helper = cache
+  useHttpPath = true
+[color]
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
+[color]
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
+  ui = auto
 [diff]
-    tool = meld
-[difftool]
-    prompt = false
-[merge]
-    tool = meld
-[mergetool]
-    prompt = false
+  tool = default-difftool
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[includeIf "gitdir:~/Git_Projects/Work/"]
+  path = ~/.gitconfig-work
+[includeIf "gitdir:~/projects/devops_automation/"]
+  path = ~/.gitconfig-work
+[status]
+  submoduleSummary = true
+[pager]
+  branch = false
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+  insteadOf = https://gitlab.com/
 ```
 
 ### `.vimrc` and `.vim`
