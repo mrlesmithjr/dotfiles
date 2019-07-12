@@ -211,6 +211,30 @@
           register: result
           until: result is successful
 
+        - name: Adding Brave Browser Repo Key
+          apt_key:
+            url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
+        - name: Adding Brave Browser Repo
+          apt_repository:
+            repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ {{ ansible_distribution_release }} main"
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
+        - name: Installing Brave Browser
+          apt:
+            name: ["brave-browser"]
+            state: present
+          become: true
+          register: result
+          until: result is successful
+
         - name: Adding VS Code Repo Key
           apt_key:
             url: https://packages.microsoft.com/keys/microsoft.asc
