@@ -43,6 +43,7 @@
 	path = ~/.gitconfig-work
 [status]
 	submoduleSummary = true
+	showUntrackedFiles = all
 [pager]
 	branch = false
 [url "git@github.com:"]
@@ -57,3 +58,16 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[push]
+	followTags = true
+	default = current
+[color "branch"]
+  current = yellow reverse
+	local = yellow
+	remote = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[commit]
+	template = ~/.gitmessage
