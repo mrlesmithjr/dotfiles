@@ -370,6 +370,6 @@ else
     # fi
 fi
 
-# ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K
-# ansible-playbook "$DOTFILES_DIR"/install/macos_defaults.yml
+ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K
+ansible-playbook "$DOTFILES_DIR"/install/macos_defaults.yml
 
