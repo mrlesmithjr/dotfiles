@@ -12,6 +12,8 @@ brew_cask_packages:
     state: present
   - name: azure-data-studio
     state: present
+  - name: brave-browser
+    state: present
   - name: cyberduck
     state: present
   - name: db-browser-for-sqlite
@@ -63,6 +65,8 @@ brew_cask_packages:
   - name: postman
     state: present
   - name: powershell
+    state: present
+  - name: rcdefaultapp
     state: present
   - name: royal-tsx
     state: present
