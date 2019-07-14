@@ -53,3 +53,7 @@
 	prune = true
 [branch "master"]
 	mergeOptions = --no-ff
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
