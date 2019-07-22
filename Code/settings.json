@@ -1,6 +1,9 @@
 {
   "atomKeymap.promptV3Features": true,
   "cSpell.enabled": false,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "block",
   "editor.fontFamily": "'Fira Code'",
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
@@ -23,6 +26,7 @@
   "prettier.disableLanguages": ["vue"],
   "python.linting.pep8Enabled": true,
   "python.linting.pylintEnabled": true,
+  "telemetry.enableTelemetry": false,
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula",
   "workbench.startupEditor": "newUntitledFile",
@@ -41,5 +45,6 @@
   "ruby.lint": {
     "rubocop": true
   },
-  "editor.formatOnSaveTimeout": 1500
+  "editor.formatOnSaveTimeout": 1500,
+  "editor.formatOnType": false
 }
