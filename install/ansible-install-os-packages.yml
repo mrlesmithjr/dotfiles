@@ -79,15 +79,6 @@
           with_items: "{{ brew_taps }}"
           when: homebrew_check.stat.exists
 
-        - name: Installing Homebrew Packages
-          homebrew:
-            name: "{{ item['name'] }}"
-            state: "{{ item['state'] }}"
-          register: result
-          until: result is successful
-          with_items: "{{ brew_packages }}"
-          when: homebrew_check.stat.exists
-
         - name: Installing Homebrew Cask Packages
           homebrew_cask:
             name: "{{ item['name'] }}"
@@ -95,6 +86,15 @@
           register: result
           until: result is successful
           with_items: "{{ brew_cask_packages }}"
+          when: homebrew_check.stat.exists
+
+        - name: Installing Homebrew Packages
+          homebrew:
+            name: "{{ item['name'] }}"
+            state: "{{ item['state'] }}"
+          register: result
+          until: result is successful
+          with_items: "{{ brew_packages }}"
           when: homebrew_check.stat.exists
 
       when: ansible_os_family == "Darwin"

@@ -2,6 +2,8 @@
 brew_cask_packages:
   - name: adobe-acrobat-reader
     state: present
+  - name: adoptopenjdk
+    state: present
   - name: alfred
     state: present
   - name: anaconda
@@ -139,6 +141,8 @@ brew_packages:
   - name: git-lfs
     state: present
   - name: go
+    state: present
+  - name: groovy
     state: present
   - name: jq
     state: present
