@@ -69,5 +69,3 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[commit]
-	template = ~/.gitmessage
