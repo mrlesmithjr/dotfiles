@@ -201,10 +201,12 @@ brew_packages:
   - name: ssh-copy-id
     state: present
   - name: terraform
-    state: present
+    state: absent
   - name: terraform-inventory
     state: present
   - name: terraform-provisioner-ansible
+    state: absent
+  - name: tfenv
     state: present
   - name: tmux
     state: present
