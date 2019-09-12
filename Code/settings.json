@@ -1,6 +1,6 @@
 {
   "atomKeymap.promptV3Features": true,
-  "cSpell.enabled": false,
+  "cSpell.enabled": true,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "block",
@@ -46,5 +46,8 @@
     "rubocop": true
   },
   "editor.formatOnSaveTimeout": 1500,
-  "editor.formatOnType": false
+  "editor.formatOnType": false,
+  "cSpell.userWords": [
+    "Ansible"
+  ]
 }
