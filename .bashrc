@@ -100,6 +100,12 @@ if [[ $(uname) == "Darwin" ]]; then
         GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
     fi
 
+    brew list | grep python >/dev/null 2>&1
+    PYTHON_CHECK=$?
+    if [ $PYTHON_CHECK -ne 0 ]; then
+        brew install python@3 python@2
+    fi
+
     # Check if pip is installed
     command -v pip >/dev/null 2>&1
     PIP_CHECK=$?
@@ -373,3 +379,6 @@ set_default_virtualenvs
 
 pip freeze > "$HOME"/.dotfiles/requirements.txt
 
+
+# added by travis gem
+[ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh
