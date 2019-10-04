@@ -3,17 +3,20 @@ brew_cask_packages:
   - name: adobe-acrobat-reader
     state: present
   - name: adoptopenjdk
+    state: present
   - name: airtame
-    state: present
+    state: absent
   - name: alfred
-    state: present
+    state: absent
   - name: anaconda
-    state: present
+    state: absent
   - name: atom
     state: present
   - name: authy
     state: present
   - name: azure-data-studio
+    state: present
+  - name: balenaetcher
     state: present
   - name: brave-browser
     state: present
@@ -24,7 +27,7 @@ brew_cask_packages:
   - name: docker
     state: present
   - name: dropbox
-    state: absent
+    state: present
   - name: firefox
     state: present
   - name: font-fira-code
@@ -32,7 +35,7 @@ brew_cask_packages:
   - name: gimp
     state: absent
   - name: google-backup-and-sync
-    state: absent
+    state: present
   - name: google-chrome
     state: present
   - name: google-hangouts
@@ -40,7 +43,7 @@ brew_cask_packages:
   - name: google-photos-backup-and-sync
     state: absent
   - name: hyper
-    state: present
+    state: absent
   - name: iterm2
     state: present
   - name: keepassx
@@ -56,10 +59,12 @@ brew_cask_packages:
   - name: macvim
     state: absent
   - name: malwarebytes
-    state: present
+    state: absent
   - name: meld
     state: absent
   - name: microsoft-office
+    state: present
+  - name: mongodb
     state: present
   - name: onedrive
     state: present
@@ -70,13 +75,13 @@ brew_cask_packages:
   - name: powershell
     state: present
   - name: rcdefaultapp
-    state: present
+    state: absent
   - name: royal-tsx
     state: present
   - name: sequel-pro
     state: present
   - name: skype
-    state: absent
+    state: present
   - name: slack
     state: present
   - name: sling
@@ -92,7 +97,7 @@ brew_cask_packages:
   - name: vagrant
     state: present
   - name: vagrant-manager
-    state: present
+    state: absent
   - name: vagrant-vmware-utility
     state: present
   - name: virtualbox
@@ -110,7 +115,7 @@ brew_packages:
   - name: apm-bash-completion
     state: present
   - name: autoconf
-    state: present
+    state: absent
   - name: bash-completion
     state: present
   - name: bash-git-prompt
@@ -120,17 +125,13 @@ brew_packages:
   - name: consul
     state: present
   - name: ctags
-    state: present
+    state: absent
   - name: docker-completion
     state: present
-  # - name: docker-compose
-  #   state: present
   - name: docker-compose-completion
     state: present
-  # - name: docker-machine
-  #   state: present
   - name: doxygen
-    state: present
+    state: absent
   - name: flint-checker
     state: present
   - name: gcc
@@ -144,7 +145,7 @@ brew_packages:
   - name: go
     state: present
   - name: groovy
-    state: present
+    state: absent
   - name: jq
     state: present
   - name: kubernetes-helm
@@ -153,11 +154,9 @@ brew_packages:
   - name: ldns
     state: present
   - name: libiconv
-    state: present
+    state: absent
   - name: libvirt
-    state: present
-  - name: mongodb
-    state: present
+    state: absent
   - name: mysql
     state: present
   - name: nmap
@@ -179,23 +178,17 @@ brew_packages:
   - name: pip-completion
     state: present
   - name: postgres
-    state: present
-  # - name: pyenv
-  #   state: present
+    state: absent
   - name: python
     state: present
   - name: qemu
-    state: present
+    state: absent
   - name: rancher-compose
-    state: present
-  # - name: rbenv
-  #   state: present
+    state: absent
   - name: readline
     state: present
   - name: redis
     state: present
-  # - name: ruby-build
-  #   state: present
   - name: shellcheck
     state: present
   - name: ssh-copy-id
@@ -203,7 +196,7 @@ brew_packages:
   - name: terraform
     state: absent
   - name: terraform-inventory
-    state: present
+    state: absent
   - name: terraform-provisioner-ansible
     state: absent
   - name: tfenv
@@ -213,7 +206,7 @@ brew_packages:
   - name: tree
     state: present
   - name: unixodbc
-    state: present
+    state: absent
   - name: vagrant-completion
     state: present
   - name: vault
