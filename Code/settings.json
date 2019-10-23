@@ -24,7 +24,7 @@
   "files.trimTrailingWhitespace": true,
   "git.confirmSync": false,
   "prettier.disableLanguages": ["vue"],
-  "python.linting.pep8Enabled": true,
+  "python.linting.pycodestyleEnabled": true,
   "python.linting.pylintEnabled": true,
   "telemetry.enableTelemetry": false,
   "window.zoomLevel": 0,
@@ -48,6 +48,22 @@
   "editor.formatOnSaveTimeout": 1500,
   "editor.formatOnType": false,
   "cSpell.userWords": [
-    "Ansible"
+    "Ansible",
+    "azurerm",
+    "distro",
+    "distros",
+    "hostvars",
+    "kube",
+    "kubeadm",
+    "kubeconfig",
+    "kubectl",
+    "kubelet",
+    "kubernetes",
+    "mware",
+    "qemu",
+    "sata",
+    "tfstate",
+    "v",
+    "vcpu"
   ]
 }
