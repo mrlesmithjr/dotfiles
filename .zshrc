@@ -65,7 +65,7 @@ if [[ $(uname) == "Darwin" ]]; then
     # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
     # modules, npm, and their installed packages.
     # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-    alias update="pip freeze | xargs pip install -U; deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
+    alias update="pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U; deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
 
     if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
         source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
