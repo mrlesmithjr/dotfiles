@@ -542,5 +542,3 @@
 
     - name: Installing VS Code Extensions
       shell: cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
-      when: >
-        ansible_os_family != "Archlinux"

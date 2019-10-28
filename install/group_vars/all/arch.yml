@@ -4,6 +4,8 @@ arch_packages:
     state: present
   - name: chromium
     state: present
+  - name: code
+    state: present
   - name: jq
     state: present
   - name: keepass

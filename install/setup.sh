@@ -75,7 +75,14 @@ fi
 
 if [[ $(uname) == "Linux" ]]; then
     # Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
-    VSCODE_USER_HOME="$HOME/.config/Code/User/"
+    if [ -f /etc/arch-release ]; then
+        codename="$(< /etc/arch-release awk '{print $1}' )"
+        if [[ $codename == "Manjaro" ]]; then
+            VSCODE_USER_HOME="$HOME/.config/Code - OSS/User"
+        fi
+    else
+        VSCODE_USER_HOME="$HOME/.config/Code/User"
+    fi
 fi
 
 if [[ ! -d $VSCODE_USER_HOME ]]; then
