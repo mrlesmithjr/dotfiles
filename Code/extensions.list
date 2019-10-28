@@ -9,14 +9,15 @@ eamodio.gitlens
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
 fatihacet.gitlab-workflow
+firefox-devtools.vscode-firefox-debug
 GEEKiDoS.vdf
 GitHub.vscode-pull-request-github
 Gruntfuggly.todo-tree
-hbenl.vscode-firefox-debug
 lextudio.restructuredtext
 marcostazi.VS-code-vagrantfile
 mauve.terraform
 ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
