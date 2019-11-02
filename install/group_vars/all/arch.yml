@@ -6,6 +6,8 @@ arch_packages:
     state: present
   - name: code
     state: present
+  - name: docker
+    state: present
   - name: jq
     state: present
   - name: keepass
