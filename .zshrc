@@ -1,10 +1,10 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
+ZSH_THEME="agnoster"
 # ZSH_THEME="af-magic"
 # ZSH_THEME="pygmalion"
-ZSH_THEME="avit"
+# ZSH_THEME="avit"
 plugins=(docker git pip python vagrant)
 
 source "$ZSH"/oh-my-zsh.sh
