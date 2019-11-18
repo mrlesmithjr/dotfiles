@@ -8,7 +8,8 @@
       when: >
         (ansible_os_family == "Debian" or
         ansible_distribution == "Fedora" or
-        ansible_os_family == "Archlinux") and
+        ansible_os_family == "Archlinux"or
+        ansible_os_family == "elementary OS") and
         ansible_virtualization_role != "guest"
   pre_tasks:
     - block:
@@ -161,7 +162,8 @@
             (ansible_distribution == "Ubuntu" and
             ansible_distribution_version >= "18.04") or
             (ansible_distribution == "Debian" and
-            ansible_distribution_version >= "9")
+            ansible_distribution_version >= "9") or
+            ansible_distribution == "elementary OS"
 
         - name: Installing ATOM Editor
           apt:
@@ -218,6 +220,7 @@
           become: true
           register: result
           until: result is successful
+          when: ansible_distribution != "elementary OS"
 
         - name: Adding Brave Browser Repo
           apt_repository:
@@ -226,6 +229,7 @@
           become: true
           register: result
           until: result is successful
+          when: ansible_distribution != "elementary OS"
 
         - name: Installing Brave Browser
           apt:
@@ -234,6 +238,7 @@
           become: true
           register: result
           until: result is successful
+          when: ansible_distribution != "elementary OS"
 
         - name: Adding VS Code Repo Key
           apt_key:
@@ -280,8 +285,9 @@
           register: result
           until: result is successful
           when: >
-            ansible_distribution == "Ubuntu" and
-            ansible_distribution_version >= "18.04"
+            (ansible_distribution == "Ubuntu" and
+            ansible_distribution_version >= "18.04") or
+            ansible_distribution == "elementary OS"
 
         - name: Installing Postman
           unarchive:
@@ -301,7 +307,9 @@
             mode: u=rw,g=r,o=r
           become: true
 
-      when: ansible_os_family == "Debian"
+      when: >
+        ansible_os_family == "Debian" or
+        ansible_os_family == "elementary OS"
 
     - block:
         - name: Adding Dropbox Repo
