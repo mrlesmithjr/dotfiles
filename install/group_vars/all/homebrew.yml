@@ -47,6 +47,8 @@ brew_cask_packages:
   - name: iterm2
     state: present
   - name: keepassx
+    state: absent
+  - name: keepassxc
     state: present
   - name: keybase
     state: present
