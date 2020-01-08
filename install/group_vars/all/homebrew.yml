@@ -18,6 +18,8 @@ brew_cask_packages:
     state: present
   - name: balenaetcher
     state: present
+  - name: bitwarden
+    state: present
   - name: brave-browser
     state: present
   - name: cyberduck
@@ -44,6 +46,8 @@ brew_cask_packages:
     state: absent
   - name: hyper
     state: absent
+  - name: idrive
+    state: present
   - name: iterm2
     state: present
   - name: keepassx
@@ -66,10 +70,10 @@ brew_cask_packages:
     state: absent
   - name: microsoft-office
     state: present
-  - name: mongodb
-    state: present
-  - name: onedrive
-    state: present
+  # - name: mongodb
+  #   state: present
+  # - name: onedrive
+  #   state: present
   - name: pandora
     state: absent
   - name: postman
