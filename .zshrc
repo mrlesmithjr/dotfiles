@@ -285,7 +285,11 @@ source "$DEFAULT_VENV"/bin/activate
 set_default_virtualenvs
 
 pip freeze >"$HOME"/.dotfiles/requirements.txt
-code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
+
+# Capture existing VSCode extensions
+if command -v code >/dev/null 2>&1; then
+  code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
+fi
 
 # added by travis gem
 [ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh
