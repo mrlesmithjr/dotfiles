@@ -287,7 +287,7 @@ set_default_virtualenvs
 pip freeze >"$HOME"/.dotfiles/requirements.txt
 
 # Capture existing VSCode extensions
-if command -v code >/dev/null 2>&1; then
+if [ -x "$(command -v code)" ]; then
   code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
 fi
 
