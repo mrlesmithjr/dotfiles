@@ -142,10 +142,14 @@ else
   fi
 fi
 
+# Git_Projects - Location for keeping Git projects
+# Playground - Location for throwaway projects
+# Projects - Location for keeping ongoing Projects
+
 folders=("$HOME/Git_Projects" "$HOME/Git_Projects/Personal/GitHub"
   "$HOME/Git_Projects/Personal/GitHub/mrlesmithjr"
   "$HOME/Git_Projects/Personal/GitLab" "$HOME/Git_Projects/Work"
-  "$HOME/projects")
+  "$HOME/Playground" "$HOME/Projects")
 
 for folder in "${folders[@]}"; do
   if [ ! -d "$folder" ]; then
