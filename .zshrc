@@ -119,13 +119,13 @@ PY2_PATH="$VIRTUALENV_PATH/default-python-2"
 PY3_PATH="$VIRTUALENV_PATH/default-python-3"
 
 # Create Python2 default virtualenv
-if [ ! -d "$PY2_PATH" ]; then
-  if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-    python2 -m virtualenv --system-site-packages "$PY2_PATH"
-  else
-    python2 -m virtualenv "$PY2_PATH"
-  fi
-fi
+# if [ ! -d "$PY2_PATH" ]; then
+#   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
+#     python2 -m virtualenv --system-site-packages "$PY2_PATH"
+#   else
+#     python2 -m virtualenv "$PY2_PATH"
+#   fi
+# fi
 # Create Python3 default virtualenv
 if [ ! -d "$PY3_PATH" ]; then
   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
