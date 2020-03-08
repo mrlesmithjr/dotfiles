@@ -54,6 +54,11 @@ alias lr='ls -latr'
 
 #### BASH CONFIGURATION - END ####
 
+# Ensure $HOME/.netrc exists. Do not store this in version control
+if [ ! -f "$HOME/.netrc" ]; then
+  touch "$HOME/.netrc"
+fi
+
 # Source global bashrc if it exists
 if [ -f /etc/bashrc ]; then
   source /etc/bashrc

@@ -12,6 +12,11 @@ plugins=(docker git pip python vagrant)
 
 source "$ZSH"/oh-my-zsh.sh
 
+# Ensure $HOME/.netrc exists. Do not store this in version control
+if [ ! -f "$HOME/.netrc" ]; then
+  touch "$HOME/.netrc"
+fi
+
 # Check if Ruby is installed and set path if it is
 if which ruby >/dev/null && which gem >/dev/null; then
   PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
