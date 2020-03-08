@@ -262,9 +262,8 @@ if [[ $(uname) == "Darwin" ]]; then
   if [ $PYTHON_CHECK -eq 0 ]; then
     echo "Python already installed"
   else
-    brew install python@3
+    brew install python
   fi
-  pip install virtualenv
 fi
 
 # Linux Homebrew
@@ -285,80 +284,55 @@ if [[ $(uname) == "Linux" ]]; then
   fi
 fi
 
+#### Python Virtual Environment Setup ####
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
-DEFAULT_PYV="3"
-VIRTUALENV_PATH="$HOME/.python-virtualenvs"
-DEFAULT_VENV="$VIRTUALENV_PATH/default"
-PY2_PATH="$VIRTUALENV_PATH/default-python-2"
-PY3_PATH="$VIRTUALENV_PATH/default-python-3"
+DEFAULT_PYTHON_VERSION="3"
+VIRTUALENV_DIR="$HOME/.python-virtualenvs"
+DEFAULT_VIRTUALENV="$VIRTUALENV_DIR/default"
+PYTHON3_VIRTUALENV_DIR="$VIRTUALENV_DIR/default-python3"
+PYTHON_PIP_CMD="pip$DEFAULT_PYTHON_VERSION"
 
-# Create Python2 default virtualenv
-# if [ ! -d "$PY2_PATH" ]; then
-#   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-#     python2 -m virtualenv --system-site-packages "$PY2_PATH"
-#   else
-#     python2 -m virtualenv "$PY2_PATH"
-#   fi
-# fi
+# Check to ensure virtualenv command exists
+command -v virtualenv >/dev/null 2>&1
+VIRTUALENV_CMD_CHECK=$?
+if [ $VIRTUALENV_CMD_CHECK -ne 0 ]; then
+  if [[ $(uname) == "Darwin" ]]; then
+    $PYTHON_PIP_CMD install virtualenv
+  elif [[ $(uname) == "Linux" ]]; then
+    sudo $PYTHON_PIP_CMD install virtualenv
+  fi
+fi
+
 # Create Python3 default virtualenv
-if [ ! -d "$PY3_PATH" ]; then
+if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-    python3 -m venv --system-site-packages "$PY3_PATH"
+    python3 -m venv --system-site-packages "$PYTHON3_VIRTUALENV_DIR"
   else
-    python3 -m venv "$PY3_PATH"
+    python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
+  fi
+  source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
+  $PYTHON_PIP_CMD install --upgrade pip
+  deactivate
+fi
+
+# Setup Python Virtual Environment dirs
+if [ -d "$DEFAULT_VIRTUALENV" ] && [ ! -L "$DEFAULT_VIRTUALENV" ]; then
+  mv "$DEFAULT_VIRTUALENV" "$DEFAULT_VIRTUALENV".backup
+  ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
+elif [ ! -d "$DEFAULT_VIRTUALENV" ]; then
+  ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
+elif [ -L "$DEFAULT_VIRTUALENV" ]; then
+  if [[ "$DEFAULT_VIRTUALENV" -ef "$PYTHON3_VIRTUALENV_DIR" ]]; then
+    :
+  else
+    rm "$DEFAULT_VIRTUALENV"
+    ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
   fi
 fi
 
-if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
-  # shellcheck source=/dev/null
-  source "$DEFAULT_VENV"/bin/activate
-  PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
-  if [[ "$PYV" = "2" ]]; then
-    pip2 freeze >"$HOME"/.requirements-2.txt
-    # shellcheck source=/dev/null
-    source "$PY2_PATH"/bin/activate
-    pip2 install -r "$HOME"/.requirements-2.txt
-    mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-    ln -s "$PY2_PATH" "$DEFAULT_VENV"
-  elif [[ "$PYV" = "3" ]]; then
-    pip3 freeze >"$HOME"/.requirements-3.txt
-    # shellcheck source=/dev/null
-    source "$PY3_PATH"/bin/activate
-    pip3 install -r "$HOME"/.requirements-3.txt
-    mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-    ln -s "$PY3_PATH" "$DEFAULT_VENV"
-  fi
-elif [ ! -d "$DEFAULT_VENV" ]; then
-  if [[ "$DEFAULT_PYV" = "2" ]]; then
-    ln -s "$PY2_PATH" "$DEFAULT_VENV"
-  elif [[ "$DEFAULT_PYV" = "3" ]]; then
-    ln -s "$PY3_PATH" "$DEFAULT_VENV"
-  fi
-elif [ -L "$DEFAULT_VENV" ]; then
-  if [[ "$DEFAULT_PYV" = "2" ]]; then
-    if [[ "$DEFAULT_VENV" -ef "$PY2_PATH" ]]; then
-      :
-    else
-      rm "$DEFAULT_VENV"
-      ln -s "$PY2_PATH" "$DEFAULT_VENV"
-    fi
-  elif [[ "$DEFAULT_PYV" = "3" ]]; then
-    if [[ "$DEFAULT_VENV" -ef "$PY3_PATH" ]]; then
-      :
-    else
-      rm "$DEFAULT_VENV"
-      ln -s "$PY3_PATH" "$DEFAULT_VENV"
-    fi
-  fi
-fi
-
-# shellcheck source=/dev/null
-source "$DEFAULT_VENV"/bin/activate
-
-# "$DOTFILES_DIR"/install/setup_ansible_virtualenvs.sh
-
-# source "$DEFAULT_VENV"/bin/activate
+# Source our default Python virtual environment
+source "$DEFAULT_VIRTUALENV"/bin/activate
 
 set +e
 command -v ansible >/dev/null 2>&1
@@ -366,16 +340,7 @@ ANSIBLE_CHECK=$?
 if [ $ANSIBLE_CHECK -eq 0 ]; then
   echo "Ansible already installed"
 else
-  pip"$PYV" install ansible
-  # command -v pip >/dev/null 2>&1
-  # PIP_CHECK=$?
-  # command -v pip2 >/dev/null 2>&1
-  # PIP2_CHECK=$?
-  # if [ $PIP_CHECK -eq 0 ]; then
-  #     pip install ansible
-  #     elif [ $PIP2_CHECK -eq 0 ]; then
-  #     pip2 install ansible
-  # fi
+  $PYTHON_PIP_CMD install ansible
 fi
 
 ansible-playbook "$DOTFILES_DIR"/install/ansible-install-os-packages.yml -K

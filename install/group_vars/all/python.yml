@@ -1,5 +1,7 @@
 ---
 python_modules:
+  - name: ansible-lint
+    state: present
   - name: ara
     state: present
   - name: autopep8
