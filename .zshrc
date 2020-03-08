@@ -1,5 +1,8 @@
 export ZSH=$HOME/.oh-my-zsh
 
+# skip the verification of insecure directories
+ZSH_DISABLE_COMPFIX="true"
+
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="af-magic"
@@ -91,7 +94,7 @@ fi
 #### Linux Hombrew
 if [[ $(uname) == "Linux" ]]; then
   if [ -d /home/linuxbrew ]; then
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 fi
 
@@ -233,7 +236,7 @@ function check_virtualenvironments() {
 # virtualenv.
 function set_default_virtualenvs() {
   PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
-  PYP="$(dirname $(which python 2>&1))"
+  PYP="$(dirname "$(which python 2>&1)")"
   if [ "$VIRTUAL_ENV" ]; then
     if [[ "$PYV" = "$DEFAULT_PYV" ]]; then
       if [[ "$DEFAULT_PYV" = "2" ]]; then
