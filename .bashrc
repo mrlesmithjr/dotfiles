@@ -102,7 +102,7 @@ if [[ $(uname) == "Darwin" ]]; then
   brew list | grep python >/dev/null 2>&1
   PYTHON_CHECK=$?
   if [ $PYTHON_CHECK -ne 0 ]; then
-    brew install python@3 python@2
+    brew install python@3
   fi
 
   # # Check if pip is installed
@@ -193,16 +193,6 @@ if [[ $- == *i* ]]; then
   export PS1="\u${white}@\h:${cyan}[\W]:${reset}\\$ "
 fi
 
-command -v virtualenv >/dev/null 2>&1
-VIRTUALENV_CHECK=$?
-if [ $VIRTUALENV_CHECK -ne 0 ]; then
-  if [[ $(uname) == "Darwin" ]]; then
-    pip install virtualenv
-  elif [[ $(uname) == "Linux" ]]; then
-    sudo pip install virtualenv
-  fi
-fi
-
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
 DEFAULT_PYV="3"
@@ -210,6 +200,17 @@ VIRTUALENV_PATH="$HOME/.python-virtualenvs"
 DEFAULT_VENV="$VIRTUALENV_PATH/default"
 PY2_PATH="$VIRTUALENV_PATH/default-python-2"
 PY3_PATH="$VIRTUALENV_PATH/default-python-3"
+PIP_CMD="pip$DEFAULT_PYV"
+
+command -v virtualenv >/dev/null 2>&1
+VIRTUALENV_CHECK=$?
+if [ $VIRTUALENV_CHECK -ne 0 ]; then
+  if [[ $(uname) == "Darwin" ]]; then
+    $PIP_CMD install virtualenv
+  elif [[ $(uname) == "Linux" ]]; then
+    sudo $PIP_CMD install virtualenv
+  fi
+fi
 
 # Create Python2 default virtualenv
 # if [ ! -d "$PY2_PATH" ]; then
@@ -377,7 +378,7 @@ function set_default_virtualenvs() {
 source "$DEFAULT_VENV"/bin/activate
 set_default_virtualenvs
 
-pip freeze >"$HOME"/.dotfiles/requirements.txt
+$PIP_CMD freeze >"$HOME"/.dotfiles/requirements.txt
 
 # Capture existing VSCode extensions
 if [ -x "$(command -v code)" ]; then
