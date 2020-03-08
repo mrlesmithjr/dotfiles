@@ -32,24 +32,8 @@ if [[ $(uname) == "Darwin" ]]; then
   brew list | grep python >/dev/null 2>&1
   PYTHON_CHECK=$?
   if [ $PYTHON_CHECK -ne 0 ]; then
-    brew install python@3
+    brew install python
   fi
-
-  # # Check if pip is installed
-  # command -v pip >/dev/null 2>&1
-  # PIP_CHECK=$?
-
-  # # Check if pip2 is installed
-  # command -v pip2 >/dev/null 2>&1
-  # PIP2_CHECK=$?
-
-  # if [ $PIP_CHECK -eq 0 ]; then
-  #   PIP_CMD=pip
-  # elif [ $PIP_CHECK -ne 0 ]; then
-  #   if [ $PIP2_CHECK -eq 0 ]; then
-  #     PIP_CMD=pip2
-  #   fi
-  # fi
 
   # Lock the screen (when going AFK)
   # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L157-L158
@@ -103,79 +87,50 @@ alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
 
+#### Python Virtual Environment Setup ####
 # Setup a default Python virtual environment to use rather than installing
 # everything in system
-DEFAULT_PYV="3"
-VIRTUALENV_PATH="$HOME/.python-virtualenvs"
-DEFAULT_VENV="$VIRTUALENV_PATH/default"
-PY2_PATH="$VIRTUALENV_PATH/default-python-2"
-PY3_PATH="$VIRTUALENV_PATH/default-python-3"
-PIP_CMD="pip$DEFAULT_PYV"
+DEFAULT_PYTHON_VERSION="3"
+VIRTUALENV_DIR="$HOME/.python-virtualenvs"
+DEFAULT_VIRTUALENV="$VIRTUALENV_DIR/default"
+PYTHON3_VIRTUALENV_DIR="$VIRTUALENV_DIR/default-python3"
+PYTHON_PIP_CMD="pip$DEFAULT_PYTHON_VERSION"
 
+# Check to ensure virtualenv command exists
 command -v virtualenv >/dev/null 2>&1
-VIRTUALENV_CHECK=$?
-if [ $VIRTUALENV_CHECK -ne 0 ]; then
+VIRTUALENV_CMD_CHECK=$?
+if [ $VIRTUALENV_CMD_CHECK -ne 0 ]; then
   if [[ $(uname) == "Darwin" ]]; then
-    $PIP_CMD install virtualenv
+    $PYTHON_PIP_CMD install virtualenv
   elif [[ $(uname) == "Linux" ]]; then
-    sudo $PIP_CMD install virtualenv
+    sudo $PYTHON_PIP_CMD install virtualenv
   fi
 fi
 
-# Create Python2 default virtualenv
-# if [ ! -d "$PY2_PATH" ]; then
-#   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-#     python2 -m virtualenv --system-site-packages "$PY2_PATH"
-#   else
-#     python2 -m virtualenv "$PY2_PATH"
-#   fi
-# fi
 # Create Python3 default virtualenv
-if [ ! -d "$PY3_PATH" ]; then
+if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-    python3 -m venv --system-site-packages "$PY3_PATH"
+    python3 -m venv --system-site-packages "$PYTHON3_VIRTUALENV_DIR"
   else
-    python3 -m venv "$PY3_PATH"
+    python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
   fi
+  source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
+  $PYTHON_PIP_CMD install --upgrade pip
+  deactivate
 fi
 
-if [ -d "$DEFAULT_VENV" ] && [ ! -L "$DEFAULT_VENV" ]; then
-  source "$DEFAULT_VENV"/bin/activate
-  PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
-  if [[ "$PYV" = "2" ]]; then
-    pip2 freeze >"$HOME"/.requirements-2.txt
-    source "$PY2_PATH"/bin/activate
-    pip2 install -r "$HOME"/.requirements-2.txt
-    mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-    ln -s "$PY2_PATH" "$DEFAULT_VENV"
-  elif [[ "$PYV" = "3" ]]; then
-    pip3 freeze >"$HOME"/.requirements-3.txt
-    source "$PY3_PATH"/bin/activate
-    pip3 install -r "$HOME"/.requirements-3.txt
-    mv "$DEFAULT_VENV" "$DEFAULT_VENV".backup
-    ln -s "$PY3_PATH" "$DEFAULT_VENV"
-  fi
-elif [ ! -d "$DEFAULT_VENV" ]; then
-  if [[ "$DEFAULT_PYV" = "2" ]]; then
-    ln -s "$PY2_PATH" "$DEFAULT_VENV"
-  elif [[ "$DEFAULT_PYV" = "3" ]]; then
-    ln -s "$PY3_PATH" "$DEFAULT_VENV"
-  fi
-elif [ -L "$DEFAULT_VENV" ]; then
-  if [[ "$DEFAULT_PYV" = "2" ]]; then
-    if [[ "$DEFAULT_VENV" -ef "$PY2_PATH" ]]; then
-      :
-    else
-      rm "$DEFAULT_VENV"
-      ln -s "$PY2_PATH" "$DEFAULT_VENV"
-    fi
-  elif [[ "$DEFAULT_PYV" = "3" ]]; then
-    if [[ "$DEFAULT_VENV" -ef "$PY3_PATH" ]]; then
-      :
-    else
-      rm "$DEFAULT_VENV"
-      ln -s "$PY3_PATH" "$DEFAULT_VENV"
-    fi
+# Setup Python Virtual Environment dirs
+if [ -d "$DEFAULT_VIRTUALENV" ] && [ ! -L "$DEFAULT_VIRTUALENV" ]; then
+  mv "$DEFAULT_VIRTUALENV" "$DEFAULT_VIRTUALENV".backup
+  ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
+elif [ ! -d "$DEFAULT_VIRTUALENV" ]; then
+  ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
+elif [ -L "$DEFAULT_VIRTUALENV" ]; then
+  if [[ "$DEFAULT_VIRTUALENV" -ef "$PYTHON3_VIRTUALENV_DIR" ]]; then
+    :
+  else
+    rm "$DEFAULT_VIRTUALENV"
+    ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
   fi
 fi
 
@@ -195,100 +150,45 @@ function ls() {
 
 # Function to check and manipulate virtualenvs
 function check_virtualenvironments() {
+  # Check if venv directory exists
   if [ -d ./venv ]; then
+    # If we are in an existing virtual environment deactivate it and source venv
     if [ "$VIRTUAL_ENV" ]; then
-      if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]]; then
-        :
-      else
-        deactivate
-        source ./venv/bin/activate
-        export VIRTUAL_ENV="$PWD/venv"
-      fi
+      deactivate
+      source ./venv/bin/activate
+      export VIRTUAL_ENV="$PWD/venv"
+    # If we are not in an existing virtual environment, source venv
     else
       source ./venv/bin/activate
       export VIRTUAL_ENV="$PWD/venv"
     fi
+  # If there is not a venv directory setup our default environment back up
   elif [ "$VIRTUAL_ENV" ]; then
     unset DISABLE_ENV
-    if [[ $VIRTUAL_ENV == "$VIRTUALENV_PATH"/ansible-* ]]; then
-      :
-    else
-      parentdir="$(dirname "$VIRTUAL_ENV")"
-      if [[ "$PWD"/ != "$parentdir"/* ]]; then
-        deactivate
-        source "$DEFAULT_VENV"/bin/activate
-      fi
+    parentdir="$(dirname "$VIRTUAL_ENV")"
+    if [[ "$PWD"/ != "$parentdir"/* ]]; then
+      deactivate
+      source "$DEFAULT_VIRTUALENV"/bin/activate
     fi
+  # If virtual environment is not disabled, ask whether we should enable our default
+  # This is useful when you'd like to not be in a virtual environment
   else
     if [ ! "$DISABLE_ENV" ]; then
       read REPLY\?"Enable default Python virtualenv (y/n)?"
       if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
-        source "$DEFAULT_VENV"/bin/activate
+        source "$DEFAULT_VIRTUALENV"/bin/activate
       else
         export DISABLE_ENV="True"
       fi
     fi
   fi
-  set_default_virtualenvs
 }
 
-# We manage our default Python virtualenvs here to ensure we are in the correct
-# virtualenv.
-function set_default_virtualenvs() {
-  PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
-  PYP="$(dirname "$(which python 2>&1)")"
-  if [ "$VIRTUAL_ENV" ]; then
-    if [[ "$PYV" = "$DEFAULT_PYV" ]]; then
-      if [[ "$DEFAULT_PYV" = "2" ]]; then
-        if [[ ":$PATH:" != *":$PY3_PATH/bin:"* ]]; then
-          deactivate
-          PATH="$PY3_PATH/bin:$PATH"
-          source "$PYP"/activate
-        fi
-      elif [[ "$DEFAULT_PYV" = "3" ]]; then
-        if [[ ":$PATH:" != *":$PY2_PATH/bin:"* ]]; then
-          deactivate
-          PATH="$PY2_PATH/bin:$PATH"
-          source "$PYP"/activate
-        fi
-      fi
-    elif [[ "$PYV" != "$DEFAULT_PYV" ]]; then
-      if [[ "$DEFAULT_PYV" = "2" ]]; then
-        if [[ ":$PATH:" != *":$PY2_PATH/bin:"* ]]; then
-          deactivate
-          PATH="$PY2_PATH/bin:$PATH"
-          source "$PYP"/activate
-        fi
-      elif [[ "$DEFAULT_PYV" = "3" ]]; then
-        if [[ ":$PATH:" != *":$PY3_PATH/bin:"* ]]; then
-          deactivate
-          PATH="$PY3_PATH/bin:$PATH"
-          source "$PYP"/activate
-        fi
-      fi
-    fi
-  elif [ ! "$VIRTUAL_ENV" ]; then
-    if [[ ":$PATH:" == *":$PY2_PATH/bin:"* ]]; then
-      REMOVE_PY_PATH="$PY2_PATH/bin"
-      PATH=:$PATH:
-      PATH=${PATH//:$REMOVE_PY_PATH:/:}
-      PATH=${PATH#:}
-      PATH=${PATH%:}
-    fi
-    if [[ ":$PATH:" == *":$PY3_PATH/bin:"* ]]; then
-      REMOVE_PY_PATH="$PY3_PATH/bin"
-      PATH=:$PATH:
-      PATH=${PATH//:$REMOVE_PY_PATH:/:}
-      PATH=${PATH#:}
-      PATH=${PATH%:}
-    fi
-  fi
-}
+# Source our default Python virtual environment
+source "$DEFAULT_VIRTUALENV"/bin/activate
 
-source "$DEFAULT_VENV"/bin/activate
-set_default_virtualenvs
-
-$PIP_CMD freeze >"$HOME"/.dotfiles/requirements.txt
+# Capture existing Python packages installed from our default virtual environment
+$PYTHON_PIP_CMD freeze >"$HOME"/.dotfiles/requirements.txt
 
 # Capture existing VSCode extensions
 if [ -x "$(command -v code)" ]; then
