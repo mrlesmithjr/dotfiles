@@ -326,7 +326,7 @@ function check_virtualenvironments() {
 # virtualenv.
 function set_default_virtualenvs() {
   PYV="$(python --version 2>&1 | awk '{ print $2 }' | awk -F. '{ print $1 }')"
-  PYP="$(dirname $(which python 2>&1))"
+  PYP="$(dirname "$(which python 2>&1)")"
   if [ "$VIRTUAL_ENV" ]; then
     if [[ "$PYV" = "$DEFAULT_PYV" ]]; then
       if [[ "$DEFAULT_PYV" = "2" ]]; then
