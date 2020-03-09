@@ -1,0 +1,7 @@
+---
+os:
+  - linux
+  - osx
+
+script:
+  - source setup.sh
