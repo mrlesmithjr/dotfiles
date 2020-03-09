@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -x
 
 # Ensure $HOME/.netrc exists. Do not store this in version control
 if [ ! -f "$HOME/.netrc" ]; then
