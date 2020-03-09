@@ -1,0 +1,12 @@
+---
+name: Dotfiles Testing
+on: push
+jobs:
+  build:
+    runs-on: ["ubuntu-latest"]
+    steps:
+      - name: Test Dotfiles
+        run: |
+          git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
+          cd "$HOME/.dotfiles"
+          source setup.sh
