@@ -65,7 +65,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Check if Ruby is installed and set path if it is
-if which ruby >/dev/null && which gem >/dev/null; then
+if command -v ruby >/dev/null && command -v gem >/dev/null; then
   PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
@@ -87,6 +87,7 @@ if [[ $(uname) == "Linux" ]]; then
   PATH=$PATH:$HOME/.local/bin:$HOME/bin
   export PATH
   if [ -f /etc/bash_completion ]; then
+    # shellcheck disable=SC1091
     . /etc/bash_completion
   fi
   alias ls="ls --color=auto"
@@ -98,6 +99,7 @@ fi
 
 if [[ $(uname) == "Darwin" ]]; then
   if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    # shellcheck source=/dev/null
     source "$(brew --prefix)/etc/bash_completion"
   fi
   if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
@@ -127,7 +129,15 @@ if [[ $(uname) == "Darwin" ]]; then
   # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
   # modules, npm, and their installed packages.
   # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-  alias update="pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U; deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
+  function update() {
+    pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U
+    deactivate
+    sudo softwareupdate -i -a
+    brew update
+    brew upgrade
+    brew cask upgrade
+    brew cleanup
+  }
 
   # Test for https://www.passwordstore.org/
   # test -e "/usr/local/etc/bash_completion.d/pass" && source "/usr/local/etc/bash_completion.d/pass"
@@ -141,7 +151,7 @@ fi
 #### Linux Hombrew
 if [[ $(uname) == "Linux" ]]; then
   if [ -d /home/linuxbrew ]; then
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 fi
 
@@ -149,6 +159,7 @@ fi
 
 if [[ $GIT_PROMPT_BIN_PATH ]]; then
   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+  # shellcheck disable=SC2034
   GIT_PROMPT_FETCH_REMOTE_STATUS=0 # uncomment to avoid fetching remote status
   # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
   # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
@@ -156,10 +167,14 @@ if [[ $GIT_PROMPT_BIN_PATH ]]; then
   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
   # GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
+  # shellcheck disable=SC2034
   GIT_PROMPT_ONLY_IN_REPO=1
+  # shellcheck disable=SC2034
   GIT_PROMPT_THEME="Minimal"
 
+  # shellcheck disable=SC2034
   __GIT_PROMPT_DIR=$GIT_PROMPT_BIN_PATH
+  # shellcheck source=/dev/null
   source "$GIT_PROMPT_BIN_PATH"/gitprompt.sh
 fi
 
@@ -167,13 +182,21 @@ fi
 
 if [[ $- == *i* ]]; then
   # Define colors for non git prompts
+  # shellcheck disable=SC2034
   black="$(tput setaf 0)"
+  # shellcheck disable=SC2034
   red="$(tput setaf 1)"
+  # shellcheck disable=SC2034
   green="$(tput setaf 2)"
+  # shellcheck disable=SC2034
   yellow="$(tput setaf 3)"
+  # shellcheck disable=SC2034
   blue="$(tput setaf 4)"
+  # shellcheck disable=SC2034
   magenta="$(tput setaf 5)"
+  # shellcheck disable=SC2034
   cyan="$(tput setaf 6)"
+  # shellcheck disable=SC2034
   white="$(tput setaf 7)"
 
   reset="$(tput sgr0)"
@@ -209,6 +232,7 @@ if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   else
     python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
   fi
+  # shellcheck source=/dev/null
   source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
   $PYTHON_PIP_CMD install --upgrade pip
   deactivate
@@ -232,7 +256,7 @@ fi
 # If a Python virtual environment exists called venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd() {
-  builtin cd "$@"
+  builtin cd "$@" || return
   check_virtualenvironments
 }
 
@@ -250,10 +274,12 @@ function check_virtualenvironments() {
     # If we are in an existing virtual environment deactivate it and source venv
     if [ "$VIRTUAL_ENV" ]; then
       deactivate
+      # shellcheck disable=SC1091
       source ./venv/bin/activate
       export VIRTUAL_ENV="$PWD/venv"
     # If we are not in an existing virtual environment, source venv
     else
+      # shellcheck disable=SC1091
       source ./venv/bin/activate
       export VIRTUAL_ENV="$PWD/venv"
     fi
@@ -263,6 +289,7 @@ function check_virtualenvironments() {
     parentdir="$(dirname "$VIRTUAL_ENV")"
     if [[ "$PWD"/ != "$parentdir"/* ]]; then
       deactivate
+      # shellcheck source=/dev/null
       source "$DEFAULT_VIRTUALENV"/bin/activate
     fi
   # If virtual environment is not disabled, ask whether we should enable our default
@@ -271,6 +298,7 @@ function check_virtualenvironments() {
     if [ ! "$DISABLE_ENV" ]; then
       read -p "Enable default Python virtualenv (y/n)?" REPLY
       if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
+        # shellcheck source=/dev/null
         source "$DEFAULT_VIRTUALENV"/bin/activate
       else
         export DISABLE_ENV="True"
@@ -280,6 +308,7 @@ function check_virtualenvironments() {
 }
 
 # Source our default Python virtual environment
+# shellcheck source=/dev/null
 source "$DEFAULT_VIRTUALENV"/bin/activate
 
 # Capture existing Python packages installed from our default virtual environment
@@ -291,4 +320,5 @@ if [ -x "$(command -v code)" ]; then
 fi
 
 # added by travis gem
+# shellcheck source=/dev/null
 [ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh

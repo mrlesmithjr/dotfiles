@@ -1,15 +1,19 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # skip the verification of insecure directories
+# shellcheck disable=SC2034
 ZSH_DISABLE_COMPFIX="true"
 
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="af-magic"
 # ZSH_THEME="pygmalion"
+# shellcheck disable=SC2034
 ZSH_THEME="avit"
+# shellcheck disable=SC2034
 plugins=(docker git pip python vagrant)
 
+# shellcheck source=/dev/null
 source "$ZSH"/oh-my-zsh.sh
 
 # Ensure $HOME/.netrc exists. Do not store this in version control
@@ -18,7 +22,7 @@ if [ ! -f "$HOME/.netrc" ]; then
 fi
 
 # Check if Ruby is installed and set path if it is
-if which ruby >/dev/null && which gem >/dev/null; then
+if command -v ruby >/dev/null && command -v gem >/dev/null; then
   PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
@@ -57,16 +61,26 @@ if [[ $(uname) == "Darwin" ]]; then
   # Get macOS Software Updates, and update installed Ruby gems, Homebrew, Python
   # modules, npm, and their installed packages.
   # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
-  alias update="pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U; deactivate; sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup"
+  function update() {
+    pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U
+    deactivate
+    sudo softwareupdate -i -a
+    brew update
+    brew upgrade
+    brew cask upgrade
+    brew cleanup
+  }
 
   if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+    # shellcheck disable=SC1094
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   fi
 
   if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    # shellcheck disable=SC1094
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   fi
-
+  # shellcheck source=/dev/null
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
   # Test for https://www.passwordstore.org/
@@ -119,6 +133,7 @@ if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   else
     python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
   fi
+  # shellcheck source=/dev/null
   source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
   $PYTHON_PIP_CMD install --upgrade pip
   deactivate
@@ -142,7 +157,7 @@ fi
 # If a Python virtual environment exists called venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd() {
-  builtin cd "$@"
+  builtin cd "$@" || return
   check_virtualenvironments
 }
 
@@ -160,10 +175,12 @@ function check_virtualenvironments() {
     # If we are in an existing virtual environment deactivate it and source venv
     if [ "$VIRTUAL_ENV" ]; then
       deactivate
+      # shellcheck disable=SC1091
       source ./venv/bin/activate
       export VIRTUAL_ENV="$PWD/venv"
     # If we are not in an existing virtual environment, source venv
     else
+      # shellcheck disable=SC1091
       source ./venv/bin/activate
       export VIRTUAL_ENV="$PWD/venv"
     fi
@@ -173,6 +190,7 @@ function check_virtualenvironments() {
     parentdir="$(dirname "$VIRTUAL_ENV")"
     if [[ "$PWD"/ != "$parentdir"/* ]]; then
       deactivate
+      # shellcheck source=/dev/null
       source "$DEFAULT_VIRTUALENV"/bin/activate
     fi
   # If virtual environment is not disabled, ask whether we should enable our default
@@ -181,6 +199,7 @@ function check_virtualenvironments() {
     if [ ! "$DISABLE_ENV" ]; then
       read REPLY\?"Enable default Python virtualenv (y/n)?"
       if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
+        # shellcheck source=/dev/null
         source "$DEFAULT_VIRTUALENV"/bin/activate
       else
         export DISABLE_ENV="True"
@@ -190,6 +209,7 @@ function check_virtualenvironments() {
 }
 
 # Source our default Python virtual environment
+# shellcheck source=/dev/null
 source "$DEFAULT_VIRTUALENV"/bin/activate
 
 # Capture existing Python packages installed from our default virtual environment
@@ -201,4 +221,5 @@ if [ -x "$(command -v code)" ]; then
 fi
 
 # added by travis gem
+# shellcheck source=/dev/null
 [ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh
