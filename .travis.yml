@@ -1,7 +1,12 @@
 ---
-os:
-  - linux
-  - osx
+language: bash
+
+jobs:
+  include:
+    - name: Linux Test
+      os: linux
+    - name: macOS Test
+      os: osx
 
 script:
   - git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
