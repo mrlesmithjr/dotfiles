@@ -23,6 +23,16 @@
 A collection of my `.dotfiles` including a [setup](setup.sh) script. This script
 will setup all the things.
 
+## Build Status
+
+### GitHub Actions
+
+![Dotfiles Testing](https://github.com/mrlesmithjr/dotfiles/workflows/Dotfiles%20Testing/badge.svg)
+
+### Travis CI
+
+[![Build Status](https://travis-ci.org/mrlesmithjr/dotfiles.svg?branch=master)](https://travis-ci.org/mrlesmithjr/dotfiles)
+
 ## Usage
 
 ### Clone down to your `$HOME` folder
