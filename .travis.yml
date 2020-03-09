@@ -5,9 +5,9 @@ jobs:
   include:
     - name: Linux Test
       os: linux
-    - name: macOS 10.14 Test
-      os: osx
-      osx_image: xcode11.2
+    # - name: macOS 10.14 Test
+    #   os: osx
+    #   osx_image: xcode11.2
 
 script:
   - git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
