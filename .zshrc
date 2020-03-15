@@ -1,5 +1,8 @@
 export ZSH=$HOME/.oh-my-zsh
 
+# Path to your dotfiles installation.
+export DOTFILES="$HOME/.dotfiles"
+
 # skip the verification of insecure directories
 # shellcheck disable=SC2034
 ZSH_DISABLE_COMPFIX="true"

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Battery
+## Show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Clock
+## Set clock to 24-hour clock
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  H:mm:ss"
+## Set flash separators
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
+
+# Trackpad
+## enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+## Enable trackpad secondary click (right-click)
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+
+# Dock
+## Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+## Enable magnification
+defaults write com.apple.dock magnification -bool true
+defaults write com.apple.dock largesize -int 54
+
+# iTerm2
+## Specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES/iterm2_profile"
+## Tell iTerm2 to use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+## Don’t display the annoying prompt when quitting iTerm2
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# Terminal
+## Configure default theme
+TERMINAL_THEME="Custom"
+CURRENT_TERMINAL_THEME="$(defaults read com.apple.Terminal 'Default Window Settings')"
+if [ "$CURRENT_TERMINAL_THEME" != "$TERMINAL_THEME" ]; then
+  open "$DOTFILES/macOS_Terminal_profile/$TERMINAL_THEME".terminal
+  defaults write com.apple.terminal 'Default Window Settings' -string "$TERMINAL_THEME"
+  defaults write com.apple.terminal 'Startup Window Settings' -string "$TERMINAL_THEME"
+fi

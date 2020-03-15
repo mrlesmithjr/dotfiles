@@ -54,6 +54,9 @@ alias lr='ls -latr'
 
 #### BASH CONFIGURATION - END ####
 
+# Path to your dotfiles installation.
+export DOTFILES="$HOME/.dotfiles"
+
 # Ensure $HOME/.netrc exists. Do not store this in version control
 if [ ! -f "$HOME/.netrc" ]; then
   touch "$HOME/.netrc"

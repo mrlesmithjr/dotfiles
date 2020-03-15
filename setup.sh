@@ -15,8 +15,8 @@ DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global"
-  ".gitmessage" ".git-templates" ".hyper.js" ".pylintrc" ".rubocop.yml" ".tmux.conf" ".vim"
-  ".vimrc" ".yamllint.yml" ".zshrc")
+  ".gitmessage" ".git-templates" ".hyper.js" ".macos" ".pylintrc" ".rubocop.yml"
+  ".tmux.conf" ".vim" ".vimrc" ".yamllint.yml" ".zshrc")
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
@@ -342,3 +342,9 @@ fi
 # Source our default Python virtual environment
 # shellcheck source=/dev/null
 source "$DEFAULT_VIRTUALENV"/bin/activate
+
+if [[ $(uname) == "Darwin" ]]; then
+  if [ -f "$HOME/.macos" ]; then
+    source "$HOME/.macos"
+  fi
+fi
