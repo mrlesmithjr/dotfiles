@@ -1,7 +1,5 @@
 {
-  "atomKeymap.promptV3Features": true,
-  "cSpell.enabled": true,
-  "editor.cursorBlinking": "smooth",
+  "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "block",
   "editor.fontFamily": "'Fira Code'",
@@ -12,32 +10,13 @@
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderIndentGuides": true,
   "editor.rulers": [80, 120],
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    ".vscode": true,
-    "**/*.pyc": true
-  },
+  "editor.smoothScrolling": true,
+  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "git.confirmSync": false,
-  "prettier.disableLanguages": ["vue"],
+  "gitProjectManager.baseProjectsFolders": ["$HOME/Git_Projects"],
+  "gitProjectManager.openInNewWindow": true,
   "python.linting.pycodestyleEnabled": true,
   "python.linting.pylintEnabled": true,
-  "telemetry.enableTelemetry": false,
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Dracula",
-  "workbench.startupEditor": "newUntitledFile",
-  "diffEditor.renderSideBySide": true,
-  "terminal.external.osxExec": "iTerm.app",
-  "yaml.customTags": ["!vault"],
-  "files.autoSaveDelay": 4000,
-  "editor.detectIndentation": false,
-  "editor.tabSize": 2,
-  "yaml.format.enable": true,
-  "workbench.iconTheme": "material-icon-theme",
   "[ruby]": {
     "editor.formatOnSave": true
   },
@@ -45,25 +24,10 @@
   "ruby.lint": {
     "rubocop": true
   },
-  "editor.formatOnSaveTimeout": 1500,
-  "editor.formatOnType": false,
-  "cSpell.userWords": [
-    "Ansible",
-    "azurerm",
-    "distro",
-    "distros",
-    "hostvars",
-    "kube",
-    "kubeadm",
-    "kubeconfig",
-    "kubectl",
-    "kubelet",
-    "kubernetes",
-    "mware",
-    "qemu",
-    "sata",
-    "tfstate",
-    "v",
-    "vcpu"
-  ]
+  "telemetry.enableTelemetry": false,
+  "window.zoomLevel": 0,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "yaml.format.enable": true,
+  "git.confirmSync": false
 }

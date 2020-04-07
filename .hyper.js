@@ -4,16 +4,12 @@
 
 module.exports = {
   config: {
-    // hyper-opacity
-    // opacity is only supported on macOS and Windows
-    opacity: 0.8,
-
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
 
     // default font size in pixels for all tabs
-    fontSize: 18,
+    fontSize: 14,
 
     // font family with optional fallbacks
     fontFamily:
@@ -41,12 +37,13 @@ module.exports = {
     cursorShape: "BLOCK",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: true,
+    cursorBlink: false,
 
     // color of the text
     foregroundColor: "#fff",
 
     // terminal background color
+    // opacity is only supported on macOS
     backgroundColor: "#000",
 
     // terminal selection color
@@ -150,38 +147,12 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    "hyper-dark-scrollbar",
-    // "hyper-material-theme",
-    "hyper-opacity",
-    "hyper-search",
-    "hyper-statusline",
-    "hypercwd"
-    // "hyperterm-chesterish",
-  ],
+  plugins: [],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
   localPlugins: [],
-
-  MaterialTheme: {
-    // Set the theme variant,
-    // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
-    theme: "",
-
-    // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
-    // OPTIONS: From 0.1 to 1
-    backgroundOpacity: "1",
-
-    // [Optional] Set the accent color for the current active tab
-    accentColor: "#64FFDA",
-
-    // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
-    // OPTIONS: 'dark', 'ultra-dark', 'bright'
-    // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
-    vibrancy: "dark"
-  },
 
   keymaps: {
     // Example
