@@ -264,6 +264,12 @@ if [[ $(uname) == "Darwin" ]]; then
     /usr/bin/ruby -e \
       "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
+
+  # Fix Homebrew permissions for multi-user
+  sudo chmod -R +a "group:admin allow list,add_file,search,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" $(brew --prefix)/*
+  sudo chgrp -R admin $(brew --prefix)/*
+  sudo chmod -R g+w $(brew --prefix)/*
+
   brew list | grep python >/dev/null 2>&1
   PYTHON_CHECK=$?
   if [ $PYTHON_CHECK -eq 0 ]; then

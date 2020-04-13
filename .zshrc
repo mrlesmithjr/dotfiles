@@ -74,6 +74,13 @@ if [[ $(uname) == "Darwin" ]]; then
     brew cleanup
   }
 
+  # Fix Homebrew permissions for multi-user
+  function fix_brew_perms() {
+    sudo chmod -R +a "group:admin allow list,add_file,search,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" $(brew --prefix)/*
+    sudo chgrp -R admin $(brew --prefix)/*
+    sudo chmod -R g+w $(brew --prefix)/*
+  }
+
   if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
     # shellcheck disable=SC1094
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
