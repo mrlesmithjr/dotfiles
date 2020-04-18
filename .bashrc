@@ -144,6 +144,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
   # Fix Homebrew permissions for multi-user
   function fix_brew_perms() {
+    sudo chown -R $(whoami):admin $(brew --prefix)/*
     sudo chmod -R +a "group:admin allow list,add_file,search,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" $(brew --prefix)/*
     sudo chgrp -R admin $(brew --prefix)/*
     sudo chmod -R g+w $(brew --prefix)/*
