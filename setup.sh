@@ -216,7 +216,7 @@ if [[ $(uname) == "Linux" ]]; then
     id=$ID
     os_version_id=$VERSION_ID
     sudo apt-get update
-    if [[ $os_version_id_short -lt 20.04 ]]; then
+    if (($(echo $os_version_id '<' 20.04 | bc))); then
       sudo apt-get -y install build-essential curl fontconfig libffi-dev \
         libssl-dev python-dev python-minimal python-pip python-setuptools \
         python-virtualenv python3-pip python3-venv virtualenv
