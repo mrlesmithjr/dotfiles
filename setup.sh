@@ -212,11 +212,19 @@ if [[ $(uname) == "Linux" ]]; then
 
   # Ubuntu
   if [ -f /etc/debian_version ]; then
-    codename="$(lsb_release -c | awk '{print $2}')"
+    source /etc/os-release
+    id=$ID
+    os_version_id=$VERSION_ID
     sudo apt-get update
-    sudo apt-get -y install build-essential curl fontconfig libffi-dev \
-      libssl-dev python-dev python-minimal python-pip python-setuptools \
-      python-virtualenv python3-pip python3-venv virtualenv
+    if [[ $os_version_id_short -lt 20.04 ]]; then
+      sudo apt-get -y install build-essential curl fontconfig libffi-dev \
+        libssl-dev python-dev python-minimal python-pip python-setuptools \
+        python-virtualenv python3-pip python3-venv virtualenv
+    else
+      sudo apt-get -y install build-essential curl fontconfig libffi-dev \
+        libssl-dev python3-dev python3-minimal python3-pip python3-setuptools \
+        python3-virtualenv python3-venv virtualenv
+    fi
     if [ ! -d "$HOME/.fonts" ]; then
       mkdir "$HOME/.fonts"
     fi
