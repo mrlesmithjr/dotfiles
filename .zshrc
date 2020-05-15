@@ -146,7 +146,8 @@ if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   fi
   # shellcheck source=/dev/null
   source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
-  $PYTHON_PIP_CMD install --upgrade pip
+  $PYTHON_PIP_CMD install --upgrade pip pip-tools
+  pip-sync "$DOTFILES/requirements.txt"
   deactivate
 fi
 
@@ -222,9 +223,6 @@ function check_virtualenvironments() {
 # Source our default Python virtual environment
 # shellcheck source=/dev/null
 source "$DEFAULT_VIRTUALENV"/bin/activate
-
-# Capture existing Python packages installed from our default virtual environment
-$PYTHON_PIP_CMD freeze >"$HOME"/.dotfiles/requirements.txt
 
 # Capture existing VSCode extensions
 if [ -x "$(command -v code)" ]; then

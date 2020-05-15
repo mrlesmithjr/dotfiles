@@ -1,0 +1,3 @@
+# Python requirements for executing
+ansible
+pip-tools
