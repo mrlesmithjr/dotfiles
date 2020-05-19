@@ -48,6 +48,7 @@ export HISTSIZE=1000000
 export HISTFILESIZE=9000000
 
 # Set aliases
+alias create_venv="python3 -m venv venv && source venv/bin/activate && pip3 install --upgrade pip pip-tools"
 alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
@@ -79,6 +80,17 @@ GO_CHECK=$?
 if [ $GO_CHECK -eq 0 ]; then
   export GOPATH=$HOME/go
   export PATH=$PATH:$HOME/go/bin
+fi
+
+# Export path to kubectl krew plugin
+if [[ -d "$HOME/.krew/bin" ]]; then
+  export PATH=$PATH:$HOME/.krew/bin
+fi
+
+# Enable kubectl auto completion
+command -v virtualenv >/dev/null 2>&1
+if [[ $? == 0 ]]; then
+  source <(kubectl completion bash)
 fi
 
 #### LINUX OS Check ####
@@ -133,8 +145,6 @@ if [[ $(uname) == "Darwin" ]]; then
   # modules, npm, and their installed packages.
   # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.aliases#L56-L57
   function update() {
-    pip list --outdated --local | awk 'NR>2' | awk '{print $1}' | xargs pip install -U
-    deactivate
     sudo softwareupdate -i -a
     brew update
     brew upgrade
