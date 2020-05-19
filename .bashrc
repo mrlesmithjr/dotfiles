@@ -74,11 +74,11 @@ if command -v ruby >/dev/null && command -v gem >/dev/null; then
 fi
 
 # Check if GO is installed
-command -v go >/dev/null 2>&1
-GO_CHECK=$?
-
-if [ $GO_CHECK -eq 0 ]; then
+if [[ -x "$(command -v go)" ]]; then
   export GOPATH=$HOME/go
+  if [[ ! -d "$GOPATH" ]]; then
+    mkdir -p "$GOPATH"/{bin,src}
+  fi
   export PATH=$PATH:$HOME/go/bin
 fi
 
@@ -88,9 +88,8 @@ if [[ -d "$HOME/.krew/bin" ]]; then
 fi
 
 # Enable kubectl auto completion
-command -v virtualenv >/dev/null 2>&1
-if [[ $? == 0 ]]; then
-  source <(kubectl completion bash)
+if [[ -x "$(command -v kubectl)" ]]; then
+  source <(kubectl completion zsh)
 fi
 
 #### LINUX OS Check ####
@@ -154,7 +153,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
   # Fix Homebrew permissions for multi-user
   function fix_brew_perms() {
-    sudo chown -R $(whoami):admin $(brew --prefix)/*
+    sudo chown -R "$(whoami)":admin "$(brew --prefix)"/*
     # sudo chmod -R +a "group:admin allow list,add_file,search,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" $(brew --prefix)/*
     # sudo chgrp -R admin $(brew --prefix)/*
     # sudo chmod -R g+w $(brew --prefix)/*
