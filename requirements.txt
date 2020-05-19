@@ -5,15 +5,28 @@
 #    pip-compile
 #
 ansible==2.9.9            # via -r requirements.in
+arrow==0.15.6             # via jinja2-time
+binaryornot==0.4.4        # via cookiecutter
+certifi==2020.4.5.1       # via requests
 cffi==1.14.0              # via cryptography
-click==7.1.2              # via pip-tools
+chardet==3.0.4            # via binaryornot, requests
+click==7.1.2              # via cookiecutter, pip-tools
+cookiecutter==1.7.2       # via -r requirements.in
 cryptography==2.9.2       # via ansible
-jinja2==2.11.2            # via ansible
-markupsafe==1.1.1         # via jinja2
+idna==2.9                 # via requests
+jinja2-time==0.2.0        # via cookiecutter
+jinja2==2.11.2            # via ansible, cookiecutter, jinja2-time
+markupsafe==1.1.1         # via cookiecutter, jinja2
 pip-tools==5.1.2          # via -r requirements.in
+poyo==0.5.0               # via cookiecutter
 pycparser==2.20           # via cffi
+python-dateutil==2.8.1    # via arrow
+python-slugify==4.0.0     # via cookiecutter
 pyyaml==5.3.1             # via ansible
-six==1.14.0               # via cryptography, pip-tools
+requests==2.23.0          # via cookiecutter
+six==1.14.0               # via cookiecutter, cryptography, pip-tools, python-dateutil
+text-unidecode==1.3       # via python-slugify
+urllib3==1.25.9           # via requests
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
