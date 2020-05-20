@@ -336,7 +336,7 @@ if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
   # shellcheck source=/dev/null
   source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
   $PYTHON_PIP_CMD install --upgrade pip pip-tools
-  pip-sync "$DOTFILES/requirements.txt"
+  pip-sync "$DOTFILES_DIR/requirements.txt"
   deactivate
 fi
 
