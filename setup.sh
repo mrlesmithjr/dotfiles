@@ -219,11 +219,11 @@ if [[ $(uname) == "Linux" ]]; then
     if (($(echo $os_version_id '<' 20.04 | bc))); then
       sudo apt-get -y install build-essential curl fontconfig libffi-dev \
         libssl-dev python-dev python-minimal python-pip python-setuptools \
-        python-virtualenv python3-pip python3-venv virtualenv
+        python-virtualenv python3-pip python3-venv virtualenv zsh
     else
       sudo apt-get -y install build-essential curl fontconfig libffi-dev \
         libssl-dev python3-dev python3-minimal python3-pip python3-setuptools \
-        python3-virtualenv python3-venv virtualenv
+        python3-virtualenv python3-venv virtualenv zsh
     fi
     if [ ! -d "$HOME/.fonts" ]; then
       mkdir "$HOME/.fonts"
@@ -247,12 +247,12 @@ if [[ $(uname) == "Linux" ]]; then
       sudo dnf -y install curl gmp-devel libffi-devel openssl-devel python-crypto \
         python-devel python-dnf python-pip python-setuptools python-virtualenv \
         python3-devel python3-dnf python3-setuptools python3-virtualenv \
-        redhat-rpm-config &&
+        redhat-rpm-config zsh &&
         sudo dnf -y group install "C Development Tools and Libraries"
     elif [[ $codename == "CentOS" ]]; then
       sudo yum -y install curl gmp-devel libffi-devel openssl-devel python-crypto \
         python-devel python-pip python-setuptools python-virtualenv \
-        redhat-rpm-config &&
+        redhat-rpm-config zsh &&
         sudo yum -y group install "Development Tools"
     fi
   fi
@@ -353,6 +353,16 @@ elif [ -L "$DEFAULT_VIRTUALENV" ]; then
     rm "$DEFAULT_VIRTUALENV"
     ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
   fi
+fi
+
+# Check to ensure oh-my-zsh exists. Install if missing
+if [[ ! -d "$HOME"/.oh-my-zsh ]]; then
+  git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME"/.oh-my-zsh
+fi
+
+# Change shell to ZSH
+if [[ "$(echo $0)" != *"zsh"* ]]; then
+  chsh -s "$(which zsh)"
 fi
 
 # Source our default Python virtual environment
