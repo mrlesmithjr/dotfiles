@@ -333,7 +333,8 @@ function check_virtualenvironments() {
 source "$DEFAULT_VIRTUALENV"/bin/activate
 
 # Capture existing VSCode extensions
-if [ -x "$(command -v code)" ]; then
+# Skip if running in WSL
+if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
   code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
 fi
 
