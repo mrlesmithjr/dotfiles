@@ -2,3 +2,4 @@
 ansible
 pip-tools
 cookiecutter
+python-gitlab

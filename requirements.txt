@@ -4,27 +4,28 @@
 #
 #    pip-compile
 #
-ansible==2.9.9            # via -r requirements.in
-arrow==0.15.6             # via jinja2-time
+ansible==2.9.10           # via -r requirements.in
+arrow==0.15.7             # via jinja2-time
 binaryornot==0.4.4        # via cookiecutter
-certifi==2020.4.5.1       # via requests
+certifi==2020.6.20        # via requests
 cffi==1.14.0              # via cryptography
 chardet==3.0.4            # via binaryornot, requests
 click==7.1.2              # via cookiecutter, pip-tools
 cookiecutter==1.7.2       # via -r requirements.in
 cryptography==2.9.2       # via ansible
-idna==2.9                 # via requests
+idna==2.10                # via requests
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.2            # via ansible, cookiecutter, jinja2-time
 markupsafe==1.1.1         # via cookiecutter, jinja2
-pip-tools==5.1.2          # via -r requirements.in
+pip-tools==5.2.1          # via -r requirements.in
 poyo==0.5.0               # via cookiecutter
 pycparser==2.20           # via cffi
 python-dateutil==2.8.1    # via arrow
-python-slugify==4.0.0     # via cookiecutter
+python-gitlab==2.4.0      # via -r requirements.in
+python-slugify==4.0.1     # via cookiecutter
 pyyaml==5.3.1             # via ansible
-requests==2.23.0          # via cookiecutter
-six==1.14.0               # via cookiecutter, cryptography, pip-tools, python-dateutil
+requests==2.24.0          # via cookiecutter, python-gitlab
+six==1.15.0               # via cookiecutter, cryptography, pip-tools, python-dateutil
 text-unidecode==1.3       # via python-slugify
 urllib3==1.25.9           # via requests
 
