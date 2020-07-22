@@ -3,11 +3,14 @@ eamodio.gitlens
 esbenp.prettier-vscode
 felipecaputo.git-project-manager
 foxundermoon.shell-format
+GitHub.vscode-pull-request-github
+hashicorp.terraform
+jebbs.plantuml
 marcostazi.VS-code-vagrantfile
-mauve.terraform
 ms-python.python
 ms-vscode-remote.remote-wsl
 ms-vscode.powershell
 mushan.vscode-paste-image
+redhat.vscode-xml
 redhat.vscode-yaml
 vscoss.vscode-ansible
