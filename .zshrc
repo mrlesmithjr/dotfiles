@@ -12,9 +12,10 @@ ZSH_DISABLE_COMPFIX="true"
 # ZSH_THEME="af-magic"
 # ZSH_THEME="pygmalion"
 # shellcheck disable=SC2034
-ZSH_THEME="avit"
+#ZSH_THEME="avit"
+ZSH_THEME="ys"
 # shellcheck disable=SC2034
-plugins=(docker git pip python vagrant)
+plugins=(docker git nomad pip python terraform vagrant)
 
 # shellcheck source=/dev/null
 source "$ZSH"/oh-my-zsh.sh
