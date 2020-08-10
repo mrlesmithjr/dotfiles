@@ -13,6 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'dense-analysis/ale'
+Plugin 'hashivim/vim-consul'
+Plugin 'hashivim/vim-nomadproject'
+Plugin 'hashivim/vim-packer'
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-vagrant'
+Plugin 'hashivim/vim-vaultproject'
 Plugin 'pearofducks/ansible-vim'
 Plugin 'preservim/nerdtree'
 Plugin 'sbdchd/neoformat'
@@ -27,12 +33,6 @@ filetype plugin indent on
 
 " vim-markdown disable the folding
 let g:vim_markdown_folding_disabled = 1
-
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -78,6 +78,15 @@ set colorcolumn=+1
 autocmd FileType gitcommit set colorcolumn+=51
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open a NERDTree automatically when vim starts up
@@ -87,12 +96,27 @@ autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Terraform settings
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow vim-terraform to align settings automatically with Tabularize
+let g:terraform_align=1
+
+" Allow vim-terraform to automatically fold (hide until unfolded) sections of 
+" terraform code. Defaults to 0 which is off
+let g:terraform_fold_sections=0
+
+" Allow vim-terraform to automatically format *.tf and *.tfvars files with
+" terraform fmt. You can also do this manually with the :TerraformFmt command.
+let g:terraform_fmt_on_save=1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
