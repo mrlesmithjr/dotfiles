@@ -1,3 +1,214 @@
+commit aa1dcfcc763e41b53b6c56afff84765f00bad8ad
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Aug 10 01:49:48 2020 -0400
+
+    removed submodules
+
+commit f07d5dd5ea2c9afbd780d851d1b6256c45fc620d
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Fri Aug 7 23:00:48 2020 -0400
+
+    Latest Updates for vim, zsh and iterm
+
+commit e5219f0dacd15bdde03a92588afe8158c652782e
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Fri Aug 7 22:52:41 2020 -0400
+
+    Updated vim submodules
+
+commit 095f70a712fd7ccdf9a215d04f6b625652f43f82
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 4 17:06:29 2020 -0400
+
+    Updated Python requirements
+
+commit 5ab0c86cd3cfd554da859a7a0fa237de381a50c9
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Jul 22 00:08:08 2020 -0400
+
+    Updated with latest iTerm settings
+
+commit b7007bdf755fc33b5dd71a6573f80ba9ead35587
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Jul 22 00:07:14 2020 -0400
+
+    Latest VSCode extensions
+
+commit e3e7c8766f60aca04d8b7facb77c292d2f6e4ed7
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Jul 22 00:06:56 2020 -0400
+
+    Updated Python requirements
+
+commit 3567b9ea830db34b41d5870dc92457623e5cdea7
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Jul 22 00:06:33 2020 -0400
+
+    Removed Git pre-commit
+    
+    This was added to warn when attempting to commit to master/develop
+    
+    Not using this anymore
+
+commit 2f64df8f78b1493510f635d8add68b436a8a232e
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon May 25 00:52:15 2020 -0400
+
+    Adding ZSH and Oh-My-Zsh
+    
+    Because we can use dotfiles without devops-workstation-setup, we need to
+    install ZSH and Oh-My-Zsh here. This ensures that we have a functional
+    Zsh environment without any additional setup from our other project.
+
+commit 160e429577f5321bb6a1b567a8ce65b82d225551
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon May 25 00:50:15 2020 -0400
+
+    Added initial WSL checks for VSCode extensions
+    
+    Not able to capture VSCode extensions installed when within a WSL
+    environment.
+
+commit 4ee6728af5ad7b18f6a194c18961dc1d49c1c5e2
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sat May 23 09:50:08 2020 -0400
+
+    Updating git hooks to latest
+    
+    - Updated format of existing post-commit hook
+    - Added pre-commit hook to ensure we are notified when trying to commit
+      to master or develop branches
+
+commit 70f4ee5549e0577ed23ecdf84077a3b5c25375a4
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue May 19 21:28:26 2020 -0400
+
+    Fixed path to Python requirements for pip-sync
+
+commit 48ad30ec4d44d99b7611f9cdd5a83cb4a704e7be
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue May 19 11:43:05 2020 -0400
+
+    Fixed issues with kubectl and go validations
+
+commit e012bf09c6ae1d25cfd21076187ffff51eab6a21
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue May 19 00:50:26 2020 -0400
+
+    Updated submodules
+
+commit 342805f5255279627a75c7ae0247c162a4908d22
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue May 19 00:49:22 2020 -0400
+
+    Updated Python requirements
+
+commit 33c2c41d686f12d4a846f44afa70cafbd9821569
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue May 19 00:49:03 2020 -0400
+
+    Updated with K8s tools
+
+commit aa795f5dce14dd3ad7bfcac628f91963cb9e18cf
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu May 14 20:38:16 2020 -0400
+
+    Switching to pip-tools for managing Python reqs
+
+commit 4d4fe45a60aa18c93c89aa40ec4a4bddb245a999
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sat Apr 25 11:46:57 2020 -0400
+
+    Fixing Ubuntu version check
+
+commit 0babfc922cee40407950e7f659d9773947e43bea
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sat Apr 25 11:44:44 2020 -0400
+
+    Initial testing of Ubuntu 20.04
+
+commit 2c6c8a01650505d5827aca48c4880748443a13ed
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sun Apr 19 15:49:32 2020 -0400
+
+    Fixing Homebrew perms alias, etc.
+
+commit cb09949e59686e830ea029ad5c560b561c541cc8
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sat Apr 18 18:12:33 2020 -0400
+
+    Added missing chown for Homebrew perms
+
+commit 554e37e82312a4015bb6a379715a6d23d6730be3
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Apr 13 18:55:47 2020 -0400
+
+    Fixed Homebrew permission issues for multi-user
+    
+    Because of the lack of multi-user support for Homebrew. These changes
+    will assist in resolving these issues. Will need much more testing. But
+    looks promising thus far.
+
+commit feeb74c7b8598911b04316a78c6d84ab1e5aea75
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sun Apr 12 11:26:38 2020 -0400
+
+    Fixed path export for dotfiles
+
+commit 0554c3410bddb84bc4d141550f2c803a01d35a04
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Apr 7 01:29:57 2020 -0400
+
+    Latest updates, etc.
+
+commit c44596595f37bdc7af7134e8e18c2c992e9a2cac
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Sun Mar 15 19:00:14 2020 -0400
+
+    Latest updates for macOS, etc.
+
+commit c255ffbeabd994b53dcdab2af0b0f4b5ce75d8cc
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 13:27:04 2020 -0400
+
+    Testing GitHub actions
+    
+    - Also added build status badges
+
+commit 887156b5e7f29993bd32831c018773bc5c614763
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 13:12:40 2020 -0400
+
+    Disabled OSX test
+    
+    - Cannot get it to work
+
+commit e571b4b7000cffcc67ed62e8824ec4e727c492f0
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 13:08:01 2020 -0400
+
+    Pinning OSX build version
+    
+    - OSX is failing
+
+commit acb2394d088ca4d7b986d2f948559a3aea2e29ee
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 12:58:35 2020 -0400
+
+    Still trying to get Travis working correctly
+
+commit 3f7c08558f757537825c7409b23ed98d7df4056a
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 12:26:00 2020 -0400
+
+    Fixing: travis testing
+
+commit 7fa5c98e019755e04332d9dedb568a628f4c6e71
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Mon Mar 9 12:18:34 2020 -0400
+
+    Updated: changelog
+
 commit 46606c0c47bc9b3fa794c797f936c4e958feaa1e
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Mon Mar 9 12:11:09 2020 -0400

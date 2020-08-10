@@ -8,14 +8,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
 
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'chase/vim-ansible-yaml'
-Bundle "lepture/vim-jinja"
+
+Plugin 'airblade/vim-gitgutter'
+Plugin 'dense-analysis/ale'
+Plugin 'pearofducks/ansible-vim'
 Plugin 'preservim/nerdtree'
-Plugin 'https://github.com/elzr/vim-json'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'w0rp/ale'
+Plugin 'sbdchd/neoformat'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 call vundle#end()
 
 " Enable Pathogen
@@ -27,9 +29,10 @@ filetype plugin indent on
 let g:vim_markdown_folding_disabled = 1
 
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
-let g:ale_lint_on_text_changed = 'never'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -74,6 +77,13 @@ set colorcolumn=+1
 " In Git commit messages, also colour the 51st column (for titles)
 autocmd FileType gitcommit set colorcolumn+=51
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open a NERDTree automatically when vim starts up
+autocmd vimenter * NERDTree
+
+" open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
