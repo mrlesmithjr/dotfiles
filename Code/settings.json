@@ -29,5 +29,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.enable": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "workbench.colorTheme": "Default Light+"
 }

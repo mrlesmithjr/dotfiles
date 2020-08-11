@@ -2,6 +2,7 @@ DavidAnson.vscode-markdownlint
 eamodio.gitlens
 esbenp.prettier-vscode
 felipecaputo.git-project-manager
+formulahendry.vscode-mysql
 foxundermoon.shell-format
 GitHub.vscode-pull-request-github
 hashicorp.terraform
