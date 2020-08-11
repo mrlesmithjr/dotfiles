@@ -370,6 +370,23 @@ if [[ ! -d "$HOME"/powerlevel10k ]]; then
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/powerlevel10k
 fi
 
+if [[ $(uname) == "Darwin" ]]; then
+	FONTS_DIR="$HOME"/Library/Fonts
+elif [[ $(uname) == "Linux" ]]; then
+	FONTS_DIR="$HOME"/.fonts
+fi
+
+if [[ ! -d "$FONTS_DIR" ]]; then
+	mkdir -p "$FONTS_DIR"
+fi
+
+if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
+	cd "$FONTS_DIR"
+	wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+	fc-cache -vf "$FONTS_DIR"
+	cd -
+fi
+
 # Source our default Python virtual environment
 # shellcheck source=/dev/null
 source "$DEFAULT_VIRTUALENV"/bin/activate

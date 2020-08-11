@@ -70,7 +70,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 877 0 0 1440 877 </string>
+	<string>0 1 1274 876 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1197,7 +1197,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCode-Regular 14</string>
+			<string>MesloLGS-NF-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1340,17 +1340,24 @@
 		<string>3.3.11</string>
 		<string>3.3.12</string>
 	</array>
+	<key>NoSyncBFPRecents</key>
+	<array>
+		<string>Fira Code</string>
+		<string>Monaco</string>
+		<string>Meslo LG M for Powerline</string>
+		<string>MesloLGS NF</string>
+	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{398, 710}</string>
+		<string>{399, 743}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>2C5523A6-20AA-4BAA-BA1D-9B8422645E48</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>150</integer>
+	<integer>163</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>609880208.25407898</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -2133,7 +2140,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-07T03:19:16Z</date>
+	<date>2020-08-11T03:55:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
