@@ -21,6 +21,7 @@ Plugin 'hashivim/vim-vagrant'
 Plugin 'hashivim/vim-vaultproject'
 Plugin 'pearofducks/ansible-vim'
 Plugin 'preservim/nerdtree'
+Plugin 'python-mode/python-mode'
 Plugin 'sbdchd/neoformat'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
