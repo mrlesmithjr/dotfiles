@@ -2,7 +2,6 @@
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "block",
-  "editor.fontFamily": "'Fira Code'",
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
   "editor.formatOnPaste": true,
@@ -30,5 +29,8 @@
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.enable": true,
   "git.confirmSync": false,
-  "workbench.colorTheme": "Default Light+"
+  "workbench.colorTheme": "Default Light+",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.fontFamily": "'MesloLGS NF'",
+  "terminal.integrated.fontFamily": "MesloLGS NF"
 }
