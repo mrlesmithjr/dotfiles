@@ -15,8 +15,8 @@ DOTFILES_DIR_BACKUP="$HOME/.dotfiles_old"
 
 # Define dotfiles to manage
 dotfiles=(".atom" ".bash_profile" ".bashrc" ".gitconfig" ".gitignore_global"
-  ".gitmessage" ".git-templates" ".hyper.js" ".macos" ".pylintrc" ".rubocop.yml"
-  ".tmux.conf" ".vim" ".vimrc" ".yamllint.yml" ".zshrc")
+  ".gitmessage" ".git-templates" ".hyper.js" ".macos" ".p10k.zsh" ".pylintrc"
+  ".rubocop.yml" ".tmux.conf" ".vim" ".vimrc" ".yamllint.yml" ".zshrc")
 
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
@@ -363,6 +363,11 @@ fi
 # Change shell to ZSH
 if [[ "$(echo $0)" != *"zsh"* ]]; then
   chsh -s "$(which zsh)"
+fi
+
+# https://github.com/romkatv/powerlevel10k#manual
+if [[ ! -d "$HOME"/powerlevel10k ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/powerlevel10k
 fi
 
 # Source our default Python virtual environment

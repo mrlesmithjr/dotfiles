@@ -7,13 +7,18 @@ export DOTFILES="$HOME/.dotfiles"
 # shellcheck disable=SC2034
 ZSH_DISABLE_COMPFIX="true"
 
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="af-magic"
-# ZSH_THEME="pygmalion"
-# shellcheck disable=SC2034
-#ZSH_THEME="avit"
-ZSH_THEME="ys"
+if [[ -d "$HOME"/powerlevel10k ]]; then
+  source "$HOME"/powerlevel10k/powerlevel10k.zsh-theme
+else
+  # ZSH_THEME="robbyrussell"
+  # ZSH_THEME="agnoster"
+  # ZSH_THEME="af-magic"
+  # ZSH_THEME="pygmalion"
+  # shellcheck disable=SC2034
+  #ZSH_THEME="avit"
+  ZSH_THEME="ys"
+fi
+
 # shellcheck disable=SC2034
 plugins=(docker git nomad pip python terraform vagrant)
 
@@ -243,3 +248,6 @@ fi
 # added by travis gem
 # shellcheck source=/dev/null
 [ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f "$HOME"/.p10k.zsh ]] || source "$HOME"/.p10k.zsh
