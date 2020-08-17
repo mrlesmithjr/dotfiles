@@ -14,7 +14,6 @@
 [user]
 	email = mrlesmithjr@gmail.com
 	name = Larry Smith Jr.
-	signingKey = 6B72E7C997B70E3D
 [credential]
 # Fedora
 # helper = /usr/libexec/git-core/git-credential-gnome-keyring
@@ -72,7 +71,3 @@
 	untracked = cyan
 [init]
 	templatedir = ~/.git-templates
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg2
