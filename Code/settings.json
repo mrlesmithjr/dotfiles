@@ -32,5 +32,6 @@
   "workbench.colorTheme": "Default Light+",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.fontFamily": "'MesloLGS NF'",
-  "terminal.integrated.fontFamily": "MesloLGS NF"
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "python.showStartPage": false
 }
