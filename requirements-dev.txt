@@ -12,11 +12,11 @@ distlib==0.3.1            # via virtualenv
 filelock==3.0.12          # via tox, virtualenv
 flake8==3.8.3             # via -r requirements-dev.in
 future==0.18.2            # via lunr
-isort==4.3.21             # via pylint
+isort==5.5.1              # via pylint
 jinja2==2.11.2            # via -c requirements.txt, mkdocs
 joblib==0.16.0            # via nltk
 lazy-object-proxy==1.4.3  # via astroid
-livereload==2.6.2         # via mkdocs
+livereload==2.6.3         # via mkdocs
 lunr[languages]==0.5.8    # via mkdocs
 markdown==3.2.2           # via mkdocs
 markupsafe==1.1.1         # via -c requirements.txt, jinja2
@@ -28,14 +28,14 @@ pluggy==0.13.1            # via tox
 py==1.9.0                 # via tox
 pycodestyle==2.6.0        # via -r requirements-dev.in, autopep8, flake8
 pyflakes==2.2.0           # via flake8
-pylint==2.5.3             # via -r requirements-dev.in
+pylint==2.6.0             # via -r requirements-dev.in
 pyparsing==2.4.7          # via packaging
 pyyaml==5.3.1             # via -c requirements.txt, mkdocs
 regex==2020.7.14          # via nltk
 six==1.15.0               # via -c requirements.txt, astroid, livereload, lunr, packaging, tox, virtualenv
 toml==0.10.1              # via autopep8, pylint, tox
 tornado==6.0.4            # via livereload, mkdocs
-tox==3.19.0               # via -r requirements-dev.in
+tox==3.20.0               # via -r requirements-dev.in
 tqdm==4.48.2              # via nltk
 virtualenv==20.0.31       # via tox
 wrapt==1.12.1             # via astroid
