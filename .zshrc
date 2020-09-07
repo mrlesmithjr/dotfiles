@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Path to your dotfiles installation.
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 # skip the verification of insecure directories
 # shellcheck disable=SC2034
@@ -139,7 +139,7 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 	pip install --upgrade pip pip-tools
-	pip-sync "$DOTFILES/requirements.txt"
+	pip-sync "$DOTFILES_DIR/requirements.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"

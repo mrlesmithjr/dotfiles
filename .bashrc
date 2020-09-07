@@ -56,7 +56,7 @@ alias lr='ls -latr'
 #### BASH CONFIGURATION - END ####
 
 # Path to your dotfiles installation.
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 # Source global bashrc if it exists
 if [ -f /etc/bashrc ]; then
@@ -232,7 +232,7 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 	pip install --upgrade pip pip-tools
-	pip-sync "$DOTFILES/requirements.txt"
+	pip-sync "$DOTFILES_DIR/requirements.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
