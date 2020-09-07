@@ -359,10 +359,6 @@ if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
 	cd -
 fi
 
-# Source our default Python virtual environment
-# shellcheck source=/dev/null
-source "$DEFAULT_VIRTUALENV"/bin/activate
-
 if [[ $(uname) == "Darwin" ]]; then
 	if [ -f "$HOME/.macos" ]; then
 		source "$HOME/.macos"
