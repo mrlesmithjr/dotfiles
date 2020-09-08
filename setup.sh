@@ -297,7 +297,7 @@ if [[ $(uname) == "Linux" ]]; then
 		echo "Brew already installed"
 	else
 		bash -c \
-			"$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+			"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 		test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	fi
 	if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
