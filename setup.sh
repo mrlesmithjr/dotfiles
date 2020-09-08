@@ -332,7 +332,12 @@ fi
 
 # Change shell to ZSH
 if [[ "$(echo $0)" != *"zsh"* ]]; then
-	chsh -s "$(which zsh)"
+	if [[ $(uname) == "Linux" ]]; then
+		USER="$(whoami)"
+		sudo usermod --shell /bin/zsh "$USER"
+	else
+		chsh -s "$(which zsh)"
+	fi
 fi
 
 # https://github.com/romkatv/powerlevel10k#manual
