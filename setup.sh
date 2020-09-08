@@ -250,9 +250,9 @@ if [[ $(uname) == "Linux" ]]; then
 				redhat-rpm-config zsh &&
 				sudo dnf -y group install "C Development Tools and Libraries"
 		elif [[ $codename == "CentOS" ]]; then
-			sudo yum -y install bzip2-devel curl gmp-devel libffi-devel openssl-devel \
+			sudo yum -y install bzip2 bzip2-devel curl gmp-devel libffi-devel openssl-devel \
 				python-crypto python-devel python-pip python-setuptools python-virtualenv \
-				redhat-rpm-config readline-devel sqlite-devel wget xz-devel zlib-devel zsh &&
+				redhat-rpm-config readline-devel sqlite sqlite-devel wget xz xz-devel zlib-devel zsh &&
 				sudo yum -y group install "Development Tools"
 		fi
 	fi
