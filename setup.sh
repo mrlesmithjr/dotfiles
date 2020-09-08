@@ -217,13 +217,13 @@ if [[ $(uname) == "Linux" ]]; then
 		os_version_id=$VERSION_ID
 		sudo apt-get update
 		if (($(echo $os_version_id '<' 20.04 | bc))); then
-			sudo apt-get -y install build-essential curl fontconfig libffi-dev \
-				libssl-dev python-dev python-minimal python-pip python-setuptools \
-				python-virtualenv python3-pip python3-venv virtualenv zsh
+			sudo apt-get -y install build-essential curl fontconfig libbz2-dev libffi-dev \
+				libreadline-dev libsqlite3-dev libssl-dev python-dev python-minimal python-pip \
+				python-setuptools python-virtualenv python3-pip python3-venv virtualenv zsh
 		else
-			sudo apt-get -y install build-essential curl fontconfig libffi-dev \
-				libssl-dev python3-dev python3-minimal python3-pip python3-setuptools \
-				python3-virtualenv python3-venv virtualenv zsh
+			sudo apt-get -y install build-essential curl fontconfig libbz2-dev libffi-dev \
+				libreadline-dev libsqlite3-dev libssl-dev python3-dev python3-minimal python3-pip \
+				python3-setuptools python3-virtualenv python3-venv virtualenv zsh
 		fi
 		if [ ! -d "$HOME/.fonts" ]; then
 			mkdir "$HOME/.fonts"
@@ -306,53 +306,23 @@ if [[ $(uname) == "Linux" ]]; then
 	fi
 fi
 
-#### Python Virtual Environment Setup ####
-# Setup a default Python virtual environment to use rather than installing
-# everything in system
-DEFAULT_PYTHON_VERSION="3"
-VIRTUALENV_DIR="$HOME/.python-virtualenvs"
-DEFAULT_VIRTUALENV="$VIRTUALENV_DIR/default"
-PYTHON3_VIRTUALENV_DIR="$VIRTUALENV_DIR/default-python3"
-PYTHON_PIP_CMD="pip$DEFAULT_PYTHON_VERSION"
+PYENV_ROOT="$HOME/.pyenv"
 
-# Check to ensure virtualenv command exists
-command -v virtualenv >/dev/null 2>&1
-VIRTUALENV_CMD_CHECK=$?
-if [ $VIRTUALENV_CMD_CHECK -ne 0 ]; then
-	if [[ $(uname) == "Darwin" ]]; then
-		$PYTHON_PIP_CMD install virtualenv
-	elif [[ $(uname) == "Linux" ]]; then
-		sudo $PYTHON_PIP_CMD install virtualenv
-	fi
-fi
-
-# Create Python3 default virtualenv
-if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
-	if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-		python3 -m venv --system-site-packages "$PYTHON3_VIRTUALENV_DIR"
-	else
-		python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
-	fi
-	# shellcheck source=/dev/null
-	source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
-	$PYTHON_PIP_CMD install --upgrade pip pip-tools
+if [ ! -d "$PYENV_ROOT" ]; then
+	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+	git clone https://github.com/pyenv/pyenv-virtualenv.git "$PYENV_ROOT/plugins/pyenv-virtualenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v b | grep -v rc | tail -1 | awk '{ print $1 }')
+	pyenv install "$DEFAULT_PYTHON_VERSION"
+	pyenv global "$DEFAULT_PYTHON_VERSION"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+	pip install --upgrade pip pip-tools
 	pip-sync "$DOTFILES_DIR/requirements.txt"
-	deactivate
-fi
-
-# Setup Python Virtual Environment dirs
-if [ -d "$DEFAULT_VIRTUALENV" ] && [ ! -L "$DEFAULT_VIRTUALENV" ]; then
-	mv "$DEFAULT_VIRTUALENV" "$DEFAULT_VIRTUALENV".backup
-	ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-elif [ ! -d "$DEFAULT_VIRTUALENV" ]; then
-	ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-elif [ -L "$DEFAULT_VIRTUALENV" ]; then
-	if [[ "$DEFAULT_VIRTUALENV" -ef "$PYTHON3_VIRTUALENV_DIR" ]]; then
-		:
-	else
-		rm "$DEFAULT_VIRTUALENV"
-		ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-	fi
+else
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
 fi
 
 # Check to ensure oh-my-zsh exists. Install if missing
@@ -383,13 +353,11 @@ fi
 if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
 	cd "$FONTS_DIR"
 	wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-	fc-cache -vf "$FONTS_DIR"
+	if [[ $(uname) == "Linux" ]]; then
+		fc-cache -vf "$FONTS_DIR"
+	fi
 	cd -
 fi
-
-# Source our default Python virtual environment
-# shellcheck source=/dev/null
-source "$DEFAULT_VIRTUALENV"/bin/activate
 
 if [[ $(uname) == "Darwin" ]]; then
 	if [ -f "$HOME/.macos" ]; then

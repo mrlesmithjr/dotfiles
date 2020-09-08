@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Path to your dotfiles installation.
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 # skip the verification of insecure directories
 # shellcheck disable=SC2034
@@ -24,11 +24,6 @@ plugins=(docker git nomad pip python terraform vagrant)
 
 # shellcheck source=/dev/null
 source "$ZSH"/oh-my-zsh.sh
-
-# Ensure $HOME/.netrc exists. Do not store this in version control
-if [ ! -f "$HOME/.netrc" ]; then
-	touch "$HOME/.netrc"
-fi
 
 # Check if Ruby is installed and set path if it is
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
@@ -132,53 +127,23 @@ alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
 
-#### Python Virtual Environment Setup ####
-# Setup a default Python virtual environment to use rather than installing
-# everything in system
-DEFAULT_PYTHON_VERSION="3"
-VIRTUALENV_DIR="$HOME/.python-virtualenvs"
-DEFAULT_VIRTUALENV="$VIRTUALENV_DIR/default"
-PYTHON3_VIRTUALENV_DIR="$VIRTUALENV_DIR/default-python3"
-PYTHON_PIP_CMD="pip$DEFAULT_PYTHON_VERSION"
+PYENV_ROOT="$HOME/.pyenv"
 
-# Check to ensure virtualenv command exists
-command -v virtualenv >/dev/null 2>&1
-VIRTUALENV_CMD_CHECK=$?
-if [ $VIRTUALENV_CMD_CHECK -ne 0 ]; then
-	if [[ $(uname) == "Darwin" ]]; then
-		$PYTHON_PIP_CMD install virtualenv
-	elif [[ $(uname) == "Linux" ]]; then
-		sudo $PYTHON_PIP_CMD install virtualenv
-	fi
-fi
-
-# Create Python3 default virtualenv
-if [ ! -d "$PYTHON3_VIRTUALENV_DIR" ]; then
-	if [ -f /etc/debian_version ] || [ -f /etc/redhat-release ]; then
-		python3 -m venv --system-site-packages "$PYTHON3_VIRTUALENV_DIR"
-	else
-		python3 -m venv "$PYTHON3_VIRTUALENV_DIR"
-	fi
-	# shellcheck source=/dev/null
-	source "$PYTHON3_VIRTUALENV_DIR"/bin/activate
-	$PYTHON_PIP_CMD install --upgrade pip pip-tools
-	pip-sync "$DOTFILES/requirements.txt"
-	deactivate
-fi
-
-# Setup Python Virtual Environment dirs
-if [ -d "$DEFAULT_VIRTUALENV" ] && [ ! -L "$DEFAULT_VIRTUALENV" ]; then
-	mv "$DEFAULT_VIRTUALENV" "$DEFAULT_VIRTUALENV".backup
-	ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-elif [ ! -d "$DEFAULT_VIRTUALENV" ]; then
-	ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-elif [ -L "$DEFAULT_VIRTUALENV" ]; then
-	if [[ "$DEFAULT_VIRTUALENV" -ef "$PYTHON3_VIRTUALENV_DIR" ]]; then
-		:
-	else
-		rm "$DEFAULT_VIRTUALENV"
-		ln -s "$PYTHON3_VIRTUALENV_DIR" "$DEFAULT_VIRTUALENV"
-	fi
+if [ ! -d "$PYENV_ROOT" ]; then
+	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+	git clone https://github.com/pyenv/pyenv-virtualenv.git "$PYENV_ROOT/plugins/pyenv-virtualenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v b | grep -v rc | tail -1 | awk '{ print $1 }')
+	pyenv install "$DEFAULT_PYTHON_VERSION"
+	pyenv global "$DEFAULT_PYTHON_VERSION"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+	pip install --upgrade pip pip-tools
+	pip-sync "$DOTFILES_DIR/requirements.txt"
+else
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
 fi
 
 # If a Python virtual environment exists called venv, source it. Otherwise we
@@ -217,27 +182,9 @@ function check_virtualenvironments() {
 		parentdir="$(dirname "$VIRTUAL_ENV")"
 		if [[ "$PWD"/ != "$parentdir"/* ]]; then
 			deactivate
-			# shellcheck source=/dev/null
-			source "$DEFAULT_VIRTUALENV"/bin/activate
-		fi
-	# If virtual environment is not disabled, ask whether we should enable our default
-	# This is useful when you'd like to not be in a virtual environment
-	else
-		if [ ! "$DISABLE_ENV" ]; then
-			read REPLY\?"Enable default Python virtualenv (y/n)?"
-			if [[ "$REPLY" == "y" || "$REPLY" == "yes" ]]; then
-				# shellcheck source=/dev/null
-				source "$DEFAULT_VIRTUALENV"/bin/activate
-			else
-				export DISABLE_ENV="True"
-			fi
 		fi
 	fi
 }
-
-# Source our default Python virtual environment
-# shellcheck source=/dev/null
-source "$DEFAULT_VIRTUALENV"/bin/activate
 
 # Capture existing VSCode extensions
 # Skip if running in WSL
