@@ -219,11 +219,11 @@ if [[ $(uname) == "Linux" ]]; then
 		if (($(echo $os_version_id '<' 20.04 | bc))); then
 			sudo apt-get -y install build-essential curl fontconfig libbz2-dev libffi-dev \
 				libreadline-dev libsqlite3-dev libssl-dev python-dev python-minimal python-pip \
-				python-setuptools python-virtualenv python3-pip python3-venv virtualenv zsh
+				python-setuptools python-virtualenv python3-pip python3-venv virtualenv zlib1g-dev zsh
 		else
 			sudo apt-get -y install build-essential curl fontconfig libbz2-dev libffi-dev \
 				libreadline-dev libsqlite3-dev libssl-dev python3-dev python3-minimal python3-pip \
-				python3-setuptools python3-virtualenv python3-venv virtualenv zsh
+				python3-setuptools python3-virtualenv python3-venv virtualenv zlib1g-dev zsh
 		fi
 		if [ ! -d "$HOME/.fonts" ]; then
 			mkdir "$HOME/.fonts"
