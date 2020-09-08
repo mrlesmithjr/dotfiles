@@ -142,7 +142,7 @@ if [[ $(uname) == "Darwin" ]]; then
 		sudo softwareupdate -i -a
 		brew update
 		brew upgrade
-		brew cask upgrade
+		brew upgrade --cask
 		brew cleanup
 	}
 
