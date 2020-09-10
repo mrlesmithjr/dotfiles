@@ -244,10 +244,10 @@ if [[ $(uname) == "Linux" ]]; then
 	if [ -f /etc/redhat-release ]; then
 		codename="$(awk </etc/redhat-release '{print $1}')"
 		if [[ $codename == "Fedora" ]]; then
-			sudo dnf -y install curl gmp-devel libffi-devel openssl-devel python-crypto \
-				python-devel python-dnf python-pip python-setuptools python-virtualenv \
+			sudo dnf -y install curl bzip2 bzip2-devel gmp-devel libffi-devel openssl-devel \
+				python-crypto python-devel python-dnf python-pip python-setuptools python-virtualenv \
 				python3-devel python3-dnf python3-setuptools python3-virtualenv \
-				redhat-rpm-config zsh &&
+				redhat-rpm-config readline-devel sqlite sqlite-devel wget xz xz-devel zlib-devel zsh &&
 				sudo dnf -y group install "C Development Tools and Libraries"
 		elif [[ $codename == "CentOS" ]]; then
 			sudo yum -y install bzip2 bzip2-devel curl gmp-devel libffi-devel openssl-devel \
