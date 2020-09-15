@@ -87,11 +87,17 @@ if [[ -x "$(command -v kubectl)" ]]; then
 	source <(kubectl completion zsh)
 fi
 
+# Ensure default .kube directory exists
+if [ ! -d "$HOME/.kube" ]; then
+	mkdir "$HOME/.kube"
+fi
+
 # Set the default kube context if present
 DEFAULT_KUBE_CONTEXTS="$HOME/.kube/config"
-if [ -f "$DEFAULT_KUBE_CONTEXTS" ]; then
-	export KUBECONFIG="$DEFAULT_KUBE_CONTEXTS"
+if [ ! -f "$DEFAULT_KUBE_CONTEXTS" ]; then
+	touch "$DEFAULT_KUBE_CONTEXTS"
 fi
+export KUBECONFIG="$DEFAULT_KUBE_CONTEXTS"
 
 # Additional contexts should be in ~/.kube/custom-contexts/
 CUSTOM_KUBE_CONTEXTS="$HOME/.kube/custom-contexts"
@@ -102,7 +108,7 @@ fi
 OIFS="$IFS"
 IFS=$'\n'
 for contextFile in $(find "${CUSTOM_KUBE_CONTEXTS}" -type f -name "*.yml"); do
-	export KUBECONFIG="$contextFile:$KUBECONFIG"
+	export KUBECONFIG="$KUBECONFIG:$contextFile"
 done
 IFS="$OIFS"
 
