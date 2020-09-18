@@ -48,6 +48,7 @@ export HISTSIZE=1000000
 export HISTFILESIZE=9000000
 
 # Set aliases
+if command -v bat &>/dev/null; then alias cat=bat; fi
 alias create_venv="python3 -m venv venv && source venv/bin/activate && pip3 install --upgrade pip pip-tools"
 alias grep='grep --color=auto'
 alias ll='ls -la'
