@@ -1,5 +1,6 @@
 # Python requirements for executing
 ansible
+glances
 pip-tools
 cookiecutter
 python-gitlab

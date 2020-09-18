@@ -17,8 +17,8 @@ cryptography==3.1         # via -c requirements.txt, ansible
 distlib==0.3.1            # via virtualenv
 filelock==3.0.12          # via tox, virtualenv
 flake8==3.8.3             # via -r requirements-dev.in
-future==0.18.2            # via lunr
-isort==5.5.1              # via pylint
+future==0.18.2            # via -c requirements.txt, lunr
+isort==5.5.2              # via pylint
 jinja2==2.11.2            # via -c requirements.txt, ansible, mkdocs
 joblib==0.16.0            # via nltk
 lazy-object-proxy==1.4.3  # via astroid
