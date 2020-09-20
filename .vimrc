@@ -107,7 +107,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Allow vim-terraform to align settings automatically with Tabularize
 let g:terraform_align=1
 
-" Allow vim-terraform to automatically fold (hide until unfolded) sections of 
+" Allow vim-terraform to automatically fold (hide until unfolded) sections of
 " terraform code. Defaults to 0 which is off
 let g:terraform_fold_sections=0
 
@@ -133,3 +133,8 @@ set noswapfile
 " Indentation settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove whitespace when saving
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufWritePre * :%s/\s\+$//e
