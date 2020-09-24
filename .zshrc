@@ -190,7 +190,7 @@ function ls() {
 # Function to check and manipulate virtualenvs
 function check_virtualenvironments() {
 	# Check if venv directory exists
-	if [ -d ./venv ]; then
+	if [ -d ./venv ] && [ -f ./venv/bin/activate ]; then
 		# If we are in an existing virtual environment deactivate it and source venv
 		if [ "$VIRTUAL_ENV" ]; then
 			deactivate
