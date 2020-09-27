@@ -28,12 +28,11 @@ psutil==5.7.2             # via glances
 pycparser==2.20           # via cffi
 pyparsing==2.4.7          # via packaging
 python-dateutil==2.8.1    # via arrow
-python-gitlab==2.5.0      # via -r requirements.in
 python-slugify==4.0.1     # via cookiecutter
 pywinrm==0.4.1            # via -r requirements.in
 pyyaml==5.3.1             # via ansible-base
 requests-ntlm==1.1.0      # via pywinrm
-requests==2.24.0          # via cookiecutter, python-gitlab, pywinrm, requests-ntlm
+requests==2.24.0          # via cookiecutter, pywinrm, requests-ntlm
 six==1.15.0               # via cookiecutter, cryptography, packaging, pip-tools, python-dateutil, pywinrm
 text-unidecode==1.3       # via python-slugify
 urllib3==1.25.10          # via requests

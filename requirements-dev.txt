@@ -40,8 +40,8 @@ pygments==2.7.1           # via rich
 pylint==2.6.0             # via -r requirements-dev.in
 pyparsing==2.4.7          # via -c requirements.txt, packaging
 pyyaml==5.3.1             # via -c requirements.txt, ansible-base, ansible-lint, mkdocs
-regex==2020.7.14          # via nltk
-rich==7.0.0               # via ansible-lint
+regex==2020.9.27          # via nltk
+rich==7.1.0               # via ansible-lint
 ruamel.yaml.clib==0.2.2   # via ruamel.yaml
 ruamel.yaml==0.16.12      # via ansible-lint
 six==1.15.0               # via -c requirements.txt, astroid, cryptography, livereload, lunr, packaging, tox, virtualenv

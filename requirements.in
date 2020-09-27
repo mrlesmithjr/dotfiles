@@ -3,5 +3,4 @@ ansible
 glances
 pip-tools
 cookiecutter
-python-gitlab
 pywinrm
