@@ -271,8 +271,7 @@ if [[ $(uname) == "Darwin" ]]; then
 	if [ $BREW_CHECK -eq 0 ]; then
 		echo "Brew already installed"
 	else
-		/usr/bin/ruby -e \
-			"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	fi
 
 	# Fix Homebrew permissions for multi-user
