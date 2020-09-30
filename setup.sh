@@ -70,8 +70,8 @@ if [ "$(ls -A "$DOTFILES_DIR/.vim/bundle/Vundle.vim/autoload")" ]; then
 	echo "Vundle already installed"
 else
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	vim +BundleInstall +qall 2 &>/dev/null
 fi
+vim +BundleInstall +qall 2 &>/dev/null
 
 if [[ $(uname) == "Darwin" ]]; then
 	# Sets up VSCode .dotfiles per https://pawelgrzybek.com/sync-vscode-settings-and-snippets-via-dotfiles-on-github/
