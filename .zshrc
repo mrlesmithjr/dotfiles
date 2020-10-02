@@ -164,13 +164,13 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	pyenv install "$DEFAULT_PYTHON_VERSION"
 	pyenv global "$DEFAULT_PYTHON_VERSION"
 	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
+	# eval "$(pyenv virtualenv-init -)"
 	pip install --upgrade pip pip-tools
 	pip-sync "$DOTFILES_DIR/requirements.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
+	# eval "$(pyenv virtualenv-init -)"
 fi
 
 # If a Python virtual environment exists called venv, source it. Otherwise we
