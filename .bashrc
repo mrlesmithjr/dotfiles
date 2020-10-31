@@ -145,7 +145,7 @@ if [[ $(uname) == "Darwin" ]]; then
 		GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
 	fi
 
-	brew list | grep python >/dev/null 2>&1
+	brew list --formula | grep python >/dev/null 2>&1
 	PYTHON_CHECK=$?
 	if [ $PYTHON_CHECK -ne 0 ]; then
 		brew install python

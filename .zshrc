@@ -77,7 +77,7 @@ IFS="$OIFS"
 #### MacOS OS Check ####
 
 if [[ $(uname) == "Darwin" ]]; then
-	brew list | grep python >/dev/null 2>&1
+	brew list --formula | grep python >/dev/null 2>&1
 	PYTHON_CHECK=$?
 	if [ $PYTHON_CHECK -ne 0 ]; then
 		brew install python
