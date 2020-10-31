@@ -17,11 +17,11 @@ commonmark==0.9.1         # via rich
 cryptography==3.1.1       # via -c requirements.txt, ansible-base
 distlib==0.3.1            # via virtualenv
 filelock==3.0.12          # via tox, virtualenv
-flake8==3.8.3             # via -r requirements-dev.in
+flake8==3.8.4             # via -r requirements-dev.in
 future==0.18.2            # via -c requirements.txt, lunr
-isort==5.5.3              # via pylint
+isort==5.5.4              # via pylint
 jinja2==2.11.2            # via -c requirements.txt, ansible-base, mkdocs
-joblib==0.16.0            # via nltk
+joblib==0.17.0            # via nltk
 lazy-object-proxy==1.4.3  # via astroid
 livereload==2.6.3         # via mkdocs
 lunr[languages]==0.5.8    # via mkdocs
@@ -48,7 +48,7 @@ six==1.15.0               # via -c requirements.txt, astroid, cryptography, live
 toml==0.10.1              # via autopep8, pylint, tox
 tornado==6.0.4            # via livereload, mkdocs
 tox==3.20.0               # via -r requirements-dev.in
-tqdm==4.49.0              # via nltk
+tqdm==4.50.0              # via nltk
 typing-extensions==3.7.4.3  # via rich
-virtualenv==20.0.31       # via tox
+virtualenv==20.0.32       # via tox
 wrapt==1.12.1             # via astroid
