@@ -271,13 +271,6 @@ if [[ $(uname) == "Darwin" ]]; then
 	# sudo chgrp -R admin $(brew --prefix)/*
 	# sudo chmod -R g+w $(brew --prefix)/*
 
-	brew list | grep python >/dev/null 2>&1
-	PYTHON_CHECK=$?
-	if [ $PYTHON_CHECK -eq 0 ]; then
-		echo "Python already installed"
-	else
-		brew install python
-	fi
 fi
 
 # Linux Homebrew
