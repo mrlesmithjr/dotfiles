@@ -343,7 +343,7 @@ fi
 
 if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
 	cd "$FONTS_DIR"
-	curl -XGET https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -o "MesloLGS NF Regular.ttf"
+	curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf >"MesloLGS NF Regular.ttf"
 	if [[ $(uname) == "Linux" ]]; then
 		fc-cache -vf "$FONTS_DIR"
 	fi
