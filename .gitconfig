@@ -71,3 +71,4 @@
 	untracked = cyan
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main
