@@ -6,14 +6,14 @@ formulahendry.vscode-mysql
 foxundermoon.shell-format
 GitHub.vscode-pull-request-github
 hashicorp.terraform
-jebbs.plantuml
 marcostazi.VS-code-vagrantfile
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
+ms-toolsai.jupyter
+ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-wsl
 ms-vscode.powershell
 mushan.vscode-paste-image
 redhat.vscode-xml
 redhat.vscode-yaml
-vscoss.vscode-ansible

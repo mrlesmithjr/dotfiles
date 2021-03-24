@@ -33,5 +33,14 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.fontFamily": "'MesloLGS NF'",
   "terminal.integrated.fontFamily": "MesloLGS NF",
-  "python.showStartPage": false
+  "python.showStartPage": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  }
 }
