@@ -53,7 +53,7 @@ if command -v bat &>/dev/null; then
 	export BAT_CONFIG_PATH="$DOTFILES_DIR/bat/config"
 fi
 
-alias create_venv="python3 -m venv venv && source venv/bin/activate && pip3 install --upgrade pip pip-tools"
+alias create_venv="python3 -m venv .venv && source .venv/bin/activate && pip3 install --upgrade pip pip-tools"
 alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
@@ -264,7 +264,7 @@ else
 	# eval "$(pyenv virtualenv-init -)"
 fi
 
-# If a Python virtual environment exists called venv, source it. Otherwise we
+# If a Python virtual environment exists called .venv, source it. Otherwise we
 # will source our default virtual environment.
 function cd() {
 	builtin cd "$@" || return
@@ -280,21 +280,21 @@ function ls() {
 
 # Function to check and manipulate virtualenvs
 function check_virtualenvironments() {
-	# Check if venv directory exists
-	if [ -d ./venv ] && [ -f ./venv/bin/activate ]; then
-		# If we are in an existing virtual environment deactivate it and source venv
+	# Check if .venv directory exists
+	if [ -d ./.venv ] && [ -f ./.venv/bin/activate ]; then
+		# If we are in an existing virtual environment deactivate it and source .venv
 		if [ "$VIRTUAL_ENV" ]; then
 			deactivate
 			# shellcheck disable=SC1091
-			source ./venv/bin/activate
-			export VIRTUAL_ENV="$PWD/venv"
-		# If we are not in an existing virtual environment, source venv
+			source ./.venv/bin/activate
+			export VIRTUAL_ENV="$PWD/.venv"
+		# If we are not in an existing virtual environment, source .venv
 		else
 			# shellcheck disable=SC1091
-			source ./venv/bin/activate
-			export VIRTUAL_ENV="$PWD/venv"
+			source ./.venv/bin/activate
+			export VIRTUAL_ENV="$PWD/.venv"
 		fi
-	# If there is not a venv directory setup our default environment back up
+	# If there is not a .venv directory setup our default environment back up
 	elif [ "$VIRTUAL_ENV" ]; then
 		unset DISABLE_ENV
 		parentdir="$(dirname "$VIRTUAL_ENV")"
