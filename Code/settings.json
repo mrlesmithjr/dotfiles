@@ -1,46 +1,27 @@
 {
-  "editor.cursorBlinking": "phase",
-  "editor.cursorSmoothCaretAnimation": true,
-  "editor.cursorStyle": "block",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 18,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderIndentGuides": true,
-  "editor.rulers": [80, 120],
-  "editor.smoothScrolling": true,
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "gitProjectManager.baseProjectsFolders": ["$HOME/Git_Projects"],
-  "gitProjectManager.openInNewWindow": true,
-  "python.linting.pycodestyleEnabled": true,
-  "python.linting.pylintEnabled": true,
-  "[ruby]": {
-    "editor.formatOnSave": true
-  },
-  "ruby.format": "rubocop",
-  "ruby.lint": {
-    "rubocop": true
-  },
-  "telemetry.enableTelemetry": false,
-  "window.zoomLevel": 0,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
-  "yaml.format.enable": true,
-  "git.confirmSync": false,
-  "workbench.colorTheme": "Default Light+",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.fontFamily": "'MesloLGS NF'",
-  "terminal.integrated.fontFamily": "MesloLGS NF",
-  "python.showStartPage": false,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  }
+    "editor.cursorStyle": "block",
+    "editor.fontFamily": "'MesloLGS NF'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        88,
+        120
+    ],
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "workbench.startupEditor": "none",
+    "terminal.integrated.fontSize": 14,
+    "telemetry.enableTelemetry": false
 }
