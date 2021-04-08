@@ -1,13 +1,7 @@
 DavidAnson.vscode-markdownlint
-eamodio.gitlens
-esbenp.prettier-vscode
-felipecaputo.git-project-manager
-foxundermoon.shell-format
-marcostazi.VS-code-vagrantfile
-mauve.terraform
+ms-azuretools.vscode-docker
 ms-python.python
-ms-vscode-remote.remote-wsl
-ms-vscode.powershell
-mushan.vscode-paste-image
+ms-toolsai.jupyter
+ms-vscode-remote.remote-containers
+njpwerner.autodocstring
 redhat.vscode-yaml
-vscoss.vscode-ansible

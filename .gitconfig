@@ -1,26 +1,26 @@
 [apply]
-	# Detect whitespace errors when applying a patch
+# Detect whitespace errors when applying a patch
 	whitespace = fix
 [core]
 	excludesfile = ~/.gitignore_global
-	# editor = atom --wait
-	# editor = code --wait
-	# editor = vi
+# editor = atom --wait
+# editor = code --wait
+# editor = vi
 	editor = vim
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+# Treat spaces before tabs and all kinds of trailing whitespace as an error
+# [default] trailing-space: looks for spaces at the end of a line
+# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [user]
 	email = mrlesmithjr@gmail.com
 	name = Larry Smith Jr.
 [credential]
-	# Fedora
-	# helper = /usr/libexec/git-core/git-credential-gnome-keyring
-	# MacOS
+# Fedora
+# helper = /usr/libexec/git-core/git-credential-gnome-keyring
+# MacOS
 	helper = osxkeychain
-	# Ubuntu
-	# helper = cache
+# Ubuntu
+# helper = cache
 	useHttpPath = true
 [color]
 	status = auto
@@ -34,9 +34,9 @@
 	diff = auto
 	ui = auto
 [diff]
-    tool = default-difftool
+	tool = default-difftool
 [difftool "default-difftool"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = code --wait --diff $LOCAL $REMOTE
 [includeIf "gitdir:~/Git_Projects/Work/"]
 	path = ~/.gitconfig-work
 [includeIf "gitdir:~/projects/devops_automation/"]
@@ -46,10 +46,10 @@
 	showUntrackedFiles = all
 [pager]
 	branch = false
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
-# [url "git@gitlab.com:"]
-# 	insteadOf = https://gitlab.com/
+[url "git@github.com:"]
+ 	insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+ 	insteadOf = https://gitlab.com/
 [fetch]
 	prune = true
 [branch "master"]
@@ -62,7 +62,7 @@
 	followTags = true
 	default = current
 [color "branch"]
-  current = yellow reverse
+	current = yellow reverse
 	local = yellow
 	remote = green
 [color "status"]
@@ -71,3 +71,4 @@
 	untracked = cyan
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main

@@ -1,5 +1,6 @@
 # Python requirements for development
 -c requirements.txt
+ansible-lint
 autopep8
 flake8
 mkdocs
