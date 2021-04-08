@@ -2,6 +2,7 @@
 -c requirements.txt
 ansible-lint
 autopep8
+black
 flake8
 mkdocs
 pycodestyle
