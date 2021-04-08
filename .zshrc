@@ -142,7 +142,7 @@ fi
 
 # Set aliases
 if command -v bat &>/dev/null; then
-	alias cat=bat
+	# alias cat=bat
 	export BAT_CONFIG_PATH="$DOTFILES_DIR/bat/config"
 fi
 
