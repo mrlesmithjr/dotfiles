@@ -17,6 +17,7 @@
       path: .atom
     ~/.bash_profile:
       path: .bash_profile
+      force: true
     ~/.bashrc:
       path: .bashrc
       force: true
