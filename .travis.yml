@@ -10,6 +10,4 @@ jobs:
     #   osx_image: xcode11.2
 
 script:
-  - git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
-  - cd "$HOME/.dotfiles"
-  - source setup.sh
+  - ./install
