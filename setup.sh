@@ -3,6 +3,20 @@ set -e
 set -x
 
 if [[ $(uname) == "Linux" ]]; then
+	if [ ! -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+		git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1
+	fi
+fi
+
+if [[ ! -d "$HOME"/.oh-my-zsh ]]; then
+	git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME"/.oh-my-zsh
+fi
+
+if [[ ! -d "$HOME"/powerlevel10k ]]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/powerlevel10k
+fi
+
+if [[ $(uname) == "Linux" ]]; then
 	# Arch
 	if [ -f /etc/arch-release ]; then
 		codename="$(awk </etc/arch-release '{print $1}')"
@@ -133,4 +147,10 @@ if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
 		fc-cache -vf "$FONTS_DIR"
 	fi
 	cd -
+fi
+
+if [[ "$(echo $0)" != *"zsh"* ]]; then
+	if [[ $(uname) == "Linux" ]]; then
+		USER="$(whoami)" sudo usermod --shell /bin/zsh "$USER"
+	else chsh -s "$(which zsh)"; fi
 fi
