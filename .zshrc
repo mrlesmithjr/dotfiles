@@ -217,9 +217,5 @@ if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
 	code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
 fi
 
-# added by travis gem
-# shellcheck source=/dev/null
-[ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

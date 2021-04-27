@@ -9,4 +9,4 @@ jobs:
         run: |
           git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
           cd "$HOME/.dotfiles"
-          source setup.sh
+          ./install

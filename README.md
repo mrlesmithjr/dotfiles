@@ -1,23 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
-- [Dotfiles](#dotfiles)
-  - [Usage](#usage)
-    - [Clone down to your `$HOME` folder](#clone-down-to-your-home-folder)
-    - [Setup](#setup)
-  - [Various Setting Info](#various-setting-info)
-    - [.bashrc and .bash_profile](#bashrc-and-bash_profile)
-    - [.gitconfig](#gitconfig)
-    - [.vimrc and .vim](#vimrc-and-vim)
-  - [Some Example Plugins/bundles and etc](#some-example-pluginsbundles-and-etc)
-  - [Visual Studio Code Extensions](#visual-studio-code-extensions)
-  - [License](#license)
-  - [Author Information](#author-information)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Dotfiles
 
 A collection of my `.dotfiles` including a [setup](setup.sh) script. This script
@@ -52,7 +32,7 @@ The following will be setup using this method:
 
 ```bash
 cd ~/.dotfiles
-./setup.sh
+./install
 ```
 
 ## Various Setting Info
