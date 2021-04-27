@@ -26,5 +26,6 @@
     "telemetry.enableTelemetry": false,
     "python.showStartPage": false,
     "docker.showStartPage": false,
-    "githubIssues.issueCompletionFormatScm": "${user}/issue${issueNumber}_${sanitizedIssueTitle}"
+    "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}_${sanitizedIssueTitle}",
+    "git.confirmSync": false
 }
