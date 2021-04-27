@@ -309,7 +309,3 @@ function check_virtualenvironments() {
 if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
 	code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
 fi
-
-# added by travis gem
-# shellcheck source=/dev/null
-[ -f "$HOME"/.travis/travis.sh ] && source "$HOME"/.travis/travis.sh

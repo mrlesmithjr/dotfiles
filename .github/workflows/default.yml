@@ -3,10 +3,20 @@ name: Dotfiles Testing
 on: push
 jobs:
   build:
-    runs-on: ["ubuntu-latest"]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
-      - name: Test Dotfiles
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Execute install
         run: |
-          git clone https://github.com/mrlesmithjr/dotfiles.git "$HOME/.dotfiles" --recursive
-          cd "$HOME/.dotfiles"
-          source setup.sh
+          ./install
