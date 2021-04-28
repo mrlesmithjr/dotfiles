@@ -77,7 +77,7 @@ if [[ $(uname) == "Darwin" ]]; then
 	if [ $BREW_CHECK -eq 0 ]; then
 		echo "Brew already installed"
 	else
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	fi
 elif [[ $(uname) == "Linux" ]]; then
 	set +e
@@ -87,7 +87,7 @@ elif [[ $(uname) == "Linux" ]]; then
 		echo "Brew already installed"
 	else
 		bash -c \
-			"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+			"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	fi
 	if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
