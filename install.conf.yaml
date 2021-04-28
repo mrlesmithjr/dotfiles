@@ -69,6 +69,9 @@
       description: Installing submodules
     - command: ./setup.sh
       description: Executing setup script
+      stdout: true
+      stderr: true
+      stdin: true
     - command: if [[ $(uname) == "Linux" ]]; then if [ ! -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1; fi; fi
       description: Installing bash-git-prompt
     - command: if [ ! -f "$HOME/.netrc" ]; then touch "$HOME/.netrc"; fi
