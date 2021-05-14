@@ -106,12 +106,14 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v a | grep -v b | grep -v rc | tail -1 | awk '{ print $1 }')
 	pyenv install "$DEFAULT_PYTHON_VERSION"
 	pyenv global "$DEFAULT_PYTHON_VERSION"
+	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 	pip install --upgrade pip pip-tools
 	pip-sync "requirements.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
