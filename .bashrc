@@ -244,7 +244,7 @@ if [[ $- == *i* ]]; then
 	export PS1="\u${white}@\h:${cyan}[\W]:${reset}\\$ "
 fi
 
-PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 
 if [ ! -d "$PYENV_ROOT" ]; then
 	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"

@@ -151,7 +151,7 @@ alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
 
-PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 
 if [ ! -d "$PYENV_ROOT" ]; then
 	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
