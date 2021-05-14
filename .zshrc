@@ -151,7 +151,7 @@ alias grep='grep --color=auto'
 alias ll='ls -la'
 alias lr='ls -latr'
 
-PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 
 if [ ! -d "$PYENV_ROOT" ]; then
 	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
@@ -161,12 +161,14 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v b | grep -v rc | tail -1 | awk '{ print $1 }')
 	pyenv install "$DEFAULT_PYTHON_VERSION"
 	pyenv global "$DEFAULT_PYTHON_VERSION"
+	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	# eval "$(pyenv virtualenv-init -)"
 	pip install --upgrade pip pip-tools
 	pip-sync "$DOTFILES_DIR/requirements.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	# eval "$(pyenv virtualenv-init -)"
 fi
