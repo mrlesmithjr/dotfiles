@@ -7,7 +7,7 @@ authors = ["Larry Smith Jr. <mrlesmithjr@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 ansible-base = "2.10.5"
-ansible = "2.10.7"
+ansible = "4.2.0"
 arrow = "0.17.0"
 binaryornot = "0.4.4"
 certifi = "2020.12.5"
