@@ -15,17 +15,17 @@
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.startupEditor": "none",
     "terminal.integrated.fontSize": 14,
     "telemetry.enableTelemetry": false,
     "python.showStartPage": false,
     "docker.showStartPage": false,
     "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}_${sanitizedIssueTitle}",
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "window.autoDetectColorScheme": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.colorTheme": "Default Light+"
 }
