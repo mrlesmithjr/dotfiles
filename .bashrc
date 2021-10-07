@@ -150,3 +150,8 @@ fi
 if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
 	code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
 fi
+
+# Enable kubectl auto completion
+if [[ -x "$(command -v kubectl)" ]]; then
+	source <(kubectl completion bash)
+fi
