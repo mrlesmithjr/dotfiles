@@ -6,11 +6,14 @@
     "workbench.startupEditor": "none",
     "python.formatting.provider": "black",
     "editor.fontSize": 18,
-    "window.autoDetectColorScheme": true,
     "editor.formatOnSave": true,
     "python.linting.flake8Enabled": true,
     "redhat.telemetry.enabled": false,
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    }
+    },
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Default Light+"
 }
