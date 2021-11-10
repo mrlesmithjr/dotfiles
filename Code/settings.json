@@ -1,31 +1,16 @@
 {
-    "editor.cursorStyle": "block",
-    "editor.fontFamily": "'MesloLGS NF'",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 18,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
     "editor.rulers": [
         88,
         120
     ],
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
     "workbench.startupEditor": "none",
-    "terminal.integrated.fontSize": 14,
-    "telemetry.enableTelemetry": false,
-    "python.showStartPage": false,
-    "docker.showStartPage": false,
-    "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}_${sanitizedIssueTitle}",
-    "git.confirmSync": false,
+    "python.formatting.provider": "black",
+    "editor.fontSize": 18,
     "window.autoDetectColorScheme": true,
+    "editor.formatOnSave": true,
+    "python.linting.flake8Enabled": true,
     "redhat.telemetry.enabled": false,
-    "workbench.colorTheme": "Default Light+"
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    }
 }
