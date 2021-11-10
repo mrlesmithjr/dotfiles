@@ -27,5 +27,6 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Execute install
         run: |
-          ./install
+          echo $SHELL
+          # ./install
         shell: zsh {0}
