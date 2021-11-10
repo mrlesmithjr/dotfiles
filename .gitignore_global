@@ -6,7 +6,6 @@
 *.original
 *.tmp
 *.bkp
-*.retry
 *.*~
 
 # Tower runtime roles
@@ -233,7 +232,6 @@ cython_debug/
 *.tfstate.*
 
 # Crash log files
-crash.log
 
 # Exclude all .tfvars files, which are likely to contain sentitive data, such as
 # password, private keys, and other secrets. These should not be part of version
@@ -267,7 +265,6 @@ terraform.rc
 # *.log
 
 ### Vagrant Patch ###
-*.box
 
 ### VisualStudioCode ###
 .vscode/*
@@ -284,3 +281,6 @@ terraform.rc
 # Ignore all local history of files
 .history
 .ionide
+
+# Support for Project snippet scope
+!.vscode/*.code-snippets
