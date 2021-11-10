@@ -1,75 +1,75 @@
 [apply]
 # Detect whitespace errors when applying a patch
-	whitespace = fix
+whitespace = fix
 [core]
-	excludesfile = ~/.gitignore_global
+excludesfile = ~/.gitignore_global
 # editor = atom --wait
 # editor = code --wait
 # editor = vi
-	editor = vim
+editor = vim
 # Treat spaces before tabs and all kinds of trailing whitespace as an error
 # [default] trailing-space: looks for spaces at the end of a line
 # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [user]
-	email = mrlesmithjr@gmail.com
-	name = Larry Smith Jr.
+email = mrlesmithjr@gmail.com
+name = Larry Smith Jr.
 [credential]
 # Fedora
 # helper = /usr/libexec/git-core/git-credential-gnome-keyring
 # MacOS
-	helper = osxkeychain
+helper = osxkeychain
 # Ubuntu
 # helper = cache
-	useHttpPath = true
+useHttpPath = true
 [color]
-	status = auto
-	branch = auto
-	interactive = auto
-	diff = auto
+status = auto
+branch = auto
+interactive = auto
+diff = auto
 [color]
-	status = auto
-	branch = auto
-	interactive = auto
-	diff = auto
-	ui = auto
+status = auto
+branch = auto
+interactive = auto
+diff = auto
+ui = auto
 [diff]
-	tool = default-difftool
+tool = default-difftool
 [difftool "default-difftool"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+cmd = code --wait --diff $LOCAL $REMOTE
 [includeIf "gitdir:~/Git_Projects/Work/"]
-	path = ~/.gitconfig-work
+path = ~/.gitconfig-work
 [includeIf "gitdir:~/projects/devops_automation/"]
-	path = ~/.gitconfig-work
+path = ~/.gitconfig-work
 [status]
-	submoduleSummary = true
-	showUntrackedFiles = all
+submoduleSummary = true
+showUntrackedFiles = all
 [pager]
-	branch = false
+branch = false
 # [url "git@github.com:"]
 #  	insteadOf = https://github.com/
 # [url "git@gitlab.com:"]
 #  	insteadOf = https://gitlab.com/
 [fetch]
-	prune = true
+prune = true
 [branch "main"]
-	mergeOptions = --no-ff
+mergeOptions = --no-ff
 [branch "master"]
-	mergeOptions = --no-ff
+mergeOptions = --no-ff
 [pull]
-	rebase = true
+rebase = true
 [rebase]
-	autoStash = true
+autoStash = true
 [push]
-	followTags = true
-	default = current
+followTags = true
+default = current
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+current = yellow reverse
+local = yellow
+remote = green
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+added = yellow
+changed = green
+untracked = cyan
 [init]
-	defaultBranch = main
+defaultBranch = main
