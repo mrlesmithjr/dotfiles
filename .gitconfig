@@ -73,3 +73,4 @@
 	untracked = cyan
 [init]
 	defaultBranch = main
+	templateDir = /Users/smithlar/.git-template
