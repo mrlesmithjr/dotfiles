@@ -36,6 +36,8 @@
       force: true
     ~/.gitignore_global:
       path: .gitignore_global
+    ~/.git-template:
+      path: .git-template
     ~/.hyper.js:
       path: .hyper.js
     ~/.macos:
