@@ -34,20 +34,35 @@ source "$ZSH"/oh-my-zsh.sh
 if [[ $(uname) == "Darwin" ]]; then
 	# Add color to folders/files
 	alias ls='ls -G'
+	# Get macOS architecture for specific pathing, etc.
+	ARCH=$(arch)
 
-	if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-		# shellcheck disable=SC1094
-		source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	if [[ "${ARCH}" == "arm64" ]]; then
+		if [ -f "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+			source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+		fi
+		if [ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+			source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		fi
+		if [ -d "/opt/homebrew/bin" ]; then
+			export PATH="/opt/homebrew/bin:$PATH"
+		fi
+	elif [[ "${ARCH}" == "x86_64" || "${ARCH}" == "i386" ]]; then
+		if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+			# shellcheck disable=SC1094
+			source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+		fi
+		if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+			# shellcheck disable=SC1094
+			source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		fi
+		if [ -d "/usr/local/sbin" ]; then
+			export PATH="/usr/local/sbin:$PATH"
+		fi
 	fi
 
-	if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-		# shellcheck disable=SC1094
-		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	fi
 	# shellcheck source=/dev/null
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-	export PATH="/usr/local/sbin:$PATH"
 fi
 
 #### MacOS OS Check - END ####
