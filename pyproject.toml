@@ -9,10 +9,14 @@ python = "^3.9"
 ansible = "^4.6.0"
 cookiecutter = "^1.7.3"
 pip-tools = "^6.3.0"
+poetry = "^1.1.11"
 
 [tool.poetry.dev-dependencies]
+bandit = "^1.7.0"
+black = "^21.10b0"
 flake8 = "^4.0.1"
-black = {version = "^21.10b0", allow-prereleases = true}
+mypy = "^0.910"
+pylint = "^2.11.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
