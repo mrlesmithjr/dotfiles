@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e
 set -x
 
@@ -18,8 +18,9 @@ if [[ $(uname) == "Linux" ]]; then
 
 	# Ubuntu
 	if [ -f /etc/debian_version ]; then
+		# shellcheck source=/dev/null
 		source /etc/os-release
-		id=$ID
+		# id=$ID
 		os_version_id=$VERSION_ID
 		sudo apt-get update
 		sudo apt-get install -y bc
