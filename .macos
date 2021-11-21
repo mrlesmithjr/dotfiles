@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Path to your dotfiles installation.
 export DOTFILES="$HOME/.dotfiles"
 

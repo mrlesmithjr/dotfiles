@@ -1,3 +1,4 @@
+#!/bin/bash
 # .bashrc
 
 #### BASH CONFIGURATION ####
@@ -31,6 +32,7 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # Source global bashrc if it exists
 if [ -f /etc/bashrc ]; then
+	# shellcheck source=/dev/null
 	source /etc/bashrc
 fi
 
@@ -153,5 +155,6 @@ fi
 
 # Enable kubectl auto completion
 if [[ -x "$(command -v kubectl)" ]]; then
+	# shellcheck source=/dev/null
 	source <(kubectl completion bash)
 fi

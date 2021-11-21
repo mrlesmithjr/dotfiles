@@ -16,7 +16,7 @@ roles/**
 *pwd*
 *pass*
 *password*
-*.txt
+# *.txt
 
 # Exclude all binaries
 *.bin
