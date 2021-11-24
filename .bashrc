@@ -140,7 +140,7 @@ if [ ! -d "$PYENV_ROOT" ]; then
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	pip install --upgrade pip pip-tools
-	pip-sync "$DOTFILES_DIR/requirements.txt"
+	pip-sync "$DOTFILES_DIR/requirements.txt" "$DOTFILES_DIR/requirements-dev.txt"
 else
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init --path)"
