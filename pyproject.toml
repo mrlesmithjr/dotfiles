@@ -10,6 +10,7 @@ ansible = "^4.6.0"
 cookiecutter = "^1.7.3"
 pip-tools = "^6.3.0"
 poetry = "^1.1.11"
+pre-commit = "^2.15.0"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"
