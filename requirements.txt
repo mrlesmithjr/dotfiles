@@ -48,7 +48,7 @@ pyparsing==3.0.5; python_version >= "3.6" and python_full_version < "3.0.0" or p
 python-dateutil==2.8.2; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 python-slugify==5.0.2; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 pywin32-ctypes==0.2.0; python_version >= "3.6" and python_version < "4.0" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0") and sys_platform == "win32"
-pyyaml==6.0; python_version >= "3.6" and python_full_version >= "3.6.1" and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6")
+pyyaml==5.4.1; python_full_version >= "3.6.1"
 requests-toolbelt==0.9.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 requests==2.26.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
 resolvelib==0.5.5; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
