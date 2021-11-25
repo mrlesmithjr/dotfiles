@@ -3,7 +3,6 @@
 # ID: 138fd403232d2ddd5efb44317e38bf03
 import os
 import sys
-import platform
 
 # we try our best, but the shebang of this script is difficult to determine:
 # - macos doesn't ship with python3
@@ -18,10 +17,7 @@ else:
 os.environ.pop("__PYVENV_LAUNCHER__", None)
 
 # start templated
-if platform.machine() == "arm64":
-    INSTALL_PYTHON = "/opt/homebrew/opt/pre-commit/libexec/bin/python3"
-else:
-    INSTALL_PYTHON = "/usr/local/opt/pre-commit/libexec/bin/python3"
+INSTALL_PYTHON = which("python3")
 
 ARGS = [
     "hook-impl",
