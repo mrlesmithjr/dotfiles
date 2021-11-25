@@ -44,6 +44,11 @@ if [[ $(uname) == "Linux" ]]; then
 	fi
 	PATH=$PATH:$HOME/.local/bin:$HOME/bin
 	export PATH
+	if [ -f "$HOME/.tfenv/bin/tfenv" ]; then
+		if ! command -v tfenv &>/dev/null; then
+			export PATH=$HOME/.tfenv/bin:$PATH
+		fi
+	fi
 	if [ -f /etc/bash_completion ]; then
 		# shellcheck disable=SC1091
 		. /etc/bash_completion
