@@ -79,6 +79,7 @@ if [[ $(uname) == "Linux" ]]; then
 	if [ -d /home/linuxbrew ]; then
 		test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	fi
+	export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
