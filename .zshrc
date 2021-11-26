@@ -31,7 +31,7 @@ else
 fi
 
 # shellcheck disable=SC2034
-# plugins=(docker git nomad pip python terraform vagrant)
+plugins=(ansible brew docker docker-compose git kubectl minikube nomad pip python terraform vagrant)
 
 # shellcheck source=/dev/null
 source "$ZSH"/oh-my-zsh.sh
