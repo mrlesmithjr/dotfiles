@@ -82,18 +82,20 @@ if [[ $(uname) == "Darwin" ]]; then
 	fi
 elif [[ $(uname) == "Linux" ]]; then
 	set +e
-	command -v brew >/dev/null 2>&1
-	BREW_CHECK=$?
-	if [ $BREW_CHECK -eq 0 ]; then
-		echo "Brew already installed"
-	else
-		bash -c \
-			"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	fi
-	if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
-		sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
-		sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/var/homebrew/linked
+	if [[ $(arch) != "aarch64" ]]; then
+		command -v brew >/dev/null 2>&1
+		BREW_CHECK=$?
+		if [ $BREW_CHECK -eq 0 ]; then
+			echo "Brew already installed"
+		else
+			bash -c \
+				"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+			test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+		fi
+		if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
+			sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
+			sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/var/homebrew/linked
+		fi
 	fi
 fi
 
