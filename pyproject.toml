@@ -7,7 +7,7 @@ authors = ["Larry Smith Jr. <mrlesmithjr@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 ansible = "^4.6.0"
-cookiecutter = "^1.7.3"
+cookiecutter = "^2.1.1"
 pip-tools = "^6.3.0"
 poetry = "^1.1.11"
 pre-commit = "^2.15.0"
