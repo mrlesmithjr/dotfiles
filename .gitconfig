@@ -63,6 +63,7 @@ autoStash = true
 [push]
 followTags = true
 default = current
+autoSetupRemote = true
 [color "branch"]
 current = yellow reverse
 local = yellow
