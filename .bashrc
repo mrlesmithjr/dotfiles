@@ -150,6 +150,9 @@ else
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
+	if which brew >/dev/null; then
+		alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+	fi
 fi
 
 # Capture existing VSCode extensions
