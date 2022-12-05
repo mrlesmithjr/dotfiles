@@ -132,3 +132,33 @@ if [[ -x "$(command -v go)" ]]; then
 	fi
 	export PATH=$PATH:$HOME/go/bin
 fi
+
+# Export current Python packages installed into a useful Poetry format
+function pyreqstopoetry {
+	# This is not an ideal solution (currently) to export into production/development specific
+	# requirements.
+
+	CURRENT_TIME=$(date +"%Y.%m.%d-%H.%M.%S")
+
+	# Capture all Python packages currently installed
+	pip3 freeze >"requirements.txt.${CURRENT_TIME}"
+
+	# Install Poetry
+	pip3 install poetry
+
+	# Verify that Poetry has been initialized
+	if [ ! -f pyproject.toml ]; then
+		poetry init -n
+	fi
+
+	# Add all currently install Python packages to Poetry
+	cat "requirements.txt.${CURRENT_TIME}" | grep -E '^[^# ]' | cut -d= -f1 | xargs -n 1 poetry add
+
+	# Make a backup copy of an existing requirements.txt file for future reference
+	if [ -f requirements.txt ]; then
+		mv requirements.txt "requirements.txt.${CURRENT_TIME}.old"
+	fi
+
+	# Export Poetry packages back out to a new requirements.txt
+	poetry export --without-hashes >requirements.txt
+}
