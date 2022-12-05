@@ -184,7 +184,7 @@ function pyreqstopoetry {
 	CURRENT_TIME=$(date +"%Y.%m.%d-%H.%M.%S")
 
 	# Capture all Python packages currently installed
-	pip3 freeze >"requirements.txt.${CURRENT_TIME}"
+	pip3 list --not-required --format freeze --exclude lockfile --exclude pip --exclude setuptools >"requirements.txt.${CURRENT_TIME}"
 
 	# Install Poetry
 	pip3 install poetry
