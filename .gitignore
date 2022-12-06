@@ -27,3 +27,13 @@
 .vim/.netrwhist
 .vim/bundle/*
 !.vim/bundle/Vundle.vim
+
+### Python ###
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

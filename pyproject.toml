@@ -3,23 +3,17 @@ name = ".dotfiles"
 version = "0.1.0"
 description = ""
 authors = ["Larry Smith Jr. <mrlesmithjr@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-ansible = "^4.6.0"
-cookiecutter = "^2.1.1"
-pip-tools = "^6.3.0"
 poetry = "^1.1.11"
-pre-commit = "^2.15.0"
+pip-tools = "^6.10.0"
+pre-commit = "^2.20.0"
+cookiecutter = "^2.1.1"
 
-[tool.poetry.dev-dependencies]
-bandit = "^1.7.0"
-black = "^21.10b0"
-flake8 = "^4.0.1"
-mypy = "^0.910"
-pylint = "^2.11.1"
-molecule = {extras = ["docker"], version = "^3.5.2"}
+[tool.poetry.group.dev.dependencies]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
