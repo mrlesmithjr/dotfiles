@@ -153,7 +153,8 @@ function pyreqstopoetry {
 	fi
 
 	# Add all currently install Python packages to Poetry
-	cat "requirements.txt.${CURRENT_TIME}" | grep -E '^[^# ]' | cut -d= -f1 | xargs -n 1 poetry add
+	# cat "requirements.txt.${CURRENT_TIME}" | grep -E '^[^# ]' | cut -d= -f1 | xargs -n 1 poetry add
+	cat "requirements.txt.${CURRENT_TIME}" | grep -E '^[^# ]' | cut -d";" -f1 | xargs -n 1 poetry add
 
 	# Make a backup copy of an existing requirements.txt file for future reference
 	if [ -f requirements.txt ]; then
