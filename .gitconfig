@@ -75,3 +75,5 @@ untracked = cyan
 [init]
 defaultBranch = main
 templateDir = ~/.git-template
+[submodule]
+	recurse = true
