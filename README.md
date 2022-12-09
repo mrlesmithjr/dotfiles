@@ -1,7 +1,7 @@
 # Dotfiles
 
-A collection of my `.dotfiles` including a [setup](setup.sh) script. This script
-will setup all the things.
+A collection of my `.dotfiles` including a [setup](setup.sh) script. This script will
+set up all the things.
 
 ## Build Status
 
@@ -24,7 +24,7 @@ git clone https://github.com/mrlesmithjr/dotfiles .dotfiles --recursive
 
 ### Setup
 
-The following will be setup using this method:
+The following will be set up using this method:
 
 - dotfiles
 - Python
@@ -39,39 +39,41 @@ cd ~/.dotfiles
 
 ### .bashrc and .bash_profile
 
-To make these portable between `Linux` and `MacOS` we need to use both. The
-reason is that for `MacOS` the default is to use `.bash_profile` and ignore
+To make this portable between `Linux` and `macOS` we need to use both. The
+reason is that for `macOS` the default is to use `.bash_profile` and ignore
 `.bashrc` whereas on `Linux` `.bash_profile` is only used for interactive
-logins (ssh, terminal, and etc.) and ignored from GUI based terminal sessions.
+logins (ssh, terminal, etc.) and ignored from GUI-based terminal sessions.
 
 And then we can add all of our goodies to `.bashrc`. And in doing so,
-everything works as planned in all scenarios between `Linux` and `MacOS`.
+everything works as planned in all scenarios between `Linux` and `macOS`.
 
 ### .gitconfig
 
-Make sure to reset the user and email. Or you'll be using mine.
+Make sure to reset the user, email and other personal settings. Or you'll be using mine.
 
 ```bash
-git config --global user.name "Your_Name"
-git config --global user.email "Your_Name@example.org"
+ git config --global --unset commit.gpgsign
+ git config --global --unset gpg.format
+ git config --global --unset gpg.ssh.allowedsignersfile
+ git config --global --unset gpg.ssh.program
+ git config --global --unset user.email
+ git config --global --unset user.name
+ git config --global --unset user.signingkey
 ```
 
 ### .vimrc and .vim
 
-Some personal settings to make `vim` more pleasing on the eyes.
+Some personal settings to make `vim` more pleasing to the eyes.
 
 - [VundleVim](https://github.com/VundleVim/Vundle.vim)
 
-## Some Example Plugins/bundles and etc
+## Some Example Plugins/bundles, etc
 
-- [pathogen](https://github.com/tpope/vim-pathogen) - Manage your
-  `runtimepath` with ease.
-- [vim-ansible-yaml](https://github.com/chase/vim-ansible-yaml) - Adds
-  additional syntax highlighting and fixes indentation for Ansible's dialect
-  of YAML.
+- [pathogen](https://github.com/tpope/vim-pathogen) - Manage your `runtimepath` with ease.
+- [vim-ansible-yaml](https://github.com/chase/vim-ansible-yaml) - Adds additional
+syntax highlighting and fixes indentation for Ansible's dialect of YAML.
 - [vim-jinja](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
-- [vim-markdown](https://github.com/plasticboy/vim-markdown) - Markdown Vim
-  Mode
+- [vim-markdown](https://github.com/plasticboy/vim-markdown) - Markdown Vim Mode
 
 ## Visual Studio Code Extensions
 
