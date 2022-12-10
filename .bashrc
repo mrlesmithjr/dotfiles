@@ -206,3 +206,13 @@ function pyreqstopoetry {
 	# Export Poetry packages back out to a new requirements.txt
 	poetry export --without-hashes >requirements.txt
 }
+
+# Load 1password CLI plugins
+if [ -f "$HOME/.config/op/plugins.sh" ]; then
+	source "$HOME/.config/op/plugins.sh"
+fi
+
+# Enable 1password CLI auto completion
+if [[ -x "$(command -v op)" ]]; then
+	source <(op completion bash)
+fi
