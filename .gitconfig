@@ -14,7 +14,7 @@
 [user]
     email = mrlesmithjr@gmail.com
     name = Larry Smith Jr.
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICObetnli6sjXXvOnJg9EbBzgzkaxewHY2fjDdrd5rQR
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWdp0PcUPsrUwgva3ZUo9hMfS+Bi4dnatUHq/Uy0hbx
 [credential]
 # Fedora
 # helper = /usr/libexec/git-core/git-credential-gnome-keyring
