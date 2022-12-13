@@ -31,7 +31,7 @@ else
 fi
 
 # shellcheck disable=SC2034
-plugins=(ansible brew docker docker-compose git kubectl minikube nomad pip python terraform vagrant)
+plugins=(docker docker-compose pip)
 
 # shellcheck source=/dev/null
 source "$ZSH"/oh-my-zsh.sh
@@ -178,4 +178,9 @@ fi
 # Enable 1password CLI auto completion
 if [[ -x "$(command -v op)" ]]; then
 	eval "$(op completion zsh)"; compdef _op op
+fi
+
+# Enable limactl auto completions
+if [[ -x "$(command -v limactl)" ]]; then
+	source <(limactl completion zsh); compdef _limactl limactl
 fi

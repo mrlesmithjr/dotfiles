@@ -213,11 +213,19 @@ function pyreqstopoetry {
 }
 
 # Load 1password CLI plugins
+# shellcheck source=/dev/null
 if [ -f "$HOME/.config/op/plugins.sh" ]; then
 	source "$HOME/.config/op/plugins.sh"
 fi
 
 # Enable 1password CLI auto completion
+# shellcheck source=/dev/null
 if [[ -x "$(command -v op)" ]]; then
 	source <(op completion bash)
+fi
+
+# Enable limactl auto completions
+# shellcheck source=/dev/null
+if [[ -x "$(command -v limactl)" ]]; then
+	source <(limactl completion bash)
 fi
