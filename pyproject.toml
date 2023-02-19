@@ -1,5 +1,5 @@
 [tool.poetry]
-name = ".dotfiles"
+name = "dotfiles"
 version = "0.1.0"
 description = ""
 authors = ["Larry Smith Jr. <mrlesmithjr@gmail.com>"]
