@@ -4,30 +4,7 @@
 set nocompatible
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
-
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'airblade/vim-gitgutter'
-Plugin 'dense-analysis/ale'
-Plugin 'godlygeek/tabular'
-Plugin 'hashivim/vim-consul'
-Plugin 'hashivim/vim-nomadproject'
-Plugin 'hashivim/vim-packer'
-Plugin 'hashivim/vim-terraform'
-Plugin 'hashivim/vim-vagrant'
-Plugin 'hashivim/vim-vaultproject'
-Plugin 'pearofducks/ansible-vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'preservim/nerdtree'
-Plugin 'python-mode/python-mode'
-Plugin 'sbdchd/neoformat'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-call vundle#end()
 
 " Enable Pathogen
 execute pathogen#infect()
