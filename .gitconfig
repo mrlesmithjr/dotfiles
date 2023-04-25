@@ -36,6 +36,7 @@
     ui = auto
 [diff]
     tool = default-difftool
+	colorMoved = zebra
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [includeIf "gitdir:~/Git_Projects/Work/"]
@@ -65,14 +66,14 @@
     followTags = true
     default = current
     autoSetupRemote = true
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+# [color "branch"]
+#     current = yellow reverse
+#     local = yellow
+#     remote = green
+# [color "status"]
+#     added = yellow
+#     changed = green
+#     untracked = cyan
 [init]
     defaultBranch = main
     templateDir = ~/.git-template
@@ -85,3 +86,5 @@
     allowedSignersFile = ~/.ssh/allowed_signers
 [commit]
     gpgsign = true
+[merge]
+	autoStash = true
