@@ -1,90 +1,31 @@
-[apply]
-# Detect whitespace errors when applying a patch
-    whitespace = fix
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[commit]
+    gpgsign = true
 [core]
     excludesfile = ~/.gitignore_global
-# editor = atom --wait
-# editor = code --wait
-# editor = vi
-    editor = vim
-# Treat spaces before tabs and all kinds of trailing whitespace as an error
-# [default] trailing-space: looks for spaces at the end of a line
-# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-[user]
-    email = mrlesmithjr@gmail.com
-    name = Larry Smith Jr.
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWdp0PcUPsrUwgva3ZUo9hMfS+Bi4dnatUHq/Uy0hbx
-[credential]
-# Fedora
-# helper = /usr/libexec/git-core/git-credential-gnome-keyring
-# MacOS
-    helper = osxkeychain
-# Ubuntu
-# helper = cache
-    useHttpPath = true
-[color]
-    status = auto
-    branch = auto
-    interactive = auto
-    diff = auto
-[color]
-    status = auto
-    branch = auto
-    interactive = auto
-    diff = auto
-    ui = auto
 [diff]
-    tool = default-difftool
 	colorMoved = zebra
-[difftool "default-difftool"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+	prune = true
 [includeIf "gitdir:~/Git_Projects/Work/"]
     path = ~/.gitconfig-work
-[includeIf "gitdir:~/projects/devops_automation/"]
-    path = ~/.gitconfig-work
-[status]
-    submoduleSummary = true
-    showUntrackedFiles = all
-[pager]
-    branch = false
-# [url "git@github.com:"]
-#  	insteadOf = https://github.com/
-# [url "git@gitlab.com:"]
-#  	insteadOf = https://gitlab.com/
-[fetch]
-    prune = true
-[branch "main"]
-    mergeOptions = --no-ff
-[branch "master"]
-    mergeOptions = --no-ff
-[pull]
-    rebase = true
-[rebase]
-    autoStash = true
-[push]
-    followTags = true
-    default = current
-    autoSetupRemote = true
-# [color "branch"]
-#     current = yellow reverse
-#     local = yellow
-#     remote = green
-# [color "status"]
-#     added = yellow
-#     changed = green
-#     untracked = cyan
 [init]
-    defaultBranch = main
+	defaultbranch = main
     templateDir = ~/.git-template
-[submodule]
-    recurse = true
 [gpg]
     format = ssh
 [gpg "ssh"]
     program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
     allowedSignersFile = ~/.ssh/allowed_signers
-[commit]
-    gpgsign = true
-[merge]
-	autoStash = true
+[pull]
+	rebase = true
+[submodule]
+	recurse = true
+[user]
+	name = Larry Smith Jr.
+	email = mrlesmithjr@gmail.com
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWdp0PcUPsrUwgva3ZUo9hMfS+Bi4dnatUHq/Uy0hbx
