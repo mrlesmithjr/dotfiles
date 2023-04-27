@@ -54,6 +54,9 @@ if [[ $(uname) == "Darwin" ]]; then
 		if [ -d "/opt/homebrew/bin" ]; then
 			export PATH="/opt/homebrew/bin:$PATH"
 		fi
+		if [ -d "/opt/homebrew/sbin" ]; then
+			export PATH="/opt/homebrew/sbin:$PATH"
+		fi
 	elif [[ "${ARCH}" == "x86_64" || "${ARCH}" == "i386" ]]; then
 		if [ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
 			# shellcheck disable=SC1094
