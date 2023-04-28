@@ -1,3 +1,5 @@
+[alias]
+	sweep = !git branch --merged | egrep -v \"(^\\*|develop|master|main)\" | xargs git branch -d
 [color]
 	status = auto
 	branch = auto
