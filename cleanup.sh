@@ -120,7 +120,6 @@ fi
 
 # Cleanup macOS settings from .macos file
 if [[ $(uname) == "Darwin" ]]; then
-    defaults delete com.googlecode.iterm2.plist PrefsCustomFolder
-    defaults delete com.googlecode.iterm2.plist LoadPrefsFromCustomFolder
-    defaults delete com.googlecode.iterm2 PromptOnQuit
+    # Reset iTerm2 to default settings
+    defaults delete com.googlecode.iterm2
 fi
