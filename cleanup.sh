@@ -9,6 +9,16 @@ if [ $BREW_CHECK -eq 0 ]; then
     brew uninstall --cask "$(brew list --cask)" --force
     brew uninstall "$(brew list --formula)" --force --ignore-dependencies
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+    if [[ $(uname) == "Darwin" ]]; then
+        ARCH=$(arch)
+        if [[ "${ARCH}" == "arm64" ]]; then
+            HOMEBREW_PATH="/opt/homebrew"
+            if [ -d "$HOMEBREW_PATH" ]; then
+                sudo rm -rf "$HOMEBREW_PATH"
+            fi
+        fi
+    fi
 fi
 
 if [ -L "$HOME/.atom" ]; then
