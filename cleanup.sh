@@ -111,6 +111,9 @@ fi
 if [ -d "$HOME/.oh-my-zsh" ]; then
     rm -rf "$HOME/.oh-my-zsh"
 fi
+if [ -d "$HOME/.pyenv" ]; then
+    rm -rf "$HOME/.pyenv"
+fi
 if [ -d "$HOME/powerlevel10k" ]; then
     rm -rf "$HOME/powerlevel10k"
 fi
