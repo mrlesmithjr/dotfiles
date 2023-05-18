@@ -117,3 +117,10 @@ fi
 if [ -d "$HOME/powerlevel10k" ]; then
     rm -rf "$HOME/powerlevel10k"
 fi
+
+# Cleanup macOS settings from .macos file
+if [[ $(uname) == "Darwin" ]]; then
+    defaults delete com.googlecode.iterm2.plist PrefsCustomFolder
+    defaults delete com.googlecode.iterm2.plist LoadPrefsFromCustomFolder
+    defaults delete com.googlecode.iterm2 PromptOnQuit
+fi
