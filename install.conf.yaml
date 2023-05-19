@@ -18,10 +18,10 @@
       path: .atom
     ~/.bash_profile:
       path: .bash_profile
-      force: true
+      # force: true
     ~/.bashrc:
       path: .bashrc
-      force: true
+      # force: true
     ~/.config/Code/User/:
       create: true
       exclude: [Code/snippets]
@@ -33,7 +33,7 @@
       path: .yamllint.yml
     ~/.gitconfig:
       path: .gitconfig
-      force: true
+      # force: true
     ~/.gitignore_global:
       path: .gitignore_global
     ~/.git-template:
@@ -45,7 +45,7 @@
       if: "[ `uname` = Darwin ]"
     ~/.mackup.cfg:
       path: .mackup.cfg
-      force: true
+      # force: true
     ~/.p10k.zsh:
       path: .p10k.zsh
     ~/.pylintrc:
@@ -62,10 +62,10 @@
       path: .yamllint.yml
     ~/.zshrc:
       path: .zshrc
-      force: true
+      # force: true
     ~/.Brewfile:
       path: homebrew/Brewfile
-      force: true
+      # force: true
     ~/Library/Application Support/Code/User/:
       create: true
       exclude: [Code/snippets]
