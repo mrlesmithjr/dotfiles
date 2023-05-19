@@ -39,9 +39,6 @@ fi
 if [ -L "$HOME/.gitignore_global" ]; then
     rm "$HOME/.gitignore_global"
 fi
-if [ -L "$HOME/.hyper.js" ]; then
-    rm "$HOME/.hyper.js"
-fi
 # if [ -L "$HOME/.mackup.cfg" ]; then
 #     rm "$HOME/.mackup.cfg"
 # fi

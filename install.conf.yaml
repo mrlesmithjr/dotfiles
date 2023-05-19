@@ -30,8 +30,6 @@
       path: .gitignore_global
     ~/.git-template:
       path: .git-template
-    ~/.hyper.js:
-      path: .hyper.js
     ~/.macos:
       path: .macos
       if: "[ `uname` = Darwin ]"
