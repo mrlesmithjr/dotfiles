@@ -80,34 +80,6 @@ if [ -L "$HOME/.config/yamllint/config" ]; then
     rm "$HOME/.config/yamllint/config"
 fi
 
-if [[ $(uname) == "Darwin" ]]; then
-    if [ -L "$HOME/Library/Application Support/Code/User/extensions.list" ]; then
-        rm "$HOME/Library/Application Support/Code/User/extensions.list"
-    fi
-    if [ -L "$HOME/Library/Application Support/Code/User/keybindings.json" ]; then
-        rm "$HOME/Library/Application Support/Code/User/keybindings.json"
-    fi
-    if [ -L "$HOME/Library/Application Support/Code/User/settings.json" ]; then
-        rm "$HOME/Library/Application Support/Code/User/settings.json"
-    fi
-    if [ -L "$HOME/Library/Application Support/Code/User/vsicons.settings.json" ]; then
-        rm "$HOME/Library/Application Support/Code/User/vsicons.settings.json"
-    fi
-elif [[ $(uname) == "Linux" ]]; then
-    if [ -L "$HOME/.config/Code/User/extensions.list" ]; then
-        rm "$HOME/.config/Code/User/extensions.list"
-    fi
-    if [ -L "$HOME/.config/Code/User/keybindings.json" ]; then
-        rm "$HOME/.config/Code/User/keybindings.json"
-    fi
-    if [ -L "$HOME/.config/Code/User/settings.json" ]; then
-        rm "$HOME/.config/Code/User/settings.json"
-    fi
-    if [ -L "$HOME/.config/Code/User/vsicons.settings.json" ]; then
-        rm "$HOME/.config/Code/User/vsicons.settings.json"
-    fi
-fi
-
 if [ -d "$HOME/.bash-git-prompt" ]; then
     rm -rf "$HOME/.bash-git-prompt"
 fi

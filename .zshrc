@@ -118,12 +118,6 @@ else
 	fi
 fi
 
-# Capture existing VSCode extensions
-# Skip if running in WSL
-if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
-	code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

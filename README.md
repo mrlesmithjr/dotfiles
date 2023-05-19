@@ -75,15 +75,6 @@ Some personal settings to make `vim` more pleasing to the eyes.
 - [vim-jinja](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
 - [vim-markdown](https://github.com/plasticboy/vim-markdown) - Markdown Vim Mode
 
-## Visual Studio Code Extensions
-
-You can find some VS Code extensions exported [here](Code/extensions.list) which
-you can easily import if you would like by executing the following:
-
-```bash
-cat $HOME/.dotfiles/Code/extensions.list | xargs -L1 code --install-extension
-```
-
 ## Homebrew Bundles
 
 I've included a few different options to install Homebrew packages for simplicity.

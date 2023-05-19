@@ -160,12 +160,6 @@ else
 	fi
 fi
 
-# Capture existing VSCode extensions
-# Skip if running in WSL
-if [ -x "$(command -v code)" ] && [[ "$(uname -r)" != *"microsoft"* ]]; then
-	code --list-extensions >"$HOME"/.dotfiles/Code/extensions.list
-fi
-
 # Enable kubectl auto completion
 if [[ -x "$(command -v kubectl)" ]]; then
 	# shellcheck source=/dev/null
