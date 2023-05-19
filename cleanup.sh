@@ -120,10 +120,30 @@ fi
 
 # Cleanup macOS settings from .macos file
 if [[ $(uname) == "Darwin" ]]; then
+    # Reset battery to defaults
+    defaults delete com.apple.menuextra.battery ShowPercent
+
     # Reset iTerm2 to default settings
     defaults delete com.googlecode.iterm2
-    # Reset dock to defaults
-    defaults delete com.apple.dock; killall Dock
+            
     # Reset terminal to defaults
     defaults delete com.apple.terminal
+    
+    # Reset trackpad to defaults
+    defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
+    defaults -currentHost delete NSGlobalDomain com.apple.mouse.tapBehavior
+    defaults delete NSGlobalDomain com.apple.mouse.tapBehavior
+    defaults delete com.apple.AppleMultitouchTrackpad TrackpadRightClick
+    defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick
+
+    # Reset dock to defaults
+    defaults delete com.apple.dock autohide
+    defaults delete com.apple.dock magnification
+    defaults delete com.apple.dock largesize
+    killall Dock
+    
+    # Reset clock to defaults
+    defaults delete com.apple.menuextra.clock "DateFormat"
+    defaults delete com.apple.menuextra.clock "FlashDateSeparators"
+    killall SystemUIServer
 fi
