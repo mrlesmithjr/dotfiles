@@ -43,6 +43,9 @@
     ~/.macos:
       path: .macos
       if: "[ `uname` = Darwin ]"
+    ~/.mackup.cfg:
+      path: .mackup.cfg
+      force: true
     ~/.p10k.zsh:
       path: .p10k.zsh
     ~/.pylintrc:
@@ -59,6 +62,9 @@
       path: .yamllint.yml
     ~/.zshrc:
       path: .zshrc
+      force: true
+    ~/.Brewfile:
+      path: homebrew/Brewfile
       force: true
     ~/Library/Application Support/Code/User/:
       create: true
