@@ -45,9 +45,9 @@ fi
 if [ -L "$HOME/.hyper.js" ]; then
     rm "$HOME/.hyper.js"
 fi
-if [ -L "$HOME/.mackup.cfg" ]; then
-    rm "$HOME/.mackup.cfg"
-fi
+# if [ -L "$HOME/.mackup.cfg" ]; then
+#     rm "$HOME/.mackup.cfg"
+# fi
 if [ -L "$HOME/.macos" ]; then
     rm "$HOME/.macos"
 fi
