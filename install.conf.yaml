@@ -40,8 +40,6 @@
       path: .p10k.zsh
     ~/.pylintrc:
       path: .pylintrc
-    ~/.rubocop.yml:
-      path: .rubocop.yml
     ~/.yamllint.yml:
       path: .yamllint.yml
     ~/.zshrc:

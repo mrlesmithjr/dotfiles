@@ -51,9 +51,6 @@ fi
 if [ -L "$HOME/.pylintrc" ]; then
     rm "$HOME/.pylintrc"
 fi
-if [ -L "$HOME/.rubocop.yml" ]; then
-    rm "$HOME/.rubocop.yml"
-fi
 if [ -L "$HOME/.yamllint.yml" ]; then
     rm "$HOME/.yamllint.yml"
 fi
