@@ -37,3 +37,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Homebrew
+Brewfile.lock.json
+Brewfile.minimal.lock.json
+
+# VSCode
+.vscode
