@@ -122,4 +122,6 @@ fi
 if [[ $(uname) == "Darwin" ]]; then
     # Reset iTerm2 to default settings
     defaults delete com.googlecode.iterm2
+    # Reset dock to defaults
+    defaults delete com.apple.dock; killall Dock
 fi
