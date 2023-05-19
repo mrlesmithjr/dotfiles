@@ -44,10 +44,6 @@
       path: .rubocop.yml
     ~/.tmux.conf:
       path: .tmux.conf
-    ~/.vim:
-      path: .vim
-    ~/.vimrc:
-      path: .vimrc
     ~/.yamllint.yml:
       path: .yamllint.yml
     ~/.zshrc:

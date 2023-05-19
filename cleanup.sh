@@ -57,12 +57,6 @@ fi
 if [ -L "$HOME/.tmux.conf" ]; then
     rm "$HOME/.tmux.conf"
 fi
-if [ -L "$HOME/.vim" ]; then
-    rm "$HOME/.vim"
-fi
-if [ -L "$HOME/.vimrc" ]; then
-    rm "$HOME/.vimrc"
-fi
 if [ -L "$HOME/.yamllint.yml" ]; then
     rm "$HOME/.yamllint.yml"
 fi
