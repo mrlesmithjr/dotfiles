@@ -124,4 +124,6 @@ if [[ $(uname) == "Darwin" ]]; then
     defaults delete com.googlecode.iterm2
     # Reset dock to defaults
     defaults delete com.apple.dock; killall Dock
+    # Reset terminal to defaults
+    defaults delete com.apple.terminal
 fi
