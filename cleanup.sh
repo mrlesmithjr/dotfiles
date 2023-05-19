@@ -54,9 +54,6 @@ fi
 if [ -L "$HOME/.rubocop.yml" ]; then
     rm "$HOME/.rubocop.yml"
 fi
-if [ -L "$HOME/.tmux.conf" ]; then
-    rm "$HOME/.tmux.conf"
-fi
 if [ -L "$HOME/.yamllint.yml" ]; then
     rm "$HOME/.yamllint.yml"
 fi

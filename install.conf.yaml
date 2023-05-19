@@ -42,8 +42,6 @@
       path: .pylintrc
     ~/.rubocop.yml:
       path: .rubocop.yml
-    ~/.tmux.conf:
-      path: .tmux.conf
     ~/.yamllint.yml:
       path: .yamllint.yml
     ~/.zshrc:
