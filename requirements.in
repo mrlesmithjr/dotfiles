@@ -1,6 +1,0 @@
-# Python requirements for executing
-ansible
-glances
-pip-tools
-cookiecutter
-pywinrm
