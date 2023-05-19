@@ -14,8 +14,6 @@
     - ~/Projects
 
 - link:
-    ~/.atom:
-      path: .atom
     ~/.bash_profile:
       path: .bash_profile
       # force: true

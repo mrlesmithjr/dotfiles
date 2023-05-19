@@ -21,9 +21,6 @@ if [ $BREW_CHECK -eq 0 ]; then
     fi
 fi
 
-if [ -L "$HOME/.atom" ]; then
-    rm "$HOME/.atom"
-fi
 if [ -L "$HOME/.bash_profile" ]; then
     rm "$HOME/.bash_profile"
 fi
