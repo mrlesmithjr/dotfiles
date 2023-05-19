@@ -146,4 +146,7 @@ if [[ $(uname) == "Darwin" ]]; then
     defaults delete com.apple.menuextra.clock "DateFormat"
     defaults delete com.apple.menuextra.clock "FlashDateSeparators"
     killall SystemUIServer
+    
+    # Activate settings rather than waiting for restarting computer
+    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 fi
