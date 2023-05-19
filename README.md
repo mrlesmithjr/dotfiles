@@ -61,20 +61,6 @@ Make sure to reset the user, email, and other personal settings. Or you'll be us
  git config --global --unset user.signingkey
 ```
 
-### .vimrc and .vim
-
-Some personal settings to make `vim` more pleasing to the eyes.
-
-- [VundleVim](https://github.com/VundleVim/Vundle.vim)
-
-## Some Example Plugins/bundles, etc
-
-- [pathogen](https://github.com/tpope/vim-pathogen) - Manage your runtime path with ease.
-- [vim-ansible-yaml](https://github.com/chase/vim-ansible-yaml) - Adds additional
-  syntax highlighting and fixes indentation for Ansible's dialect of YAML.
-- [vim-jinja](https://github.com/lepture/vim-jinja) - Jinja bundle for `vim`
-- [vim-markdown](https://github.com/plasticboy/vim-markdown) - Markdown Vim Mode
-
 ## Homebrew Bundles
 
 I've included a few different options to install Homebrew packages for simplicity.
