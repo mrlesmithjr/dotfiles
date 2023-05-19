@@ -45,6 +45,9 @@ fi
 if [ -L "$HOME/.hyper.js" ]; then
     rm "$HOME/.hyper.js"
 fi
+if [ -L "$HOME/.mackup.cfg" ]; then
+    rm "$HOME/.mackup.cfg"
+fi
 if [ -L "$HOME/.macos" ]; then
     rm "$HOME/.macos"
 fi
@@ -125,10 +128,10 @@ if [[ $(uname) == "Darwin" ]]; then
 
     # Reset iTerm2 to default settings
     defaults delete com.googlecode.iterm2
-            
+
     # Reset terminal to defaults
     defaults delete com.apple.terminal
-    
+
     # Reset trackpad to defaults
     defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
     defaults -currentHost delete NSGlobalDomain com.apple.mouse.tapBehavior
@@ -141,12 +144,12 @@ if [[ $(uname) == "Darwin" ]]; then
     defaults delete com.apple.dock magnification
     defaults delete com.apple.dock largesize
     killall Dock
-    
+
     # Reset clock to defaults
     defaults delete com.apple.menuextra.clock "DateFormat"
     defaults delete com.apple.menuextra.clock "FlashDateSeparators"
     killall SystemUIServer
-    
+
     # Activate settings rather than waiting for restarting computer
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 fi
