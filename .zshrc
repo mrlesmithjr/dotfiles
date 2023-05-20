@@ -3,6 +3,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+### Oh-my-zsh plugins ###
+# These need to load at the top (here) otherwise they do not work
+# shellcheck disable=SC2034
+plugins=(1password ansible docker docker-compose git kubectl poetry terraform vagrant vault vscode)
+
 ### Exports ###
 export BREWFILE="$HOME/.Brewfile"
 export DOTFILES_DIR="$HOME/.dotfiles"
@@ -21,10 +26,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 if [ -f "$HOME/.p10k.zsh" ]; then
 	source "$HOME/.p10k.zsh"
-fi
-
-if [ -f "$ZSH/oh-my-zsh.sh" ]; then
-	source "$ZSH/oh-my-zsh.sh"
 fi
 
 ### Linux ###
@@ -83,12 +84,6 @@ if [ -f "$HOME/.config/op/plugins.sh" ]; then
 	source "$HOME/.config/op/plugins.sh"
 fi
 
-# Enable 1password CLI auto completion
-if [[ -x "$(command -v op)" ]]; then
-	eval "$(op completion zsh)"
-	compdef _op op
-fi
-
 ### Docker ###
 if [ -d "$HOME/.docker/bin" ]; then
 	export PATH=$HOME/.docker/bin:$PATH
@@ -105,11 +100,8 @@ if [[ -x "$(command -v brew)" ]]; then
 	else
 		brew bundle dump --file "$BREWFILE" --force
 	fi
-fi
-
-### Kubernetes ###
-if [[ -x "$(command -v kubectl)" ]]; then
-	source <(kubectl completion zsh)
+	# Load brew autocompletions
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 ### Mackup Backup ###
@@ -151,4 +143,10 @@ if [ -f "$TFENV_DIR/tfenv" ]; then
 	if ! command -v tfenv &>/dev/null; then
 		export PATH=$TFENV_DIR:$PATH
 	fi
+fi
+
+### Oh-my-zsh ###
+# Keep at the end to ensure it loads everything correctly
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+	source "$ZSH/oh-my-zsh.sh"
 fi
