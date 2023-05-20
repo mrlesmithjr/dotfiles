@@ -6,6 +6,7 @@ set +e
 command -v brew >/dev/null 2>&1
 BREW_CHECK=$?
 if [ $BREW_CHECK -eq 0 ]; then
+    brew bundle dump --file "$HOME/.Brewfile" --force
     brew uninstall --cask "$(brew list --cask)" --force
     brew uninstall "$(brew list --formula)" --force --ignore-dependencies
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
