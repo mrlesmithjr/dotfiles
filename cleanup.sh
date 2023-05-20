@@ -81,12 +81,6 @@ if [[ $(uname) == "Darwin" ]]; then
     # Reset battery to defaults
     defaults delete com.apple.menuextra.battery ShowPercent
 
-    # Reset iTerm2 to default settings
-    defaults delete com.googlecode.iterm2
-
-    # Reset terminal to defaults
-    defaults delete com.apple.terminal
-
     # Reset trackpad to defaults
     defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
     defaults -currentHost delete NSGlobalDomain com.apple.mouse.tapBehavior
