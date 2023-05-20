@@ -31,3 +31,5 @@
 	name = Larry Smith Jr.
 	email = mrlesmithjr@gmail.com
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWdp0PcUPsrUwgva3ZUo9hMfS+Bi4dnatUHq/Uy0hbx
+[push]
+	autoSetupRemote = true

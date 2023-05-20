@@ -65,8 +65,6 @@
       description: Installing oh-my-zsh
     - command: if [[ ! -d "$HOME"/powerlevel10k ]]; then git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/powerlevel10k; fi
       description: Installing Powerlevel10k
-    - command: vim +BundleInstall +qall 2 &>/dev/null
-      description: Installing VIM bundles
     - command: if [[ $(uname) == "Darwin" ]]; then source $HOME/.macos; fi
       description: Setting up macOS
     - command: if [[ "$(echo $0)" != *"zsh"* ]]; then if [[ $(uname) == "Linux" ]]; then USER="$(whoami)" sudo usermod --shell /bin/zsh "$USER"; else chsh -s "$(which zsh)"; fi; fi
