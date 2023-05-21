@@ -16,8 +16,6 @@
 [init]
 	defaultbranch = main
     templateDir = ~/.git-template
-[pull]
-	rebase = true
 [submodule]
 	recurse = true
 [user]
