@@ -80,9 +80,9 @@ fi
 
 ### 1Password ###
 # Load 1password CLI plugins
-if [ -f "$HOME/.config/op/plugins.sh" ]; then
-	source "$HOME/.config/op/plugins.sh"
-fi
+# if [ -f "$HOME/.config/op/plugins.sh" ]; then
+# 	source "$HOME/.config/op/plugins.sh"
+# fi
 
 ### Docker ###
 if [ -d "$HOME/.docker/bin" ]; then

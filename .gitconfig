@@ -5,8 +5,6 @@
 	branch = auto
 	interactive = auto
 	diff = auto
-[commit]
-    gpgsign = true
 [core]
     excludesfile = ~/.gitignore_global
 [diff]
@@ -18,11 +16,6 @@
 [init]
 	defaultbranch = main
     templateDir = ~/.git-template
-[gpg]
-    format = ssh
-[gpg "ssh"]
-    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-    allowedSignersFile = ~/.ssh/allowed_signers
 [pull]
 	rebase = true
 [submodule]
@@ -30,6 +23,5 @@
 [user]
 	name = Larry Smith Jr.
 	email = mrlesmithjr@gmail.com
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWdp0PcUPsrUwgva3ZUo9hMfS+Bi4dnatUHq/Uy0hbx
 [push]
 	autoSetupRemote = true
