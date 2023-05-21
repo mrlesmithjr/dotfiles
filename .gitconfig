@@ -23,3 +23,5 @@
 	email = mrlesmithjr@gmail.com
 [push]
 	autoSetupRemote = true
+[credential]
+	helper = osxkeychain
