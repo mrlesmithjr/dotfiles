@@ -107,7 +107,7 @@ fi
 ### Mackup Backup ###
 # We run this to ensure we do not forget to - less than ideal
 if [[ -x "$(command -v mackup)" ]]; then
-	mackup backup
+	mackup backup --force
 fi
 
 ### Pyenv ###
