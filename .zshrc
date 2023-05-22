@@ -83,6 +83,17 @@ fi
 # if [ -f "$HOME/.config/op/plugins.sh" ]; then
 # 	source "$HOME/.config/op/plugins.sh"
 # fi
+if [[ $(uname) == "Darwin" ]]; then
+	if [ -e ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ]; then
+		if [ ! -d ~/.1password ]; then
+			mkdir -p ~/.1password
+			ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+		fi
+	fi
+	if [ -e ~/.1password/agent.sock ]; then
+		export SSH_AUTH_SOCK=~/.1password/agent.sock
+	fi
+fi
 
 ### Docker ###
 if [ -d "$HOME/.docker/bin" ]; then
