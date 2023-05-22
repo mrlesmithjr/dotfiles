@@ -166,15 +166,6 @@ if [[ -x "$(command -v kubectl)" ]]; then
 	source <(kubectl completion bash)
 fi
 
-# Check if GO is installed
-if [[ -x "$(command -v go)" ]]; then
-	export GOPATH=$HOME/go
-	if [[ ! -d "$GOPATH" ]]; then
-		mkdir -p "$GOPATH"/{bin,src}
-	fi
-	export PATH=$PATH:$HOME/go/bin
-fi
-
 # Export current Python packages installed into a useful Poetry format
 function pyreqstopoetry {
 	# This is not an ideal solution (currently) to export into production/development specific
