@@ -23,6 +23,8 @@
     ~/.config/yamllint/config:
       create: true
       path: .yamllint.yml
+    ~/.zsh:
+      path: .zsh
     ~/.gitconfig:
       path: .gitconfig
       # force: true
