@@ -71,7 +71,7 @@ if [[ $(uname) == "Darwin" ]]; then
 	fi
 
 	if [ -f "$HOMEBREW_PATH/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]; then
-		source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+		source "$HOMEBREW_PATH/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
     fi
 
 	# shellcheck source=/dev/null
