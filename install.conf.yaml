@@ -59,15 +59,5 @@
       stdout: true
       stderr: true
       stdin: true
-    - command: if [[ $(uname) == "Linux" ]]; then if [ ! -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1; fi; fi
-      description: Installing bash-git-prompt
-    - command: if [ ! -f "$HOME/.netrc" ]; then touch "$HOME/.netrc"; fi
-      description: Creating $HOME/.netrc
-    - command: if [[ ! -d "$HOME"/.oh-my-zsh ]]; then git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME"/.oh-my-zsh; fi
-      description: Installing oh-my-zsh
-    - command: if [[ ! -d "$HOME"/powerlevel10k ]]; then git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/powerlevel10k; fi
-      description: Installing Powerlevel10k
-    - command: if [[ $(uname) == "Darwin" ]]; then source $HOME/.macos; fi
-      description: Setting up macOS
     - command: if [[ "$(echo $0)" != *"zsh"* ]]; then if [[ $(uname) == "Linux" ]]; then USER="$(whoami)" sudo usermod --shell /bin/zsh "$USER"; else chsh -s "$(which zsh)"; fi; fi
       description: Changing shell to ZSH

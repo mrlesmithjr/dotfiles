@@ -6,7 +6,7 @@ fi
 ### Oh-my-zsh plugins ###
 # These need to load at the top (here) otherwise they do not work
 # shellcheck disable=SC2034
-plugins=(1password ansible docker docker-compose git kubectl poetry terraform vagrant vault vscode)
+plugins=(1password ansible docker docker-compose git kubectl poetry terraform vagrant vault vscode zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting)
 
 ### Exports ###
 export BREWFILE="$HOME/.Brewfile"
@@ -61,18 +61,6 @@ if [[ $(uname) == "Darwin" ]]; then
 	if [ -d "$HOMEBREW_PATH/sbin" ]; then
 		export PATH="$HOMEBREW_PATH/sbin:$PATH"
 	fi
-
-	if [ -f "$HOMEBREW_PATH/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-		source "$HOMEBREW_PATH/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-	fi
-
-	if [ -f "$HOMEBREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-		source "$HOMEBREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-	fi
-
-	if [ -f "$HOMEBREW_PATH/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]; then
-		source "$HOMEBREW_PATH/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-    fi
 
 	# shellcheck source=/dev/null
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

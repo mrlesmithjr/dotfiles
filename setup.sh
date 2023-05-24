@@ -67,7 +67,7 @@ if [[ $(uname) == "Linux" ]]; then
 	fi
 fi
 
-# Installing Homebrew for macOS/Linux
+### Homebrew ###
 if [[ $(uname) == "Darwin" ]]; then
 	if ! xcode-select --print-path &>/dev/null; then
 		xcode-select --install &>/dev/null
@@ -99,6 +99,7 @@ elif [[ $(uname) == "Linux" ]]; then
 	fi
 fi
 
+### Pyenv ###
 export PYENV_ROOT="$HOME/.pyenv"
 
 if [ ! -d "$PYENV_ROOT" ]; then
@@ -126,6 +127,7 @@ else
 	# eval "$(pyenv virtualenv-init -)"
 fi
 
+### Fonts ###
 if [[ $(uname) == "Darwin" ]]; then
 	FONTS_DIR="$HOME"/Library/Fonts
 elif [[ $(uname) == "Linux" ]]; then
@@ -143,4 +145,46 @@ if [[ ! -f "$FONTS_DIR/MesloLGS NF Regular.ttf" ]]; then
 		fc-cache -vf "$FONTS_DIR"
 	fi
 	cd -
+fi
+
+### Bash Git Prompt ###
+if [[ $(uname) == "Linux" ]]; then
+	if [ ! -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+		git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1
+	fi
+fi
+
+### Netrc ###
+if [ ! -f "$HOME/.netrc" ]; then
+	touch "$HOME/.netrc"
+fi
+
+### Oh My Zsh ###
+OMZ_DIR=$HOME/.oh-my-zsh
+OMZ_PLUGINS_DIR=$OMZ_DIR/plugins
+
+if [ ! -d "$OMZ_DIR" ]; then
+	git clone https://github.com/ohmyzsh/ohmyzsh.git "$OMZ_DIR"
+fi
+
+if [ ! -d "$OMZ_PLUGINS_DIR/zsh-autocomplete" ]; then
+	git clone https://github.com/marlonrichert/zsh-autocomplete.git "$OMZ_PLUGINS_DIR/zsh-autocomplete"
+fi
+
+if [ ! -d "$OMZ_PLUGINS_DIR/zsh-autosuggestions" ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git "$OMZ_PLUGINS_DIR/zsh-autosuggestions"
+fi
+
+if [ ! -d "$OMZ_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$OMZ_PLUGINS_DIR/zsh-syntax-highlighting"
+fi
+
+### Powerlevel10k ###
+if [ ! -d "$HOME/powerlevel10k" ]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
+fi
+
+### macOS ###
+if [[ $(uname) == "Darwin" ]]; then
+	source "$HOME/.macos"
 fi
