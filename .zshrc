@@ -34,7 +34,7 @@ autoload $HOME/.zsh/functions/*
 
 ### Linux ###
 if [[ $(uname) == "Linux" ]]; then
-	HOMEBREW_PATH="$HOME/linuxbrew"
+	HOMEBREW_PATH="/home/linuxbrew"
 	if [ -d "$HOMEBREW_PATH" ]; then
 		test -d "$HOMEBREW_PATH/.linuxbrew" && eval "$($HOMEBREW_PATH/.linuxbrew/bin/brew shellenv)"
 	fi
@@ -54,6 +54,14 @@ if [[ $(uname) == "Darwin" ]]; then
 		HOMEBREW_PATH="/usr/local"
 	fi
 
+	if [ -d "$HOMEBREW_PATH/bin" ]; then
+		export PATH="$HOMEBREW_PATH/bin:$PATH"
+	fi
+
+	if [ -d "$HOMEBREW_PATH/sbin" ]; then
+		export PATH="$HOMEBREW_PATH/sbin:$PATH"
+	fi
+
 	if [ -f "$HOMEBREW_PATH/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
 		source "$HOMEBREW_PATH/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 	fi
@@ -62,13 +70,9 @@ if [[ $(uname) == "Darwin" ]]; then
 		source "$HOMEBREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	fi
 
-	if [ -d "$HOMEBREW_PATH/bin" ]; then
-		export PATH="$HOMEBREW_PATH/bin:$PATH"
-	fi
-
-	if [ -d "$HOMEBREW_PATH/sbin" ]; then
-		export PATH="$HOMEBREW_PATH/sbin:$PATH"
-	fi
+	if [ -f "$HOMEBREW_PATH/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]; then
+		source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    fi
 
 	# shellcheck source=/dev/null
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -83,10 +87,6 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 ### 1Password ###
-# Load 1password CLI plugins
-# if [ -f "$HOME/.config/op/plugins.sh" ]; then
-# 	source "$HOME/.config/op/plugins.sh"
-# fi
 if [[ $(uname) == "Darwin" ]]; then
 	if [ -e ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ]; then
 		if [ ! -d ~/.1password ]; then

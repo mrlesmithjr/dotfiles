@@ -42,8 +42,7 @@ if [[ $(uname) == "Linux" ]]; then
 	if [ -f "$HOME"/.bash-git-prompt/gitprompt.sh ]; then
 		GIT_PROMPT_BIN_PATH=$HOME/.bash-git-prompt
 	fi
-	PATH=$PATH:$HOME/.local/bin:$HOME/bin
-	export PATH
+	export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 	if [ -f "$HOME/.tfenv/bin/tfenv" ]; then
 		if ! command -v tfenv &>/dev/null; then
 			export PATH=$HOME/.tfenv/bin:$PATH
@@ -61,12 +60,38 @@ fi
 #### MacOS OS Check ####
 
 if [[ $(uname) == "Darwin" ]]; then
-	if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-		# shellcheck source=/dev/null
-		source "$(brew --prefix)/etc/bash_completion"
+	ARCH=$(arch)
+
+	if [[ "${ARCH}" == "arm64" ]]; then
+		HOMEBREW_PATH="/opt/homebrew"
+	elif [[ "${ARCH}" == "x86_64" || "${ARCH}" == "i386" ]]; then
+		HOMEBREW_PATH="/usr/local"
 	fi
-	if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-		GIT_PROMPT_BIN_PATH="$(brew --prefix)/opt/bash-git-prompt/share"
+
+	if [ -d "$HOMEBREW_PATH/bin" ]; then
+		export PATH="$HOMEBREW_PATH/bin:$PATH"
+	fi
+
+	if [ -d "$HOMEBREW_PATH/sbin" ]; then
+		export PATH="$HOMEBREW_PATH/sbin:$PATH"
+	fi
+
+	if [ -f "$HOMEBREW_PATH/etc/bash_completion" ]; then
+		# shellcheck source=/dev/null
+		source "$HOMEBREW_PATH/etc/bash_completion"
+	fi
+	if [ -f "$HOMEBREW_PATH/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+		GIT_PROMPT_BIN_PATH="$HOMEBREW_PATH/opt/bash-git-prompt/share"
+	fi
+
+	# Required for Ruby to function correctly on macOS
+	# https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/#start-here-if-you-choose-the-long-and-manual-route
+	if [ -d "$HOMEBREW_PATH/opt/chruby/share/chruby" ]; then
+		# shellcheck source=/dev/null
+		source "$HOMEBREW_PATH/opt/chruby/share/chruby/chruby.sh"
+		# shellcheck source=/dev/null
+		source "$HOMEBREW_PATH/opt/chruby/share/chruby/auto.sh"
+		chruby ruby-3.2.2
 	fi
 
 	# Add color to folders/files
@@ -199,18 +224,45 @@ function pyreqstopoetry {
 
 # Load 1password CLI plugins
 # shellcheck source=/dev/null
-# if [ -f "$HOME/.config/op/plugins.sh" ]; then
-# 	source "$HOME/.config/op/plugins.sh"
-# fi
+if [ -f "$HOME/.config/op/plugins.sh" ]; then
+	source "$HOME/.config/op/plugins.sh"
+fi
 
 # Enable 1password CLI auto completion
 # shellcheck source=/dev/null
-# if [[ -x "$(command -v op)" ]]; then
-# 	source <(op completion bash)
-# fi
+if [[ -x "$(command -v op)" ]]; then
+	source <(op completion bash)
+fi
 
-# Enable limactl auto completions
-# shellcheck source=/dev/null
-if [[ -x "$(command -v limactl)" ]]; then
-	source <(limactl completion bash)
+### Docker ###
+if [ -d "$HOME/.docker/bin" ]; then
+	export PATH=$HOME/.docker/bin:$PATH
+fi
+
+### Homebrew Backup ###
+# We run this to ensure we do not forget to - less than ideal but only if older than 7 days
+if [[ -x "$(command -v brew)" ]]; then
+	# Check to ensure our BREWFILE is present as a file or symlink
+	if [[ -f "$BREWFILE" || -L "$BREWFILE" ]]; then
+		if [[ $(find "$BREWFILE" -mtime +7 -print) ]]; then
+			brew bundle dump --file "$BREWFILE" --force
+		fi
+	else
+		brew bundle dump --file "$BREWFILE" --force
+	fi
+	# Load brew autocompletions
+fi
+
+### Mackup Backup ###
+# We run this to ensure we do not forget to - less than ideal
+if [[ -x "$(command -v mackup)" ]]; then
+	mackup backup --force
+fi
+
+### tfenv ###
+# Useful when installed manually - https://github.com/tfutils/tfenv#manual
+if [ -f "$TFENV_DIR/tfenv" ]; then
+	if ! command -v tfenv &>/dev/null; then
+		export PATH=$TFENV_DIR:$PATH
+	fi
 fi
