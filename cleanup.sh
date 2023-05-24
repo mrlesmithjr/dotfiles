@@ -56,9 +56,11 @@ fi
 if [ -L "$HOME/.yamllint.yml" ]; then
     rm "$HOME/.yamllint.yml"
 fi
+if [ -L "$HOME/.zsh" ]; then
+    rm "$HOME/.zsh"
+fi
 if [ -L "$HOME/.zshrc" ]; then
     rm "$HOME/.zshrc"
-    # touch "$HOME/.zshrc"
 fi
 if [ -L "$HOME/.config/yamllint/config" ]; then
     rm "$HOME/.config/yamllint/config"
