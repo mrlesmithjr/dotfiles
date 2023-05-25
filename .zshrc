@@ -17,11 +17,8 @@ export TFENV_DIR="$HOME/.tfenv/bin"
 export ZSH="$HOME/.oh-my-zsh"
 
 ### ZSH ###
-if [[ -d "$HOME/powerlevel10k" ]]; then
-	source "$HOME/powerlevel10k/powerlevel10k.zsh-theme"
-else
-	ZSH_THEME="ys"
-fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="ys"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 if [ -f "$HOME/.p10k.zsh" ]; then

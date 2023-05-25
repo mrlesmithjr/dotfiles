@@ -161,7 +161,9 @@ fi
 
 ### Oh My Zsh ###
 OMZ_DIR=$HOME/.oh-my-zsh
-OMZ_PLUGINS_DIR=$OMZ_DIR/plugins
+OMZ_CUSTOM_DIR=$OMZ_DIR/custom
+OMZ_PLUGINS_DIR=$OMZ_CUSTOM_DIR/plugins
+OMZ_THEMES_DIR=$OMZ_CUSTOM_DIR/themes
 
 if [ ! -d "$OMZ_DIR" ]; then
 	git clone https://github.com/ohmyzsh/ohmyzsh.git "$OMZ_DIR"
@@ -179,9 +181,8 @@ if [ ! -d "$OMZ_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$OMZ_PLUGINS_DIR/zsh-syntax-highlighting"
 fi
 
-### Powerlevel10k ###
-if [ ! -d "$HOME/powerlevel10k" ]; then
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
+if [ ! -d "$OMZ_THEMES_DIR/powerlevel10k" ]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$OMZ_THEMES_DIR/powerlevel10k"
 fi
 
 ### macOS ###
