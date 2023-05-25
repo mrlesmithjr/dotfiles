@@ -8,8 +8,13 @@ BREW_CHECK=$?
 if [ $BREW_CHECK -eq 0 ]; then
     brew update
     brew bundle dump --file "$HOME/.Brewfile.orig" --force
-    brew uninstall --cask "$(brew list --cask)" --force
-    brew uninstall "$(brew list --formula)" --force --ignore-dependencies
+    for f in $(brew list); do
+        brew uninstall --gnore-dependencies --force "$f"
+    done
+    for f in $(brew list --cask); do
+        brew uninstall --ignore-dependencies --force "$f"
+    done
+    brew autoremove
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 
     if [[ $(uname) == "Darwin" ]]; then
