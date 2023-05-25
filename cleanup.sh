@@ -9,7 +9,7 @@ if [ $BREW_CHECK -eq 0 ]; then
     brew update
     brew bundle dump --file "$HOME/.Brewfile.orig" --force
     for f in $(brew list); do
-        brew uninstall --gnore-dependencies --force "$f"
+        brew uninstall --ignore-dependencies --force "$f"
     done
     for f in $(brew list --cask); do
         brew uninstall --ignore-dependencies --force "$f"
