@@ -1,0 +1,63 @@
+---
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- create:
+    - ~/Git_Projects/Personal/GitHub
+    - ~/Git_Projects/Personal/GitHub/mrlesmithjr
+    - ~/Git_Projects/Personal/GitLab
+    - ~/Git_Projects/Work
+    - ~/Playground
+    - ~/Projects
+
+- link:
+    ~/.bash_profile:
+      path: .bash_profile
+      # force: true
+    ~/.bashrc:
+      path: .bashrc
+      # force: true
+    ~/.config/yamllint/config:
+      create: true
+      path: .yamllint.yml
+    ~/.zsh:
+      path: .zsh
+    ~/.gitconfig:
+      path: .gitconfig
+      # force: true
+    ~/.gitignore_global:
+      path: .gitignore_global
+    ~/.git-template:
+      path: .git-template
+    ~/.macos:
+      path: .macos
+      if: "[ `uname` = Darwin ]"
+    ~/.mackup.cfg:
+      path: .mackup.cfg
+      # force: true
+    ~/.p10k.zsh:
+      path: .p10k.zsh
+    ~/.pylintrc:
+      path: .pylintrc
+    ~/.yamllint.yml:
+      path: .yamllint.yml
+    ~/.zshrc:
+      path: .zshrc
+      # force: true
+    ~/.Brewfile:
+      path: homebrew/Brewfile
+      # force: true
+
+- shell:
+    - command: git submodule update --init --recursive
+      description: Installing submodules
+    # - command: ./setup.sh
+    #   description: Executing setup script
+    #   stdout: true
+    #   stderr: true
+    #   stdin: true
+    - command: if [[ "$(echo $0)" != *"zsh"* ]]; then if [[ $(uname) == "Linux" ]]; then USER="$(whoami)" sudo usermod --shell /bin/zsh "$USER"; else chsh -s "$(which zsh)"; fi; fi
+      description: Changing shell to ZSH
