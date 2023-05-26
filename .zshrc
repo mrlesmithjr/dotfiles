@@ -6,7 +6,7 @@ fi
 ### Oh-my-zsh plugins ###
 # These need to load at the top (here) otherwise they do not work
 # shellcheck disable=SC2034
-plugins=(1password ansible docker docker-compose git kubectl poetry terraform vagrant vault vscode zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(1password ansible docker docker-compose git kubectl poetry terraform vagrant vault vscode zsh-autosuggestions zsh-syntax-highlighting)
 
 ### Exports ###
 export BREWFILE="$HOME/.Brewfile"
@@ -137,6 +137,11 @@ if [ -f "$TFENV_DIR/tfenv" ]; then
 		export PATH=$TFENV_DIR:$PATH
 	fi
 fi
+
+### Aliases ###
+alias backup-configs="mackup backup && brew bundle dump --file "$HOME/.Brewfile.$(date "+%Y.%m.%d-%H.%M.%S")" --force"
+
+alias update-tools="brew update && brew upgrade && brew upgrade --cask && brew cleanup && pyenv update && omz update"
 
 ### Oh-my-zsh ###
 # Keep at the end to ensure it loads everything correctly
