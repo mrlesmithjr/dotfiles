@@ -16,6 +16,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 export TFENV_DIR="$HOME/.tfenv/bin"
 export ZSH="$HOME/.oh-my-zsh"
 
+# Check for install type to ensure proper setup
+if [ -f "$HOME/.minimal-install" ]; then
+	INSTALL_TYPE="minimal"
+else
+	INSTALL_TYPE="full"
+fi
+
 ### ZSH ###
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="ys"
@@ -119,7 +126,9 @@ fi
 
 ### Pyenv ###
 # Call pyenv-init function
-pyenv-init
+if [[ $INSTALL_TYPE == "full" ]]; then
+	pyenv-init
+fi
 
 ### tfenv ###
 # Useful when installed manually - https://github.com/tfutils/tfenv#manual

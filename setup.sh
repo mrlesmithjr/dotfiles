@@ -2,6 +2,13 @@
 set -e
 set -x
 
+# Check for install type to ensure proper setup
+if [ -f "$HOME/.minimal-install" ]; then
+	INSTALL_TYPE="minimal"
+else
+	INSTALL_TYPE="full"
+fi
+
 if [[ $(uname) == "Linux" ]]; then
 	# Arch
 	if [ -f /etc/arch-release ]; then
@@ -68,33 +75,35 @@ if [[ $(uname) == "Linux" ]]; then
 fi
 
 ### Homebrew ###
-if [[ $(uname) == "Darwin" ]]; then
-	if ! xcode-select --print-path &>/dev/null; then
-		xcode-select --install &>/dev/null
-	fi
-	set +e
-	command -v brew >/dev/null 2>&1
-	BREW_CHECK=$?
-	if [ $BREW_CHECK -eq 0 ]; then
-		echo "Brew already installed"
-	else
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	fi
-elif [[ $(uname) == "Linux" ]]; then
-	set +e
-	if [[ $(arch) != "aarch64" ]]; then
+if [[ $INSTALL_TYPE == "full" ]]; then
+	if [[ $(uname) == "Darwin" ]]; then
+		if ! xcode-select --print-path &>/dev/null; then
+			xcode-select --install &>/dev/null
+		fi
+		set +e
 		command -v brew >/dev/null 2>&1
 		BREW_CHECK=$?
 		if [ $BREW_CHECK -eq 0 ]; then
 			echo "Brew already installed"
 		else
-			bash -c \
-				"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-			test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		fi
-		if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
-			sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
-			sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/var/homebrew/linked
+	elif [[ $(uname) == "Linux" ]]; then
+		set +e
+		if [[ $(arch) != "aarch64" ]]; then
+			command -v brew >/dev/null 2>&1
+			BREW_CHECK=$?
+			if [ $BREW_CHECK -eq 0 ]; then
+				echo "Brew already installed"
+			else
+				bash -c \
+					"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+				test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+			fi
+			if [ ! -d /home/linuxbrew/.linuxbrew/var/homebrew/linked ]; then
+				sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
+				sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/var/homebrew/linked
+			fi
 		fi
 	fi
 fi
@@ -102,29 +111,31 @@ fi
 ### Pyenv ###
 export PYENV_ROOT="$HOME/.pyenv"
 
-if [ ! -d "$PYENV_ROOT" ]; then
-	git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
-	git clone https://github.com/pyenv/pyenv-update.git "$PYENV_ROOT/plugins/pyenv-update"
-	git clone https://github.com/pyenv/pyenv-virtualenv.git "$PYENV_ROOT/plugins/pyenv-virtualenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	if [ -f .python-version ]; then
-		pyenv install
-		pyenv global "$(cat .python-version)"
+if [[ $INSTALL_TYPE == "full" ]]; then
+	if [ ! -d "$PYENV_ROOT" ]; then
+		git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+		git clone https://github.com/pyenv/pyenv-update.git "$PYENV_ROOT/plugins/pyenv-update"
+		git clone https://github.com/pyenv/pyenv-virtualenv.git "$PYENV_ROOT/plugins/pyenv-virtualenv"
+		export PATH="$PYENV_ROOT/bin:$PATH"
+		if [ -f .python-version ]; then
+			pyenv install
+			pyenv global "$(cat .python-version)"
+		else
+			DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v a | grep -v b | grep -v mini | grep -v rc | tail -1 | awk '{ print $1 }')
+			pyenv install "$DEFAULT_PYTHON_VERSION"
+			pyenv global "$DEFAULT_PYTHON_VERSION"
+		fi
+		eval "$(pyenv init --path)"
+		eval "$(pyenv init -)"
+		# eval "$(pyenv virtualenv-init -)"
+		pip install --upgrade pip pip-tools
+		pip-sync "requirements.txt" "requirements-dev.txt"
 	else
-		DEFAULT_PYTHON_VERSION=$(pyenv install --list | grep -v - | grep -v a | grep -v b | grep -v mini | grep -v rc | tail -1 | awk '{ print $1 }')
-		pyenv install "$DEFAULT_PYTHON_VERSION"
-		pyenv global "$DEFAULT_PYTHON_VERSION"
+		export PATH="$PYENV_ROOT/bin:$PATH"
+		eval "$(pyenv init --path)"
+		eval "$(pyenv init -)"
+		# eval "$(pyenv virtualenv-init -)"
 	fi
-	eval "$(pyenv init --path)"
-	eval "$(pyenv init -)"
-	# eval "$(pyenv virtualenv-init -)"
-	pip install --upgrade pip pip-tools
-	pip-sync "requirements.txt" "requirements-dev.txt"
-else
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init --path)"
-	eval "$(pyenv init -)"
-	# eval "$(pyenv virtualenv-init -)"
 fi
 
 ### Fonts ###

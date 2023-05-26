@@ -52,6 +52,7 @@
       # force: true
 
 - shell:
+    - command: if [ -f "$HOME/.minimal-install" ]; then rm "$HOME/.minimal-install"; fi
     - command: git submodule update --init --recursive
       description: Installing submodules
     - command: ./setup.sh

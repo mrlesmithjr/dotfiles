@@ -26,9 +26,18 @@ The following will be set up using this method:
 - Python
 - Brew
 
+#### Full Install
+
 ```bash
 cd ~/.dotfiles
 ./install
+```
+
+#### Minimal Install
+
+```bash
+cd ~/.dotfiles
+./minimal-install
 ```
 
 ## Various Setting Info

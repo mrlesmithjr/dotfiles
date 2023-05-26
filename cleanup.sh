@@ -2,14 +2,14 @@
 set -e
 set -x
 
-current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+CURRENT_TIME=$(date +"%Y.%m.%d-%H.%M.%S")
 
 set +e
 command -v brew >/dev/null 2>&1
 BREW_CHECK=$?
 if [ $BREW_CHECK -eq 0 ]; then
     brew update
-    brew bundle dump --file "$HOME/.Brewfile.$current_time" --force
+    brew bundle dump --file "$HOME/.Brewfile.$CURRENT_TIME" --force
     for f in $(brew list --cask); do
         brew uninstall --ignore-dependencies --force "$f"
     done
@@ -28,6 +28,10 @@ if [ $BREW_CHECK -eq 0 ]; then
             fi
         fi
     fi
+fi
+
+if [ -f "$HOME/.minimal-install" ]; then
+    rm "$HOME/.minimal-install"
 fi
 
 if [ -L "$HOME/.bash_profile" ]; then
