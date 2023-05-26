@@ -69,6 +69,13 @@ if [[ $(uname) == "Darwin" ]]; then
 		source $HOMEBREW_PATH/opt/chruby/share/chruby/auto.sh
 		chruby ruby-3.2.2
 	fi
+
+	# VScode CLI
+	if [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then
+		if [[ ! -x "$(command -v code)" ]]; then
+			export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+		fi
+	fi
 fi
 
 ### 1Password ###
