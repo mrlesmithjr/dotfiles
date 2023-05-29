@@ -102,6 +102,11 @@ fi
 if [ -d "$HOME/.docker/bin" ]; then
 	export PATH=$HOME/.docker/bin:$PATH
 fi
+# https://github.com/docker/for-mac/issues/6529
+if [ -e "$HOME/.docker/run/docker.sock" ]; then
+	export DOCKER_HOST=unix://"$HOME/.docker/run/docker.sock"
+fi
+
 
 ### Homebrew Backup ###
 # We run this to ensure we do not forget to - less than ideal but only if older than 7 days
