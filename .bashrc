@@ -43,11 +43,6 @@ if [[ $(uname) == "Linux" ]]; then
 		GIT_PROMPT_BIN_PATH=$HOME/.bash-git-prompt
 	fi
 	export PATH=$PATH:$HOME/.local/bin:$HOME/bin
-	if [ -f "$HOME/.tfenv/bin/tfenv" ]; then
-		if ! command -v tfenv &>/dev/null; then
-			export PATH=$HOME/.tfenv/bin:$PATH
-		fi
-	fi
 	if [ -f /etc/bash_completion ]; then
 		# shellcheck disable=SC1091
 		. /etc/bash_completion
@@ -261,8 +256,11 @@ fi
 
 ### tfenv ###
 # Useful when installed manually - https://github.com/tfutils/tfenv#manual
-if [ -f "$TFENV_DIR/tfenv" ]; then
+export TFENV_DIR="$HOME/.tfenv"
+export TFENV_BIN_DIR="$TFENV_DIR/bin"
+
+if [ -f "$TFENV_BIN_DIR/tfenv" ]; then
 	if ! command -v tfenv &>/dev/null; then
-		export PATH=$TFENV_DIR:$PATH
+		export PATH=$TFENV_BIN_DIR:$PATH
 	fi
 fi

@@ -13,7 +13,8 @@ export BREWFILE="$HOME/.Brewfile"
 export DOTFILES_DIR="$HOME/.dotfiles"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 export PYENV_ROOT="$HOME/.pyenv"
-export TFENV_DIR="$HOME/.tfenv/bin"
+export TFENV_DIR="$HOME/.tfenv"
+export TFENV_BIN_DIR="$TFENV_DIR/bin"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Check for install type to ensure proper setup
@@ -137,9 +138,9 @@ fi
 
 ### tfenv ###
 # Useful when installed manually - https://github.com/tfutils/tfenv#manual
-if [ -f "$TFENV_DIR/tfenv" ]; then
+if [ -f "$TFENV_BIN_DIR/tfenv" ]; then
 	if ! command -v tfenv &>/dev/null; then
-		export PATH=$TFENV_DIR:$PATH
+		export PATH=$TFENV_BIN_DIR:$PATH
 	fi
 fi
 

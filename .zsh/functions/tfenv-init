@@ -1,0 +1,3 @@
+if [ ! -d "$TFENV_DIR" ]; then
+    git clone --depth=1 https://github.com/tfutils/tfenv.git "$TFENV_DIR"
+fi
